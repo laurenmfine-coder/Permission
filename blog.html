@@ -121,6 +121,11 @@
     transition: transform 0.4s;
   }
   .featured-card:hover { transform: translateY(-4px); }
+  .featured-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .featured-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(60,30,20,0.18); }
+  .featured-card:hover .featured-arrow { transform: translateX(6px); }
+  .featured-eyebrow { position: absolute; top: 36px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #2A1F1A; opacity: 0.7; font-weight: 500; z-index: 3; }
+  .featured-arrow { display: inline-block; margin-left: 8px; transition: transform 0.3s ease; }
   .featured-visual {
     background: linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 45%, #B87A68 70%, var(--terracotta-dark) 100%);
     min-height: 400px;
@@ -164,19 +169,7 @@
     color: var(--white); border-bottom: 1px solid var(--gold); padding-bottom: 3px;
     display: inline-block; transition: color 0.3s, border-color 0.3s;
   }
-  .featured-post { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-  .featured-post:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(60,30,20,0.18); }
-  .featured-post:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); }
-  .featured-post:hover .featured-arrow { transform: translateX(6px); }
-  .featured-eyebrow { position: absolute; top: 36px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #2A1F1A; opacity: 0.7; font-weight: 500; z-index: 3; }
-  .featured-arrow { display: inline-block; margin-left: 8px; transition: transform 0.3s ease; }
   .featured-card:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); border-color: var(--terracotta); }
-  .featured-post { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-  .featured-post:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(60,30,20,0.18); }
-  .featured-post:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); }
-  .featured-post:hover .featured-arrow { transform: translateX(6px); }
-  .featured-eyebrow { position: absolute; top: 36px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #2A1F1A; opacity: 0.7; font-weight: 500; z-index: 3; }
-  .featured-arrow { display: inline-block; margin-left: 8px; transition: transform 0.3s ease; }
 
   /* POST GRID */
   .posts-section { padding: 72px 64px 120px; }
