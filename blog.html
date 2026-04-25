@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing | Lauren Fine, MD | Coach, Speaker & Story Strategist</title>
+<meta name="description" content="Essays and stories on career pivots, identity, purpose, and the courage it takes to write your next chapter. By Lauren Fine, MD, coach, TEDx speaker, and story strategist.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/blog.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Writing | Lauren Fine",
+  "url": "https://laurenfine.com/blog.html",
+  "description": "Essays on career pivots, identity, purpose, and what it takes to write your next chapter.",
+  "author": {
+    "@type": "Person",
+    "name": "Lauren Fine",
+    "url": "https://laurenfine.com"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F4; --cream-dark: #EDE9E4; --black: #1A1A1A;
+    --warm-dark: #2A1F1A; --terracotta: #C4714A; --terracotta-dark: #7A3D28;
+    --blush: #E8C4B8; --blush-light: #F0D8CC; --gold: #B8975A;
+    --gray: #8C8580; --white: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--cream); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:400; overflow-x:hidden; cursor:none; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:900; opacity:0.4; }
+  .cursor { width:7px; height:7px; background:var(--terracotta); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width 0.3s,height 0.3s; }
+  .cursor.on { width:12px; height:12px; }
+  .cursor-ring { width:30px; height:30px; border:1px solid rgba(196,113,74,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+  .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
+  nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+  .nav-links { display:flex; gap:44px; list-style:none; }
+  .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-links a:hover::after { width:100%; }
+  .nav-links a.active { color:var(--black); }
+  .nav-links a.active::after { width:100%; background:var(--gold); }
+  .nav-cta { font-size:0.72rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 28px; text-decoration:none; transition:background 0.3s,transform 0.2s; }
+  .nav-cta:hover { background:var(--terracotta); transform:translateY(-1px); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 160px 64px 80px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--cream-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .page-header-left h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 1.0;
+    color: var(--black); margin-bottom: 8px;
+  }
+  .page-header-left h1 em { font-style: italic; color: var(--terracotta); }
+  .page-header-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.5rem; color: var(--gold); line-height: 1.2;
+  }
+  .page-header-right {
+    font-size: 1.05rem; line-height: 1.8; color: #3D3833;
+    font-weight: 400; padding-bottom: 8px;
+  }
+
+  /* FILTER TAGS */
+  .filter-bar {
+    padding: 32px 64px;
+    background: var(--cream-dark);
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .filter-label {
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gray); margin-right: 8px;
+  }
+  .filter-tag {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray); border: 1px solid var(--cream-dark);
+    background: var(--cream); padding: 8px 18px;
+    cursor: pointer; transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+  .filter-tag:hover, .filter-tag.active {
+    background: var(--black); color: var(--white); border-color: var(--black);
+  }
+
+  /* FEATURED POST */
+  .featured {
+    padding: 80px 64px 0;
+  }
+  .featured-eyebrow {
+    font-size: 0.68rem; font-weight: 400;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .featured-eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--terracotta); flex-shrink: 0;
+  }
+  .featured-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    background: var(--warm-dark);
+    text-decoration: none;
+    transition: transform 0.4s;
+  }
+  .featured-card:hover { transform: translateY(-4px); }
+  .featured-visual {
+    background: linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 45%, #B87A68 70%, var(--terracotta-dark) 100%);
+    min-height: 400px;
+    display: flex; align-items: flex-end; padding: 44px;
+    position: relative; overflow: hidden;
+  }
+  .featured-visual-bg {
+    position: absolute; font-family: 'Cormorant Garamond', serif;
+    font-size: 9rem; font-weight: 300; color: rgba(255,255,255,0.07);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    user-select: none; white-space: nowrap;
+  }
+  .featured-visual-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.6rem; color: rgba(255,255,255,0.88); line-height: 1.4;
+    position: relative; z-index: 2;
+  }
+  .featured-content {
+    padding: 60px 60px 52px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .featured-meta {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    font-weight: 300; color: var(--white); line-height: 1.15; margin-bottom: 20px;
+  }
+  .featured-title em { font-style: italic; color: var(--blush); }
+  .featured-excerpt {
+    font-size: 0.92rem; line-height: 1.85; color: rgba(255,255,255,0.55);
+    font-weight: 300; margin-bottom: 36px;
+  }
+  .featured-read {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--white); border-bottom: 1px solid var(--gold); padding-bottom: 3px;
+    display: inline-block; transition: color 0.3s, border-color 0.3s;
+  }
+  .featured-card:hover .featured-read { color: var(--terracotta); border-color: var(--terracotta); }
+
+  /* POST GRID */
+  .posts-section { padding: 72px 64px 120px; }
+  .posts-section-label {
+    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 48px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .posts-section-label::before { content:''; width:28px; height:1px; background:var(--cream-dark); flex-shrink:0; }
+  .post-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+  }
+  .post-card {
+    background: var(--white); padding: 44px 36px 40px;
+    text-decoration: none; display: block;
+    position: relative; transition: transform 0.35s, box-shadow 0.35s;
+    border-top: 3px solid var(--blush);
+  }
+  .post-card:hover { transform: translateY(-6px); box-shadow: 0 20px 52px rgba(0,0,0,0.07); border-top-color: var(--terracotta); }
+  .post-tag {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 16px; font-weight: 400;
+  }
+  .post-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-weight: 500; color: var(--black);
+    line-height: 1.2; margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .post-card:hover .post-title { color: var(--terracotta); }
+  .post-excerpt {
+    font-size: 0.95rem; line-height: 1.7; color: #3D3833;
+    font-weight: 400; margin-bottom: 28px;
+  }
+  .post-meta {
+    font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--cream-dark); display: flex; justify-content: space-between; align-items: center;
+  }
+  .post-meta-date { color: var(--gray); }
+  .post-read-more {
+    font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--black); border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+  .post-card:hover .post-read-more { color: var(--terracotta); }
+
+  /* NEWSLETTER STRIP */
+  .nl-strip {
+    background: var(--warm-dark); padding: 80px 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .nl-strip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--white); line-height: 1.1;
+  }
+  .nl-strip-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2.5rem, 3.5vw, 4rem); color: var(--blush-light);
+    display: block; line-height: 1.2; opacity: 0.75;
+  }
+  .nl-strip-body { font-size:1rem; line-height:1.8; color:rgba(255,255,255,0.78); font-weight:400; margin-bottom:28px; }
+  .nl-form { display:flex; }
+  .nl-input { flex:1; padding:16px 22px; background:rgba(255,255,255,0.05); border:none; border-bottom:1px solid rgba(196,113,74,0.3); color:var(--white); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; }
+  .nl-input:focus { border-bottom-color:var(--terracotta); }
+  .nl-input::placeholder { color:rgba(255,255,255,0.3); }
+  .nl-btn { padding:16px 28px; background:var(--terracotta); color:var(--white); border:none; font-family:'DM Sans',sans-serif; font-size:0.68rem; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; transition:background 0.3s; }
+  .nl-btn:hover { background:#A85E3A; }
+
+  /* FOOTER */
+  footer { background:var(--black); padding:72px 64px 48px; }
+  .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:60px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:40px; }
+  .footer-brand { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); margin-bottom:12px; }
+  .footer-tagline { font-family:'Pinyon Script',cursive; font-size:1.8rem; color:var(--blush); opacity:0.6; line-height:1.3; margin-bottom:24px; }
+  .footer-bio { font-size:0.92rem; line-height:1.8; color:rgba(255,255,255,0.55); font-weight:400; max-width:280px; }
+  .footer-col-label { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.22); margin-bottom:24px; }
+  .footer-links { list-style:none; }
+  .footer-links li { margin-bottom:14px; }
+  .footer-links a { font-size:0.95rem; color:rgba(255,255,255,0.7); text-decoration:none; font-weight:400; transition:color 0.3s; }
+  .footer-links a:hover { color:var(--terracotta); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; }
+  .footer-copy { font-size:0.68rem; color:rgba(255,255,255,0.18); letter-spacing:0.1em; }
+  .footer-domain { font-family:'Cormorant Garamond',serif; font-size:0.88rem; color:rgba(255,255,255,0.18); }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.85s ease,transform 0.85s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .d1 { transition-delay:0.12s; } .d2 { transition-delay:0.25s; } .d3 { transition-delay:0.38s; }
+
+  @media (max-width: 960px) {
+    nav { padding:20px 24px; }
+    .nav-links { display:none !important; }
+    .page-header { grid-template-columns:1fr; padding:120px 24px 60px; }
+    .filter-bar { padding:24px; }
+    .featured { padding:40px 24px 0; }
+    .featured-card { grid-template-columns:1fr; }
+    .featured-visual { min-height:240px; }
+    .featured-content { padding:40px 28px; }
+    .posts-section { padding:48px 24px 80px; }
+    .post-grid { grid-template-columns:1fr; gap:3px; }
+    .nl-strip { grid-template-columns:1fr; gap:32px; padding:60px 24px; }
+    footer { padding:60px 24px 40px; }
+    .footer-top { grid-template-columns:1fr; gap:40px; }
+    .footer-bottom { flex-direction:column; gap:12px; }
+    body { cursor:auto; }
+    .cursor,.cursor-ring { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Lauren Fine</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="coaching.html">Coaching</a></li>
+    <li><a href="index.html#tedx">Speaking</a></li>
+    <li><a href="blog.html" class="active">Writing</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-left">
+    <p style="font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--terracotta);margin-bottom:20px;display:flex;align-items:center;gap:14px;"><span style="width:28px;height:1px;background:var(--terracotta);display:inline-block;flex-shrink:0;"></span>Writing</p>
+    <h1>Stories worth<br><em>reading.</em></h1>
+    <p class="page-header-script">and sitting with</p>
+  </div>
+  <p class="page-header-right">Essays on career pivots, identity, purpose, and the courage it takes to write your next chapter. These pieces also appear on my Substack, <a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.3);">Permission to Change</a>. Subscribe there to get new posts in your inbox.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter by</span>
+  <button class="filter-tag active" data-filter="all">All</button>
+  <button class="filter-tag" data-filter="career-pivot">Career Pivot</button>
+  <button class="filter-tag" data-filter="identity">Identity</button>
+  <button class="filter-tag" data-filter="permission">Permission</button>
+  <button class="filter-tag" data-filter="personal-statement">Personal Statement</button>
+  <button class="filter-tag" data-filter="ikigai">Ikigai</button>
+</div>
+
+<!-- FEATURED POST -->
+<div class="featured">
+  <p class="featured-eyebrow reveal">Featured</p>
+  <a href="post-decision-that-didnt-make-sense.html" class="featured-card reveal d1">
+    <div class="featured-visual">
+      <div class="featured-visual-bg">01</div>
+      <p class="featured-visual-script">"The risk of trying<br>was survivable.<br>The certainty of regret<br>was not."</p>
+    </div>
+    <div class="featured-content">
+      <p class="featured-meta">Career Pivot &nbsp;·&nbsp; December 13, 2025</p>
+      <h2 class="featured-title">The Decision That<br><em>Didn't</em> Make Sense</h2>
+      <p class="featured-excerpt">"Lauren, we want you to join us!" I stared at the email subject line. My heart pounded. This was the moment I had been waiting for. The answer to weeks of anticipation, months of searching, years of restlessness. So why did I have a knot in my stomach?</p>
+      <span class="featured-read">Read the full piece</span>
+    </div>
+  </a>
+</div>
+
+<!-- POST GRID -->
+<div class="posts-section">
+  <p class="posts-section-label reveal">All writing</p>
+  <div class="post-grid" id="postGrid">
+
+    <a href="post-mindset-isnt-who-you-are.html" class="post-card reveal" data-category="identity">
+      <p class="post-tag">Identity</p>
+      <h3 class="post-title">Mindset Isn't Who You Are. It's Where You're Looking.</h3>
+      <p class="post-excerpt">Why "shift your mindset" is the motivational equivalent of "be better," and what actually works when you're stuck.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">April 23, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-permission-to-put-it-down.html" class="post-card reveal d1" data-category="permission">
+      <p class="post-tag">Permission</p>
+      <h3 class="post-title">On Permission to Put It Down</h3>
+      <p class="post-excerpt">A planner's reflection on multitasking, Marvel movies, and what it actually means to be there with the people you love.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">April 11, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-what-if-your-ikigai-was-allowed-to-move.html" class="post-card reveal d2" data-category="ikigai">
+      <p class="post-tag">Ikigai</p>
+      <h3 class="post-title">What If Your Ikigai Was Allowed to Move?</h3>
+      <p class="post-excerpt">What's the difference between an Ikigai that's hibernating and one that's been buried? How do you tell which is happening to you?</p>
+      <div class="post-meta">
+        <span class="post-meta-date">April 5, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-never-out-memorize-ai.html" class="post-card reveal" data-category="identity">
+      <p class="post-tag">Identity</p>
+      <h3 class="post-title">You Will Never Out-Memorize AI. And That's Not the Point.</h3>
+      <p class="post-excerpt">Clinical excellence in the AI era will not belong to those who compete with machines. It will belong to those who know how to partner with them.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">February 17, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-guilt-of-leaving.html" class="post-card reveal d1" data-category="career-pivot">
+      <p class="post-tag">Career Pivot</p>
+      <h3 class="post-title">The Guilt of Leaving What You Built</h3>
+      <p class="post-excerpt">Why builder's guilt is different, and how to tell whether you're staying to honor what you built or just avoiding the discomfort of leaving.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">February 1, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-my-ikigai-didnt-die.html" class="post-card reveal d2" data-category="ikigai">
+      <p class="post-tag">Ikigai</p>
+      <h3 class="post-title">My Ikigai Didn't Die. It Grew Up With Me.</h3>
+      <p class="post-excerpt">Ikigai isn't a target you hit once. It's a living system that moves with you. How purpose evolves instead of ending when your career changes.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">January 10, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-what-i-lost.html" class="post-card reveal" data-category="career-pivot">
+      <p class="post-tag">Career Pivot</p>
+      <h3 class="post-title">What I Lost (And What I Found Instead)</h3>
+      <p class="post-excerpt">The losses I feared in changing careers weren't the losses I experienced. The surprising truth about the cost of change.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">January 3, 2026</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-light-in-their-eyes.html" class="post-card reveal d1" data-category="ikigai">
+      <p class="post-tag">Ikigai</p>
+      <h3 class="post-title">The Light in Their Eyes</h3>
+      <p class="post-excerpt">The restlessness I couldn't name turned out to be a signal. What watching first-year students hear a heartbeat taught me about purpose.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 27, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-what-i-found-on-the-other-side.html" class="post-card reveal d2" data-category="career-pivot">
+      <p class="post-tag">Career Pivot</p>
+      <h3 class="post-title">What I Found on the Other Side</h3>
+      <p class="post-excerpt">The hardest lesson of my career change wasn't about medical education. It was about how to receive feedback as an invitation, not an attack.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 20, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-discomfort-you-choose.html" class="post-card reveal" data-category="permission">
+      <p class="post-tag">Permission</p>
+      <h3 class="post-title">The Discomfort You Choose vs. The Pain You Borrow</h3>
+      <p class="post-excerpt">A coach's distinction between productive discomfort and borrowed suffering, plus a two-list exercise for figuring out which one is running your life.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 17, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-decision-that-didnt-make-sense.html" class="post-card reveal d1" data-category="career-pivot">
+      <p class="post-tag">Career Pivot</p>
+      <h3 class="post-title">The Decision That Didn't Make Sense</h3>
+      <p class="post-excerpt">The career change decision that looked irrational on paper, and the question that finally made it clear.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 13, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-pessimism-disguised-as-realism.html" class="post-card reveal d2" data-category="identity">
+      <p class="post-tag">Identity</p>
+      <h3 class="post-title">Pessimism Disguised as Realism</h3>
+      <p class="post-excerpt">A framework for telling the difference between honest realism and disguised pessimism, in your own thinking and in the feedback you receive.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 8, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-why-lifelong-learning-is-permission.html" class="post-card reveal" data-category="ikigai">
+      <p class="post-tag">Ikigai</p>
+      <h3 class="post-title">Why Lifelong Learning Is Permission to Keep Changing</h3>
+      <p class="post-excerpt">Your Ikigai is a moving target, and continuous learning is what lets you follow it. Why permission to change starts with permission to be a beginner again.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 8, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-path-to-your-purpose-healthcare-edition.html" class="post-card reveal d1" data-category="personal-statement">
+      <p class="post-tag">Personal Statement</p>
+      <h3 class="post-title">Path To Your Purpose: Healthcare Edition</h3>
+      <p class="post-excerpt">An honest letter to medical school applicants facing rejection, from a physician and educator who's been on both sides. Your timeline is not your destiny.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">December 8, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+    <a href="post-you-have-permission-to-change.html" class="post-card reveal d2" data-category="permission">
+      <p class="post-tag">Permission</p>
+      <h3 class="post-title">You Have Permission to Change</h3>
+      <p class="post-excerpt">A coach and physician on why you don't need anyone's permission to change your career, your path, or your identity. The opening essay of Permission to Change.</p>
+      <div class="post-meta">
+        <span class="post-meta-date">November 30, 2025</span>
+        <span class="post-read-more">Read</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- NEWSLETTER STRIP -->
+<div class="nl-strip">
+  <div class="reveal">
+    <h2 class="nl-strip-title">
+      Get it in<br>
+      <span class="nl-strip-script">your inbox</span>
+    </h2>
+  </div>
+  <div class="reveal d1">
+    <p class="nl-strip-body">New essays delivered when they're ready. Not on a schedule, just when there's something worth saying. No noise.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="your@email.com" />
+      <button class="nl-btn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-brand">Lauren Fine, MD</p>
+      <p class="footer-tagline">Your story isn't over.</p>
+      <p class="footer-bio">Coach · Speaker · Story Strategist helping people at every inflection point identify, shape, and tell the story of who they're becoming.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Navigate</p>
+      <ul class="footer-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="coaching.html">Coaching</a></li>
+        <li><a href="index.html#tedx">Speaking</a></li>
+        <li><a href="blog.html">Writing</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-label">Connect</p>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/lauren-fine-md" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener">Substack</a></li>
+        <li><a href="mailto:hello@laurenfine.com">hello@laurenfine.com</a></li>
+        <li><a href="index.html#contact">Book a Free Discovery Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Lauren Fine, MD. All rights reserved.</p>
+    <p class="footer-domain">laurenfine.com</p>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-3.5}px,${my-3.5}px)`;});
+  (function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.transform=`translate(${rx-15}px,${ry-15}px)`;requestAnimationFrame(animRing);})();
+  document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('on');ring.classList.add('on');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('on');ring.classList.remove('on');});});
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-tag');
+  const postCards = document.querySelectorAll('.post-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      postCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
