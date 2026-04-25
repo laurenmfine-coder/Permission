@@ -159,12 +159,24 @@
     font-size: 0.92rem; line-height: 1.85; color: rgba(255,255,255,0.55);
     font-weight: 300; margin-bottom: 36px;
   }
-  .featured-read {
+  .featured-read { transition: color 0.3s ease;
     font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--white); border-bottom: 1px solid var(--gold); padding-bottom: 3px;
     display: inline-block; transition: color 0.3s, border-color 0.3s;
   }
-  .featured-card:hover .featured-read { color: var(--terracotta); border-color: var(--terracotta); }
+  .featured-post { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .featured-post:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(60,30,20,0.18); }
+  .featured-post:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); }
+  .featured-post:hover .featured-arrow { transform: translateX(6px); }
+  .featured-eyebrow { position: absolute; top: 36px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #2A1F1A; opacity: 0.7; font-weight: 500; z-index: 3; }
+  .featured-arrow { display: inline-block; margin-left: 8px; transition: transform 0.3s ease; }
+  .featured-card:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); border-color: var(--terracotta); }
+  .featured-post { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .featured-post:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(60,30,20,0.18); }
+  .featured-post:hover .featured-read { transition: color 0.3s ease; color: var(--terracotta); }
+  .featured-post:hover .featured-arrow { transform: translateX(6px); }
+  .featured-eyebrow { position: absolute; top: 36px; left: 36px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #2A1F1A; opacity: 0.7; font-weight: 500; z-index: 3; }
+  .featured-arrow { display: inline-block; margin-left: 8px; transition: transform 0.3s ease; }
 
   /* POST GRID */
   .posts-section { padding: 72px 64px 120px; }
@@ -317,13 +329,14 @@
   <a href="post-decision-that-didnt-make-sense.html" class="featured-card reveal d1">
     <div class="featured-visual">
       <div class="featured-visual-bg">01</div>
+      <span class="featured-eyebrow">Featured Essay</span>
       <p class="featured-visual-script">"The risk of trying<br>was survivable.<br>The certainty of regret<br>was not."</p>
     </div>
     <div class="featured-content">
       <p class="featured-meta">Career Pivot &nbsp;·&nbsp; December 13, 2025</p>
       <h2 class="featured-title">The Decision That<br><em>Didn't</em> Make Sense</h2>
       <p class="featured-excerpt">"Lauren, we want you to join us!" I stared at the email subject line. My heart pounded. This was the moment I had been waiting for. The answer to weeks of anticipation, months of searching, years of restlessness. So why did I have a knot in my stomach?</p>
-      <span class="featured-read">Read the full piece</span>
+      <span class="featured-read">Read the full piece<span class="featured-arrow">&#8594;</span></span>
     </div>
   </a>
 </div>
