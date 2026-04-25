@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed | Lauren Fine, MD</title>
+<meta name="description" content="Your discovery call with Lauren Fine is booked. Here's what to expect.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F4; --cream-dark: #EDE9E4; --black: #1A1A1A; --warm-dark: #2A1F1A;
+    --terracotta: #C4714A; --terracotta-dark: #7A3D28; --blush: #E8C4B8; --blush-light: #F0D8CC;
+    --gold: #B8975A; --gray: #8C8580; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 400; min-height: 100vh; display: flex; flex-direction: column; }
+  nav { padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(237,233,228,0.7); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .nav-back { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
+  .nav-back:hover { color: var(--terracotta); }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 32px; }
+  .confirmed-card { max-width: 720px; width: 100%; text-align: center; }
+  .check-mark { width: 64px; height: 64px; margin: 0 auto 36px; border-radius: 50%; background: var(--terracotta); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(196,113,74,0.25); }
+  .check-mark svg { width: 28px; height: 28px; stroke: var(--white); stroke-width: 3; fill: none; }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 28px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--black); margin-bottom: 28px; }
+  h1 em { font-style: italic; color: var(--terracotta); }
+  .lede { font-size: 1.1rem; font-weight: 400; line-height: 1.75; color: var(--warm-dark); max-width: 560px; margin: 0 auto 56px; }
+  .what-next { background: var(--white); padding: 56px 56px 48px; text-align: left; margin-bottom: 56px; border-top: 3px solid var(--terracotta); box-shadow: 0 8px 40px rgba(60,30,20,0.06); }
+  .what-next-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 14px; }
+  .what-next-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .what-next h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.85rem; font-weight: 400; color: var(--black); margin-bottom: 32px; line-height: 1.25; }
+  .step-list { list-style: none; padding: 0; counter-reset: step; }
+  .step-list li { position: relative; padding-left: 56px; margin-bottom: 28px; counter-increment: step; }
+  .step-list li:last-child { margin-bottom: 0; }
+  .step-list li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: -2px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--terracotta); font-style: italic; }
+  .step-list h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--black); margin-bottom: 8px; line-height: 1.3; }
+  .step-list p { font-size: 0.98rem; line-height: 1.7; color: var(--gray); font-weight: 400; }
+  .closing-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; font-weight: 400; color: var(--warm-dark); line-height: 1.5; max-width: 540px; margin: 0 auto 48px; }
+  .actions { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { font-size: 0.74rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); background: var(--black); padding: 18px 36px; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; }
+  .btn-primary:hover { background: var(--terracotta); transform: translateY(-2px); }
+  .btn-ghost { font-size: 0.74rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--gold); padding: 18px 8px 4px; display: inline-block; transition: color 0.3s, border-color 0.3s; }
+  .btn-ghost:hover { color: var(--terracotta); border-color: var(--terracotta); }
+  footer { background: var(--warm-dark); color: rgba(255,255,255,0.65); padding: 40px 64px; text-align: center; }
+  .footer-tagline { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--blush); opacity: 0.7; margin-bottom: 12px; }
+  .footer-meta { font-size: 0.74rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
+  @media (max-width: 720px) {
+    nav { padding: 20px 24px; }
+    main { padding: 48px 20px; }
+    .what-next { padding: 36px 28px 32px; }
+    .what-next h2 { font-size: 1.5rem; }
+    .step-list li { padding-left: 48px; }
+    .actions { flex-direction: column; align-items: center; }
+    footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Lauren Fine</a>
+  <a href="/" class="nav-back">Back to home</a>
+</nav>
+<main>
+  <div class="confirmed-card">
+    <div class="check-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="5 12 10 17 19 8"></polyline>
+      </svg>
+    </div>
+    <p class="eyebrow">Your call is booked</p>
+    <h1>I'm <em>looking forward</em> to talking with you.</h1>
+    <p class="lede">A confirmation just landed in your inbox with the date, time, and a link to join. Add it to your calendar so it doesn't drift to the back of your week.</p>
+    <div class="what-next">
+      <p class="what-next-label">What happens next</p>
+      <h2>A few things to know before we talk.</h2>
+      <ol class="step-list">
+        <li>
+          <h3>You don't have to prepare anything formal.</h3>
+          <p>The questions you answered when booking are enough. I'll have read them before we get on the call. Show up as you are.</p>
+        </li>
+        <li>
+          <h3>This is a real conversation, not a sales call.</h3>
+          <p>We'll spend the time on you. If coaching makes sense, we'll talk through what that could look like. If it doesn't, I'll tell you and point you somewhere better.</p>
+        </li>
+        <li>
+          <h3>I'll send a short recap after.</h3>
+          <p>Whether or not we move forward, you'll leave the call with at least one thing worth thinking about. I'll usually follow up within a day or two with the things that stuck.</p>
+        </li>
+      </ol>
+    </div>
+    <p class="closing-note">"The risk of trying was survivable. The certainty of regret was not."</p>
+    <div class="actions">
+      <a href="/blog.html" class="btn-primary">Read the blog</a>
+      <a href="/" class="btn-ghost">Back to home</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <p class="footer-tagline">Your story isn't over.</p>
+  <p class="footer-meta">2026 Lauren Fine, MD</p>
+</footer>
+</body>
+</html>
