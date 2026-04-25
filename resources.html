@@ -92,9 +92,9 @@
 
   /* FEATURED TOOL — full width */
   .tool-card.featured { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:0; padding:0; border-top:none; }
-  .featured-visual { background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 45%, #B87A68 70%, var(--terracotta-dark) 100%); padding:60px 52px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; min-height:360px; }
-  .featured-visual-bg { position:absolute; font-family:'Cormorant Garamond',serif; font-size:9rem; font-weight:300; color:rgba(255,255,255,0.07); top:50%; left:50%; transform:translate(-50%,-50%); user-select:none; white-space:nowrap; }
-  .featured-visual-title { font-family:'Pinyon Script',cursive; font-size:2.2rem; color:rgba(255,255,255,0.92); line-height:1.4; position:relative; z-index:2; }
+  .featured-visual { background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 30%, #A06050 60%, var(--terracotta-dark) 85%, #3A1A0A 100%); padding:60px 52px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; min-height:360px; }
+  .featured-visual-bg { position:absolute; font-family:'Cormorant Garamond',serif; font-size:9rem; font-weight:300; color:rgba(255,255,255,0.12); top:50%; left:50%; transform:translate(-50%,-50%); user-select:none; white-space:nowrap; }
+  .featured-visual-title { font-family:'Pinyon Script',cursive; font-size:2.2rem; color:rgba(255,255,255,0.98); line-height:1.4; position:relative; z-index:2; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
   .featured-content { padding:60px 52px; background:var(--warm-dark); display:flex; flex-direction:column; justify-content:center; }
   .featured-content .tool-type { color:var(--gold); }
   .featured-content .tool-title { color:var(--white); font-size:1.8rem; }
@@ -206,14 +206,13 @@
     <button class="modal-close" onclick="closeModal()">✕</button>
     <p class="modal-eyebrow">Free Download</p>
     <h2 class="modal-title">Get your free <em>worksheet</em></h2>
-    <p class="modal-script">it's waiting for you</p>
-    <p class="modal-body">Enter your email and I'll send it right over. You'll also get occasional essays on pivots, purpose, and the stories we tell ourselves. Unsubscribe anytime.</p>
+    <p class="modal-body">Enter your details and your worksheet will download instantly. You'll also receive occasional essays on pivots, purpose, and the stories we tell ourselves.</p>
     <div class="modal-form">
-      <input type="text" class="modal-input" placeholder="Your first name" />
-      <input type="email" class="modal-input" placeholder="your@email.com" />
-      <button class="modal-submit" onclick="submitModal()">Send me the worksheet</button>
+      <input type="text" class="modal-input" placeholder="Your first name" id="modal-name" />
+      <input type="email" class="modal-input" placeholder="your@email.com" id="modal-email" />
+      <button class="modal-submit" onclick="submitModal()">Download instantly — it's free</button>
     </div>
-    <p class="modal-note">No spam. Ever. Just good stuff when there's something worth saying.</p>
+    <p class="modal-note">🔒 Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
   </div>
 </div>
 
@@ -236,7 +235,9 @@
     <h1>Things that help<br>you <em>think.</em></h1>
     <p class="page-header-script">and decide, and write</p>
   </div>
-  <p class="page-header-right">Free worksheets, frameworks, and exercises drawn from coaching practice. Use them on your own, bring them to a session, or share them with someone who needs them. No strings — just tools that work.</p>
+  <div>
+    <p class="page-header-right">Free reflection guides, decision frameworks, and story exercises drawn from coaching practice. Whether you're 17 navigating college or 55 reimagining what's next — these tools are for you. Use them on your own, bring them to a session, or share them with someone who needs them.</p>
+  </div>
 </div>
 
 <!-- CATEGORY BAR -->
@@ -257,7 +258,13 @@
     <div class="tool-card featured reveal" data-cat="identity">
       <div class="featured-visual">
         <div class="featured-visual-bg">生き甲斐</div>
-        <p class="featured-visual-title">"What makes your<br>life worth living?"</p>
+        <!-- Ikigai label top left -->
+        <div style="position:absolute;top:36px;left:52px;z-index:2;">
+          <p style="font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:6px;">Featured Worksheet</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:rgba(255,255,255,0.95);line-height:1;margin-bottom:4px;">生き甲斐</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.65);letter-spacing:0.08em;">Ikigai — your reason for being</p>
+        </div>
+        <p class="featured-visual-title">"What is your<br>reason for being?"</p>
       </div>
       <div class="featured-content">
         <p class="tool-type">
@@ -273,8 +280,7 @@
           <li>Designed for 30-60 minutes of focused work</li>
         </ul>
         <button class="tool-cta" onclick="openModal('Ikigai Mapping Worksheet')">Download Free Worksheet</button>
-      </div>
-    </div>
+        <p style="font-size:0.75rem;color:var(--gray);margin-top:16px;line-height:1.6;">Want to work through this with someone who's done it herself? <a href="coaching.html#contact" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.3);">Book a free discovery call.</a></p>
 
     <!-- The Pivot Decision Framework -->
     <div class="tool-card reveal" data-cat="decision">
@@ -289,6 +295,7 @@
         <li>Decision summary template</li>
       </ul>
       <button class="tool-cta" onclick="openModal('Pivot Decision Framework')">Download Free</button>
+      <p style="font-size:0.75rem;color:var(--gray);margin-top:14px;line-height:1.6;">Stuck on a decision and need a thinking partner? <a href="coaching.html#contact" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.3);">Book a free call.</a></p>
     </div>
 
     <!-- Story Thread Finder -->
@@ -296,7 +303,7 @@
       <p class="tool-type"><span>Story & Narrative</span><span class="tool-badge free">Free</span></p>
       <div class="tool-icon">🧵</div>
       <h3 class="tool-title">The Story Thread Finder</h3>
-      <p class="tool-desc">Most people can't see the thread connecting their seemingly unrelated experiences. This worksheet helps you map your timeline, identify recurring themes, and find the through-line that makes your story coherent — even when it hasn't felt that way.</p>
+      <p class="tool-desc">For making sense of your past. Most people can't see the thread connecting their seemingly unrelated experiences. This guide helps you map your timeline, identify recurring themes, and find the through-line that makes your story coherent — even when it hasn't felt that way.</p>
       <ul class="tool-details">
         <li>Life timeline mapping exercise</li>
         <li>Pattern recognition prompts</li>
@@ -334,6 +341,7 @@
         <li>Common mistake checklist</li>
       </ul>
       <button class="tool-cta" onclick="openModal('Personal Statement Story Map')">Download Free</button>
+      <p style="font-size:0.75rem;color:var(--gray);margin-top:14px;line-height:1.6;">Need narrative coaching, not just editing? <a href="coaching.html#contact" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.3);">Work with Lauren directly.</a></p>
     </div>
 
     <!-- Identity Inventory -->
@@ -341,7 +349,7 @@
       <p class="tool-type"><span>Identity & Purpose</span><span class="tool-badge free">Free</span></p>
       <div class="tool-icon">🪞</div>
       <h3 class="tool-title">Identity Inventory</h3>
-      <p class="tool-desc">Who are you when you strip away the titles, roles, and expectations? This worksheet guides a structured exploration of your core identity — values, character strengths, and the parts of yourself that have stayed consistent through every change.</p>
+      <p class="tool-desc">For understanding who you are right now. Who are you when you strip away the titles, roles, and expectations? This reflection guide explores your present-self — values, character strengths, and the parts of yourself that have stayed consistent through every change.</p>
       <ul class="tool-details">
         <li>Roles vs. self distinction exercise</li>
         <li>Core values clarification (not a generic list)</li>
@@ -393,7 +401,11 @@
         <li>Milestone and momentum tracker</li>
         <li>Available as printable PDF and fillable digital version</li>
       </ul>
-      <button class="tool-cta ghost" disabled>Notify Me When Ready</button>
+      <div style="display:flex;gap:0;margin-top:auto;">
+        <input type="email" placeholder="your@email.com" id="notify-email" style="flex:1;padding:12px 16px;border:1px solid var(--cream-dark);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;outline:none;color:var(--black);" />
+        <button onclick="notifyMe()" style="padding:12px 18px;background:var(--black);color:var(--white);border:none;font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Notify Me</button>
+      </div>
+      <p style="font-size:0.68rem;color:var(--gray);margin-top:8px;">Be first to know when it's ready.</p>
     </div>
 
   </div>
@@ -534,12 +546,18 @@
     document.getElementById('modal').classList.remove('open');
   }
   function submitModal() {
-    const email = document.querySelector('.modal-input[type="email"]').value;
-    const name = document.querySelector('.modal-input[type="text"]').value;
+    const email = document.getElementById('modal-email').value;
+    const name = document.getElementById('modal-name').value;
     if (!email) { alert('Please enter your email address.'); return; }
-    // Replace this with your actual email service (Loops, Kit, Mailchimp etc.)
-    alert(`Thank you ${name}! The ${currentTool} is on its way to ${email}.`);
+    // Replace this with your Kit/Loops form submission
+    alert(`Thank you${name ? ', ' + name : ''}! Your ${currentTool} is downloading now. Check your inbox too — we'll send a copy there.`);
     closeModal();
+  }
+  function notifyMe() {
+    const email = document.getElementById('notify-email').value;
+    if (!email) { alert('Please enter your email address.'); return; }
+    alert(`Got it! We'll email ${email} the moment the Next Chapter Planner is ready.`);
+    document.getElementById('notify-email').value = '';
   }
   document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
