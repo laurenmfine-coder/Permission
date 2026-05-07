@@ -257,14 +257,6 @@
   /* Hero right */
   .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #C08070 62%, var(--terracotta-dark) 100%); }
   .hero-right img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; }
-  .hero-panel-text { position:absolute; bottom:0; left:0; right:0; padding:40px 44px 48px; z-index:2; }
-  .hero-panel-quote {
-    font-family:'Cormorant Garamond',serif;
-    font-size:1.55rem; font-weight:300; font-style:italic;
-    color:rgba(255,255,255,0.96); line-height:1.4; margin-bottom:12px;
-    border-left:2px solid rgba(196,113,74,0.6); padding-left:20px;
-  }
-  .hero-panel-name { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6); font-weight:300; padding-left:22px; }
 
   /* MANIFESTO — editorial, no script */
   .manifesto { background:var(--warm-dark); padding:88px 64px; display:grid; grid-template-columns:200px 1fr; gap:80px; align-items:center; position:relative; overflow:hidden; }
@@ -328,7 +320,7 @@
   .about-tag:hover { border-color:var(--terracotta); }
   .about-quote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300; font-style:italic; color:rgba(255,255,255,0.7); line-height:1.5; margin-top:48px; padding-top:40px; border-top:1px solid rgba(196,113,74,0.25); max-width:560px; margin-left:auto; margin-right:auto; }
 
-  /* REFERRAL — between testimonial and resources */
+  /* REFERRAL — sits between TEDx and Newsletter, peak warmth referral ask */
   .referral { padding:90px 64px; background:var(--cream-dark); border-top:1px solid rgba(0,0,0,0.04); }
   .referral-inner { max-width:780px; margin:0 auto; text-align:center; }
   .referral-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:24px; display:inline-flex; align-items:center; gap:14px; }
@@ -341,8 +333,6 @@
   .referral-btn:hover { border-color:var(--terracotta); color:var(--terracotta); }
 
   /* TESTIMONIAL PLACEHOLDER — audit fix */
-  .testimonial { padding:100px 64px; background:var(--cream); }
-  .testimonial-inner { max-width:800px; margin:0 auto; text-align:center; }
 
   /* RESOURCES TEASER — links to resources page */
   .resources-teaser { padding:100px 64px; background:var(--cream-dark); }
@@ -407,7 +397,6 @@
     .hero-left { padding:120px 24px 60px; }
     .hero-right { height:480px; }
     .hero-right img { object-position:center 20%; }
-    .hero-panel-quote { font-size:1.2rem; }
     .manifesto { grid-template-columns:1fr; gap:20px; padding:60px 24px; }
     .manifesto::before { display:none; }
     .proof-strip { flex-wrap:wrap; padding:0 24px; }
@@ -423,8 +412,6 @@
     .about { grid-template-columns:1fr; }
     .about-content { padding:80px 24px; }
     .referral { padding:64px 24px; }
-    .testimonial { padding:80px 24px; }
-    .testimonial-placeholder { padding:40px 28px; }
     .resources-teaser { padding:80px 24px; }
     .resources-teaser-header { grid-template-columns:1fr; gap:20px; }
     .resources-cards { grid-template-columns:1fr; gap:3px; }
@@ -552,7 +539,7 @@
       <p class="section-eyebrow reveal">Who I help</p>
       <h2 class="section-title reveal d1">You're at a<br>turning point.<br><em>I help you move.</em></h2>
     </div>
-    <p class="who-note reveal d2">wherever you are in the story</p>
+    <p class="who-note reveal d2">Three people. Three turning points. The same underlying work.</p>
   </div>
   <div class="who-cards">
     <div class="who-card reveal">
