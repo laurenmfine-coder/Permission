@@ -258,12 +258,22 @@
   .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #C08070 62%, var(--terracotta-dark) 100%); }
   .hero-right img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; }
 
-  /* MANIFESTO — editorial, no script */
-  .manifesto { background:var(--warm-dark); padding:88px 64px; display:grid; grid-template-columns:200px 1fr; gap:80px; align-items:center; position:relative; overflow:hidden; }
-  .manifesto::before { content:''; position:absolute; left:64px; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(196,113,74,0.3),transparent); }
-  .manifesto-label { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:300; font-style:italic; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
-  .manifesto-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.4vw,2.3rem); font-weight:300; font-style:italic; color:rgba(255,255,255,0.88); line-height:1.55; }
-  .manifesto-quote em { font-style:normal; color:var(--terracotta); font-weight:400; }
+  /* HOW IT WORKS — replaces old manifesto section */
+  .process { background:var(--warm-dark); padding:100px 64px; position:relative; overflow:hidden; }
+  .process::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(196,113,74,0.3),transparent); }
+  .process-inner { max-width:1180px; margin:0 auto; }
+  .process-header { display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:end; margin-bottom:56px; }
+  .process-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
+  .process-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3vw,2.8rem); font-weight:300; line-height:1.15; color:var(--white); }
+  .process-title em { font-style:italic; color:rgba(255,255,255,0.5); }
+  .process-note { font-size:0.95rem; line-height:1.85; color:rgba(255,255,255,0.65); font-weight:300; }
+  .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+  .process-step { padding:32px 28px 32px 0; border-right:1px solid rgba(255,255,255,0.08); position:relative; }
+  .process-step:last-child { border-right:none; padding-right:0; }
+  .process-step:not(:first-child) { padding-left:32px; }
+  .process-step-num { font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-style:italic; letter-spacing:0.12em; color:var(--terracotta); margin-bottom:14px; }
+  .process-step-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:500; color:var(--white); line-height:1.2; margin-bottom:14px; }
+  .process-step-body { font-size:0.88rem; line-height:1.75; color:rgba(255,255,255,0.62); font-weight:300; }
 
   /* SOCIAL PROOF STRIP — new from audit */
   .proof-strip { background:var(--cream-dark); padding:0 64px; display:flex; align-items:center; gap:0; overflow:hidden; border-top:1px solid rgba(0,0,0,0.04); }
@@ -415,8 +425,12 @@
     .hero-left { padding:120px 24px 60px; }
     .hero-right { height:480px; }
     .hero-right img { object-position:center 20%; }
-    .manifesto { grid-template-columns:1fr; gap:20px; padding:60px 24px; }
-    .manifesto::before { display:none; }
+    .process { padding:60px 24px; }
+    .process-header { grid-template-columns:1fr; gap:24px; margin-bottom:36px; }
+    .process-steps { grid-template-columns:1fr; gap:4px; }
+    .process-step { padding:28px 0; border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .process-step:not(:first-child) { padding-left:0; }
+    .process-step:last-child { border-bottom:none; }
     .proof-strip { flex-wrap:wrap; padding:0 24px; }
     .proof-item { padding:24px 24px; border-right:none; border-bottom:1px solid rgba(0,0,0,0.06); width:50%; }
     .who { padding:80px 24px; }
@@ -490,10 +504,39 @@
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="manifesto">
-  <p class="manifesto-label reveal">The belief</p>
-  <p class="manifesto-quote reveal d1">"Every pivot, every pause, every page you didn't expect to write. It's all part of the story. The question is whether <em>you're holding the pen.</em>"</p>
+<!-- HOW IT WORKS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <p class="process-eyebrow reveal">How coaching works</p>
+        <h2 class="process-title reveal d1">A clear path, <em>not a mystery.</em></h2>
+      </div>
+      <p class="process-note reveal d2">Coaching can feel intangible from the outside. Here is what it actually looks like to work with me, from first conversation to the last session and beyond.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <p class="process-step-num">01</p>
+        <h3 class="process-step-title">Discovery call</h3>
+        <p class="process-step-body">A free 30-minute conversation. We talk about where you are, what you're navigating, and whether coaching with me is the right fit. No pressure, no pitch.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <p class="process-step-num">02</p>
+        <h3 class="process-step-title">Map the territory</h3>
+        <p class="process-step-body">In our first sessions, we surface what's actually at stake. Not the surface question, the underlying one. Values, identity, the story you've been telling yourself, and the one you want to write next.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <p class="process-step-num">03</p>
+        <h3 class="process-step-title">Build the framework</h3>
+        <p class="process-step-body">Together we construct the decision architecture: what you actually want, what trade-offs you're willing to make, what permission you've been waiting for. You leave each session with concrete next steps.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <p class="process-step-num">04</p>
+        <h3 class="process-step-title">Move forward</h3>
+        <p class="process-step-body">The work continues between sessions, in the choices you make and the conversations you have. By the end, you have not just an answer but a way of thinking that lasts beyond our time together.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- SOCIAL PROOF STRIP -->
@@ -642,6 +685,24 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div>
+    <h2 class="newsletter-title reveal">
+      Read the
+      <span class="newsletter-script">newsletter</span>
+    </h2>
+  </div>
+  <div class="newsletter-right reveal d1">
+    <p>Permission to Change: Finding Your Ikigai is a Substack for anyone standing at an inflection point. Stories, questions, and the occasional uncomfortable truth about what it means to live on purpose.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="your@email.com" />
+      <button class="nl-btn">Subscribe</button>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.85rem;"><a href="blog.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;">Read recent essays →</a></p>
+  </div>
+</section>
+
 <!-- FREE RESOURCES TEASER -->
 <section class="resources-teaser" id="resources">
   <div class="resources-teaser-header">
@@ -682,7 +743,8 @@
     <p class="section-eyebrow reveal">On Stage</p>
     <h2 class="section-title reveal d1">The talk that<br>started a <em>conversation</em></h2>
     <p class="tedx-body reveal d2">"Permission to Change" is about what happens when we give ourselves permission to question the story we've been living, and the courage it takes to write a new one. Born from the newsletter and coaching practice that inspired it.</p>
-    <a href="coaching.html" class="btn-primary reveal d3">Book Lauren to Speak</a>
+    <a href="speaking.html" class="btn-primary reveal d3">Book Lauren to Speak</a>
+    <a href="https://www.youtube.com/watch?v=sLYEH6-Mshw" target="_blank" rel="noopener" class="reveal d3" style="margin-left:24px;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;">Watch the Full Talk →</a>
   </div>
 </section>
 
@@ -697,25 +759,6 @@
       <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flaurenfine.com" target="_blank" rel="noopener" class="referral-btn">Share on LinkedIn</a>
       <a href="sms:?body=Thought%20you%20might%20like%20this%3A%20https%3A%2F%2Flaurenfine.com" class="referral-btn">Send by Text</a>
     </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="newsletter" id="newsletter">
-  <div>
-    <h2 class="newsletter-title reveal">
-      Read the
-      <!-- Script used once here — the word "newsletter" -->
-      <span class="newsletter-script">newsletter</span>
-    </h2>
-  </div>
-  <div class="newsletter-right reveal d1">
-    <p>Permission to Change: Finding Your Ikigai is a Substack for anyone standing at an inflection point. Stories, questions, and the occasional uncomfortable truth about what it means to live on purpose.</p>
-    <div class="nl-form">
-      <input type="email" class="nl-input" placeholder="your@email.com" />
-      <button class="nl-btn">Subscribe</button>
-    </div>
-    <p style="margin-top:1.5rem;font-size:0.85rem;"><a href="blog.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;">Read recent essays →</a></p>
   </div>
 </section>
 
