@@ -277,10 +277,14 @@
 
   /* SOCIAL PROOF STRIP — new from audit */
   .proof-strip { background:var(--cream-dark); padding:0 64px; display:flex; align-items:center; gap:0; overflow:hidden; border-top:1px solid rgba(0,0,0,0.04); }
-  .proof-item { padding:32px 48px; border-right:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; gap:16px; flex-shrink:0; text-decoration:none; transition:background 0.3s; }
+  .proof-item { padding:32px 48px; border-right:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; gap:16px; flex-shrink:0; text-decoration:none; transition:background 0.3s; position:relative; }
   .proof-item:last-child { border-right:none; }
   .proof-item:hover { background:rgba(196,113,74,0.04); }
   .proof-item:hover .proof-num { color:var(--terracotta); }
+  .proof-item.featured { background:rgba(196,113,74,0.05); padding:36px 56px; }
+  .proof-item.featured::before { content:''; position:absolute; top:0; left:24px; right:24px; height:2px; background:var(--terracotta); }
+  .proof-item.featured .proof-num { font-size:2.7rem; color:var(--terracotta); }
+  .proof-item.featured .proof-label { color:var(--terracotta-dark); font-weight:400; }
   .proof-num { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:var(--black); line-height:1; transition:color 0.3s; }
   .proof-label { font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); line-height:1.5; }
   .proof-divider { width:1px; height:40px; background:rgba(0,0,0,0.08); flex-shrink:0; }
@@ -489,7 +493,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Coach · Speaker · Story Strategist</p>
+    <p class="hero-eyebrow">Coaching for what comes next</p>
     <h1 class="hero-h1">Your story<br>isn't <em>over.</em></h1>
     <!-- Script used once — the tagline -->
     <p class="hero-script-accent">Let's write what's next.</p>
@@ -541,7 +545,7 @@
 
 <!-- SOCIAL PROOF STRIP -->
 <div class="proof-strip reveal">
-  <a class="proof-item" href="https://www.youtube.com/watch?v=sLYEH6-Mshw" target="_blank" rel="noopener" aria-label="Watch the TEDx talk Permission to Change">
+  <a class="proof-item featured" href="https://www.youtube.com/watch?v=sLYEH6-Mshw" target="_blank" rel="noopener" aria-label="Watch the TEDx talk Permission to Change">
     <div>
       <p class="proof-num">TEDx</p>
       <p class="proof-label">Speaker</p>
@@ -791,7 +795,7 @@
         <li><a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener">Substack: Permission to Change</a></li>
         <li><a href="https://reasondx.com" target="_blank" rel="noopener">ReasonDx</a></li>
         <li><a href="mailto:reasondxcoaching@gmail.com">reasondxcoaching@gmail.com</a></li>
-        <li><a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener">Book a Free Discovery Call</a></li>
+        <li><a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener">Schedule a Conversation</a></li>
       </ul>
     </div>
   </div>
