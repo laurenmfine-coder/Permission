@@ -67,6 +67,43 @@
   gtag('js', new Date());
 
   gtag('config', 'G-2QBSJ9PRRQ');
+
+  /* ============================================================
+     Booking verification: only fire booking_confirmed event when
+     the visitor actually came from Calendly. Calendly's redirect
+     URL includes booking-specific query parameters; direct hits
+     (bookmarks, manual URL entry, bot crawls) will not have them.
+     ============================================================ */
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var referrer = document.referrer || '';
+
+    // Calendly-specific signals
+    var hasCalendlyParams =
+      params.has('event_type_uuid') ||
+      params.has('invitee_uuid') ||
+      params.has('event_start_time') ||
+      params.has('assigned_to') ||
+      params.has('answer_1');
+    var fromCalendly = referrer.indexOf('calendly.com') !== -1;
+
+    var isRealBooking = hasCalendlyParams || fromCalendly;
+
+    if (isRealBooking) {
+      // Real booking — fire the conversion event
+      gtag('event', 'booking_confirmed', {
+        'event_category': 'engagement',
+        'event_label': 'discovery_call',
+        'source': hasCalendlyParams ? 'calendly_params' : 'calendly_referrer'
+      });
+    } else {
+      // Not a real booking — likely direct hit, bookmark, or bot
+      gtag('event', 'booking_page_direct_hit', {
+        'event_category': 'diagnostic',
+        'event_label': 'no_calendly_signal'
+      });
+    }
+  })();
 </script>
 </head>
 <body>
