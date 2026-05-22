@@ -564,30 +564,131 @@
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
   // Modal
+  // Maps worksheet display name to PDF file in repo root
+  const RESOURCE_WORKSHEETS = {
+    'Pivot Decision Framework': 'pivot-decision-framework.pdf',
+    'Ikigai Mapping Worksheet': 'ikigai-mapping-worksheet.pdf',
+    'Story Thread Finder': 'story-thread-finder.pdf',
+    'Career Values Audit': 'career-values-audit.pdf',
+    'Personal Statement Story Map': 'personal-statement-story-map.pdf',
+    'Identity Inventory': 'identity-inventory.pdf',
+    'Confidence Reframe Worksheet': 'confidence-reframe-worksheet.pdf',
+    'Sport Decision Guide': 'sport-decision-guide.pdf'
+  };
   let currentTool = '';
   function openModal(toolName) {
     currentTool = toolName;
     document.getElementById('modal').classList.add('open');
+    if (typeof gtag === 'function') {
+      gtag('event', 'lead_modal_open', { worksheet: toolName, source: 'resources_page' });
+    }
   }
   function closeModal() {
     document.getElementById('modal').classList.remove('open');
   }
+  function downloadWorksheet(toolName) {
+    const file = RESOURCE_WORKSHEETS[toolName];
+    if (!file) return;
+    const a = document.createElement('a');
+    a.href = file;
+    a.download = file;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
   function submitModal() {
-    const email = document.getElementById('modal-email').value;
-    const name = document.getElementById('modal-name').value;
+    const email = document.getElementById('modal-email').value.trim();
+    const name = document.getElementById('modal-name').value.trim();
     if (!email) { alert('Please enter your email address.'); return; }
-    // Replace this with your Kit/Loops form submission
-    alert(`Thank you${name ? ', ' + name : ''}! Your ${currentTool} is downloading now. Check your inbox too — we'll send a copy there.`);
-    closeModal();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+    const submitBtn = document.querySelector('#modal .modal-submit');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      eventType: 'coaching_lead',
+      email: email,
+      firstName: name || '',
+      data: {
+        source: 'LaurenFine',
+        worksheet: currentTool,
+        leadStage: 'worksheet_download',
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+        referrer: document.referrer || ''
+      }
+    };
+
+    fetch('https://rdx-email.laurenmfine.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r) { return r.json().catch(function() { return {}; }); })
+      .then(function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'lead_capture', { worksheet: currentTool, source: 'resources_page' });
+        }
+        downloadWorksheet(currentTool);
+        alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentTool + ' is downloading now. Check your inbox shortly.');
+        closeModal();
+      })
+      .catch(function() {
+        downloadWorksheet(currentTool);
+        alert('Your worksheet is downloading. We could not confirm your email subscription, but you can reach out anytime at reasondxcoaching@gmail.com.');
+        closeModal();
+      })
+      .finally(function() {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Download instantly, it's free"; }
+      });
   }
   function notifyMe() {
-    const email = document.getElementById('notify-email').value;
+    const email = document.getElementById('notify-email').value.trim();
     if (!email) { alert('Please enter your email address.'); return; }
-    alert(`Got it! We'll email ${email} the moment the Next Chapter Planner is ready.`);
-    document.getElementById('notify-email').value = '';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+    const btn = document.querySelector('button[onclick="notifyMe()"]');
+    if (btn) { btn.disabled = true; }
+
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      eventType: 'coaching_lead',
+      email: email,
+      firstName: '',
+      data: {
+        source: 'LaurenFine',
+        worksheet: 'Next Chapter Planner (waitlist)',
+        leadStage: 'waitlist',
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+        referrer: document.referrer || ''
+      }
+    };
+
+    fetch('https://rdx-email.laurenmfine.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'waitlist_signup', { item: 'Next Chapter Planner' });
+      }
+      alert("Got it! We'll email " + email + ' the moment the Next Chapter Planner is ready.');
+      document.getElementById('notify-email').value = '';
+    }).catch(function() {
+      alert("Got it! We'll email " + email + ' when the Next Chapter Planner is ready. (If you do not hear back, reach out at reasondxcoaching@gmail.com.)');
+      document.getElementById('notify-email').value = '';
+    }).finally(function() {
+      if (btn) { btn.disabled = false; }
+    });
   }
   document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
   });
 
   // Category filter

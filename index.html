@@ -461,6 +461,23 @@
     body { cursor:auto; }
     .cursor,.cursor-ring { display:none; }
   }
+
+  /* MODAL (lead capture) */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(26,26,26,0.7); z-index:1000; align-items:center; justify-content:center; padding:20px; }
+  .modal-overlay.open { display:flex; }
+  .modal { background:var(--cream); padding:60px 52px; max-width:480px; width:100%; position:relative; }
+  .modal-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--gray); }
+  .modal-eyebrow { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px; }
+  .modal-title { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--black); line-height:1.1; margin-bottom:8px; }
+  .modal-title em { font-style:italic; color:var(--terracotta); }
+  .modal-script { font-family:'Pinyon Script',cursive; font-size:1.6rem; color:var(--gold); margin-bottom:24px; }
+  .modal-body { font-size:0.85rem; line-height:1.8; color:var(--gray); font-weight:300; margin-bottom:32px; }
+  .modal-form { display:flex; flex-direction:column; gap:12px; }
+  .modal-input { padding:16px 20px; border:1px solid var(--cream-dark); background:var(--white); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; color:var(--black); }
+  .modal-input:focus { border-color:var(--terracotta); }
+  .modal-submit { padding:16px; background:var(--black); color:var(--white); border:none; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; transition:background 0.3s; }
+  .modal-submit:hover { background:var(--terracotta); }
+  .modal-note { font-size:0.68rem; color:var(--gray); text-align:center; margin-top:8px; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -473,6 +490,22 @@
 </script>
 </head>
 <body>
+
+<!-- LEAD CAPTURE MODAL -->
+<div class="modal-overlay" id="leadModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeHeroModal()" aria-label="Close">&#10005;</button>
+    <p class="modal-eyebrow">Free Download</p>
+    <h2 class="modal-title">Get your free <em>worksheet</em></h2>
+    <p class="modal-body">Enter your details and your worksheet will download instantly. You'll also receive occasional essays on pivots, purpose, and the stories we tell ourselves.</p>
+    <div class="modal-form">
+      <input type="text" class="modal-input" placeholder="Your first name" id="lead-name" />
+      <input type="email" class="modal-input" placeholder="your@email.com" id="lead-email" />
+      <button class="modal-submit" onclick="submitHeroModal()">Download instantly, it's free</button>
+    </div>
+    <p class="modal-note">&#128274; Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -499,8 +532,8 @@
     <p class="hero-script-accent">Let's write what's next.</p>
     <p class="hero-body">At every inflection point, the work is the same. A crossroads, a forced change, a quiet question you can't stop asking. Clarify who you are. Shape the narrative. Find the courage to follow it.</p>
     <div class="hero-actions">
-      <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" class="btn-primary">Book a Free Discovery Call</a>
-      <a href="resources.html" class="btn-ghost">Free tools</a>
+      <button type="button" onclick="openHeroModal('Pivot Decision Framework')" class="btn-primary">Get the free Pivot Decision Framework</button>
+      <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" class="btn-ghost">Or book a free 30-minute call</a>
     </div>
   </div>
   <div class="hero-right">
@@ -814,6 +847,103 @@
   document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('on');ring.classList.add('on');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('on');ring.classList.remove('on');});});
   const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Lead capture modal (hero CTA)
+  // Maps worksheet display name to PDF file in repo root
+  const WORKSHEETS = {
+    'Pivot Decision Framework': 'pivot-decision-framework.pdf',
+    'Ikigai Mapping Worksheet': 'ikigai-mapping-worksheet.pdf',
+    'Story Thread Finder': 'story-thread-finder.pdf',
+    'Career Values Audit': 'career-values-audit.pdf',
+    'Personal Statement Story Map': 'personal-statement-story-map.pdf',
+    'Identity Inventory': 'identity-inventory.pdf',
+    'Confidence Reframe Worksheet': 'confidence-reframe-worksheet.pdf',
+    'Sport Decision Guide': 'sport-decision-guide.pdf'
+  };
+  let currentHeroWorksheet = '';
+  function openHeroModal(worksheetName) {
+    currentHeroWorksheet = worksheetName;
+    document.getElementById('leadModal').classList.add('open');
+    if (typeof gtag === 'function') {
+      gtag('event', 'lead_modal_open', { worksheet: worksheetName, source: 'homepage_hero' });
+    }
+  }
+  function closeHeroModal() {
+    document.getElementById('leadModal').classList.remove('open');
+  }
+  function submitHeroModal() {
+    const email = document.getElementById('lead-email').value.trim();
+    const name = document.getElementById('lead-name').value.trim();
+    if (!email) { alert('Please enter your email address.'); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+    const submitBtn = document.querySelector('#leadModal .modal-submit');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+    // Read UTMs from URL so Substack traffic gets tagged correctly in Loops
+    const params = new URLSearchParams(window.location.search);
+
+    const payload = {
+      eventType: 'coaching_lead',
+      email: email,
+      firstName: name || '',
+      data: {
+        source: 'LaurenFine',
+        worksheet: currentHeroWorksheet,
+        leadStage: 'worksheet_download',
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+        referrer: document.referrer || ''
+      }
+    };
+
+    fetch('https://rdx-email.laurenmfine.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r) { return r.json().catch(function() { return {}; }); })
+      .then(function(result) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'lead_capture', { worksheet: currentHeroWorksheet, source: 'homepage_hero' });
+        }
+        // Trigger PDF download regardless of email success so the user always gets the worksheet
+        const file = WORKSHEETS[currentHeroWorksheet];
+        if (file) {
+          const a = document.createElement('a');
+          a.href = file;
+          a.download = file;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+        alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentHeroWorksheet + ' is downloading now. Check your inbox shortly.');
+        closeHeroModal();
+      })
+      .catch(function() {
+        // Network failure: still deliver the worksheet so the user is not blocked
+        const file = WORKSHEETS[currentHeroWorksheet];
+        if (file) {
+          const a = document.createElement('a');
+          a.href = file;
+          a.download = file;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+        alert('Your worksheet is downloading. We could not confirm your email subscription, but you can reach out anytime at reasondxcoaching@gmail.com.');
+        closeHeroModal();
+      })
+      .finally(function() {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Download instantly, it's free"; }
+      });
+  }
+  document.getElementById('leadModal').addEventListener('click', function(e) {
+    if (e.target === this) closeHeroModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeHeroModal();
+  });
 </script>
 </body>
 </html>

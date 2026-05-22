@@ -193,6 +193,7 @@
   .service-item:hover::before { width: 100%; }
   .service-num { font-family:'Cormorant Garamond',serif; font-size:0.8rem; letter-spacing:0.16em; color:var(--gold); padding-top:4px; }
   .service-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:500; color:var(--black); line-height:1.1; margin-bottom:16px; }
+  .service-price-pill { display:inline-block; font-family:'DM Sans',sans-serif; font-size:0.68rem; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); border:1px solid var(--terracotta); padding:5px 10px; margin-bottom:18px; }
   .service-body { font-size:0.9rem; line-height:1.85; color:var(--gray); font-weight:300; }
   .service-keywords { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
   .service-keyword { font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); border:1px solid rgba(196,113,74,0.25); padding:5px 12px; }
@@ -433,7 +434,7 @@
   <div class="services-header">
     <div>
       <p class="section-eyebrow reveal">What's offered</p>
-      <h2 class="section-title reveal d1">Three ways to<br>work <em>together</em></h2>
+      <h2 class="section-title reveal d1">Four ways to<br>work <em>together</em></h2>
     </div>
     <p class="services-note reveal d2">Every engagement starts with a free discovery call. No pressure, no pitch, just a conversation to see if we're the right fit.</p>
   </div>
@@ -442,7 +443,26 @@
     <div class="service-item reveal">
       <p class="service-num">01</p>
       <div>
+        <h3 class="service-title">Single Session Intensive</h3>
+        <span class="service-price-pill">$250 &middot; one-time, 75 minutes</span>
+        <p class="service-body">For people who want focused help on a specific decision, story, or question, without committing to ongoing coaching. We meet once for 75 minutes, work the problem together, and you leave with a clear next move. If you decide later you want ongoing work, the session fee applies toward your first month. A real way to try the work without a leap.</p>
+        <div class="service-keywords">
+          <span class="service-keyword">Stuck on a decision</span>
+          <span class="service-keyword">One specific question</span>
+          <span class="service-keyword">Try before committing</span>
+          <span class="service-keyword">Focused clarity</span>
+        </div>
+      </div>
+      <div class="service-cta-col">
+        <a href="#contact" class="service-link" data-offering="intensive">Book a Session</a>
+      </div>
+    </div>
+
+    <div class="service-item reveal">
+      <p class="service-num">02</p>
+      <div>
         <h3 class="service-title">1:1 Transition Coaching</h3>
+        <span class="service-price-pill">From $200 per session &middot; packages from $750/mo</span>
         <p class="service-body">Deep, private coaching for individuals navigating a career change, major life decision, or identity shift. We meet regularly, build over time, and work until you have both clarity and a plan you actually believe in. This isn't a program. It's a partnership.</p>
         <div class="service-keywords">
           <span class="service-keyword">Career change</span>
@@ -451,26 +471,6 @@
           <span class="service-keyword">Purpose</span>
           <span class="service-keyword">Identity</span>
         </div>
-        <p style="font-size:0.78rem;color:var(--gray);margin-top:20px;font-weight:300;">Starting from <span style="color:var(--black);font-weight:400;">$200 per session</span> &nbsp;·&nbsp; Monthly packages from $750</p>
-      </div>
-      <div class="service-cta-col">
-        <a href="#contact" class="service-link">Inquire</a>
-      </div>
-    </div>
-
-    <div class="service-item reveal">
-      <p class="service-num">02</p>
-      <div>
-        <h3 class="service-title">Personal Statement & Story Coaching</h3>
-        <p class="service-body">The personal statement is a high-stakes story, and most people tell it wrong. Whether you're applying to college, medical school, law school, residency, or a graduate program, I help you find the thread, shape the arc, and write something that sounds like you instead of a template. This is narrative coaching, not editing.</p>
-        <div class="service-keywords">
-          <span class="service-keyword">College essays</span>
-          <span class="service-keyword">Medical school</span>
-          <span class="service-keyword">Law school</span>
-          <span class="service-keyword">Residency applications</span>
-          <span class="service-keyword">Graduate school</span>
-        </div>
-        <p style="font-size:0.78rem;color:var(--gray);margin-top:20px;font-weight:300;">Starting from <span style="color:var(--black);font-weight:400;">$400 per engagement</span></p>
       </div>
       <div class="service-cta-col">
         <a href="#contact" class="service-link">Inquire</a>
@@ -480,7 +480,27 @@
     <div class="service-item reveal">
       <p class="service-num">03</p>
       <div>
+        <h3 class="service-title">Personal Statement &amp; Story Coaching</h3>
+        <span class="service-price-pill">From $400 per engagement</span>
+        <p class="service-body">The personal statement is a high-stakes story, and most people tell it wrong. Whether you're applying to college, medical school, law school, residency, or a graduate program, I help you find the thread, shape the arc, and write something that sounds like you instead of a template. This is narrative coaching, not editing.</p>
+        <div class="service-keywords">
+          <span class="service-keyword">College essays</span>
+          <span class="service-keyword">Medical school</span>
+          <span class="service-keyword">Law school</span>
+          <span class="service-keyword">Residency applications</span>
+          <span class="service-keyword">Graduate school</span>
+        </div>
+      </div>
+      <div class="service-cta-col">
+        <a href="#contact" class="service-link">Inquire</a>
+      </div>
+    </div>
+
+    <div class="service-item reveal">
+      <p class="service-num">04</p>
+      <div>
         <h3 class="service-title">Career Narrative Coaching</h3>
+        <span class="service-price-pill">From $200 per session &middot; 3-session packages from $550</span>
         <p class="service-body">You've made a pivot, taken an unconventional path, or done something that doesn't fit neatly on a resume, and you're not sure how to explain it without apologizing for it. I help you craft the story of your professional journey in a way that's honest, confident, and compelling. For LinkedIn profiles, interviews, and career transitions.</p>
         <div class="service-keywords">
           <span class="service-keyword">Career pivot story</span>
@@ -488,7 +508,6 @@
           <span class="service-keyword">Interview prep</span>
           <span class="service-keyword">Professional reinvention</span>
         </div>
-        <p style="font-size:0.78rem;color:var(--gray);margin-top:20px;font-weight:300;">Starting from <span style="color:var(--black);font-weight:400;">$200 per session</span> &nbsp;·&nbsp; 3-session packages from $550</p>
       </div>
       <div class="service-cta-col">
         <a href="#contact" class="service-link">Inquire</a>
