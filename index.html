@@ -478,6 +478,10 @@
   .modal-submit { padding:16px; background:var(--black); color:var(--white); border:none; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; transition:background 0.3s; }
   .modal-submit:hover { background:var(--terracotta); }
   .modal-note { font-size:0.68rem; color:var(--gray); text-align:center; margin-top:8px; }
+  .modal-checkbox-row { display:flex; align-items:flex-start; gap:10px; padding:6px 2px 4px; }
+  .modal-checkbox-row input[type=checkbox] { margin-top:3px; width:16px; height:16px; accent-color:var(--terracotta); cursor:pointer; flex-shrink:0; }
+  .modal-checkbox-row label { font-size:0.78rem; line-height:1.5; color:var(--gray); font-weight:300; cursor:pointer; }
+  .modal-checkbox-row label strong { color:var(--black); font-weight:400; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -501,6 +505,10 @@
     <div class="modal-form">
       <input type="text" class="modal-input" placeholder="Your first name" id="lead-name" />
       <input type="email" class="modal-input" placeholder="your@email.com" id="lead-email" />
+      <div class="modal-checkbox-row">
+        <input type="checkbox" id="lead-substack" />
+        <label for="lead-substack">Also send me <strong>Permission to Change</strong>, my weekly newsletter on pivots, purpose, and the stories we tell ourselves.</label>
+      </div>
       <button class="modal-submit" onclick="submitHeroModal()">Download instantly, it's free</button>
     </div>
     <p class="modal-note">&#128274; Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
@@ -864,6 +872,8 @@
   function openHeroModal(worksheetName) {
     currentHeroWorksheet = worksheetName;
     document.getElementById('leadModal').classList.add('open');
+    const cb = document.getElementById('lead-substack');
+    if (cb) cb.checked = false;
     if (typeof gtag === 'function') {
       gtag('event', 'lead_modal_open', { worksheet: worksheetName, source: 'homepage_hero' });
     }
@@ -882,6 +892,7 @@
 
     // Read UTMs from URL so Substack traffic gets tagged correctly in Loops
     const params = new URLSearchParams(window.location.search);
+    const alsoSubstack = document.getElementById('lead-substack').checked;
 
     const payload = {
       eventType: 'coaching_lead',
@@ -891,6 +902,7 @@
         source: 'LaurenFine',
         worksheet: currentHeroWorksheet,
         leadStage: 'worksheet_download',
+        alsoSubstack: alsoSubstack,
         utmSource: params.get('utm_source') || '',
         utmMedium: params.get('utm_medium') || '',
         utmCampaign: params.get('utm_campaign') || '',
@@ -906,6 +918,9 @@
       .then(function(result) {
         if (typeof gtag === 'function') {
           gtag('event', 'lead_capture', { worksheet: currentHeroWorksheet, source: 'homepage_hero' });
+          if (alsoSubstack) {
+            gtag('event', 'substack_optin', { source: 'homepage_hero', worksheet: currentHeroWorksheet });
+          }
         }
         // Trigger PDF download regardless of email success so the user always gets the worksheet
         const file = WORKSHEETS[currentHeroWorksheet];

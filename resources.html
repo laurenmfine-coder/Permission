@@ -131,6 +131,10 @@
   .modal-submit { padding:16px; background:var(--black); color:var(--white); border:none; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; transition:background 0.3s; }
   .modal-submit:hover { background:var(--terracotta); }
   .modal-note { font-size:0.68rem; color:var(--gray); text-align:center; margin-top:8px; }
+  .modal-checkbox-row { display:flex; align-items:flex-start; gap:10px; padding:6px 2px 4px; }
+  .modal-checkbox-row input[type=checkbox] { margin-top:3px; width:16px; height:16px; accent-color:var(--terracotta); cursor:pointer; flex-shrink:0; }
+  .modal-checkbox-row label { font-size:0.78rem; line-height:1.5; color:var(--gray); font-weight:300; cursor:pointer; }
+  .modal-checkbox-row label strong { color:var(--black); font-weight:400; }
 
   /* IKIGAI DIAGRAM */
   .ikigai-section { padding:80px 64px; background:var(--cream-dark); }
@@ -232,7 +236,11 @@
     <div class="modal-form">
       <input type="text" class="modal-input" placeholder="Your first name" id="modal-name" />
       <input type="email" class="modal-input" placeholder="your@email.com" id="modal-email" />
-      <button class="modal-submit" onclick="submitModal()">Download instantly — it's free</button>
+      <div class="modal-checkbox-row">
+        <input type="checkbox" id="modal-substack" />
+        <label for="modal-substack">Also send me <strong>Permission to Change</strong>, my weekly newsletter on pivots, purpose, and the stories we tell ourselves.</label>
+      </div>
+      <button class="modal-submit" onclick="submitModal()">Download instantly, it's free</button>
     </div>
     <p class="modal-note">🔒 Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
   </div>
@@ -579,6 +587,8 @@
   function openModal(toolName) {
     currentTool = toolName;
     document.getElementById('modal').classList.add('open');
+    const cb = document.getElementById('modal-substack');
+    if (cb) cb.checked = false;
     if (typeof gtag === 'function') {
       gtag('event', 'lead_modal_open', { worksheet: toolName, source: 'resources_page' });
     }
@@ -606,6 +616,7 @@
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
     const params = new URLSearchParams(window.location.search);
+    const alsoSubstack = document.getElementById('modal-substack').checked;
     const payload = {
       eventType: 'coaching_lead',
       email: email,
@@ -614,6 +625,7 @@
         source: 'LaurenFine',
         worksheet: currentTool,
         leadStage: 'worksheet_download',
+        alsoSubstack: alsoSubstack,
         utmSource: params.get('utm_source') || '',
         utmMedium: params.get('utm_medium') || '',
         utmCampaign: params.get('utm_campaign') || '',
@@ -629,6 +641,9 @@
       .then(function() {
         if (typeof gtag === 'function') {
           gtag('event', 'lead_capture', { worksheet: currentTool, source: 'resources_page' });
+          if (alsoSubstack) {
+            gtag('event', 'substack_optin', { source: 'resources_page', worksheet: currentTool });
+          }
         }
         downloadWorksheet(currentTool);
         alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentTool + ' is downloading now. Check your inbox shortly.');
