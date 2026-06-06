@@ -193,10 +193,10 @@
     --cream-dark: #EDE9E4;
     --black: #1A1A1A;
     --warm-dark: #2A1F1A;
-    --terracotta: #C4714A;
-    --terracotta-dark: #7A3D28;
-    --blush: #E8C4B8;
-    --blush-light: #F0D8CC;
+    --terracotta: #B57A78;
+    --terracotta-dark: #7E4F4D;
+    --blush: #E9C9C7;
+    --blush-light: #F4E2E0;
     --gold: #B8975A;
     --gray: #8C8580;
     --white: #FFFFFF;
@@ -218,7 +218,7 @@
   /* CURSOR */
   .cursor { width:7px; height:7px; background:var(--terracotta); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width 0.3s,height 0.3s; }
   .cursor.on { width:12px; height:12px; }
-  .cursor-ring { width:30px; height:30px; border:1px solid rgba(196,113,74,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+  .cursor-ring { width:30px; height:30px; border:1px solid rgba(181, 122, 120,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
 
   /* NAV */
@@ -255,12 +255,12 @@
   .btn-ghost:hover { color:var(--terracotta); border-color:var(--terracotta); }
 
   /* Hero right */
-  .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #C08070 62%, var(--terracotta-dark) 100%); }
+  .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #C99593 62%, var(--terracotta-dark) 100%); }
   .hero-right img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; }
 
   /* HOW IT WORKS — replaces old manifesto section */
   .process { background:var(--warm-dark); padding:100px 64px; position:relative; overflow:hidden; }
-  .process::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(196,113,74,0.3),transparent); }
+  .process::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(181, 122, 120,0.3),transparent); }
   .process-inner { max-width:1180px; margin:0 auto; }
   .process-header { display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:end; margin-bottom:56px; }
   .process-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
@@ -279,9 +279,9 @@
   .proof-strip { background:var(--cream-dark); padding:0 64px; display:flex; align-items:center; gap:0; overflow:hidden; border-top:1px solid rgba(0,0,0,0.04); }
   .proof-item { padding:32px 48px; border-right:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; gap:16px; flex-shrink:0; text-decoration:none; transition:background 0.3s; position:relative; }
   .proof-item:last-child { border-right:none; }
-  .proof-item:hover { background:rgba(196,113,74,0.04); }
+  .proof-item:hover { background:rgba(181, 122, 120,0.04); }
   .proof-item:hover .proof-num { color:var(--terracotta); }
-  .proof-item.featured { background:rgba(196,113,74,0.05); padding:36px 56px; }
+  .proof-item.featured { background:rgba(181, 122, 120,0.05); padding:36px 56px; }
   .proof-item.featured::before { content:''; position:absolute; top:0; left:24px; right:24px; height:2px; background:var(--terracotta); }
   .proof-item.featured .proof-num { font-size:2.7rem; color:var(--terracotta); }
   .proof-item.featured .proof-label { color:var(--terracotta-dark); font-weight:400; }
@@ -307,7 +307,7 @@
   .who-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,0.07); }
   .who-card:hover::before { background:var(--terracotta); }
   .who-num { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; color:var(--cream-dark); line-height:1; margin-bottom:24px; transition:color 0.4s; }
-  .who-card:hover .who-num { color:rgba(196,113,74,0.1); }
+  .who-card:hover .who-num { color:rgba(181, 122, 120,0.1); }
   .who-card-title { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:500; color:var(--black); margin-bottom:16px; line-height:1.2; }
   .who-card-body { font-size:0.88rem; line-height:1.85; color:var(--gray); font-weight:300; }
 
@@ -317,7 +317,7 @@
   .work-header-note { font-size:0.92rem; line-height:1.85; color:var(--gray); font-weight:300; }
   .work-list { display:flex; flex-direction:column; border-top:1px solid var(--cream-dark); }
   .work-row { display:grid; grid-template-columns:280px 1fr 40px; gap:40px; align-items:center; padding:36px 0; border-bottom:1px solid var(--cream-dark); text-decoration:none; color:inherit; transition:padding-left 0.4s, background 0.4s; position:relative; }
-  .work-row:hover { padding-left:16px; background:rgba(196,113,74,0.03); }
+  .work-row:hover { padding-left:16px; background:rgba(181, 122, 120,0.03); }
   .work-row-left { display:flex; flex-direction:column; gap:8px; }
   .work-row-eyebrow { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); font-weight:400; }
   .work-row-title { font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:500; color:var(--black); line-height:1.2; transition:color 0.3s; }
@@ -335,9 +335,9 @@
   .about-content .section-title em { color:rgba(255,255,255,0.45); }
   .about-body { font-size:1rem; line-height:1.9; color:rgba(255,255,255,0.62); font-weight:300; margin-bottom:40px; }
   .about-tags { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:44px; justify-content:center; }
-  .about-tag { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); border:1px solid rgba(196,113,74,0.28); padding:8px 16px; transition:border-color 0.3s; }
+  .about-tag { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); border:1px solid rgba(181, 122, 120,0.28); padding:8px 16px; transition:border-color 0.3s; }
   .about-tag:hover { border-color:var(--terracotta); }
-  .about-quote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300; font-style:italic; color:rgba(255,255,255,0.7); line-height:1.5; margin-top:48px; padding-top:40px; border-top:1px solid rgba(196,113,74,0.25); max-width:560px; margin-left:auto; margin-right:auto; }
+  .about-quote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300; font-style:italic; color:rgba(255,255,255,0.7); line-height:1.5; margin-top:48px; padding-top:40px; border-top:1px solid rgba(181, 122, 120,0.25); max-width:560px; margin-left:auto; margin-right:auto; }
 
   /* REFERRAL — sits between TEDx and Newsletter, peak warmth referral ask */
   .referral { padding:90px 64px; background:var(--cream-dark); border-top:1px solid rgba(0,0,0,0.04); }
@@ -390,7 +390,7 @@
   .newsletter-script { font-family:'Pinyon Script',cursive; font-size:clamp(3rem,4.5vw,5rem); color:var(--blush-light); display:block; line-height:1.2; opacity:0.75; }
   .newsletter-right p { font-size:0.92rem; line-height:1.85; color:rgba(255,255,255,0.5); font-weight:300; margin-bottom:36px; }
   .nl-form { display:flex; }
-  .nl-input { flex:1; padding:16px 22px; background:rgba(255,255,255,0.05); border:none; border-bottom:1px solid rgba(196,113,74,0.3); color:var(--white); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; }
+  .nl-input { flex:1; padding:16px 22px; background:rgba(255,255,255,0.05); border:none; border-bottom:1px solid rgba(181, 122, 120,0.3); color:var(--white); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; }
   .nl-input:focus { border-bottom-color:var(--terracotta); }
   .nl-input::placeholder { color:rgba(255,255,255,0.3); }
   .nl-btn { padding:16px 28px; background:var(--terracotta); color:var(--white); border:none; font-family:'DM Sans',sans-serif; font-size:0.68rem; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; transition:background 0.3s; }
@@ -538,7 +538,7 @@
     <h1 class="hero-h1">Your story<br>isn't <em>over.</em></h1>
     <!-- Script used once — the tagline -->
     <p class="hero-script-accent">Let's write what's next.</p>
-    <p class="hero-body">At every inflection point, the work is the same. A crossroads, a forced change, a quiet question you can't stop asking. Clarify who you are. Shape the narrative. Find the courage to follow it. This is <a href="career-reinvention.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.35);">career reinvention coaching</a>, on your terms.</p>
+    <p class="hero-body">At every inflection point, the work is the same. A crossroads, a forced change, a quiet question you can't stop asking. Clarify who you are. Shape the narrative. Find the courage to follow it. This is <a href="career-reinvention.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(181, 122, 120,0.35);">career reinvention coaching</a>, on your terms.</p>
     <div class="hero-actions">
       <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" class="btn-primary">Book a Free Discovery Call</a>
       <button type="button" onclick="openHeroModal('Pivot Decision Framework')" class="btn-ghost" style="background:none;border:none;border-bottom:1px solid var(--gold);font-family:inherit;cursor:inherit;">Or get the free Pivot Decision Framework</button>
@@ -638,7 +638,7 @@
         <span class="about-tag">Story Strategist</span>
       </div>
       <p class="about-quote reveal d3">"I gave myself permission. Now I help others do the same."</p>
-      <p class="reveal d3" style="margin-top:32px;text-align:center;"><a href="about.html" style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(196,113,74,0.5);padding-bottom:3px;transition:color 0.3s,border-color 0.3s;">Read the Full Story →</a></p>
+      <p class="reveal d3" style="margin-top:32px;text-align:center;"><a href="about.html" style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(181, 122, 120,0.5);padding-bottom:3px;transition:color 0.3s,border-color 0.3s;">Read the Full Story →</a></p>
     </div>
   </div>
 </section>
