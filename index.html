@@ -893,30 +893,27 @@
 
     // Read UTMs from URL so Substack traffic gets tagged correctly in Loops
     const params = new URLSearchParams(window.location.search);
-    const alsoSubstack = document.getElementById('lead-substack').checked;
-
-    const payload = {
-      eventType: 'coaching_lead',
-      email: email,
-      firstName: name || '',
-      data: {
-        source: 'LaurenFine',
-        worksheet: currentHeroWorksheet,
-        leadStage: 'worksheet_download',
-        alsoSubstack: alsoSubstack,
-        utmSource: params.get('utm_source') || '',
-        utmMedium: params.get('utm_medium') || '',
-        utmCampaign: params.get('utm_campaign') || '',
-        referrer: document.referrer || ''
-      }
-    };
-
-    fetch('https://rdx-email.laurenmfine.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(r) { return r.json().catch(function() { return {}; }); })
-      .then(function(result) {
+        const alsoSubstack = document.getElementById('lead-substack').checked;
+    
+        const notes = 'utm_source=' + (params.get('utm_source') || '') +
+                '; utm_medium=' + (params.get('utm_medium') || '') +
+                '; utm_campaign=' + (params.get('utm_campaign') || '') +
+                '; referrer=' + (document.referrer || '');
+        const formBody = 'firstName=' + encodeURIComponent(name || '') +
+                '&email=' + encodeURIComponent(email) +
+                '&source=' + encodeURIComponent('LaurenFine') +
+                '&userGroup=' + encodeURIComponent('CoachingLead') +
+                '&worksheet=' + encodeURIComponent(currentHeroWorksheet) +
+                '&leadStage=' + encodeURIComponent('worksheet_download') +
+                '&alsoSubstack=' + encodeURIComponent(alsoSubstack) +
+                '&notes=' + encodeURIComponent(notes);
+    
+        fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formBody
+        }).then(function(r) { return r.json().catch(function() { return {}; }); })
+          .then(function(result) {
         if (typeof gtag === 'function') {
           gtag('event', 'lead_capture', { worksheet: currentHeroWorksheet, source: 'homepage_hero' });
           if (alsoSubstack) {
