@@ -482,6 +482,13 @@
   .modal-checkbox-row input[type=checkbox] { margin-top:3px; width:16px; height:16px; accent-color:var(--terracotta); cursor:pointer; flex-shrink:0; }
   .modal-checkbox-row label { font-size:0.78rem; line-height:1.5; color:var(--gray); font-weight:300; cursor:pointer; }
   .modal-checkbox-row label strong { color:var(--black); font-weight:400; }
+
+  /* GIVEAWAY */
+  .giveaway { padding:120px 72px; background:var(--cream-dark); display:flex; justify-content:center; text-align:center; }
+  .giveaway-inner { max-width:680px; }
+  .giveaway-inner .section-eyebrow { justify-content:center; }
+  .giveaway-inner .btn-primary { border:none; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:8px; }
+  .giveaway-fineprint { font-size:0.68rem; color:var(--gray); line-height:1.7; margin-top:28px; max-width:560px; margin-left:auto; margin-right:auto; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -514,6 +521,27 @@
     <p class="modal-note">&#128274; Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
   </div>
 </div>
+
+<!-- RAFFLE ENTRY MODAL -->
+<div class="modal-overlay" id="raffleModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeRaffleModal()" aria-label="Close">&#10005;</button>
+    <p class="modal-eyebrow">Free Giveaway</p>
+    <h2 class="modal-title">Enter to win a free <em>coaching session</em></h2>
+    <p class="modal-body">A new winner is drawn every two weeks. If you're not selected, you'll automatically stay entered for every future drawing, no need to re-enter.</p>
+    <div class="modal-form">
+      <input type="text" class="modal-input" placeholder="Your first name" id="raffle-name" />
+      <input type="email" class="modal-input" placeholder="your@email.com" id="raffle-email" />
+      <div class="modal-checkbox-row">
+        <input type="checkbox" id="raffle-substack" />
+        <label for="raffle-substack">Also send me <strong>Permission to Change</strong>, my weekly newsletter on pivots, purpose, and the stories we tell ourselves.</label>
+      </div>
+      <button class="modal-submit" onclick="submitRaffleModal()">Enter the giveaway, it's free</button>
+    </div>
+    <p class="modal-note">No purchase necessary. One winner chosen at random every two weeks; non-winners are automatically re-entered until they win, unsubscribe, or request removal. Open to legal U.S. residents 18+. Prize: one 50-minute coaching session, no cash value. Void where prohibited.</p>
+  </div>
+</div>
+
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -760,6 +788,18 @@
   </div>
 </section>
 
+
+<!-- GIVEAWAY -->
+<section class="giveaway" id="giveaway">
+  <div class="giveaway-inner">
+    <p class="section-eyebrow reveal">Free Giveaway</p>
+    <h2 class="section-title reveal d1">Win a free 50-minute<br>coaching <em>session.</em></h2>
+    <p class="about-body reveal d2">Every two weeks, one entrant is chosen at random to receive a complimentary 50-minute coaching session. Enter once and you're automatically included in every drawing until you win, no re-entering required.</p>
+    <button class="btn-primary reveal d3" onclick="openRaffleModal()">Enter the giveaway</button>
+    <p class="giveaway-fineprint reveal d3">No purchase necessary to enter or win. One winner is selected at random every two weeks from all eligible entries; anyone not selected remains automatically entered in each subsequent drawing until they win, unsubscribe, or request removal. Open to legal residents of the United States, 18 years or older. Prize is one (1) complimentary 50-minute coaching session with Lauren Fine, non-transferable, no cash value. Void where prohibited.</p>
+  </div>
+</section>
+
 <!-- FREE RESOURCES TEASER -->
 <section class="resources-teaser" id="resources">
   <div class="resources-teaser-header">
@@ -968,6 +1008,71 @@
   });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeHeroModal();
+  });
+
+  function openRaffleModal() {
+    document.getElementById('raffleModal').classList.add('open');
+    const cb = document.getElementById('raffle-substack');
+    if (cb) cb.checked = false;
+    if (typeof gtag === 'function') {
+      gtag('event', 'raffle_modal_open', { source: 'homepage_giveaway' });
+    }
+  }
+  function closeRaffleModal() {
+    document.getElementById('raffleModal').classList.remove('open');
+  }
+  function submitRaffleModal() {
+    const email = document.getElementById('raffle-email').value.trim();
+    const name = document.getElementById('raffle-name').value.trim();
+    if (!email) { alert('Please enter your email address.'); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+    const submitBtn = document.querySelector('#raffleModal .modal-submit');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Entering..."; }
+
+    const params = new URLSearchParams(window.location.search);
+    const alsoSubstack = document.getElementById('raffle-substack').checked;
+
+    const notes = 'utm_source=' + (params.get('utm_source') || '') +
+            '; utm_medium=' + (params.get('utm_medium') || '') +
+            '; utm_campaign=' + (params.get('utm_campaign') || '') +
+            '; referrer=' + (document.referrer || '');
+
+    const formBody = 'firstName=' + encodeURIComponent(name || '') +
+            '&email=' + encodeURIComponent(email) +
+            '&source=' + encodeURIComponent('LaurenFine') +
+            '&userGroup=' + encodeURIComponent('RaffleEntrant') +
+            '&leadStage=' + encodeURIComponent('raffle_entry') +
+            '&alsoSubstack=' + encodeURIComponent(alsoSubstack) +
+            '&notes=' + encodeURIComponent(notes);
+
+    fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formBody
+    }).then(function(r) { return r.json().catch(function() { return {}; }); })
+      .then(function(result) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'raffle_entry', { source: 'homepage_giveaway' });
+          if (alsoSubstack) {
+            gtag('event', 'substack_optin', { source: 'homepage_giveaway' });
+          }
+        }
+        alert("You're entered" + (name ? ", " + name : "") + "! A new winner is drawn every two weeks. If you are not selected, you will stay automatically entered for the next drawing, no need to re-enter.");
+        closeRaffleModal();
+      })
+      .catch(function() {
+        alert("Something went wrong submitting your entry. Please try again or reach out at reasondxcoaching@gmail.com.");
+      })
+      .finally(function() {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Enter the giveaway, it's free"; }
+      });
+  }
+  document.getElementById('raffleModal').addEventListener('click', function(e) {
+    if (e.target === this) closeRaffleModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeRaffleModal();
   });
 </script>
 </body>
