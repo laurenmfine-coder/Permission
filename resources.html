@@ -617,29 +617,26 @@
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
     const params = new URLSearchParams(window.location.search);
-    const alsoSubstack = document.getElementById('modal-substack').checked;
-    const payload = {
-      eventType: 'coaching_lead',
-      email: email,
-      firstName: name || '',
-      data: {
-        source: 'LaurenFine',
-        worksheet: currentTool,
-        leadStage: 'worksheet_download',
-        alsoSubstack: alsoSubstack,
-        utmSource: params.get('utm_source') || '',
-        utmMedium: params.get('utm_medium') || '',
-        utmCampaign: params.get('utm_campaign') || '',
-        referrer: document.referrer || ''
-      }
-    };
-
-    fetch('https://rdx-email.laurenmfine.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(r) { return r.json().catch(function() { return {}; }); })
-      .then(function() {
+      const alsoSubstack = document.getElementById('modal-substack').checked;
+      const notes = 'utm_source=' + (params.get('utm_source') || '') +
+        '; utm_medium=' + (params.get('utm_medium') || '') +
+        '; utm_campaign=' + (params.get('utm_campaign') || '') +
+              '; referrer=' + (document.referrer || '');
+      const formBody = 'firstName=' + encodeURIComponent(name || '') +
+              '&email=' + encodeURIComponent(email) +
+              '&source=' + encodeURIComponent('LaurenFine') +
+              '&userGroup=' + encodeURIComponent('CoachingLead') +
+              '&worksheet=' + encodeURIComponent(currentTool) +
+              '&leadStage=' + encodeURIComponent('worksheet_download') +
+              '&alsoSubstack=' + encodeURIComponent(alsoSubstack) +
+              '&notes=' + encodeURIComponent(notes);
+    
+        fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formBody
+        }).then(function(r) { return r.json().catch(function() { return {}; }); })
+          .then(function() {
         if (typeof gtag === 'function') {
           gtag('event', 'lead_capture', { worksheet: currentTool, source: 'resources_page' });
           if (alsoSubstack) {
@@ -667,28 +664,24 @@
     const btn = document.querySelector('button[onclick="notifyMe()"]');
     if (btn) { btn.disabled = true; }
 
-    const params = new URLSearchParams(window.location.search);
-    const payload = {
-      eventType: 'coaching_lead',
-      email: email,
-      firstName: '',
-      data: {
-        source: 'LaurenFine',
-        worksheet: 'Next Chapter Planner (waitlist)',
-        leadStage: 'waitlist',
-        utmSource: params.get('utm_source') || '',
-        utmMedium: params.get('utm_medium') || '',
-        utmCampaign: params.get('utm_campaign') || '',
-        referrer: document.referrer || ''
-      }
-    };
-
-    fetch('https://rdx-email.laurenmfine.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function() {
-      if (typeof gtag === 'function') {
+        const params = new URLSearchParams(window.location.search);
+                                         const notes = 'utm_source=' + (params.get('utm_source') || '') +
+        '; utm_medium=' + (params.get('utm_medium') || '') +
+        '; utm_campaign=' + (params.get('utm_campaign') || '') +
+        '; referrer=' + (document.referrer || '');
+      const formBody = 'email=' + encodeURIComponent(email) +
+        '&source=' + encodeURIComponent('LaurenFine') +
+              '&userGroup=' + encodeURIComponent('CoachingLead') +
+        '&worksheet=' + encodeURIComponent('Next Chapter Planner (waitlist)') +
+              '&leadStage=' + encodeURIComponent('waitlist') +
+        '&notes=' + encodeURIComponent(notes);
+  
+      fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+            method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody
+  }).then(function() {
+  if (typeof gtag === 'function') {
         gtag('event', 'waitlist_signup', { item: 'Next Chapter Planner' });
       }
       alert("Got it! We'll email " + email + ' the moment the Next Chapter Planner is ready.');
