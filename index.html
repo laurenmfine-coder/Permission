@@ -489,6 +489,9 @@
   .giveaway-inner .section-eyebrow { justify-content:center; }
   .giveaway-inner .btn-primary { border:none; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:8px; }
   .giveaway-fineprint { font-size:0.68rem; color:var(--gray); line-height:1.7; margin-top:28px; max-width:560px; margin-left:auto; margin-right:auto; }
+
+  .raffle-teaser-no { display:block; width:100%; background:none; border:none; color:var(--gray); font-size:0.72rem; text-decoration:underline; cursor:pointer; margin-top:10px; font-family:'DM Sans',sans-serif; padding:6px; }
+  .raffle-teaser-no:hover { color:var(--terracotta-dark); }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -541,6 +544,21 @@
     <p class="modal-note">No purchase necessary. One winner chosen at random every two weeks; non-winners are automatically re-entered until they win, unsubscribe, or request removal. Open to legal U.S. residents 18+. Prize: one 50-minute coaching session, no cash value. Void where prohibited.</p>
   </div>
 </div>
+
+<!-- GIVEAWAY TEASER POPUP -->
+<div class="modal-overlay" id="raffleTeaser">
+  <div class="modal">
+    <button class="modal-close" onclick="dismissRaffleTeaser()" aria-label="Close">&#10005;</button>
+    <p class="modal-eyebrow">Free Giveaway</p>
+    <h2 class="modal-title">Want a free <em>coaching session?</em></h2>
+    <p class="modal-body">A new winner is drawn every two weeks. Want a chance to win a complimentary 50-minute coaching session with Lauren?</p>
+    <div class="modal-form">
+      <button class="modal-submit" onclick="acceptRaffleTeaser()">Yes, enter me</button>
+      <button class="raffle-teaser-no" onclick="dismissRaffleTeaser()">No thanks</button>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="cursor" id="cursor"></div>
@@ -1073,6 +1091,31 @@
   });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeRaffleModal();
+  });
+
+  function showRaffleTeaser() {
+    if (localStorage.getItem('raffleTeaserSeen')) return;
+    const lead = document.getElementById('leadModal');
+    const raffle = document.getElementById('raffleModal');
+    if ((lead && lead.classList.contains('open')) || (raffle && raffle.classList.contains('open'))) return;
+    const el = document.getElementById('raffleTeaser');
+    if (el) el.classList.add('open');
+  }
+  function dismissRaffleTeaser() {
+    const el = document.getElementById('raffleTeaser');
+    if (el) el.classList.remove('open');
+    localStorage.setItem('raffleTeaserSeen', '1');
+  }
+  function acceptRaffleTeaser() {
+    dismissRaffleTeaser();
+    openRaffleModal();
+  }
+  setTimeout(showRaffleTeaser, 6000);
+  document.getElementById('raffleTeaser').addEventListener('click', function(e) {
+    if (e.target === this) dismissRaffleTeaser();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') dismissRaffleTeaser();
   });
 </script>
 </body>
