@@ -186,7 +186,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #FFFFFF;
@@ -195,7 +195,7 @@
     --warm-dark: #FFFFFF;
     --terracotta: #23406E;
     --terracotta-dark: #182D4E;
-    --blush: #1A1A1A;
+    --blush: #B8975A;
     --blush-light: #E5E0DA;
     --gold: #B8975A;
     --gray: #8C8580;
@@ -218,7 +218,7 @@
   /* CURSOR */
   .cursor { width:7px; height:7px; background:var(--terracotta); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width 0.3s,height 0.3s; }
   .cursor.on { width:12px; height:12px; }
-  .cursor-ring { width:30px; height:30px; border:1px solid rgba(181, 122, 120,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+  .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
 
   /* NAV */
@@ -255,12 +255,12 @@
   .btn-ghost:hover { color:var(--terracotta); border-color:var(--terracotta); }
 
   /* Hero right */
-  .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #C99593 62%, var(--terracotta-dark) 100%); }
+  .hero-right { position:relative; overflow:hidden; background:linear-gradient(to bottom, var(--blush-light) 0%, var(--blush) 38%, #3D5A8A 62%, var(--terracotta-dark) 100%); }
   .hero-right img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; }
 
   /* HOW IT WORKS — replaces old manifesto section */
   .process { background:var(--warm-dark); padding:140px 72px; position:relative; overflow:hidden; }
-  .process::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(181, 122, 120,0.3),transparent); }
+  .process::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,transparent,rgba(35, 64, 110,0.3),transparent); }
   .process-inner { max-width:1180px; margin:0 auto; }
   .process-header { display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:end; margin-bottom:56px; }
   .process-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
@@ -279,9 +279,9 @@
   .proof-strip { background:var(--cream-dark); padding:0 64px; display:flex; align-items:center; gap:0; overflow:hidden; border-top:1px solid rgba(0,0,0,0.04); }
   .proof-item { padding:32px 48px; border-right:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; gap:16px; flex-shrink:0; text-decoration:none; transition:background 0.3s; position:relative; }
   .proof-item:last-child { border-right:none; }
-  .proof-item:hover { background:rgba(181, 122, 120,0.04); }
+  .proof-item:hover { background:rgba(35, 64, 110,0.04); }
   .proof-item:hover .proof-num { color:var(--terracotta); }
-  .proof-item.featured { background:rgba(181, 122, 120,0.05); padding:36px 56px; }
+  .proof-item.featured { background:rgba(35, 64, 110,0.05); padding:36px 56px; }
   .proof-item.featured::before { content:''; position:absolute; top:0; left:24px; right:24px; height:2px; background:var(--terracotta); }
   .proof-item.featured .proof-num { font-size:2.7rem; color:var(--terracotta); }
   .proof-item.featured .proof-label { color:var(--terracotta-dark); font-weight:400; }
@@ -307,7 +307,7 @@
   .who-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,0.07); }
   .who-card:hover::before { background:var(--terracotta); }
   .who-num { font-family:'Playfair Display',serif; display:none; font-size:4.5rem; font-weight:300; color:var(--cream-dark); line-height:1; margin-bottom:24px; transition:color 0.4s; }
-  .who-card:hover .who-num { color:rgba(181, 122, 120,0.1); }
+  .who-card:hover .who-num { color:rgba(35, 64, 110,0.1); }
   .who-card-title { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:500; color:var(--black); margin-bottom:16px; line-height:1.2; }
   .who-card-body { font-size:0.88rem; line-height:1.85; color:var(--gray); font-weight:300; }
 
@@ -317,7 +317,7 @@
   .work-header-note { font-size:0.92rem; line-height:1.85; color:var(--gray); font-weight:300; }
   .work-list { display:flex; flex-direction:column; border-top:1px solid var(--cream-dark); }
   .work-row { display:grid; grid-template-columns:280px 1fr 40px; gap:40px; align-items:center; padding:36px 0; border-bottom:1px solid var(--cream-dark); text-decoration:none; color:inherit; transition:padding-left 0.4s, background 0.4s; position:relative; }
-  .work-row:hover { padding-left:16px; background:rgba(181, 122, 120,0.03); }
+  .work-row:hover { padding-left:16px; background:rgba(35, 64, 110,0.03); }
   .work-row-left { display:flex; flex-direction:column; gap:8px; }
   .work-row-eyebrow { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); font-weight:400; }
   .work-row-title { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:500; color:var(--black); line-height:1.2; transition:color 0.3s; }
@@ -339,7 +339,7 @@
   .about-content .section-title em { color:var(--terracotta); }
   .about-body { font-size:1rem; line-height:1.9; color:var(--gray); font-weight:300; margin-bottom:40px; }
   .about-tags { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:44px; justify-content:center; }
-  .about-tag { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); border:1px solid rgba(181, 122, 120,0.28); padding:8px 16px; transition:border-color 0.3s; }
+  .about-tag { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); border:1px solid rgba(35, 64, 110,0.28); padding:8px 16px; transition:border-color 0.3s; }
   .about-tag:hover { border-color:var(--terracotta); }
   .about-quote { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:500; font-style:normal; color:var(--black); line-height:1.4; margin-top:48px; padding-top:40px; border-top:2px solid var(--terracotta); max-width:560px; margin-left:auto; margin-right:auto; }
 
@@ -404,7 +404,7 @@
   footer { background:var(--black); padding:72px 64px 48px; }
   .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:60px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:40px; }
   .footer-brand { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); margin-bottom:12px; }
-  .footer-tagline { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:300; font-style:italic; color:var(--blush); opacity:0.6; line-height:1.3; margin-bottom:24px; }
+  .footer-tagline { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:300; font-style:italic; color:var(--gold); opacity:0.75; line-height:1.3; margin-bottom:24px; }
   .footer-bio { font-size:0.82rem; line-height:1.8; color:rgba(255,255,255,0.28); font-weight:300; max-width:280px; }
   .footer-col-label { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.22); margin-bottom:24px; }
   .footer-links { list-style:none; }
@@ -480,7 +480,7 @@
   .modal-eyebrow { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px; }
   .modal-title { font-family:'Playfair Display',serif; font-size:2rem; font-weight:300; color:var(--black); line-height:1.1; margin-bottom:8px; }
   .modal-title em { font-style:italic; color:var(--terracotta); }
-  .modal-script { font-family:'Pinyon Script',cursive; font-size:1.6rem; color:var(--gold); margin-bottom:24px; }
+  .modal-script { font-family:'Playfair Display',serif; font-style:italic; font-size:1.6rem; color:var(--gold); margin-bottom:24px; }
   .modal-body { font-size:0.85rem; line-height:1.8; color:var(--gray); font-weight:300; margin-bottom:32px; }
   .modal-form { display:flex; flex-direction:column; gap:12px; }
   .modal-input { padding:16px 20px; border:1px solid var(--cream-dark); background:var(--white); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; color:var(--black); }
@@ -605,7 +605,7 @@
     <h1 class="hero-h1">Your story<br>isn't <em>over.</em></h1>
     <!-- Script used once — the tagline -->
     <p class="hero-label-accent">LET'S WRITE WHAT'S NEXT</p>    <p style="display:inline-block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:0.64rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);border:1px solid var(--terracotta);border-radius:999px;padding:6px 14px;">TEDx Speaker</p>
-    <p class="hero-body">At every inflection point, the work is the same. A crossroads, a forced change, a quiet question you can't stop asking. Clarify who you are. Shape the narrative. Find the courage to follow it. This is <a href="career-reinvention.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(181, 122, 120,0.35);">career reinvention coaching</a>, on your terms. Whether that's a career pivot, a bigger life reset, or getting ready for an interview that matters, we'll build the clarity and the story together.</p>
+    <p class="hero-body">At every inflection point, the work is the same. A crossroads, a forced change, a quiet question you can't stop asking. Clarify who you are. Shape the narrative. Find the courage to follow it. This is <a href="career-reinvention.html" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.35);">career reinvention coaching</a>, on your terms. Whether that's a career pivot, a bigger life reset, or getting ready for an interview that matters, we'll build the clarity and the story together.</p>
     <div class="hero-actions">
       <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" class="btn-primary">Book a Free 30-Minute Call</a>
       <a href="#work" class="btn-ghost" style="border-bottom:1px solid var(--gold);">See ways to work together</a>
@@ -795,7 +795,7 @@
         <span class="about-tag">Story Strategist</span>
       </div>
       <p class="about-quote reveal d3">"I gave myself permission. Now I help others do the same."</p>
-      <p class="reveal d3" style="margin-top:32px;text-align:center;"><a href="about.html" style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(181, 122, 120,0.5);padding-bottom:3px;transition:color 0.3s,border-color 0.3s;">Read the Full Story →</a></p>
+      <p class="reveal d3" style="margin-top:32px;text-align:center;"><a href="about.html" style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.5);padding-bottom:3px;transition:color 0.3s,border-color 0.3s;">Read the Full Story →</a></p>
     </div>
   </div>
 </section>

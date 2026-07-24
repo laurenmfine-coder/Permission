@@ -84,12 +84,12 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:#FAF7F4; --cream-dark:#EDE9E4; --black:#1A1A1A;
-    --warm-dark:#2A1F1A; --terracotta:#B57A78; --terracotta-dark:#7E4F4D;
-    --blush:#E9C9C7; --blush-light:#F4E2E0; --gold:#B8975A;
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --blush:#B8975A; --blush-light:#E5E0DA; --gold:#B8975A;
     --gray:#8C8580; --white:#FFFFFF;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -100,7 +100,7 @@
   /* NAV (matches site) */
   nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
-  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
   .nav-links { display:flex; gap:30px; list-style:none; }
   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
@@ -115,32 +115,32 @@
   .about-hero { padding: 160px 64px 80px; max-width: 1100px; margin: 0 auto; }
   .about-hero-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:28px; display:flex; align-items:center; gap:14px; }
   .about-hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--terracotta); }
-  .about-hero-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,5vw,5.5rem); font-weight:300; line-height:1.05; color:var(--black); margin-bottom:32px; max-width:880px; }
+  .about-hero-h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,5vw,5.5rem); font-weight:300; line-height:1.05; color:var(--black); margin-bottom:32px; max-width:880px; }
   .about-hero-h1 em { font-style:italic; color:var(--terracotta); }
-  .about-hero-lede { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2vw,1.7rem); font-weight:300; font-style:italic; color:var(--gray); line-height:1.6; max-width:760px; }
+  .about-hero-lede { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2vw,1.7rem); font-weight:300; font-style:italic; color:var(--gray); line-height:1.6; max-width:760px; }
 
   /* PORTRAIT BAND */
-  .portrait-band { background:linear-gradient(to bottom,var(--blush-light) 0%,var(--blush) 50%,#B87A68 100%); height:520px; position:relative; overflow:hidden; margin-bottom:80px; }
+  .portrait-band { background:linear-gradient(to bottom,var(--blush-light) 0%,var(--blush) 50%,#2E4C7E 100%); height:520px; position:relative; overflow:hidden; margin-bottom:80px; }
   .portrait-band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%; }
   .portrait-band-caption { position:absolute; bottom:32px; left:64px; right:64px; }
-  .portrait-band-caption p { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; color:rgba(255,255,255,0.92); font-weight:300; max-width:560px; }
+  .portrait-band-caption p { font-family:'Playfair Display',serif; font-size:1.15rem; font-style:italic; color:rgba(255,255,255,0.92); font-weight:300; max-width:560px; }
   .portrait-band-caption span { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-top:10px; display:inline-block; }
 
   /* STORY (the narrative arc) */
   .story { max-width: 760px; margin: 0 auto; padding: 0 32px 100px; }
   .story-section { margin-bottom: 72px; }
   .story-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.26em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
-  .story-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,3vw,2.6rem); font-weight:300; line-height:1.2; color:var(--black); margin-bottom:28px; }
+  .story-h2 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3vw,2.6rem); font-weight:300; line-height:1.2; color:var(--black); margin-bottom:28px; }
   .story-h2 em { font-style:italic; color:var(--terracotta); }
   .story p { font-size:1.05rem; line-height:1.85; color:var(--black); margin-bottom:22px; font-weight:300; }
   .story p.dim { color:var(--gray); }
-  .story-pullquote { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-style:italic; font-weight:300; color:var(--terracotta-dark); line-height:1.5; padding:32px 0 32px 28px; border-left:2px solid var(--terracotta); margin:36px 0; }
+  .story-pullquote { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; font-weight:300; color:var(--terracotta-dark); line-height:1.5; padding:32px 0 32px 28px; border-left:2px solid var(--terracotta); margin:36px 0; }
 
   /* CREDENTIALS BLOCK */
   .credentials { background:var(--warm-dark); padding:100px 64px; color:var(--white); }
   .credentials-inner { max-width:1100px; margin:0 auto; }
   .credentials-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.26em; text-transform:uppercase; color:var(--terracotta); margin-bottom:24px; }
-  .credentials-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3vw,2.8rem); font-weight:300; line-height:1.15; color:var(--white); margin-bottom:60px; max-width:680px; }
+  .credentials-h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3vw,2.8rem); font-weight:300; line-height:1.15; color:var(--white); margin-bottom:60px; max-width:680px; }
   .credentials-h2 em { font-style:italic; color:rgba(255,255,255,0.45); }
   .cred-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:48px 80px; }
   .cred-group { }
@@ -152,7 +152,7 @@
   /* CTA */
   .about-cta { padding:100px 64px; background:var(--cream-dark); text-align:center; }
   .about-cta-inner { max-width:680px; margin:0 auto; }
-  .about-cta-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3vw,2.6rem); font-weight:300; line-height:1.2; color:var(--black); margin-bottom:24px; }
+  .about-cta-h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3vw,2.6rem); font-weight:300; line-height:1.2; color:var(--black); margin-bottom:24px; }
   .about-cta-h2 em { font-style:italic; color:var(--terracotta); }
   .about-cta-body { font-size:1rem; line-height:1.8; color:var(--gray); font-weight:300; margin-bottom:36px; }
   .btn-primary { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); padding:18px 44px; text-decoration:none; display:inline-block; transition:background 0.3s,transform 0.2s; margin-right:14px; }
@@ -163,8 +163,8 @@
   /* FOOTER */
   footer { background:var(--cream); padding:80px 64px 48px; border-top:1px solid var(--cream-dark); }
   .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:60px; margin-bottom:60px; }
-  .footer-brand { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:500; color:var(--black); margin-bottom:6px; letter-spacing:0.04em; }
-  .footer-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--terracotta); margin-bottom:18px; font-weight:300; }
+  .footer-brand { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:500; color:var(--black); margin-bottom:6px; letter-spacing:0.04em; }
+  .footer-tagline { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:300; font-style:italic; color:var(--gold); opacity:0.75; line-height:1.3; margin-bottom:24px; }
   .footer-bio { font-size:0.88rem; line-height:1.75; color:var(--gray); font-weight:300; max-width:380px; }
   .footer-col-label { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; font-weight:400; }
   .footer-links { list-style:none; }
