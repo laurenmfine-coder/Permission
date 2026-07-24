@@ -87,6 +87,9 @@
   .nav-cta:hover { background:var(--terracotta); transform:translateY(-1px); }
 
   /* HERO */
+  .t-hero-grid { display:grid; grid-template-columns:1.35fr 1fr; gap:60px; align-items:center; }
+  .t-hero-photo img { width:100%; height:auto; display:block; }
+  @media (max-width:960px) { .t-hero-grid { grid-template-columns:1fr; gap:36px; } .t-hero-photo { max-width:320px; } }
   .testimonials-hero { padding:160px 64px 60px; max-width:1100px; margin:0 auto; }
   .testimonials-hero-eyebrow { font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:28px; display:flex; align-items:center; gap:14px; }
   .testimonials-hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--terracotta); }
@@ -174,9 +177,16 @@
 
 <!-- HERO -->
 <section class="testimonials-hero">
-  <p class="testimonials-hero-eyebrow">Client testimonials</p>
-  <h1 class="testimonials-hero-h1">"She is exactly the kind of coach you need <em>in your corner.</em>"</h1>
-  <p class="testimonials-hero-lede">Words from people who have done the work. Names used with permission. Reviews verified through Google Business.</p>
+  <div class="t-hero-grid">
+    <div>
+      <p class="testimonials-hero-eyebrow">Client testimonials</p>
+      <h1 class="testimonials-hero-h1">"She is exactly the kind of coach you need <em>in your corner.</em>"</h1>
+      <p class="testimonials-hero-lede">Words from people who have done the work. Names used with permission. Reviews verified through Google Business.</p>
+    </div>
+    <div class="t-hero-photo">
+      <img src="1783478164854_938A1443.jpg" alt="Lauren Fine, MD" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- TESTIMONIAL CARDS -->
