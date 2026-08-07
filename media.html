@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tools & Worksheets — Lauren Fine, MD | Coach, Speaker & Story Strategist</title>
-<meta name="description" content="Free tools, worksheets, and frameworks to help you clarify your story, navigate major decisions, and write your next chapter. From Lauren Fine, MD — coach and story strategist.">
+<title>Watch & Listen — Lauren Fine, MD | Coach, Speaker & Story Strategist</title>
+<meta name="description" content="Watch Fact vs Story breakdowns and other videos from Lauren Fine, MD on YouTube and Instagram. Physician, TEDx speaker, and coach on career reinvention and the stories we tell ourselves.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://laurenfine.com/resources.html">
+<link rel="canonical" href="https://laurenfine.com/media.html">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://laurenfine.com/resources.html">
-<meta property="og:title" content="Free Tools & Worksheets | Lauren Fine, MD">
-<meta property="og:description" content="Free coaching tools, worksheets, and frameworks for career transitions, major life decisions, and personal storytelling.">
+<meta property="og:url" content="https://laurenfine.com/media.html">
+<meta property="og:title" content="Watch & Listen | Lauren Fine, MD">
+<meta property="og:description" content="Fact vs Story breakdowns and other videos from Lauren Fine, MD on YouTube and Instagram.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
 <meta property="og:site_name" content="Lauren Fine, MD">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Tools & Worksheets | Lauren Fine, MD">
-<meta name="twitter:description" content="Free coaching tools, worksheets, and frameworks for career transitions and major life decisions.">
+<meta name="twitter:title" content="Watch & Listen | Lauren Fine, MD">
+<meta name="twitter:description" content="Fact vs Story breakdowns and other videos from Lauren Fine, MD on YouTube and Instagram.">
 <meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Tools & Worksheets — Lauren Fine",
-  "url": "https://laurenfine.com/resources.html",
-  "description": "Free coaching tools, worksheets, and frameworks for career transitions, major life decisions, and personal storytelling.",
+  "name": "Watch & Listen — Lauren Fine",
+  "url": "https://laurenfine.com/media.html",
+  "description": "Fact vs Story breakdowns and other videos from Lauren Fine, MD on YouTube and Instagram.",
   "author": { "@type": "Person", "name": "Lauren Fine", "url": "https://laurenfine.com" }
 }
 </script>
@@ -200,7 +200,39 @@
   .reveal.visible { opacity:1; transform:translateY(0); }
   .d1 { transition-delay:0.12s; } .d2 { transition-delay:0.25s; }
 
+  /* VIDEO GRID */
+  .video-section { padding:80px 64px 40px; }
+  .video-section-header { margin-bottom:48px; max-width:640px; }
+  .video-featured { margin-bottom:60px; }
+  .video-embed { position:relative; width:100%; aspect-ratio:16/9; background:var(--cream-dark); overflow:hidden; margin-bottom:20px; }
+  .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+  .video-featured-title { font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:500; color:var(--black); line-height:1.2; margin-bottom:10px; }
+  .video-featured-desc { font-size:0.9rem; line-height:1.8; color:var(--gray); font-weight:300; max-width:640px; }
+  .video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .video-card-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:500; color:var(--black); line-height:1.3; margin-top:4px; }
+
+  .social-strip { padding:60px 64px; background:var(--cream-dark); display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:40px; }
+  .social-strip-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,2.6vw,2.6rem); font-weight:300; color:var(--black); line-height:1.15; margin-bottom:16px; }
+  .social-strip-body { font-size:0.88rem; line-height:1.85; color:var(--gray); font-weight:300; margin-bottom:24px; }
+  .social-strip-cta { display:inline-flex; align-items:center; gap:10px; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); padding:14px 28px; text-decoration:none; transition:background 0.3s; }
+  .social-strip-cta:hover { background:var(--terracotta); }
+  .ig-teaser-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .ig-teaser { aspect-ratio:9/16; background:linear-gradient(145deg,var(--blush-light),var(--blush)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .ig-teaser-icon { color:rgba(255,255,255,0.85); width:28px; height:28px; }
+
+  .coming-section { padding:70px 64px 100px; }
+  .coming-card { background:var(--cream-dark); padding:52px 44px; text-align:center; max-width:640px; margin:0 auto; }
+  .coming-card .tool-badge { display:inline-block; margin-bottom:16px; }
+  .coming-title { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:500; color:var(--black); margin-bottom:12px; }
+  .coming-body { font-size:0.86rem; line-height:1.8; color:var(--gray); font-weight:300; margin-bottom:28px; }
+
   @media (max-width:960px) {
+    .video-section { padding:48px 24px 24px; }
+    .video-grid { grid-template-columns:1fr; }
+    .social-strip { grid-template-columns:1fr; padding:48px 24px; gap:32px; }
+    .ig-teaser-grid { grid-template-columns:repeat(3,1fr); }
+    .coming-section { padding:48px 24px 80px; }
+    .coming-card { padding:40px 28px; }
     nav { padding:20px 24px; }
     nav { flex-wrap:wrap; row-gap:8px; } .nav-links { display:flex !important; flex-wrap:wrap; gap:8px 16px; width:100%; justify-content:center; order:3; } .nav-links a { font-size:0.68rem; }
     .page-header { grid-template-columns:1fr; padding:120px 24px 60px; }
@@ -236,26 +268,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- EMAIL GATE MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <p class="modal-eyebrow">Free Download</p>
-    <h2 class="modal-title">Get your free <em>worksheet</em></h2>
-    <p class="modal-body">Enter your details and your worksheet will download instantly. You'll also receive occasional essays on pivots, purpose, and the stories we tell ourselves.</p>
-    <div class="modal-form">
-      <input type="text" class="modal-input" placeholder="Your first name" id="modal-name" />
-      <input type="email" class="modal-input" placeholder="your@email.com" id="modal-email" />
-      <div class="modal-checkbox-row">
-        <input type="checkbox" id="modal-substack" />
-        <label for="modal-substack">Also send me <strong>Permission to Change</strong>, my weekly newsletter on pivots, purpose, and the stories we tell ourselves.</label>
-      </div>
-      <button class="modal-submit" onclick="submitModal()">Download instantly, it's free</button>
-    </div>
-    <p class="modal-note">🔒 Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
-  </div>
-</div>
-
 <nav>
   <a href="index.html" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
@@ -265,7 +277,7 @@
     <li><a href="blog.html">Writing</a></li>
     <li><a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">Newsletter</a></li>
     <li><a href="resources.html">Resources</a></li>
-    <li><a href="media.html">Media</a></li>
+    <li><a href="media.html" class="active">Media</a></li>
   </ul>
   <div class="nav-social">
     <a href="https://www.linkedin.com/in/lauren-fine-md/" target="_blank" rel="noopener" aria-label="Lauren Fine on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
@@ -279,265 +291,81 @@
 <!-- HEADER -->
 <div class="page-header">
   <div>
-    <p class="header-eyebrow">Tools & Resources</p>
-    <h1>Things that help<br>you <em>think.</em></h1>
-    <p class="page-header-script">and decide, and write</p>
+    <p class="header-eyebrow">Watch &amp; Listen</p>
+    <h1>Fact vs Story,<br>on <em>video.</em></h1>
+    <p class="page-header-script">and everywhere else I show up</p>
   </div>
   <div>
-    <p class="page-header-right">Free reflection guides, decision frameworks, and story exercises drawn from coaching practice. Whether you're 17 navigating college or 55 reimagining what's next — these tools are for you. Use them on your own, bring them to a session, or share them with someone who needs them.</p>
+    <p class="page-header-right">The same frameworks I use in coaching sessions, in video form. Long breakdowns on YouTube, quick moments on Instagram, and eventually the podcast conversations too. Start wherever you are.</p>
   </div>
 </div>
 
-<!-- CATEGORY BAR -->
-<div class="cat-bar">
-  <button class="cat-btn active" onclick="filterTools('all',this)">All</button>
-  <button class="cat-btn" onclick="filterTools('decision',this)">Decision-Making</button>
-  <button class="cat-btn" onclick="filterTools('story',this)">Story & Narrative</button>
-  <button class="cat-btn" onclick="filterTools('career',this)">Career & Pivot</button>
-  <button class="cat-btn" onclick="filterTools('identity',this)">Identity & Purpose</button>
-  <button class="cat-btn" onclick="filterTools('personal-statement',this)">Personal Statement</button>
-</div>
-
-<!-- TOOLS GRID -->
-<div class="tools-section">
-  <div class="tools-grid">
-
-    <!-- FEATURED: Ikigai Mapping Worksheet -->
-    <div class="tool-card featured reveal" data-cat="identity">
-      <div class="featured-visual">
-        <div class="featured-visual-bg">生き甲斐</div>
-        <!-- Ikigai label top left -->
-        <div style="position:absolute;top:36px;left:52px;z-index:2;">
-          <p style="font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:6px;">Featured Worksheet</p>
-          <p style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;color:rgba(255,255,255,0.95);line-height:1;margin-bottom:4px;">生き甲斐</p>
-          <p style="font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.65);letter-spacing:0.08em;">Ikigai — your reason for being</p>
-        </div>
-        <p class="featured-visual-title">"What is your<br>reason for being?"</p>
-      </div>
-      <div class="featured-content">
-        <p class="tool-type">
-          <span>Identity & Purpose</span>
-          <span class="tool-badge free">Free</span>
-        </p>
-        <h3 class="tool-title">Ikigai Mapping Worksheet</h3>
-        <p class="tool-desc">The Japanese concept of ikigai — your reason for being — sits at the intersection of four things: what you love, what you're good at, what the world needs, and what you can be paid for. This guided worksheet walks you through each quadrant with specific prompts designed for people at inflection points.</p>
-        <ul class="tool-details">
-          <li>Four-quadrant reflection with 16 guided prompts</li>
-          <li>Overlap analysis — finding your intersection</li>
-          <li>Action step generator based on your responses</li>
-          <li>Designed for 30-60 minutes of focused work</li>
-        </ul>
-        <button class="tool-cta" onclick="openModal('Ikigai Mapping Worksheet')">Download Free Worksheet</button>
-        <p style="font-size:0.75rem;color:var(--gray);margin-top:16px;line-height:1.6;">Want to work through this with someone who's done it herself? <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.3);">Book a free discovery call.</a></p>
-      </div>
-    </div>
-
-    <!-- The Pivot Decision Framework -->
-    <div class="tool-card reveal" data-cat="decision">
-      <p class="tool-type"><span>Decision-Making</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">⚖️</div>
-      <h3 class="tool-title">The Pivot Decision Framework</h3>
-      <p class="tool-desc">When you're facing a major change, the noise in your head makes it impossible to think clearly. This framework structures the decision across four dimensions: values alignment, practical feasibility, identity fit, and regret minimization.</p>
-      <ul class="tool-details">
-        <li>Values alignment score for each option</li>
-        <li>The "10/10/10" regret test — how will I feel in 10 days, 10 months, 10 years?</li>
-        <li>Fear vs. intuition diagnostic</li>
-        <li>Decision summary template</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Pivot Decision Framework')">Download Free</button>
-      <p style="font-size:0.75rem;color:var(--gray);margin-top:14px;line-height:1.6;">Stuck on a decision and need a thinking partner? <a href="https://calendly.com/reasondxcoaching/30min" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.3);">Book a free call.</a></p>
-    </div>
-
-    <!-- Story Thread Finder -->
-    <div class="tool-card reveal d1" data-cat="story">
-      <p class="tool-type"><span>Story & Narrative</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">🧵</div>
-      <h3 class="tool-title">The Story Thread Finder</h3>
-      <p class="tool-desc">For making sense of your past. Most people can't see the thread connecting their seemingly unrelated experiences. This guide helps you map your timeline, identify recurring themes, and find the through-line that makes your story coherent — even when it hasn't felt that way.</p>
-      <ul class="tool-details">
-        <li>Life timeline mapping exercise</li>
-        <li>Pattern recognition prompts</li>
-        <li>Theme identification matrix</li>
-        <li>One-sentence story summary builder</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Story Thread Finder')">Download Free</button>
-    </div>
-
-    <!-- Career Values Audit -->
-    <div class="tool-card reveal" data-cat="career">
-      <p class="tool-type"><span>Career & Pivot</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">🗺️</div>
-      <h3 class="tool-title">Career Values Audit</h3>
-      <p class="tool-desc">Before you decide what to do next, you need to know what actually matters to you — not what you've been told should matter. This audit walks through 30 career values with a ranking system that reveals what you've been optimizing for vs. what you actually want.</p>
-      <ul class="tool-details">
-        <li>30 career value cards to sort and rank</li>
-        <li>Gap analysis: current role vs. ideal role</li>
-        <li>Values conflict identifier</li>
-        <li>Clear next step recommendations</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Career Values Audit')">Download Free</button>
-    </div>
-
-    <!-- Personal Statement Prep -->
-    <div class="tool-card reveal d1" data-cat="personal-statement">
-      <p class="tool-type"><span>Personal Statement</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">✍️</div>
-      <h3 class="tool-title">Personal Statement Story Map</h3>
-      <p class="tool-desc">Most personal statements fail because they list accomplishments instead of telling a story. This worksheet guides you through the narrative architecture of a compelling personal statement — the inciting moment, the transformation, and the forward vision.</p>
-      <ul class="tool-details">
-        <li>Story architecture template (college, med, law, grad)</li>
-        <li>Opening hook generator — 5 approaches</li>
-        <li>Transformation arc builder</li>
-        <li>Common mistake checklist</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Personal Statement Story Map')">Download Free</button>
-      <p style="font-size:0.75rem;color:var(--gray);margin-top:14px;line-height:1.6;">Need narrative coaching, not just editing? <a href="coaching.html#contact" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.3);">Work with Lauren directly.</a></p>
-    </div>
-
-    <!-- Identity Inventory -->
-    <div class="tool-card reveal d2" data-cat="identity">
-      <p class="tool-type"><span>Identity & Purpose</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">🪞</div>
-      <h3 class="tool-title">Identity Inventory</h3>
-      <p class="tool-desc">For understanding who you are right now. Who are you when you strip away the titles, roles, and expectations? This reflection guide explores your present-self — values, character strengths, and the parts of yourself that have stayed consistent through every change.</p>
-      <ul class="tool-details">
-        <li>Roles vs. self distinction exercise</li>
-        <li>Core values clarification (not a generic list)</li>
-        <li>Character strengths through others' eyes</li>
-        <li>Identity statement builder</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Identity Inventory')">Download Free</button>
-    </div>
-
-    <!-- The Confidence Reframe — from LinkedIn post -->
-    <div class="tool-card reveal" data-cat="identity">
-      <p class="tool-type"><span>Identity & Leadership</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">💡</div>
-      <h3 class="tool-title">The Confidence Reframe Worksheet</h3>
-      <p class="tool-desc">Confidence isn't the problem. This worksheet helps you identify the inherited rules and double-bind expectations you've been navigating — and start replacing them with self-authored ones. Based on research on women in leadership.</p>
-      <ul class="tool-details">
-        <li>Inherited rules identifier</li>
-        <li>Double-bind pattern recognition</li>
-        <li>Self-authored rules builder</li>
-        <li>Action steps toward your own standard</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Confidence Reframe Worksheet')">Download Free</button>
-    </div>
-
-    <!-- Sport Decision Tool -->
-    <div class="tool-card reveal d1" data-cat="decision">
-      <p class="tool-type"><span>Decision-Making</span><span class="tool-badge free">Free</span></p>
-      <div class="tool-icon">🏅</div>
-      <h3 class="tool-title">Should I Continue My Sport? Decision Guide</h3>
-      <p class="tool-desc">For athletes at a crossroads. This guide walks through the real questions — identity, passion, pressure, and future — to help you figure out what you actually want, separate from what others expect of you.</p>
-      <ul class="tool-details">
-        <li>Passion vs. identity distinction exercise</li>
-        <li>External pressure audit</li>
-        <li>Future self visualization</li>
-        <li>Conversation guide for parents and coaches</li>
-      </ul>
-      <button class="tool-cta" onclick="openModal('Sport Decision Guide')">Download Free</button>
-    </div>
-
-    <!-- Next Chapter Planner — Coming Soon -->
-    <div class="tool-card coming-soon reveal d2" data-cat="career">
-      <p class="tool-type"><span>Career & Pivot</span><span class="tool-badge coming">Coming Soon</span></p>
-      <div class="tool-icon">📖</div>
-      <h3 class="tool-title">The Next Chapter Planner</h3>
-      <p class="tool-desc">A 12-week guided planner for people actively navigating a career transition. Weekly prompts, reflection exercises, and milestone tracking — the companion to 1:1 coaching or a standalone tool for self-directed work.</p>
-      <ul class="tool-details">
-        <li>12-week structured framework</li>
-        <li>Weekly reflection prompts</li>
-        <li>Milestone and momentum tracker</li>
-        <li>Available as printable PDF and fillable digital version</li>
-      </ul>
-      <div style="display:flex;gap:0;margin-top:auto;">
-        <input type="email" placeholder="your@email.com" id="notify-email" style="flex:1;padding:12px 16px;border:1px solid var(--cream-dark);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;outline:none;color:var(--black);" />
-        <button onclick="notifyMe()" style="padding:12px 18px;background:var(--black);color:var(--white);border:none;font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Notify Me</button>
-      </div>
-      <p style="font-size:0.68rem;color:var(--gray);margin-top:8px;">Be first to know when it's ready.</p>
-    </div>
-
+<!-- YOUTUBE -->
+<div class="video-section">
+  <div class="video-section-header reveal">
+    <p class="header-eyebrow" style="margin-bottom:12px;">On YouTube</p>
+    <p style="font-size:0.9rem;line-height:1.8;color:var(--gray);font-weight:300;">Long-form breakdowns of the Fact vs Story framework and other tools I use in coaching. <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" style="color:var(--terracotta);">Subscribe on YouTube &rarr;</a></p>
   </div>
-</div>
 
-<!-- IKIGAI EXPLAINER -->
-<div class="ikigai-section">
-  <p style="font-size:0.68rem;font-weight:400;letter-spacing:0.26em;text-transform:uppercase;color:var(--terracotta);margin-bottom:20px;display:flex;align-items:center;gap:14px;"><span style="width:28px;height:1px;background:var(--terracotta);display:inline-block;"></span>The framework behind the work</p>
-  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.5rem);font-weight:300;color:var(--black);line-height:1.08;margin-bottom:8px;">Understanding <em style="font-style:italic;color:var(--terracotta);">Ikigai</em></h2>
-  <div class="ikigai-grid">
-    <div class="ikigai-diagram">
-      <div class="ikigai-circle ikigai-circle-1"></div>
-      <div class="ikigai-circle ikigai-circle-2"></div>
-      <div class="ikigai-circle ikigai-circle-3"></div>
-      <div class="ikigai-circle ikigai-circle-4"></div>
-      <div class="ikigai-center">
-        <p class="ikigai-center-word">Ikigai</p>
-        <p style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);margin-top:4px;">your reason for being</p>
-      </div>
+  <div class="video-featured reveal">
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/89oxH37Oilo" title="Fact vs Story: How to Stop Believing the Worst Version of Everything" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-    <div>
-      <ul class="ikigai-labels">
-        <li><div class="ikigai-dot" style="background:var(--terracotta);"></div><div><strong style="font-weight:500;">What you love</strong> — the activities and pursuits that give you energy, not drain it</div></li>
-        <li><div class="ikigai-dot" style="background:var(--gold);"></div><div><strong style="font-weight:500;">What you're good at</strong> — your genuine strengths, not just your trained skills</div></li>
-        <li><div class="ikigai-dot" style="background:var(--blush);"></div><div><strong style="font-weight:500;">What the world needs</strong> — where your contribution creates real value for others</div></li>
-        <li><div class="ikigai-dot" style="background:var(--warm-dark);"></div><div><strong style="font-weight:500;">What you can be paid for</strong> — the sustainable economic dimension of purpose</div></li>
-      </ul>
-      <p style="font-size:0.85rem;line-height:1.8;color:var(--gray);font-weight:300;margin-top:24px;">Most people are optimizing for one or two of these. The coaching work is finding the intersection — and having the courage to move toward it.</p>
-      <button onclick="openModal('Ikigai Mapping Worksheet')" style="margin-top:24px;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;background:none;border-top:none;border-left:none;border-right:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:400;">Download the Ikigai Worksheet</button>
+    <h2 class="video-featured-title">Fact vs Story: How to Stop Believing the Worst Version of Everything</h2>
+    <p class="video-featured-desc">The core framework: the one distinction that separates what actually happened from the story you told yourself about it, and four tools to find your way back to the fact.</p>
+  </div>
+
+  <div class="video-grid">
+    <div class="reveal">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/j5NnzAyRS00" title="You're Thinking About Leadership All Wrong" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-card-title">You're Thinking About Leadership All Wrong</p>
+    </div>
+    <div class="reveal d1">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/oEmuv-wjZUE" title="You Can Have the Hard Conversation You've Been Avoiding" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-card-title">You Can Have the Hard Conversation You've Been Avoiding</p>
+    </div>
+    <div class="reveal d2">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/9x5C3uuexb0" title="How many times has someone taken too long to text back?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-card-title">How many times has someone taken too long to text back?</p>
     </div>
   </div>
 </div>
 
-<!-- EXTERNAL RESOURCES -->
-<div class="external-section">
-  <p style="font-size:0.68rem;font-weight:400;letter-spacing:0.26em;text-transform:uppercase;color:var(--terracotta);margin-bottom:20px;display:flex;align-items:center;gap:14px;"><span style="width:28px;height:1px;background:var(--terracotta);display:inline-block;"></span>Worth reading</p>
-  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:var(--black);line-height:1.1;margin-bottom:16px;">Books on transitions, <em style="font-style:italic;color:var(--terracotta);">purpose & story.</em></h2>
-  <p class="external-note">A selection of books relevant to career transitions, identity, purpose, and the art of narrative. Available on Amazon. (As an Amazon Associate, laurenfine.com earns from qualifying purchases.)</p>
-  <div class="external-grid">
-    <a href="https://www.amazon.com/dp/1101875321?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · Burnett & Evans</p>
-      <h3 class="ext-title">Designing Your Life</h3>
-      <p class="ext-desc">A New York Times bestseller that applies design thinking principles to building a meaningful career and life. Developed from a popular Stanford course, it offers practical frameworks for exploring multiple possible futures.</p>
-    </a>
-    <a href="https://www.amazon.com/dp/0738285404?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · William Bridges</p>
-      <h3 class="ext-title">Transitions</h3>
-      <p class="ext-desc">A classic text on navigating life's changes, now in its 40th anniversary edition. Bridges maps the three stages of any transition — endings, the neutral zone, and new beginnings — and explains why change and transition are not the same thing.</p>
-    </a>
-    <a href="https://www.amazon.com/dp/0143130722?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · García & Miralles</p>
-      <h3 class="ext-title">Ikigai: The Japanese Secret</h3>
-      <p class="ext-desc">An international bestseller exploring the Japanese concept of ikigai — your reason for being — through interviews with the world's longest-living people. A practical and accessible introduction to living with purpose.</p>
-    </a>
-    <a href="https://www.amazon.com/dp/0143129031?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · Jenny Blake</p>
-      <h3 class="ext-title">Pivot</h3>
-      <p class="ext-desc">A career change guide built around the idea of small, strategic moves rather than dramatic leaps. Blake, a former Google career development specialist, offers a four-stage framework for making your next professional move.</p>
-    </a>
-    <a href="https://www.amazon.com/dp/0807014273?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · Viktor Frankl</p>
-      <h3 class="ext-title">Man's Search for Meaning</h3>
-      <p class="ext-desc">Psychiatrist Viktor Frankl's account of surviving Nazi concentration camps and the psychological theory of logotherapy he developed from that experience. One of the most influential books on human purpose ever written.</p>
-    </a>
-    <a href="https://www.amazon.com/dp/0060391685?tag=permission20d-20" target="_blank" rel="noopener" class="ext-card">
-      <p class="ext-source">Book · Robert McKee</p>
-      <h3 class="ext-title">Story</h3>
-      <p class="ext-desc">The definitive guide to narrative structure, used by screenwriters, novelists, and storytellers worldwide. McKee's framework for understanding how stories work applies well beyond filmmaking to any situation requiring compelling communication.</p>
-    </a>
-  </div>
-</div>
-
-<!-- NEWSLETTER -->
-<div class="nl-strip">
+<!-- INSTAGRAM -->
+<div class="social-strip">
   <div class="reveal">
-    <h2 class="nl-strip-title">New tools<br><span class="nl-strip-script">when they're ready</span></h2>
+    <h2 class="social-strip-title">The shorter version,<br>on Instagram</h2>
+    <p class="social-strip-body">Quick hits from the same frameworks: Fact vs Story moments, everyday examples, and the occasional goldendoodle. New posts regularly under Permission to Change.</p>
+    <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" class="social-strip-cta">Follow on Instagram &rarr;</a>
   </div>
-  <div class="reveal d1">
-    <p class="nl-body">I add new worksheets and resources when I build something genuinely useful in coaching practice. Subscribe and you'll get them first — along with essays on pivots, purpose, and the stories we tell ourselves.</p>
-    <div class="nl-form">
-      <input type="email" class="nl-input" placeholder="your@email.com" />
-      <button class="nl-btn">Subscribe</button>
+  <div class="ig-teaser-grid reveal d1">
+    <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" class="ig-teaser" aria-label="View on Instagram">
+      <svg class="ig-teaser-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" class="ig-teaser" aria-label="View on Instagram">
+      <svg class="ig-teaser-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" class="ig-teaser" aria-label="View on Instagram">
+      <svg class="ig-teaser-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- PODCAST (COMING SOON) -->
+<div class="coming-section">
+  <div class="coming-card reveal">
+    <span class="tool-badge coming">Coming Soon</span>
+    <h3 class="coming-title">Podcast appearances &amp; audio clips</h3>
+    <p class="coming-body">Episodes I've been a guest on, plus short audio clips from each conversation, will live here as they publish. Leave your email and I'll let you know when the first ones go up.</p>
+    <div class="nl-form" style="max-width:420px;margin:0 auto;">
+      <input type="email" class="nl-input" id="notify-email" placeholder="your@email.com" style="border:1px solid var(--cream-dark);color:var(--black);" />
+      <button class="nl-btn" onclick="notifyMe()" style="background:var(--black);">Notify Me</button>
     </div>
   </div>
 </div>
@@ -591,90 +419,6 @@
   const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Modal
-  // Maps worksheet display name to PDF file in repo root
-  const RESOURCE_WORKSHEETS = {
-    'Pivot Decision Framework': 'pivot-decision-framework.pdf',
-    'Ikigai Mapping Worksheet': 'ikigai-mapping-worksheet.pdf',
-    'Story Thread Finder': 'story-thread-finder.pdf',
-    'Career Values Audit': 'career-values-audit.pdf',
-    'Personal Statement Story Map': 'personal-statement-story-map.pdf',
-    'Identity Inventory': 'identity-inventory.pdf',
-    'Confidence Reframe Worksheet': 'confidence-reframe-worksheet.pdf',
-    'Sport Decision Guide': 'sport-decision-guide.pdf'
-  };
-  let currentTool = '';
-  function openModal(toolName) {
-    currentTool = toolName;
-    document.getElementById('modal').classList.add('open');
-    const cb = document.getElementById('modal-substack');
-    if (cb) cb.checked = false;
-    if (typeof gtag === 'function') {
-      gtag('event', 'lead_modal_open', { worksheet: toolName, source: 'resources_page' });
-    }
-  }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-  }
-  function downloadWorksheet(toolName) {
-    const file = RESOURCE_WORKSHEETS[toolName];
-    if (!file) return;
-    const a = document.createElement('a');
-    a.href = file;
-    a.download = file;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-  function submitModal() {
-    const email = document.getElementById('modal-email').value.trim();
-    const name = document.getElementById('modal-name').value.trim();
-    if (!email) { alert('Please enter your email address.'); return; }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-
-    const submitBtn = document.querySelector('#modal .modal-submit');
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
-
-    const params = new URLSearchParams(window.location.search);
-      const alsoSubstack = document.getElementById('modal-substack').checked;
-      const notes = 'utm_source=' + (params.get('utm_source') || '') +
-        '; utm_medium=' + (params.get('utm_medium') || '') +
-        '; utm_campaign=' + (params.get('utm_campaign') || '') +
-              '; referrer=' + (document.referrer || '');
-      const formBody = 'firstName=' + encodeURIComponent(name || '') +
-              '&email=' + encodeURIComponent(email) +
-              '&source=' + encodeURIComponent('LaurenFine') +
-              '&userGroup=' + encodeURIComponent('CoachingLead') +
-              '&worksheet=' + encodeURIComponent(currentTool) +
-              '&leadStage=' + encodeURIComponent('worksheet_download') +
-              '&alsoSubstack=' + encodeURIComponent(alsoSubstack) +
-              '&notes=' + encodeURIComponent(notes);
-    
-        fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formBody
-        }).then(function(r) { return r.json().catch(function() { return {}; }); })
-          .then(function() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'lead_capture', { worksheet: currentTool, source: 'resources_page' });
-          if (alsoSubstack) {
-            gtag('event', 'substack_optin', { source: 'resources_page', worksheet: currentTool });
-          }
-        }
-        downloadWorksheet(currentTool);
-        alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentTool + ' is downloading now. Check your inbox shortly.');
-        closeModal();
-      })
-      .catch(function() {
-        downloadWorksheet(currentTool);
-        alert('Your worksheet is downloading. We could not confirm your email subscription, but you can reach out anytime at reasondxcoaching@gmail.com.');
-        closeModal();
-      })
-      .finally(function() {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Download instantly, it's free"; }
-      });
-  }
   function notifyMe() {
     const email = document.getElementById('notify-email').value.trim();
     if (!email) { alert('Please enter your email address.'); return; }
@@ -683,52 +427,33 @@
     const btn = document.querySelector('button[onclick="notifyMe()"]');
     if (btn) { btn.disabled = true; }
 
-        const params = new URLSearchParams(window.location.search);
-                                         const notes = 'utm_source=' + (params.get('utm_source') || '') +
-        '; utm_medium=' + (params.get('utm_medium') || '') +
-        '; utm_campaign=' + (params.get('utm_campaign') || '') +
-        '; referrer=' + (document.referrer || '');
-      const formBody = 'email=' + encodeURIComponent(email) +
-        '&source=' + encodeURIComponent('LaurenFine') +
-              '&userGroup=' + encodeURIComponent('CoachingLead') +
-        '&worksheet=' + encodeURIComponent('Next Chapter Planner (waitlist)') +
-              '&leadStage=' + encodeURIComponent('waitlist') +
-        '&notes=' + encodeURIComponent(notes);
-  
-      fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
-            method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formBody
-  }).then(function() {
-  if (typeof gtag === 'function') {
-        gtag('event', 'waitlist_signup', { item: 'Next Chapter Planner' });
+    const params = new URLSearchParams(window.location.search);
+    const notes = 'utm_source=' + (params.get('utm_source') || '') +
+      '; utm_medium=' + (params.get('utm_medium') || '') +
+      '; utm_campaign=' + (params.get('utm_campaign') || '') +
+      '; referrer=' + (document.referrer || '');
+    const formBody = 'email=' + encodeURIComponent(email) +
+      '&source=' + encodeURIComponent('LaurenFine') +
+      '&userGroup=' + encodeURIComponent('CoachingLead') +
+      '&worksheet=' + encodeURIComponent('Podcast episodes (waitlist)') +
+      '&leadStage=' + encodeURIComponent('waitlist') +
+      '&notes=' + encodeURIComponent(notes);
+
+    fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formBody
+    }).then(function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'waitlist_signup', { item: 'Podcast episodes' });
       }
-      alert("Got it! We'll email " + email + ' the moment the Next Chapter Planner is ready.');
+      alert("Got it! We'll email " + email + ' as soon as podcast episodes are up.');
       document.getElementById('notify-email').value = '';
     }).catch(function() {
-      alert("Got it! We'll email " + email + ' when the Next Chapter Planner is ready. (If you do not hear back, reach out at reasondxcoaching@gmail.com.)');
+      alert("Got it! We'll email " + email + ' when podcast episodes are ready. (If you do not hear back, reach out at reasondxcoaching@gmail.com.)');
       document.getElementById('notify-email').value = '';
     }).finally(function() {
       if (btn) { btn.disabled = false; }
-    });
-  }
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  // Category filter
-  function filterTools(cat, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.tool-card').forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
     });
   }
 </script>
