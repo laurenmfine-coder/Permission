@@ -220,7 +220,21 @@
   .ig-teaser { aspect-ratio:9/16; background:linear-gradient(145deg,var(--blush-light),var(--blush)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
   .ig-teaser-icon { color:rgba(255,255,255,0.85); width:28px; height:28px; }
 
-  .coming-section { padding:70px 64px 100px; }
+  .podcast-section { padding:70px 64px 100px; }
+  .podcast-section-header { margin-bottom:40px; max-width:640px; }
+  .podcast-card { display:grid; grid-template-columns:180px 1fr; gap:36px; align-items:center; background:var(--cream-dark); padding:36px; max-width:800px; margin:0 auto; }
+  .podcast-art { width:180px; height:180px; object-fit:cover; box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+  .podcast-show { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:10px; }
+  .podcast-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:500; color:var(--black); line-height:1.25; margin-bottom:14px; }
+  .podcast-meta { font-size:0.78rem; color:var(--gray); font-weight:300; margin-bottom:20px; }
+  .podcast-listen { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 26px; text-decoration:none; transition:background 0.3s; }
+  .podcast-listen:hover { background:var(--terracotta); }
+  @media (max-width:640px) {
+    .podcast-card { grid-template-columns:1fr; text-align:center; padding:28px; }
+    .podcast-art { width:140px; height:140px; margin:0 auto; }
+  }
+
+
   .coming-card { background:var(--cream-dark); padding:52px 44px; text-align:center; max-width:640px; margin:0 auto; }
   .coming-card .tool-badge { display:inline-block; margin-bottom:16px; }
   .coming-title { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:500; color:var(--black); margin-bottom:12px; }
@@ -357,15 +371,20 @@
   </div>
 </div>
 
-<!-- PODCAST (COMING SOON) -->
-<div class="coming-section">
-  <div class="coming-card reveal">
-    <span class="tool-badge coming">Coming Soon</span>
-    <h3 class="coming-title">Podcast appearances &amp; audio clips</h3>
-    <p class="coming-body">Episodes I've been a guest on, plus short audio clips from each conversation, will live here as they publish. Leave your email and I'll let you know when the first ones go up.</p>
-    <div class="nl-form" style="max-width:420px;margin:0 auto;">
-      <input type="email" class="nl-input" id="notify-email" placeholder="your@email.com" style="border:1px solid var(--cream-dark);color:var(--black);" />
-      <button class="nl-btn" onclick="notifyMe()" style="background:var(--black);">Notify Me</button>
+<!-- PODCAST -->
+<div class="podcast-section">
+  <div class="podcast-section-header reveal">
+    <p class="header-eyebrow" style="margin-bottom:12px;">On the Podcast Circuit</p>
+    <p style="font-size:0.9rem;line-height:1.8;color:var(--gray);font-weight:300;">Conversations from shows I've been a guest on. More episodes added as they publish.</p>
+  </div>
+
+  <div class="podcast-card reveal">
+    <img class="podcast-art" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/92/b1/c0/92b1c0b1-f164-7b31-6acb-4fbf65595242/mza_8032515142408179313.jpg/1200x1200bf-60.jpg" alt="Healthy Mind, Healthy Life podcast cover art" loading="lazy">
+    <div>
+      <p class="podcast-show">Healthy Mind, Healthy Life</p>
+      <h3 class="podcast-title">You Can Be Successful and Still Be Burning Out</h3>
+      <p class="podcast-meta">19 min &middot; with host Ria</p>
+      <a href="https://podcasts.apple.com/us/podcast/you-can-be-successful-and-still-be-burning-out-with/id1682799672?i=1000781239821" target="_blank" rel="noopener" class="podcast-listen">Listen on Apple Podcasts &rarr;</a>
     </div>
   </div>
 </div>
