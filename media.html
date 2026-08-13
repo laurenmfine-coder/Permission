@@ -228,6 +228,10 @@
   .podcast-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:500; color:var(--black); line-height:1.25; margin-bottom:14px; }
   .podcast-meta { font-size:0.78rem; color:var(--gray); font-weight:300; margin-bottom:20px; }
   .podcast-listen { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 26px; text-decoration:none; transition:background 0.3s; }
+  .podcast-platforms { display:flex; flex-wrap:wrap; gap:10px; }
+  .podcast-platform-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--black); background:var(--white); border:1px solid rgba(0,0,0,0.15); padding:9px 16px; text-decoration:none; transition:border-color 0.3s,color 0.3s; }
+  .podcast-platform-btn:hover { border-color:var(--terracotta); color:var(--terracotta); }
+  .podcast-platform-btn svg { width:14px; height:14px; }
   .podcast-listen:hover { background:var(--terracotta); }
   @media (max-width:640px) {
     .podcast-card { grid-template-columns:1fr; text-align:center; padding:28px; }
@@ -404,7 +408,11 @@
         <p class="podcast-show">The Mindful Living</p>
         <h3 class="podcast-title">Fact vs Story: The Camera Test for Career Doubt</h3>
         <p class="podcast-meta">with host Sana</p>
-        <a href="https://the-mindful-living.captivate.fm/episode/fact-vs-story-dr-lauren-fine-on-the-camera-test-for-career-doubt" target="_blank" rel="noopener" class="podcast-listen">Listen to the Episode &rarr;</a>
+        <div class="podcast-platforms">
+          <a href="https://podcasts.apple.com/us/podcast/fact-vs-story-dr-lauren-fine-on-the-camera-test-for/id1762314749?i=1000783140147&uo=4" target="_blank" rel="noopener" class="podcast-platform-btn">Apple Podcasts</a>
+          <a href="https://open.spotify.com/episode/2UWgWkUyQIoa6ZO6W9PoaB" target="_blank" rel="noopener" class="podcast-platform-btn">Spotify</a>
+          <a href="https://www.youtube.com/watch?v=6xApqgrEpCY" target="_blank" rel="noopener" class="podcast-platform-btn">YouTube</a>
+        </div>
       </div>
     </div>
     <div class="podcast-card reveal d3">
