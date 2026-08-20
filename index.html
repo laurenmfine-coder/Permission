@@ -222,10 +222,16 @@
   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
 
   /* NAV */
-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
-  .nav-links { display:flex; gap:30px; list-style:none; }
+  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
+  @media (max-width:1400px) {
+    nav { padding:22px 32px; column-gap:12px; }
+    .nav-links { gap:20px; }
+    .nav-social { gap:10px; margin-right:2px; }
+    .nav-social svg { width:19px; height:19px; }
+  }
   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
   .nav-links a:hover { color:var(--black); }
@@ -555,7 +561,7 @@
 
 <!-- NAV -->
   <nav>
-  <a href="index.html" class="nav-logo">Lauren Fine</a>
+  <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="coaching.html">Coaching</a></li>
@@ -592,6 +598,25 @@
   </div>
   <div class="hero-right">
     <img src="1783478164851_938A1133.jpg" alt="Lauren Fine, MD: Coach, TEDx Speaker, Story Strategist" />
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-home" id="testimonials">
+  <div class="testimonial-home-inner reveal">
+    <p class="testimonial-home-eyebrow">From a recent client</p>
+    <div class="testimonial-home-rating" aria-label="5 out of 5 stars">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+    <p class="testimonial-home-pull">"If you're in a career transition and feeling lost or overwhelmed, she is exactly the kind of coach you need in your corner. She meets you where you are, leads with heart, and helps you find your way forward."</p>
+    <div class="testimonial-home-meta">
+      <span class="testimonial-home-name">Margaret</span>
+      <span class="testimonial-home-context">Career transition · Sales to a new role</span>
+    </div>
+    <div class="testimonial-home-actions">
+      <a href="https://maps.app.goo.gl/ZoG7QSi8on8ozKtB9" target="_blank" rel="noopener" class="testimonial-home-link">Read full review on Google →</a>
+      <a href="testimonials.html" class="testimonial-home-link">All testimonials →</a>
+    </div>
   </div>
 </section>
 
@@ -844,24 +869,6 @@
 
 <!-- THE WORK -->
 
-<!-- TESTIMONIAL -->
-<section class="testimonial-home" id="testimonials">
-  <div class="testimonial-home-inner reveal">
-    <p class="testimonial-home-eyebrow">From a recent client</p>
-    <div class="testimonial-home-rating" aria-label="5 out of 5 stars">
-      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-    </div>
-    <p class="testimonial-home-pull">"If you're in a career transition and feeling lost or overwhelmed, she is exactly the kind of coach you need in your corner. She meets you where you are, leads with heart, and helps you find your way forward."</p>
-    <div class="testimonial-home-meta">
-      <span class="testimonial-home-name">Margaret</span>
-      <span class="testimonial-home-context">Career transition · Sales to a new role</span>
-    </div>
-    <div class="testimonial-home-actions">
-      <a href="https://maps.app.goo.gl/ZoG7QSi8on8ozKtB9" target="_blank" rel="noopener" class="testimonial-home-link">Read full review on Google →</a>
-      <a href="testimonials.html" class="testimonial-home-link">All testimonials →</a>
-    </div>
-  </div>
-</section>
 
 <!-- NEWSLETTER -->
 

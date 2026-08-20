@@ -63,10 +63,16 @@
   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
 
   /* NAV */
-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
-  .nav-links { display:flex; gap:30px; list-style:none; }
+  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
+  @media (max-width:1400px) {
+    nav { padding:22px 32px; column-gap:12px; }
+    .nav-links { gap:20px; }
+    .nav-social { gap:10px; margin-right:2px; }
+    .nav-social svg { width:19px; height:19px; }
+  }
   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
   .nav-links a:hover { color:var(--black); }
@@ -356,7 +362,7 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <a href="index.html" class="nav-logo">Lauren Fine</a>
+  <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="coaching.html">Coaching</a></li>
@@ -426,28 +432,33 @@
   </div>
 </div>
 
-<!-- SERVICES -->
-<!-- SPECIALTY PATHS -->
-<div style="background:var(--cream-dark);padding:80px 64px;">
-  <p class="section-eyebrow reveal" style="margin:0 auto 20px;justify-content:center;text-align:center;">Specialty paths</p>
-  <h2 class="section-title reveal d1" style="text-align:center;margin-bottom:20px;">Looking for something <em>specific?</em></h2>
-  <p style="text-align:center;font-size:1rem;color:var(--gray);max-width:680px;margin:0 auto 48px;line-height:1.7;font-weight:300;">Three coaching focuses have their own dedicated pages. If one of these speaks to where you are, start there.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;">
-    <a href="physician-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">For Physicians</p>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Physician Coaching</h3>
-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Coaching for physicians questioning their clinical path. From a physician who made the transition.</p>
-    </a>
-    <a href="ikigai-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Ikigai Coaching</p>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Find Your Ikigai</h3>
-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Real ikigai coaching, not the Venn diagram. From the TEDx speaker behind Permission to Change.</p>
-    </a>
-    <a href="career-reinvention.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Career Reinvention</p>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Author the Next Chapter</h3>
-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Career reinvention coaching for accomplished professionals ready for what comes next.</p>
-    </a>
+<!-- WHY THE BACKGROUND MATTERS -->
+<div class="process">
+  <div class="process-header">
+    <p class="section-eyebrow reveal">Why it works</p>
+    <h2 class="section-title reveal d1">What that background<br>actually gets <em>you</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <p class="process-n">MD</p>
+      <h3 class="process-title">Twenty years under uncertainty</h3>
+      <p class="process-body">Two decades practicing medicine means two decades of making high-stakes decisions with incomplete information. That's the exact skill a career pivot or a hard life decision requires. It's not a metaphor. It's the same muscle.</p>
+    </div>
+    <div class="process-step reveal">
+      <p class="process-n">Ed</p>
+      <h3 class="process-title">She teaches reasoning for a living</h3>
+      <p class="process-body">As Assistant Dean of Clinical Skills Education, she trains physicians in how to think through ambiguous problems, not just what to conclude. You get the same framework applied to your own decision, not a generic coaching script.</p>
+    </div>
+    <div class="process-step reveal">
+      <p class="process-n">Dx</p>
+      <h3 class="process-title">She's made the pivot herself</h3>
+      <p class="process-body">Founder of ReasonDx, built from scratch after stepping back from full-time clinical practice. She isn't coaching you through a transition she's read about. She's coaching you through one she's lived.</p>
+    </div>
+    <div class="process-step reveal">
+      <p class="process-n">Tx</p>
+      <h3 class="process-title">She knows how to build the story</h3>
+      <p class="process-body">Her TEDx talk on this exact reinvention has reached a global audience. Turning a pivot into a story that lands, for a search committee, an interviewer, or yourself, is a skill she uses and teaches.</p>
+    </div>
   </div>
 </div>
 
@@ -519,33 +530,27 @@
   <p style="margin-top:36px;font-size:0.82rem;line-height:1.8;color:var(--gray);font-weight:300;max-width:640px;">A combination of 55-minute and 25-minute sessions can be arranged within any package. Individual sessions ($375 each) are available as an add-on for current and past clients between packages. New clients begin with a package, because the work is more effective when there's room to build on it.</p>
 </div>
 
-<!-- WHY THE BACKGROUND MATTERS -->
-<div class="process">
-  <div class="process-header">
-    <p class="section-eyebrow reveal">Why it works</p>
-    <h2 class="section-title reveal d1">What that background<br>actually gets <em>you</em></h2>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <p class="process-n">MD</p>
-      <h3 class="process-title">Twenty years under uncertainty</h3>
-      <p class="process-body">Two decades practicing medicine means two decades of making high-stakes decisions with incomplete information. That's the exact skill a career pivot or a hard life decision requires. It's not a metaphor. It's the same muscle.</p>
-    </div>
-    <div class="process-step reveal">
-      <p class="process-n">Ed</p>
-      <h3 class="process-title">She teaches reasoning for a living</h3>
-      <p class="process-body">As Assistant Dean of Clinical Skills Education, she trains physicians in how to think through ambiguous problems, not just what to conclude. You get the same framework applied to your own decision, not a generic coaching script.</p>
-    </div>
-    <div class="process-step reveal">
-      <p class="process-n">Dx</p>
-      <h3 class="process-title">She's made the pivot herself</h3>
-      <p class="process-body">Founder of ReasonDx, built from scratch after stepping back from full-time clinical practice. She isn't coaching you through a transition she's read about. She's coaching you through one she's lived.</p>
-    </div>
-    <div class="process-step reveal">
-      <p class="process-n">Tx</p>
-      <h3 class="process-title">She knows how to build the story</h3>
-      <p class="process-body">Her TEDx talk on this exact reinvention has reached a global audience. Turning a pivot into a story that lands, for a search committee, an interviewer, or yourself, is a skill she uses and teaches.</p>
-    </div>
+<!-- SPECIALTY PATHS -->
+<div style="background:var(--cream-dark);padding:80px 64px;">
+  <p class="section-eyebrow reveal" style="margin:0 auto 20px;justify-content:center;text-align:center;">Specialty paths</p>
+  <h2 class="section-title reveal d1" style="text-align:center;margin-bottom:20px;">Looking for something <em>specific?</em></h2>
+  <p style="text-align:center;font-size:1rem;color:var(--gray);max-width:680px;margin:0 auto 48px;line-height:1.7;font-weight:300;">Three coaching focuses have their own dedicated pages. If one of these speaks to where you are, start there.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;">
+    <a href="physician-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">For Physicians</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Physician Coaching</h3>
+      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Coaching for physicians questioning their clinical path. From a physician who made the transition.</p>
+    </a>
+    <a href="ikigai-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Ikigai Coaching</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Find Your Ikigai</h3>
+      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Real ikigai coaching, not the Venn diagram. From the TEDx speaker behind Permission to Change.</p>
+    </a>
+    <a href="career-reinvention.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Career Reinvention</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Author the Next Chapter</h3>
+      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Career reinvention coaching for accomplished professionals ready for what comes next.</p>
+    </a>
   </div>
 </div>
 
