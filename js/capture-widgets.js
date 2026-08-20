@@ -156,23 +156,29 @@
     });
   }
 
-  // Homepage-only test: scroll-triggered newsletter modal. Shares the same
-  // one-popup-per-session guard as exit-intent, so a visitor never sees both
-  // in one visit. Suppressed for 14 days once seen, dismissed or not.
+  // Homepage-only test: newsletter modal fires on a short timer or scroll
+  // depth, whichever comes first. Shares the same one-popup-per-session guard
+  // as exit-intent, so a visitor never sees both in one visit. Suppressed for
+  // 14 days once seen, dismissed or not.
   function initNewsletterTest() {
     if (!isHomepage()) return;
     if (daysAgo(NEWSLETTER_KEY) < NEWSLETTER_DAYS) return;
     buildNewsletterModal();
     var triggered = false;
-    window.addEventListener('scroll', function () {
+    function fire(triggerType) {
       if (triggered || popupAlreadyShownThisSession()) return;
+      triggered = true;
+      markPopupShownThisSession();
+      mark(NEWSLETTER_KEY);
+      document.getElementById('pf-newsletter-overlay').classList.add('open');
+      if (typeof gtag === 'function') gtag('event', 'newsletter_popup_shown', { source: 'homepage_' + triggerType });
+    }
+    var timerId = setTimeout(function () { fire('timer'); }, 13000);
+    window.addEventListener('scroll', function () {
       var scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
       if (scrollDepth >= 0.55) {
-        triggered = true;
-        markPopupShownThisSession();
-        mark(NEWSLETTER_KEY);
-        document.getElementById('pf-newsletter-overlay').classList.add('open');
-        if (typeof gtag === 'function') gtag('event', 'newsletter_popup_shown', { source: 'homepage_scroll' });
+        clearTimeout(timerId);
+        fire('scroll');
       }
     });
   }
