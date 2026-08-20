@@ -143,26 +143,10 @@
   }
 
   function initStickyBar() {
-    if (daysAgo(STICKY_KEY) < STICKY_DAYS) return;
-    buildStickyBar();
-    var isPost = !!document.querySelector('article.post-body') || !!document.getElementById('pf-related-posts');
-    if (isPost) {
-      var shown = false;
-      window.addEventListener('scroll', function () {
-        if (shown) return;
-        var scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-        if (scrollDepth >= 0.7) {
-          shown = true;
-          var el = document.getElementById('pf-sticky-bar');
-          if (el) el.classList.add('open');
-        }
-      });
-    } else {
-      setTimeout(function () {
-        var el = document.getElementById('pf-sticky-bar');
-        if (el) el.classList.add('open');
-      }, 8000);
-    }
+    // Removed site-wide: risked surfacing "not ready to book?" language next to
+    // trust-building content (e.g. the certification FAQ), which read as the
+    // site echoing doubt back at the reader. Exit-intent popup remains as the
+    // passive-capture mechanism instead.
   }
 
   document.addEventListener('DOMContentLoaded', function () {
