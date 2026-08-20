@@ -1,4 +1,5 @@
-/* Site-wide email capture: exit-intent popup + sticky bar.
+/* Site-wide email capture: exit-intent popup, plus a homepage-only
+   scroll-triggered newsletter test.
    Reuses the existing Loops newsletter-form endpoint (same one resources.html
    already posts to), tagged with a distinct source per widget so leads can be
    segmented in Loops without touching the backend. */
@@ -6,8 +7,11 @@
   var LOOPS_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f';
   var STICKY_KEY = 'pf_sticky_dismissed';
   var EXIT_KEY = 'pf_exit_seen';
+  var NEWSLETTER_KEY = 'pf_newsletter_seen';
+  var SESSION_GUARD_KEY = 'pf_popup_shown_session';
   var STICKY_DAYS = 14;
   var EXIT_DAYS = 7;
+  var NEWSLETTER_DAYS = 14;
 
   function daysAgo(key) {
     var v = localStorage.getItem(key);
@@ -17,8 +21,18 @@
   function mark(key) {
     try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
   }
+  function popupAlreadyShownThisSession() {
+    try { return sessionStorage.getItem(SESSION_GUARD_KEY) === '1'; } catch (e) { return false; }
+  }
+  function markPopupShownThisSession() {
+    try { sessionStorage.setItem(SESSION_GUARD_KEY, '1'); } catch (e) {}
+  }
   function emailValid(v) {
     return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+  }
+  function isHomepage() {
+    var p = window.location.pathname;
+    return p === '/' || p === '' || /\/index\.html$/.test(p);
   }
   function utmNotes() {
     var params = new URLSearchParams(window.location.search);
@@ -57,12 +71,7 @@
     '.pf-modal-submit:hover{background:#182D4E;}' +
     '.pf-modal-submit:disabled{opacity:0.6;cursor:default;}' +
     '.pf-modal-note{font-size:0.72rem;color:#8C8580;margin-top:12px;text-align:center;}' +
-    '.pf-sticky{position:fixed;left:0;right:0;bottom:0;background:#1A1A1A;color:#fff;z-index:9997;display:none;padding:12px 20px;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:0.85rem;}' +
-    '.pf-sticky.open{display:flex;}' +
-    '.pf-sticky a.pf-sticky-cta{color:#fff;background:#23406E;padding:8px 16px;text-decoration:none;font-size:0.82rem;letter-spacing:0.02em;white-space:nowrap;}' +
-    '.pf-sticky a.pf-sticky-cta:hover{background:#182D4E;}' +
-    '.pf-sticky-close{background:none;border:none;color:#B8975A;cursor:pointer;font-size:1.1rem;line-height:1;padding:0 4px;}' +
-    '@media(max-width:640px){.pf-sticky{font-size:0.78rem;padding:10px 14px;}.pf-modal{padding:30px 22px;}}';
+    '@media(max-width:640px){.pf-modal{padding:30px 22px;}}';
 
   function injectCSS() {
     if (document.getElementById('pf-widget-style')) return;
@@ -90,25 +99,29 @@
     document.body.appendChild(overlay);
   }
 
-  function buildStickyBar() {
-    var bar = document.createElement('div');
-    bar.className = 'pf-sticky';
-    bar.id = 'pf-sticky-bar';
-    bar.innerHTML =
-      '<span>Not ready to book? Get the free Pivot Decision Framework worksheet.</span>' +
-      '<a href="resources.html" class="pf-sticky-cta">Get the free worksheet</a>' +
-      '<button class="pf-sticky-close" aria-label="Dismiss" onclick="window.__pfCloseSticky()">&times;</button>';
-    document.body.appendChild(bar);
+  function buildNewsletterModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'pf-overlay';
+    overlay.id = 'pf-newsletter-overlay';
+    overlay.innerHTML =
+      '<div class="pf-modal">' +
+        '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseNewsletter()">&times;</button>' +
+        '<p class="pf-modal-eyebrow">Permission to Change</p>' +
+        '<h3 class="pf-modal-title">Stories on pivots, purpose, and the stories we tell ourselves</h3>' +
+        '<p class="pf-modal-body">New essays when they\'re ready, not on a schedule. No noise.</p>' +
+        '<iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid #E5E0DA;background:#FFFFFF;" frameborder="0" scrolling="no"></iframe>' +
+      '</div>';
+    document.body.appendChild(overlay);
   }
 
   window.__pfCloseExit = function () {
     var el = document.getElementById('pf-exit-overlay');
     if (el) el.classList.remove('open');
   };
-  window.__pfCloseSticky = function () {
-    var el = document.getElementById('pf-sticky-bar');
+  window.__pfCloseNewsletter = function () {
+    var el = document.getElementById('pf-newsletter-overlay');
     if (el) el.classList.remove('open');
-    mark(STICKY_KEY);
+    mark(NEWSLETTER_KEY);
   };
   window.__pfSubmitExit = function () {
     var email = document.getElementById('pf-exit-email').value.trim();
@@ -134,10 +147,32 @@
     buildExitModal();
     var triggered = false;
     document.addEventListener('mouseout', function (e) {
-      if (triggered) return;
+      if (triggered || popupAlreadyShownThisSession()) return;
       if (e.clientY <= 0 && (!e.relatedTarget)) {
         triggered = true;
+        markPopupShownThisSession();
         document.getElementById('pf-exit-overlay').classList.add('open');
+      }
+    });
+  }
+
+  // Homepage-only test: scroll-triggered newsletter modal. Shares the same
+  // one-popup-per-session guard as exit-intent, so a visitor never sees both
+  // in one visit. Suppressed for 14 days once seen, dismissed or not.
+  function initNewsletterTest() {
+    if (!isHomepage()) return;
+    if (daysAgo(NEWSLETTER_KEY) < NEWSLETTER_DAYS) return;
+    buildNewsletterModal();
+    var triggered = false;
+    window.addEventListener('scroll', function () {
+      if (triggered || popupAlreadyShownThisSession()) return;
+      var scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollDepth >= 0.55) {
+        triggered = true;
+        markPopupShownThisSession();
+        mark(NEWSLETTER_KEY);
+        document.getElementById('pf-newsletter-overlay').classList.add('open');
+        if (typeof gtag === 'function') gtag('event', 'newsletter_popup_shown', { source: 'homepage_scroll' });
       }
     });
   }
@@ -152,6 +187,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     injectCSS();
     initExitIntent();
+    initNewsletterTest();
     initStickyBar();
   });
 })();
