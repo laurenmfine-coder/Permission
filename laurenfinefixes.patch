@@ -1,0 +1,1622 @@
+From a947d3de9302222ea093e6989049e765f465d182 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 20 Aug 2026 23:28:32 +0000
+Subject: [PATCH 1/2] Fix analytics gaps, nav CTA clipping, and popup timing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Four issues found while auditing GA4 and Search Console.
+
+Analytics blind spots
+about.html, speaking.html, testimonials.html and quiz.html had no GA
+tag at all. about.html is the site's top organic landing page — 16 of
+40 search clicks over the last three months — so roughly 40% of organic
+search traffic was invisible in Analytics. Added the standard
+G-2QBSJ9PRRQ snippet to all four.
+
+Duplicate homepage in reporting
+The nav logo linked to index.html on every page, so GA counted "/" and
+"/index.html" as two separate pages and split homepage metrics between
+them. All internal home links now point at "/".
+
+Header CTA clipped between ~960px and ~1050px
+The desktop nav needed ~1036px but the container gave it less, so the
+"Free Session, No Pitch" button overflowed and rendered as a blank
+black rectangle — the only persistently visible CTA on the site.
+Added flex-wrap to the nav so it wraps instead of overflowing, plus a
+1400px breakpoint that tightens padding, gaps and icon sizes to keep
+one row down to ~1250px. Verified clean from 390px to 1600px.
+
+Popup covering the primary CTA
+The homepage newsletter modal fired on a 13-second timer, which landed
+squarely on "Book a free coaching session" for anyone reading the hero
+at normal speed. The modal now never opens while a booking CTA is on
+screen; a trigger that lands in that window is deferred and retried
+rather than cancelled, so capture still happens once the CTA scrolls
+away. Timer moved from 13s to 45s; the 55% scroll trigger is unchanged.
+
+Booking page
+Every CTA pointed at free-session.html, which is a five-field intake
+form — the Calendly link was hidden inside the success card and only
+appeared after submitting. Added a visible "Pick a time on my calendar"
+option in the hero and beside the form, tracked as booking_direct_click
+so the two paths can be compared. Also fixed the form aside, which
+promised times by email within two business days while the success card
+and confirmation page both describe self-service booking.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PXti93te9d2EUKAUDVybZn
+---
+ about.html                                    | 21 ++++++--
+ blog.html                                     | 12 +++--
+ booking-confirmed.html                        |  2 +-
+ career-reinvention.html                       | 12 +++--
+ coaching.html                                 | 12 +++--
+ free-session.html                             | 35 ++++++++++--
+ ikigai-coaching.html                          | 12 +++--
+ index.html                                    | 12 +++--
+ js/capture-widgets.js                         | 53 ++++++++++++++++---
+ media.html                                    | 12 +++--
+ physician-coaching.html                       | 12 +++--
+ post-decision-that-didnt-make-sense.html      | 14 +++--
+ post-discomfort-you-choose.html               | 14 +++--
+ post-guilt-of-leaving.html                    | 14 +++--
+ post-its-just-where-you-arent-looking.html    | 14 +++--
+ post-light-in-their-eyes.html                 | 14 +++--
+ post-mindset-isnt-who-you-are.html            | 14 +++--
+ post-my-ikigai-didnt-die.html                 | 14 +++--
+ post-never-out-memorize-ai.html               | 14 +++--
+ ...th-to-your-purpose-healthcare-edition.html | 14 +++--
+ post-permission-to-put-it-down.html           | 14 +++--
+ post-pessimism-disguised-as-realism.html      | 14 +++--
+ post-template.html                            | 14 +++--
+ post-what-i-found-on-the-other-side.html      | 14 +++--
+ post-what-i-lost.html                         | 14 +++--
+ ...at-if-your-ikigai-was-allowed-to-move.html | 14 +++--
+ post-why-lifelong-learning-is-permission.html | 14 +++--
+ post-you-have-permission-to-change.html       | 14 +++--
+ quiz.html                                     | 21 ++++++--
+ resources.html                                | 12 +++--
+ speaking.html                                 | 21 ++++++--
+ testimonials.html                             | 21 ++++++--
+ 32 files changed, 392 insertions(+), 116 deletions(-)
+
+diff --git a/about.html b/about.html
+index 1cba774..2e9fbf5 100644
+--- a/about.html
++++ b/about.html
+@@ -98,10 +98,16 @@
+   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:900; opacity:0.4; }
+ 
+   /* NAV (matches site) */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -201,11 +207,20 @@
+     .footer-bottom { flex-direction:column; gap:12px; }
+   }
+ </style>
++<!-- Google tag (gtag.js) -->
++<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
++<script>
++  window.dataLayer = window.dataLayer || [];
++  function gtag(){dataLayer.push(arguments);}
++  gtag('js', new Date());
++
++  gtag('config', 'G-2QBSJ9PRRQ');
++</script>
+ </head>
+ <body>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/blog.html b/blog.html
+index 691f801..20108e5 100644
+--- a/blog.html
++++ b/blog.html
+@@ -53,10 +53,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -332,7 +338,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/booking-confirmed.html b/booking-confirmed.html
+index 390e952..8d41c0c 100644
+--- a/booking-confirmed.html
++++ b/booking-confirmed.html
+@@ -18,7 +18,7 @@
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+   html { scroll-behavior: smooth; }
+   body { background: var(--cream); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 400; min-height: 100vh; display: flex; flex-direction: column; }
+-  nav { padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(237,233,228,0.7); }
++  nav { padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; row-gap: 10px; border-bottom: 1px solid rgba(237,233,228,0.7); }
+   .nav-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+   .nav-back { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
+   .nav-back:hover { color: var(--terracotta); }
+diff --git a/career-reinvention.html b/career-reinvention.html
+index e161bfe..2ffc239 100644
+--- a/career-reinvention.html
++++ b/career-reinvention.html
+@@ -106,10 +106,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -354,7 +360,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/coaching.html b/coaching.html
+index 4170443..3d50805 100644
+--- a/coaching.html
++++ b/coaching.html
+@@ -63,10 +63,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -356,7 +362,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/free-session.html b/free-session.html
+index 048bb03..3b31955 100644
+--- a/free-session.html
++++ b/free-session.html
+@@ -40,10 +40,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -77,6 +83,10 @@
+   .hero-script { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3vw,3.1rem); font-style:italic; color:var(--gold); line-height:1.2; margin-bottom:34px; }
+   .session-lede { font-size:1.02rem; line-height:1.9; color:var(--gray); font-weight:300; max-width:620px; }
+   .session-lede + .session-lede { margin-top:20px; }
++  .session-direct { margin-top:26px; font-size:0.95rem; line-height:1.8; color:var(--gray); font-weight:300; max-width:620px; }
++  .session-direct a { color:var(--black); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; transition:color 0.3s; }
++  .session-direct a:hover { color:var(--terracotta); }
++  .session-direct .direct-sub { display:block; margin-top:6px; font-size:0.84rem; color:var(--gray); }
+   .session-lede strong { color:var(--warm-dark); font-weight:500; }
+ 
+   /* PROMISE STRIP */
+@@ -197,7 +207,7 @@
+ <div class="cursor" id="cursor"></div>
+ <div class="cursor-ring" id="cursorRing"></div>
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -222,6 +232,8 @@
+   <p class="hero-script reveal d1">No sales pitch.</p>
+   <p class="session-lede reveal d2">This is a real session, not a screening call. You bring the thing you keep circling back to &mdash; the decision, the doubt, the version of your life you can't quite say out loud yet &mdash; and we spend the time on it.</p>
+   <p class="session-lede reveal d2">I won't spend it selling you anything. <strong>If we're a fit, you'll know. If we're not, you'll still leave with something.</strong></p>
++  <p class="session-direct reveal d2">Ready now? <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero">Pick a time on my calendar &rarr;</a>
++    <span class="direct-sub">Or answer a few questions below first &mdash; it makes the session sharper, and you'll pick your time straight after.</span></p>
+ </section>
+ <div class="session-hero-right">
+   <img src="lauren-smile-belt.jpg" alt="Lauren Fine, MD, career transition and life coach" />
+@@ -255,7 +267,7 @@
+     <p class="form-aside-label">Before we meet</p>
+     <h2>Tell me where you <em>actually</em> are.</h2>
+     <p>A few questions so the session starts somewhere real instead of at the beginning. Nothing here is a test, and there's no right answer.</p>
+-    <p>I read every one of these myself. You'll hear back from me within two business days with times to meet.</p>
++    <p>I read every one of these myself. As soon as you send it, you'll pick your time on my calendar &mdash; no waiting on me to email you back.</p>
+     <p class="aside-quote">You don't need to have the words yet. You just need to be willing to look.</p>
+   </aside>
+ 
+@@ -314,6 +326,7 @@
+       <button type="submit" class="btn-submit" id="submitBtn">Request my free session</button>
+       <p class="form-status" id="formStatus"></p>
+       <p class="form-note">I'll follow up personally. Your note stays between us, and you can unsubscribe from anything else at any time.</p>
++      <p class="form-note">Would rather just book? <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="form" style="color:var(--black);border-bottom:1px solid var(--gold);text-decoration:none;">Pick a time on my calendar</a> and we'll cover this live.</p>
+     </form>
+ 
+     <div class="success-card" id="successCard">
+@@ -329,7 +342,7 @@
+       <p style="margin-top:1.25rem;font-size:0.9rem;opacity:.75;">Choosing a slot sends me a request &mdash; I'll confirm by email within 24 hours.</p>
+       <div class="success-actions">
+         <a href="resources.html" class="btn-ghost">Something to read meanwhile</a>
+-        <a href="index.html" class="btn-ghost">Back to home</a>
++        <a href="/" class="btn-ghost">Back to home</a>
+       </div>
+     </div>
+   </div>
+@@ -452,5 +465,17 @@
+     });
+   })();
+ </script>
++<script>
++  // Track people who skip the intake form and book directly
++  (function () {
++    document.querySelectorAll('[data-book-direct]').forEach(function (a) {
++      a.addEventListener('click', function () {
++        if (typeof gtag === 'function') {
++          gtag('event', 'booking_direct_click', { placement: a.getAttribute('data-book-direct') });
++        }
++      });
++    });
++  })();
++</script>
+ </body>
+ </html>
+diff --git a/ikigai-coaching.html b/ikigai-coaching.html
+index 1743a64..762a35f 100644
+--- a/ikigai-coaching.html
++++ b/ikigai-coaching.html
+@@ -106,10 +106,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -354,7 +360,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/index.html b/index.html
+index 1e24bd4..531e942 100644
+--- a/index.html
++++ b/index.html
+@@ -222,10 +222,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -555,7 +561,7 @@
+ 
+ <!-- NAV -->
+   <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/js/capture-widgets.js b/js/capture-widgets.js
+index d1bca4b..56b35a8 100644
+--- a/js/capture-widgets.js
++++ b/js/capture-widgets.js
+@@ -176,24 +176,65 @@
+     });
+   }
+ 
+-  // Homepage-only test: newsletter modal fires on a short timer or scroll
+-  // depth, whichever comes first. Shares the same one-popup-per-session guard
+-  // as exit-intent, so a visitor never sees both in one visit. Suppressed for
++  // True when a "book a free session" call to action is currently on screen.
++  // The nav CTA is excluded: it is sticky, so it is always in view and would
++  // suppress the popup permanently.
++  function bookingCtaInView() {
++    var ctas = document.querySelectorAll('a[href*="free-session"]');
++    for (var i = 0; i < ctas.length; i++) {
++      if (ctas[i].classList.contains('nav-cta')) continue;
++      var r = ctas[i].getBoundingClientRect();
++      if (r.height > 0 && r.top < window.innerHeight && r.bottom > 0) return true;
++    }
++    return false;
++  }
++
++  // Homepage-only: newsletter modal fires on a timer or scroll depth,
++  // whichever comes first. Shares the same one-popup-per-session guard as
++  // exit-intent, so a visitor never sees both in one visit. Suppressed for
+   // 14 days once seen, dismissed or not.
++  //
++  // The modal never opens while a booking CTA is on screen. The old 13s timer
++  // routinely fired just as the reader reached "Book a free coaching session"
++  // and covered it, interrupting people at the exact moment of intent. When a
++  // trigger lands during that window the popup is deferred and retried rather
++  // than cancelled, so lead capture still happens once the CTA scrolls away.
+   function initNewsletterTest() {
+     if (!isHomepage()) return;
+     if (daysAgo(NEWSLETTER_KEY) < NEWSLETTER_DAYS) return;
+     buildNewsletterModal();
+     var triggered = false;
+-    function fire(triggerType) {
+-      if (triggered || popupAlreadyShownThisSession()) return;
++    var pendingType = null;
++    var retryId = null;
++
++    function open(triggerType) {
+       triggered = true;
+       markPopupShownThisSession();
+       mark(NEWSLETTER_KEY);
+       document.getElementById('pf-newsletter-overlay').classList.add('open');
+       if (typeof gtag === 'function') gtag('event', 'newsletter_popup_shown', { source: 'homepage_' + triggerType });
+     }
+-    var timerId = setTimeout(function () { fire('timer'); }, 13000);
++
++    function fire(triggerType) {
++      if (triggered || popupAlreadyShownThisSession()) return;
++      if (bookingCtaInView()) {
++        // Hold it. Re-check shortly; the reader is looking at the CTA.
++        pendingType = pendingType || triggerType;
++        if (retryId === null) {
++          retryId = setInterval(function () {
++            if (triggered || popupAlreadyShownThisSession()) { clearInterval(retryId); retryId = null; return; }
++            if (!bookingCtaInView()) {
++              clearInterval(retryId); retryId = null;
++              open(pendingType || 'deferred');
++            }
++          }, 2000);
++        }
++        return;
++      }
++      open(triggerType);
++    }
++
++    var timerId = setTimeout(function () { fire('timer'); }, 45000);
+     window.addEventListener('scroll', function () {
+       var scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+       if (scrollDepth >= 0.55) {
+diff --git a/media.html b/media.html
+index eb649e9..e50c231 100644
+--- a/media.html
++++ b/media.html
+@@ -47,10 +47,16 @@
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:0.55; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -298,7 +304,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/physician-coaching.html b/physician-coaching.html
+index 7f95b11..79b1c17 100644
+--- a/physician-coaching.html
++++ b/physician-coaching.html
+@@ -114,10 +114,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -362,7 +368,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/post-decision-that-didnt-make-sense.html b/post-decision-that-didnt-make-sense.html
+index 3e94f60..6ba1878 100644
+--- a/post-decision-that-didnt-make-sense.html
++++ b/post-decision-that-didnt-make-sense.html
+@@ -80,10 +80,16 @@
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -209,7 +215,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -231,7 +237,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-discomfort-you-choose.html b/post-discomfort-you-choose.html
+index a7f9a7d..2fe8399 100644
+--- a/post-discomfort-you-choose.html
++++ b/post-discomfort-you-choose.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-guilt-of-leaving.html b/post-guilt-of-leaving.html
+index c2742c2..8549333 100644
+--- a/post-guilt-of-leaving.html
++++ b/post-guilt-of-leaving.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-its-just-where-you-arent-looking.html b/post-its-just-where-you-arent-looking.html
+index 1142f3a..6a9ea44 100644
+--- a/post-its-just-where-you-arent-looking.html
++++ b/post-its-just-where-you-arent-looking.html
+@@ -74,10 +74,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -195,7 +201,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -217,7 +223,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-light-in-their-eyes.html b/post-light-in-their-eyes.html
+index 6220a03..c705dc8 100644
+--- a/post-light-in-their-eyes.html
++++ b/post-light-in-their-eyes.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-mindset-isnt-who-you-are.html b/post-mindset-isnt-who-you-are.html
+index 62c71ad..c97de10 100644
+--- a/post-mindset-isnt-who-you-are.html
++++ b/post-mindset-isnt-who-you-are.html
+@@ -71,10 +71,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -193,7 +199,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -215,7 +221,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-my-ikigai-didnt-die.html b/post-my-ikigai-didnt-die.html
+index c87fb50..c248011 100644
+--- a/post-my-ikigai-didnt-die.html
++++ b/post-my-ikigai-didnt-die.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-never-out-memorize-ai.html b/post-never-out-memorize-ai.html
+index 68eee44..0ab5dc2 100644
+--- a/post-never-out-memorize-ai.html
++++ b/post-never-out-memorize-ai.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-path-to-your-purpose-healthcare-edition.html b/post-path-to-your-purpose-healthcare-edition.html
+index 5de4e5f..4496163 100644
+--- a/post-path-to-your-purpose-healthcare-edition.html
++++ b/post-path-to-your-purpose-healthcare-edition.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-permission-to-put-it-down.html b/post-permission-to-put-it-down.html
+index 27c8879..fc8f0f0 100644
+--- a/post-permission-to-put-it-down.html
++++ b/post-permission-to-put-it-down.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-pessimism-disguised-as-realism.html b/post-pessimism-disguised-as-realism.html
+index 79e3d50..3652585 100644
+--- a/post-pessimism-disguised-as-realism.html
++++ b/post-pessimism-disguised-as-realism.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-template.html b/post-template.html
+index 157cc25..447c670 100644
+--- a/post-template.html
++++ b/post-template.html
+@@ -82,10 +82,16 @@
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -330,7 +336,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -352,7 +358,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-what-i-found-on-the-other-side.html b/post-what-i-found-on-the-other-side.html
+index 66cb24e..2184f39 100644
+--- a/post-what-i-found-on-the-other-side.html
++++ b/post-what-i-found-on-the-other-side.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-what-i-lost.html b/post-what-i-lost.html
+index bcea2d4..f90c0fb 100644
+--- a/post-what-i-lost.html
++++ b/post-what-i-lost.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-what-if-your-ikigai-was-allowed-to-move.html b/post-what-if-your-ikigai-was-allowed-to-move.html
+index c4edf86..d176de4 100644
+--- a/post-what-if-your-ikigai-was-allowed-to-move.html
++++ b/post-what-if-your-ikigai-was-allowed-to-move.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-why-lifelong-learning-is-permission.html b/post-why-lifelong-learning-is-permission.html
+index e81e120..1420b21 100644
+--- a/post-why-lifelong-learning-is-permission.html
++++ b/post-why-lifelong-learning-is-permission.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/post-you-have-permission-to-change.html b/post-you-have-permission-to-change.html
+index 60b3599..83c0191 100644
+--- a/post-you-have-permission-to-change.html
++++ b/post-you-have-permission-to-change.html
+@@ -72,10 +72,16 @@
+   .cursor.on { width:12px; height:12px; }
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width 0.35s,height 0.35s,opacity 0.3s; opacity:0.55; }
+   .cursor-ring.on { width:44px; height:44px; opacity:0.25; }
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -194,7 +200,7 @@
+ <div class="cursor-ring" id="cursorRing"></div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+@@ -216,7 +222,7 @@
+ <!-- POST HEADER -->
+ <div class="post-header">
+   <p class="post-breadcrumb">
+-    <a href="index.html">Home</a>
++    <a href="/">Home</a>
+     <span>/</span>
+     <a href="blog.html">Writing</a>
+     <span>/</span>
+diff --git a/quiz.html b/quiz.html
+index 39a9a3a..d95733b 100644
+--- a/quiz.html
++++ b/quiz.html
+@@ -34,10 +34,16 @@
+   html { scroll-behavior:smooth; }
+   body { background:var(--cream); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; }
+ 
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; }
+   .nav-links a:hover { color:var(--black); }
+   .nav-cta { font-size:0.72rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 28px; text-decoration:none; }
+@@ -80,11 +86,20 @@
+   footer { background:var(--black); color:#fff; padding:60px 64px 30px; margin-top:60px; }
+   .footer-copy { font-size:0.75rem; color:#8C8580; text-align:center; }
+ </style>
++<!-- Google tag (gtag.js) -->
++<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
++<script>
++  window.dataLayer = window.dataLayer || [];
++  function gtag(){dataLayer.push(arguments);}
++  gtag('js', new Date());
++
++  gtag('config', 'G-2QBSJ9PRRQ');
++</script>
+ </head>
+ <body>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/resources.html b/resources.html
+index 6d0b6ef..4ed6cb0 100644
+--- a/resources.html
++++ b/resources.html
+@@ -47,10 +47,16 @@
+   .cursor-ring { width:30px; height:30px; border:1px solid rgba(35, 64, 110,0.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:0.55; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -257,7 +263,7 @@
+ </div>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/speaking.html b/speaking.html
+index b611a93..b4b8cdf 100644
+--- a/speaking.html
++++ b/speaking.html
+@@ -70,10 +70,16 @@
+   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:900; opacity:0.4; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -215,11 +221,20 @@
+     .footer-bottom { flex-direction:column; gap:12px; }
+   }
+ </style>
++<!-- Google tag (gtag.js) -->
++<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
++<script>
++  window.dataLayer = window.dataLayer || [];
++  function gtag(){dataLayer.push(arguments);}
++  gtag('js', new Date());
++
++  gtag('config', 'G-2QBSJ9PRRQ');
++</script>
+ </head>
+ <body>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+diff --git a/testimonials.html b/testimonials.html
+index 672c7dd..772c2b5 100644
+--- a/testimonials.html
++++ b/testimonials.html
+@@ -75,10 +75,16 @@
+   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:900; opacity:0.4; }
+ 
+   /* NAV */
+-  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
++  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+   nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+   .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+-  .nav-links { display:flex; gap:30px; list-style:none; }
++  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
++  @media (max-width:1400px) {
++    nav { padding:22px 32px; column-gap:12px; }
++    .nav-links { gap:20px; }
++    .nav-social { gap:10px; margin-right:2px; }
++    .nav-social svg { width:19px; height:19px; }
++  }
+   .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; position:relative; transition:color 0.3s; }
+   .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--terracotta); transition:width 0.3s; }
+   .nav-links a:hover { color:var(--black); }
+@@ -169,11 +175,20 @@
+     .footer-bottom { flex-direction:column; gap:12px; }
+   }
+ </style>
++<!-- Google tag (gtag.js) -->
++<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
++<script>
++  window.dataLayer = window.dataLayer || [];
++  function gtag(){dataLayer.push(arguments);}
++  gtag('js', new Date());
++
++  gtag('config', 'G-2QBSJ9PRRQ');
++</script>
+ </head>
+ <body>
+ 
+ <nav>
+-  <a href="index.html" class="nav-logo">Lauren Fine</a>
++  <a href="/" class="nav-logo">Lauren Fine</a>
+   <ul class="nav-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="coaching.html">Coaching</a></li>
+-- 
+2.43.0
+
+
+From 948da7676f9950144d80c13603313354a02bb3ed Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 20 Aug 2026 23:39:13 +0000
+Subject: [PATCH 2/2] Put proof before price, and specialty paths after the
+ offer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Two ordering changes that follow from the funnel data: 18 people reached
+a coaching page last month and none clicked through to book.
+
+coaching.html
+"Why it works" — the MD / medical-educator / made-the-pivot-herself
+credential block — now sits above the pricing instead of two screens
+below it. Readers were meeting $1,200-$4,000 before any reason to
+believe the person behind it.
+
+"Specialty paths" — the three cards linking out to physician, ikigai and
+career-reinvention pages — moves from immediately before the pricing to
+immediately after it. It was routing people off the page at the exact
+point the page was meant to close, and each destination is another long
+page with its own funnel.
+
+New order: hero, why not a platform, why it works, pricing, specialty
+paths, how it works, is this for you, FAQ, location, book.
+
+index.html
+The client testimonial moves from screen 8 to directly above "Pick the
+door that fits", so the first mention of price is preceded by someone
+vouching for the work.
+
+Verified: identical document height on both pages (no content lost),
+no JS errors, nav clean from 390px to 1600px, and the homepage popup
+still defers while a booking CTA is on screen.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PXti93te9d2EUKAUDVybZn
+---
+ coaching.html | 97 +++++++++++++++++++++++++--------------------------
+ index.html    | 37 ++++++++++----------
+ 2 files changed, 67 insertions(+), 67 deletions(-)
+
+diff --git a/coaching.html b/coaching.html
+index 3d50805..aadeeab 100644
+--- a/coaching.html
++++ b/coaching.html
+@@ -432,28 +432,33 @@
+   </div>
+ </div>
+ 
+-<!-- SERVICES -->
+-<!-- SPECIALTY PATHS -->
+-<div style="background:var(--cream-dark);padding:80px 64px;">
+-  <p class="section-eyebrow reveal" style="margin:0 auto 20px;justify-content:center;text-align:center;">Specialty paths</p>
+-  <h2 class="section-title reveal d1" style="text-align:center;margin-bottom:20px;">Looking for something <em>specific?</em></h2>
+-  <p style="text-align:center;font-size:1rem;color:var(--gray);max-width:680px;margin:0 auto 48px;line-height:1.7;font-weight:300;">Three coaching focuses have their own dedicated pages. If one of these speaks to where you are, start there.</p>
+-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;">
+-    <a href="physician-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">For Physicians</p>
+-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Physician Coaching</h3>
+-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Coaching for physicians questioning their clinical path. From a physician who made the transition.</p>
+-    </a>
+-    <a href="ikigai-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Ikigai Coaching</p>
+-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Find Your Ikigai</h3>
+-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Real ikigai coaching, not the Venn diagram. From the TEDx speaker behind Permission to Change.</p>
+-    </a>
+-    <a href="career-reinvention.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
+-      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Career Reinvention</p>
+-      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Author the Next Chapter</h3>
+-      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Career reinvention coaching for accomplished professionals ready for what comes next.</p>
+-    </a>
++<!-- WHY THE BACKGROUND MATTERS -->
++<div class="process">
++  <div class="process-header">
++    <p class="section-eyebrow reveal">Why it works</p>
++    <h2 class="section-title reveal d1">What that background<br>actually gets <em>you</em></h2>
++  </div>
++  <div class="process-steps">
++    <div class="process-step reveal">
++      <p class="process-n">MD</p>
++      <h3 class="process-title">Twenty years under uncertainty</h3>
++      <p class="process-body">Two decades practicing medicine means two decades of making high-stakes decisions with incomplete information. That's the exact skill a career pivot or a hard life decision requires. It's not a metaphor. It's the same muscle.</p>
++    </div>
++    <div class="process-step reveal">
++      <p class="process-n">Ed</p>
++      <h3 class="process-title">She teaches reasoning for a living</h3>
++      <p class="process-body">As Assistant Dean of Clinical Skills Education, she trains physicians in how to think through ambiguous problems, not just what to conclude. You get the same framework applied to your own decision, not a generic coaching script.</p>
++    </div>
++    <div class="process-step reveal">
++      <p class="process-n">Dx</p>
++      <h3 class="process-title">She's made the pivot herself</h3>
++      <p class="process-body">Founder of ReasonDx, built from scratch after stepping back from full-time clinical practice. She isn't coaching you through a transition she's read about. She's coaching you through one she's lived.</p>
++    </div>
++    <div class="process-step reveal">
++      <p class="process-n">Tx</p>
++      <h3 class="process-title">She knows how to build the story</h3>
++      <p class="process-body">Her TEDx talk on this exact reinvention has reached a global audience. Turning a pivot into a story that lands, for a search committee, an interviewer, or yourself, is a skill she uses and teaches.</p>
++    </div>
+   </div>
+ </div>
+ 
+@@ -525,33 +530,27 @@
+   <p style="margin-top:36px;font-size:0.82rem;line-height:1.8;color:var(--gray);font-weight:300;max-width:640px;">A combination of 55-minute and 25-minute sessions can be arranged within any package. Individual sessions ($375 each) are available as an add-on for current and past clients between packages. New clients begin with a package, because the work is more effective when there's room to build on it.</p>
+ </div>
+ 
+-<!-- WHY THE BACKGROUND MATTERS -->
+-<div class="process">
+-  <div class="process-header">
+-    <p class="section-eyebrow reveal">Why it works</p>
+-    <h2 class="section-title reveal d1">What that background<br>actually gets <em>you</em></h2>
+-  </div>
+-  <div class="process-steps">
+-    <div class="process-step reveal">
+-      <p class="process-n">MD</p>
+-      <h3 class="process-title">Twenty years under uncertainty</h3>
+-      <p class="process-body">Two decades practicing medicine means two decades of making high-stakes decisions with incomplete information. That's the exact skill a career pivot or a hard life decision requires. It's not a metaphor. It's the same muscle.</p>
+-    </div>
+-    <div class="process-step reveal">
+-      <p class="process-n">Ed</p>
+-      <h3 class="process-title">She teaches reasoning for a living</h3>
+-      <p class="process-body">As Assistant Dean of Clinical Skills Education, she trains physicians in how to think through ambiguous problems, not just what to conclude. You get the same framework applied to your own decision, not a generic coaching script.</p>
+-    </div>
+-    <div class="process-step reveal">
+-      <p class="process-n">Dx</p>
+-      <h3 class="process-title">She's made the pivot herself</h3>
+-      <p class="process-body">Founder of ReasonDx, built from scratch after stepping back from full-time clinical practice. She isn't coaching you through a transition she's read about. She's coaching you through one she's lived.</p>
+-    </div>
+-    <div class="process-step reveal">
+-      <p class="process-n">Tx</p>
+-      <h3 class="process-title">She knows how to build the story</h3>
+-      <p class="process-body">Her TEDx talk on this exact reinvention has reached a global audience. Turning a pivot into a story that lands, for a search committee, an interviewer, or yourself, is a skill she uses and teaches.</p>
+-    </div>
++<!-- SPECIALTY PATHS -->
++<div style="background:var(--cream-dark);padding:80px 64px;">
++  <p class="section-eyebrow reveal" style="margin:0 auto 20px;justify-content:center;text-align:center;">Specialty paths</p>
++  <h2 class="section-title reveal d1" style="text-align:center;margin-bottom:20px;">Looking for something <em>specific?</em></h2>
++  <p style="text-align:center;font-size:1rem;color:var(--gray);max-width:680px;margin:0 auto 48px;line-height:1.7;font-weight:300;">Three coaching focuses have their own dedicated pages. If one of these speaks to where you are, start there.</p>
++  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;">
++    <a href="physician-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
++      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">For Physicians</p>
++      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Physician Coaching</h3>
++      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Coaching for physicians questioning their clinical path. From a physician who made the transition.</p>
++    </a>
++    <a href="ikigai-coaching.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
++      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Ikigai Coaching</p>
++      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Find Your Ikigai</h3>
++      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Real ikigai coaching, not the Venn diagram. From the TEDx speaker behind Permission to Change.</p>
++    </a>
++    <a href="career-reinvention.html" style="background:var(--white);padding:40px 32px;text-decoration:none;color:var(--black);border:1px solid var(--cream-dark);transition:transform 0.3s,border-color 0.3s;display:block;">
++      <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;">Career Reinvention</p>
++      <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;line-height:1.15;margin-bottom:14px;">Author the Next Chapter</h3>
++      <p style="font-size:0.9rem;line-height:1.7;color:var(--gray);font-weight:300;">Career reinvention coaching for accomplished professionals ready for what comes next.</p>
++    </a>
+   </div>
+ </div>
+ 
+diff --git a/index.html b/index.html
+index 531e942..334d5ef 100644
+--- a/index.html
++++ b/index.html
+@@ -601,6 +601,25 @@
+   </div>
+ </section>
+ 
++<!-- TESTIMONIAL -->
++<section class="testimonial-home" id="testimonials">
++  <div class="testimonial-home-inner reveal">
++    <p class="testimonial-home-eyebrow">From a recent client</p>
++    <div class="testimonial-home-rating" aria-label="5 out of 5 stars">
++      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
++    </div>
++    <p class="testimonial-home-pull">"If you're in a career transition and feeling lost or overwhelmed, she is exactly the kind of coach you need in your corner. She meets you where you are, leads with heart, and helps you find your way forward."</p>
++    <div class="testimonial-home-meta">
++      <span class="testimonial-home-name">Margaret</span>
++      <span class="testimonial-home-context">Career transition · Sales to a new role</span>
++    </div>
++    <div class="testimonial-home-actions">
++      <a href="https://maps.app.goo.gl/ZoG7QSi8on8ozKtB9" target="_blank" rel="noopener" class="testimonial-home-link">Read full review on Google →</a>
++      <a href="testimonials.html" class="testimonial-home-link">All testimonials →</a>
++    </div>
++  </div>
++</section>
++
+ <section class="work" id="work">
+   <div class="work-header">
+     <div>
+@@ -850,24 +869,6 @@
+ 
+ <!-- THE WORK -->
+ 
+-<!-- TESTIMONIAL -->
+-<section class="testimonial-home" id="testimonials">
+-  <div class="testimonial-home-inner reveal">
+-    <p class="testimonial-home-eyebrow">From a recent client</p>
+-    <div class="testimonial-home-rating" aria-label="5 out of 5 stars">
+-      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+-    </div>
+-    <p class="testimonial-home-pull">"If you're in a career transition and feeling lost or overwhelmed, she is exactly the kind of coach you need in your corner. She meets you where you are, leads with heart, and helps you find your way forward."</p>
+-    <div class="testimonial-home-meta">
+-      <span class="testimonial-home-name">Margaret</span>
+-      <span class="testimonial-home-context">Career transition · Sales to a new role</span>
+-    </div>
+-    <div class="testimonial-home-actions">
+-      <a href="https://maps.app.goo.gl/ZoG7QSi8on8ozKtB9" target="_blank" rel="noopener" class="testimonial-home-link">Read full review on Google →</a>
+-      <a href="testimonials.html" class="testimonial-home-link">All testimonials →</a>
+-    </div>
+-  </div>
+-</section>
+ 
+ <!-- NEWSLETTER -->
+ 
+-- 
+2.43.0
+
