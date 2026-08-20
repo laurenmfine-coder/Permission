@@ -107,9 +107,12 @@
       '<div class="pf-modal">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseNewsletter()">&times;</button>' +
         '<p class="pf-modal-eyebrow">Permission to Change</p>' +
-        '<h3 class="pf-modal-title">Stories on pivots, purpose, and the stories we tell ourselves</h3>' +
-        '<p class="pf-modal-body">New essays when they\'re ready, not on a schedule. No noise.</p>' +
-        '<iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid #E5E0DA;background:#FFFFFF;" frameborder="0" scrolling="no"></iframe>' +
+        '<h3 class="pf-modal-title">Get the Pivot Decision Framework</h3>' +
+        '<p class="pf-modal-body">A short worksheet for the moment you\'re standing at a fork and can\'t tell if it\'s fear or intuition talking. Free, instant download, plus occasional notes when there\'s something worth saying.</p>' +
+        '<input type="text" id="pf-newsletter-name" placeholder="First name">' +
+        '<input type="email" id="pf-newsletter-email" placeholder="Email address">' +
+        '<button class="pf-modal-submit" id="pf-newsletter-submit" onclick="window.__pfSubmitNewsletter()">Send me the framework</button>' +
+        '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>' +
       '</div>';
     document.body.appendChild(overlay);
   }
@@ -137,6 +140,23 @@
       if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'exit_intent' });
       mark(EXIT_KEY);
       window.__pfCloseExit();
+      alert(ok ? 'Sent! Your worksheet is downloading now.' : 'Your worksheet is downloading. Reach out at reasondxcoaching@gmail.com if you don\u2019t see a follow-up email.');
+      btn.disabled = false; btn.textContent = 'Send me the framework';
+    });
+  };
+  window.__pfSubmitNewsletter = function () {
+    var email = document.getElementById('pf-newsletter-email').value.trim();
+    var name = document.getElementById('pf-newsletter-name').value.trim();
+    if (!email || !emailValid(email)) { alert('Please enter a valid email address.'); return; }
+    var btn = document.getElementById('pf-newsletter-submit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    submitLead(email, name, 'HomepagePopup', 'pivot_framework_homepage', function (ok) {
+      var a = document.createElement('a');
+      a.href = 'pivot-decision-framework.pdf';
+      a.download = 'pivot-decision-framework.pdf';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'homepage_popup' });
+      window.__pfCloseNewsletter();
       alert(ok ? 'Sent! Your worksheet is downloading now.' : 'Your worksheet is downloading. Reach out at reasondxcoaching@gmail.com if you don\u2019t see a follow-up email.');
       btn.disabled = false; btn.textContent = 'Send me the framework';
     });
