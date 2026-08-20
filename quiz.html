@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Coaching Path Fits You? | Lauren Fine, MD</title>
+<meta name="description" content="A two-minute quiz to find out whether the Clarity Sprint, Change Navigation, or Full Transformation package fits where you are right now.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/quiz.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/quiz.html">
+<meta property="og:title" content="Which Coaching Path Fits You? | Lauren Fine, MD">
+<meta property="og:description" content="A two-minute quiz to find the coaching package that fits where you are right now.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Which Coaching Path Fits You? | Lauren Fine, MD">
+<meta name="twitter:description" content="A two-minute quiz to find the coaching package that fits where you are right now.">
+<meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --blush:#B8975A; --blush-light:#E5E0DA; --gold:#B8975A;
+    --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; }
+  nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+  .nav-links { display:flex; gap:30px; list-style:none; }
+  .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-cta { font-size:0.72rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 28px; text-decoration:none; }
+  .nav-cta:hover { background:var(--terracotta); }
+  @media (max-width:900px){ .nav-links{ display:none; } nav{ padding:20px 24px; } }
+
+  .quiz-wrap { max-width:720px; margin:0 auto; padding:150px 24px 100px; }
+  .quiz-eyebrow { font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:16px; text-align:center; }
+  .quiz-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:500; text-align:center; line-height:1.2; margin-bottom:16px; }
+  .quiz-sub { font-size:0.95rem; color:var(--gray); text-align:center; max-width:480px; margin:0 auto 56px; line-height:1.6; }
+
+  .quiz-progress { display:flex; gap:6px; justify-content:center; margin-bottom:40px; }
+  .quiz-progress span { width:32px; height:3px; background:var(--cream-dark); }
+  .quiz-progress span.done { background:var(--terracotta); }
+
+  .quiz-step { display:none; }
+  .quiz-step.active { display:block; }
+  .quiz-q { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:500; margin-bottom:28px; text-align:center; line-height:1.35; }
+  .quiz-options { display:flex; flex-direction:column; gap:12px; }
+  .quiz-opt { display:block; width:100%; text-align:left; padding:18px 22px; border:1px solid var(--cream-dark); background:var(--white); font-family:inherit; font-size:0.92rem; color:var(--black); cursor:pointer; transition:border-color 0.2s,background 0.2s; }
+  .quiz-opt:hover { border-color:var(--terracotta); background:#FAF9F7; }
+
+  .quiz-result { display:none; text-align:center; }
+  .quiz-result.active { display:block; }
+  .result-eyebrow { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:14px; }
+  .result-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.4vw,2.2rem); font-weight:500; margin-bottom:16px; }
+  .result-body { font-size:0.95rem; line-height:1.7; color:var(--gray); max-width:520px; margin:0 auto 32px; }
+  .result-gate { max-width:380px; margin:0 auto; padding:32px 28px; background:#FAF9F7; border:1px solid var(--cream-dark); }
+  .result-gate input { width:100%; padding:12px 14px; border:1px solid var(--cream-dark); margin-bottom:10px; font-size:0.92rem; font-family:inherit; }
+  .result-gate input:focus { outline:none; border-color:var(--terracotta); }
+  .result-submit { width:100%; padding:13px; background:var(--terracotta); color:#fff; border:none; font-size:0.9rem; cursor:pointer; font-family:inherit; }
+  .result-submit:hover { background:var(--terracotta-dark); }
+  .result-submit:disabled { opacity:0.6; cursor:default; }
+  .result-unlocked { display:none; }
+  .result-unlocked.show { display:block; }
+  .result-unlocked .result-cta { display:inline-block; margin-top:8px; padding:14px 32px; background:var(--black); color:#fff; text-decoration:none; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; }
+  .result-unlocked .result-cta:hover { background:var(--terracotta); }
+  .quiz-restart { display:block; margin:28px auto 0; background:none; border:none; color:var(--gray); font-size:0.78rem; text-decoration:underline; cursor:pointer; font-family:inherit; }
+
+  footer { background:var(--black); color:#fff; padding:60px 64px 30px; margin-top:60px; }
+  .footer-copy { font-size:0.75rem; color:#8C8580; text-align:center; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Lauren Fine</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="coaching.html">Coaching</a></li>
+    <li><a href="speaking.html">Speaking</a></li>
+    <li><a href="blog.html">Writing</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
+</nav>
+
+<div class="quiz-wrap">
+  <p class="quiz-eyebrow">Two minutes</p>
+  <h1 class="quiz-title">Which coaching path fits where you are?</h1>
+  <p class="quiz-sub">Three quick questions. No wrong answers, just a clearer read on whether you need a focused sprint, sustained support, or a full redesign of what's next.</p>
+
+  <div class="quiz-progress" id="quizProgress">
+    <span class="s0 done"></span><span class="s1"></span><span class="s2"></span>
+  </div>
+
+  <div class="quiz-step active" data-step="0">
+    <p class="quiz-q">What brought you here today?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="sprint">A specific decision I need to make soon</button>
+      <button class="quiz-opt" data-val="nav">A career change I've been circling for a while</button>
+      <button class="quiz-opt" data-val="full">A sense that my whole next chapter needs rethinking</button>
+    </div>
+  </div>
+
+  <div class="quiz-step" data-step="1">
+    <p class="quiz-q">How long has this been on your mind?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="sprint">Weeks, it's fairly fresh</button>
+      <button class="quiz-opt" data-val="nav">Months, it keeps resurfacing</button>
+      <button class="quiz-opt" data-val="full">Years, honestly, on some level</button>
+    </div>
+  </div>
+
+  <div class="quiz-step" data-step="2">
+    <p class="quiz-q">What would "done" look like?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="sprint">One clear next move, and I'll take it from there</button>
+      <button class="quiz-opt" data-val="nav">A real plan and steady accountability to follow it</button>
+      <button class="quiz-opt" data-val="full">A different way of living and working, not just a decision</button>
+    </div>
+  </div>
+
+  <div class="quiz-result" id="quizResult">
+    <p class="result-eyebrow">Your fit</p>
+    <h2 class="result-title" id="resultTitle"></h2>
+    <p class="result-body" id="resultBody"></p>
+
+    <div class="result-gate" id="resultGate">
+      <input type="text" id="quiz-name" placeholder="First name">
+      <input type="email" id="quiz-email" placeholder="Email address">
+      <button class="result-submit" id="quiz-submit">See my result and book a free session</button>
+    </div>
+
+    <div class="result-unlocked" id="resultUnlocked">
+      <a href="coaching.html#services" class="result-cta" id="resultCtaLink">See this package</a>
+    </div>
+
+    <button class="quiz-restart" onclick="window.__quizRestart()">Start over</button>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-copy">© 2026 Lauren Fine, MD. All rights reserved. · laurenfine.com</p>
+</footer>
+
+<script>
+(function(){
+  var answers = [];
+  var steps = document.querySelectorAll('.quiz-step');
+  var progress = document.querySelectorAll('#quizProgress span');
+  var current = 0;
+
+  var RESULTS = {
+    sprint: {
+      title: 'Clarity Sprint',
+      body: 'Four sessions over 4 to 6 weeks, built for a focused, near-term decision. You don\u2019t need a redesign of your whole life, you need clear space to think and one solid next move.',
+      href: 'coaching.html#services'
+    },
+    nav: {
+      title: 'Change Navigation',
+      body: 'Eight sessions over 3 months, the package most clients choose. Enough room to work through identity and story, not just logistics, with steady accountability along the way.',
+      href: 'coaching.html#services'
+    },
+    full: {
+      title: 'Full Transformation',
+      body: 'Twelve sessions over 6 months, for a bigger shift than a single decision. This is deep clarity work and reauthoring inherited rules, plus building the structures to actually live the change.',
+      href: 'coaching.html#services'
+    }
+  };
+
+  function tally(){
+    var counts = { sprint:0, nav:0, full:0 };
+    answers.forEach(function(a){ counts[a] = (counts[a]||0) + 1; });
+    var best = 'nav', max = -1;
+    Object.keys(counts).forEach(function(k){ if (counts[k] > max) { max = counts[k]; best = k; } });
+    return best;
+  }
+
+  function showStep(i){
+    steps.forEach(function(s){ s.classList.remove('active'); });
+    if (i < steps.length) {
+      steps[i].classList.add('active');
+      progress.forEach(function(p, idx){ p.classList.toggle('done', idx <= i); });
+    } else {
+      document.getElementById('quizResult').classList.add('active');
+      progress.forEach(function(p){ p.classList.add('done'); });
+      var key = tally();
+      var r = RESULTS[key];
+      document.getElementById('resultTitle').textContent = r.title;
+      document.getElementById('resultBody').textContent = r.body;
+      document.getElementById('resultCtaLink').href = r.href;
+      window.__quizResultKey = key;
+    }
+  }
+
+  steps.forEach(function(step, idx){
+    step.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        answers[idx] = btn.getAttribute('data-val');
+        current = idx + 1;
+        showStep(current);
+      });
+    });
+  });
+
+  window.__quizRestart = function(){
+    answers = []; current = 0;
+    document.getElementById('quizResult').classList.remove('active');
+    document.getElementById('resultGate').style.display = 'block';
+    document.getElementById('resultUnlocked').classList.remove('show');
+    progress.forEach(function(p){ p.classList.remove('done'); });
+    progress[0].classList.add('done');
+    showStep(0);
+  };
+
+  document.getElementById('quiz-submit').addEventListener('click', function(){
+    var email = document.getElementById('quiz-email').value.trim();
+    var name = document.getElementById('quiz-name').value.trim();
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+    var btn = document.getElementById('quiz-submit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+
+    var params = new URLSearchParams(window.location.search);
+    var notes = 'utm_source=' + (params.get('utm_source') || '') +
+      '; utm_medium=' + (params.get('utm_medium') || '') +
+      '; utm_campaign=' + (params.get('utm_campaign') || '') +
+      '; referrer=' + (document.referrer || '');
+    var formBody = 'firstName=' + encodeURIComponent(name) +
+      '&email=' + encodeURIComponent(email) +
+      '&source=' + encodeURIComponent('QuizPage') +
+      '&userGroup=' + encodeURIComponent('CoachingLead') +
+      '&leadStage=' + encodeURIComponent('quiz_result_' + window.__quizResultKey) +
+      '&notes=' + encodeURIComponent(notes);
+
+    fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formBody
+    }).then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(){
+        if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'quiz', result: window.__quizResultKey });
+        document.getElementById('resultGate').style.display = 'none';
+        document.getElementById('resultUnlocked').classList.add('show');
+      })
+      .catch(function(){
+        document.getElementById('resultGate').style.display = 'none';
+        document.getElementById('resultUnlocked').classList.add('show');
+      })
+      .finally(function(){
+        btn.disabled = false; btn.textContent = 'See my result and book a free session';
+      });
+  });
+})();
+</script>
+</body>
+</html>
