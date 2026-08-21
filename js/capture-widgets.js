@@ -176,24 +176,65 @@
     });
   }
 
-  // Homepage-only test: newsletter modal fires on a short timer or scroll
-  // depth, whichever comes first. Shares the same one-popup-per-session guard
-  // as exit-intent, so a visitor never sees both in one visit. Suppressed for
+  // True when a "book a free session" call to action is currently on screen.
+  // The nav CTA is excluded: it is sticky, so it is always in view and would
+  // suppress the popup permanently.
+  function bookingCtaInView() {
+    var ctas = document.querySelectorAll('a[href*="free-session"]');
+    for (var i = 0; i < ctas.length; i++) {
+      if (ctas[i].classList.contains('nav-cta')) continue;
+      var r = ctas[i].getBoundingClientRect();
+      if (r.height > 0 && r.top < window.innerHeight && r.bottom > 0) return true;
+    }
+    return false;
+  }
+
+  // Homepage-only: newsletter modal fires on a timer or scroll depth,
+  // whichever comes first. Shares the same one-popup-per-session guard as
+  // exit-intent, so a visitor never sees both in one visit. Suppressed for
   // 14 days once seen, dismissed or not.
+  //
+  // The modal never opens while a booking CTA is on screen. The old 13s timer
+  // routinely fired just as the reader reached "Book a free coaching session"
+  // and covered it, interrupting people at the exact moment of intent. When a
+  // trigger lands during that window the popup is deferred and retried rather
+  // than cancelled, so lead capture still happens once the CTA scrolls away.
   function initNewsletterTest() {
     if (!isHomepage()) return;
     if (daysAgo(NEWSLETTER_KEY) < NEWSLETTER_DAYS) return;
     buildNewsletterModal();
     var triggered = false;
-    function fire(triggerType) {
-      if (triggered || popupAlreadyShownThisSession()) return;
+    var pendingType = null;
+    var retryId = null;
+
+    function open(triggerType) {
       triggered = true;
       markPopupShownThisSession();
       mark(NEWSLETTER_KEY);
       document.getElementById('pf-newsletter-overlay').classList.add('open');
       if (typeof gtag === 'function') gtag('event', 'newsletter_popup_shown', { source: 'homepage_' + triggerType });
     }
-    var timerId = setTimeout(function () { fire('timer'); }, 13000);
+
+    function fire(triggerType) {
+      if (triggered || popupAlreadyShownThisSession()) return;
+      if (bookingCtaInView()) {
+        // Hold it. Re-check shortly; the reader is looking at the CTA.
+        pendingType = pendingType || triggerType;
+        if (retryId === null) {
+          retryId = setInterval(function () {
+            if (triggered || popupAlreadyShownThisSession()) { clearInterval(retryId); retryId = null; return; }
+            if (!bookingCtaInView()) {
+              clearInterval(retryId); retryId = null;
+              open(pendingType || 'deferred');
+            }
+          }, 2000);
+        }
+        return;
+      }
+      open(triggerType);
+    }
+
+    var timerId = setTimeout(function () { fire('timer'); }, 45000);
     window.addEventListener('scroll', function () {
       var scrollDepth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
       if (scrollDepth >= 0.55) {
