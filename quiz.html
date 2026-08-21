@@ -81,6 +81,11 @@
   .result-unlocked.show { display:block; }
   .result-unlocked .result-cta { display:inline-block; margin-top:8px; padding:14px 32px; background:var(--black); color:#fff; text-decoration:none; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; }
   .result-unlocked .result-cta:hover { background:var(--terracotta); }
+  .result-unlocked .result-cta-ghost { background:none; color:var(--black); border:1px solid var(--cream-dark); margin-left:10px; }
+  .result-unlocked .result-cta-ghost:hover { background:var(--cream-dark); color:var(--black); }
+  .result-gate-label { font-size:0.85rem; line-height:1.6; color:var(--gray); margin-bottom:14px; font-weight:300; }
+  .result-gate-done { display:none; font-size:0.9rem; color:var(--gray); line-height:1.7; }
+  .result-gate-done.show { display:block; }
   .quiz-restart { display:block; margin:28px auto 0; background:none; border:none; color:var(--gray); font-size:0.78rem; text-decoration:underline; cursor:pointer; font-family:inherit; }
 
   footer { background:var(--black); color:#fff; padding:60px 64px 30px; margin-top:60px; }
@@ -151,14 +156,17 @@
     <h2 class="result-title" id="resultTitle"></h2>
     <p class="result-body" id="resultBody"></p>
 
-    <div class="result-gate" id="resultGate">
-      <input type="text" id="quiz-name" placeholder="First name">
-      <input type="email" id="quiz-email" placeholder="Email address">
-      <button class="result-submit" id="quiz-submit">See my result and book a free session</button>
+    <div class="result-unlocked show" id="resultUnlocked">
+      <a href="free-session.html" class="result-cta" id="resultBookLink">Book a free session</a>
+      <a href="coaching.html#services" class="result-cta result-cta-ghost" id="resultCtaLink">See this package</a>
     </div>
 
-    <div class="result-unlocked" id="resultUnlocked">
-      <a href="coaching.html#services" class="result-cta" id="resultCtaLink">See this package</a>
+    <div class="result-gate" id="resultGate">
+      <p class="result-gate-label">Your result is above &mdash; nothing is locked. If you'd like occasional notes from Permission to Change, leave your details.</p>
+      <input type="text" id="quiz-name" placeholder="First name">
+      <input type="email" id="quiz-email" placeholder="Email address">
+      <button class="result-submit" id="quiz-submit">Send me occasional notes</button>
+      <p class="result-gate-done" id="resultGateDone">You're on the list. Nothing else to do &mdash; your result is above.</p>
     </div>
 
     <button class="quiz-restart" onclick="window.__quizRestart()">Start over</button>
@@ -233,7 +241,9 @@
     answers = []; current = 0;
     document.getElementById('quizResult').classList.remove('active');
     document.getElementById('resultGate').style.display = 'block';
-    document.getElementById('resultUnlocked').classList.remove('show');
+    document.getElementById('resultGateDone').classList.remove('show');
+    document.getElementById('quiz-submit').style.display = '';
+    document.getElementById('resultUnlocked').classList.add('show');
     progress.forEach(function(p){ p.classList.remove('done'); });
     progress[0].classList.add('done');
     showStep(0);
@@ -265,15 +275,19 @@
     }).then(function(r){ return r.json().catch(function(){ return {}; }); })
       .then(function(){
         if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'quiz', result: window.__quizResultKey });
-        document.getElementById('resultGate').style.display = 'none';
-        document.getElementById('resultUnlocked').classList.add('show');
+        document.getElementById('quiz-name').style.display = 'none';
+        document.getElementById('quiz-email').style.display = 'none';
+        document.getElementById('quiz-submit').style.display = 'none';
+        document.getElementById('resultGateDone').classList.add('show');
       })
       .catch(function(){
-        document.getElementById('resultGate').style.display = 'none';
-        document.getElementById('resultUnlocked').classList.add('show');
+        document.getElementById('quiz-name').style.display = 'none';
+        document.getElementById('quiz-email').style.display = 'none';
+        document.getElementById('quiz-submit').style.display = 'none';
+        document.getElementById('resultGateDone').classList.add('show');
       })
       .finally(function(){
-        btn.disabled = false; btn.textContent = 'See my result and book a free session';
+        btn.disabled = false; btn.textContent = 'Send me occasional notes';
       });
   });
 })();
