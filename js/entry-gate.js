@@ -1,9 +1,8 @@
 /* Homepage entry gate.
    Shows once per visitor (first visit only, tracked permanently in
    localStorage) on the homepage. The visitor must pick one option to close
-   it: Substack, occasional email updates (via the existing Loops endpoint),
-   or an Instagram follow. The follow option requires no typing at all, so
-   it's the lowest-friction path to "just see what's here."
+   it: Substack, or occasional email updates (via the existing Loops
+   endpoint). Both options collect an email address, by design.
    The page content underneath is never hidden or blocked; this is a
    dismissible overlay only, so search engines and ad-traffic landing pages
    still render full content regardless of gate state.
@@ -21,7 +20,6 @@
   var SESSION_GUARD_KEY = 'pf_popup_shown_session'; // shared key w/ capture-widgets.js
   var LOOPS_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f';
   var SUBSTACK_URL = 'https://permissiontochange.substack.com/subscribe';
-  var INSTAGRAM_URL = 'https://www.instagram.com/permission_to_change/';
 
   function isHomepage() {
     var p = window.location.pathname;
@@ -90,11 +88,7 @@
     return (
       '<p class="pf-gate-eyebrow">Permission to Change</p>' +
       '<h3 class="pf-gate-title">Before you look around</h3>' +
-      '<p class="pf-gate-body">Pick whichever fits, even just a follow works. It just helps me know you found your way here.</p>' +
-      '<button class="pf-gate-option" id="pf-gate-instagram">' +
-        '<div class="pf-gate-option-title">Follow on Instagram</div>' +
-        '<div class="pf-gate-option-sub">Fastest option, no email needed</div>' +
-      '</button>' +
+      '<p class="pf-gate-body">Pick whichever fits, this just helps me stay in touch.</p>' +
       '<button class="pf-gate-option" id="pf-gate-substack">' +
         '<div class="pf-gate-option-title">Read the Substack</div>' +
         '<div class="pf-gate-option-sub">Permission to Change, in your inbox</div>' +
@@ -141,10 +135,6 @@
   }
 
   function wireUpGate(root, onClose) {
-    root.querySelector('#pf-gate-instagram').addEventListener('click', function () {
-      window.open(INSTAGRAM_URL, '_blank', 'noopener');
-      onClose();
-    });
     root.querySelector('#pf-gate-substack').addEventListener('click', function () {
       window.open(SUBSTACK_URL, '_blank', 'noopener');
       onClose();
