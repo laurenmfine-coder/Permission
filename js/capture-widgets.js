@@ -266,25 +266,70 @@
     });
   };
 
+  function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  }
+
   function initExitIntent() {
     if (daysAgo(EXIT_KEY) < EXIT_DAYS) return;
     var variant = exitVariant();
     if (!variant) return;
     buildExitModal(variant);
     var triggered = false;
-    document.addEventListener('mouseout', function (e) {
+
+    function fire() {
       if (triggered || popupAlreadyShownThisSession()) return;
-      if (e.clientY <= 0 && (!e.relatedTarget)) {
-        triggered = true;
-        markPopupShownThisSession();
-        document.getElementById('pf-exit-overlay').classList.add('open');
-        // Without a "shown" count there is no denominator, so there was
-        // previously no way to tell whether this converts at 1% or 20%.
-        if (typeof gtag === 'function') {
-          gtag('event', 'exit_popup_shown', { variant: variant, page: window.location.pathname });
-        }
+      triggered = true;
+      markPopupShownThisSession();
+      document.getElementById('pf-exit-overlay').classList.add('open');
+      // Without a "shown" count there is no denominator, so there was
+      // previously no way to tell whether this converts at 1% or 20%.
+      if (typeof gtag === 'function') {
+        gtag('event', 'exit_popup_shown', { variant: variant, page: window.location.pathname });
       }
+    }
+
+    // Desktop: cursor leaving through the top of the browser chrome.
+    document.addEventListener('mouseout', function (e) {
+      if (e.clientY <= 0 && (!e.relatedTarget)) fire();
     });
+
+    // Mobile: there's no cursor to track leaving the viewport, so a fast
+    // upward scroll back toward the top, after the visitor has actually
+    // scrolled down and engaged with the page, is the closest real-world
+    // analog to "about to leave." Reaching for the URL bar, the back
+    // button, or the tab switcher all start with this same motion.
+    if (isTouchDevice()) {
+      var lastY = window.scrollY;
+      var lastT = Date.now();
+      var maxScrolled = window.scrollY;
+      var ticking = false;
+
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var y = window.scrollY;
+          var t = Date.now();
+          var dt = Math.max(t - lastT, 1);
+          var dy = y - lastY; // negative = scrolling up
+          var speed = -dy / dt; // px per ms, positive when scrolling up fast
+
+          if (y > maxScrolled) maxScrolled = y;
+
+          // Require: engaged (scrolled down at least ~250px at some point),
+          // currently near the top (within ~180px), and moving up fast
+          // (roughly a 300px+ upward flick in well under a second).
+          if (maxScrolled > 250 && y < 180 && speed > 0.9) {
+            fire();
+          }
+
+          lastY = y;
+          lastT = t;
+          ticking = false;
+        });
+      }, { passive: true });
+    }
   }
 
   // True when a "book a free session" call to action is currently on screen.
