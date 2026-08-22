@@ -30,7 +30,7 @@
   }
 
   var CSS =
-    '.pf-gate-overlay{position:fixed;inset:0;background:rgba(26,26,26,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}' +
+    '.pf-gate-overlay{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(26,26,26,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.35s ease;-webkit-overflow-scrolling:touch;overflow-y:auto;}' +
     '.pf-gate-overlay.open{opacity:1;pointer-events:auto;}' +
     '.pf-gate-modal{background:#FFFFFF;max-width:480px;width:100%;padding:40px 32px;box-shadow:0 24px 70px rgba(0,0,0,0.3);font-family:inherit;}' +
     '.pf-gate-eyebrow{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:#B8975A;font-weight:600;margin-bottom:12px;}' +
