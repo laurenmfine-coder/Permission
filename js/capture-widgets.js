@@ -5,6 +5,8 @@
    segmented in Loops without touching the backend. */
 (function () {
   var LOOPS_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f';
+  var FB_GROUP_URL = 'https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr';
+  var FB_LINK_HTML = '<a class="pf-fb-link" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener">Or join our free Facebook community &rarr;</a>';
   var STICKY_KEY = 'pf_sticky_dismissed';
   var EXIT_KEY = 'pf_exit_seen';
   var NEWSLETTER_KEY = 'pf_newsletter_seen';
@@ -74,6 +76,7 @@
     '.pf-modal-submit:hover{background:#182D4E;}' +
     '.pf-modal-submit:disabled{opacity:0.6;cursor:default;}' +
     '.pf-modal-note{font-size:0.72rem;color:#8C8580;margin-top:12px;text-align:center;}' +
+    '.pf-fb-link{display:block;margin-top:10px;font-size:0.78rem;text-align:center;color:#23406E;text-decoration:underline;text-underline-offset:3px;}' +
     '@media(max-width:640px){.pf-modal{padding:30px 22px;}}';
 
   function injectCSS() {
@@ -128,19 +131,22 @@
         '<a class="pf-modal-submit" id="pf-exit-submit" href="quiz.html" ' +
           'style="display:block;text-align:center;text-decoration:none;" ' +
           'onclick="window.__pfExitQuizClick()">' + c.cta + '</a>' +
-        '<p class="pf-modal-note">No email, no sign-up. It just tells you where to start.</p>';
+        '<p class="pf-modal-note">No email, no sign-up. It just tells you where to start.</p>' +
+        FB_LINK_HTML;
     } else if (variant === 'question') {
       fields =
         '<textarea id="pf-exit-question" placeholder="What are you actually trying to figure out?"></textarea>' +
         '<input type="email" id="pf-exit-email" placeholder="Email (optional, only if you want a reply)">' +
         '<button class="pf-modal-submit" id="pf-exit-submit" onclick="window.__pfSubmitExitQuestion()">' + c.cta + '</button>' +
-        '<p class="pf-modal-note">Leave the email blank and it stays anonymous. I read every one.</p>';
+        '<p class="pf-modal-note">Leave the email blank and it stays anonymous. I read every one.</p>' +
+        FB_LINK_HTML;
     } else {
       fields =
         '<input type="text" id="pf-exit-name" placeholder="First name">' +
         '<input type="email" id="pf-exit-email" placeholder="Email address">' +
         '<button class="pf-modal-submit" id="pf-exit-submit" onclick="window.__pfSubmitExit()">' + c.cta + '</button>' +
-        '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>';
+        '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>' +
+        FB_LINK_HTML;
     }
 
     var overlay = document.createElement('div');
@@ -172,6 +178,7 @@
         '<input type="email" id="pf-newsletter-email" placeholder="Email address">' +
         '<button class="pf-modal-submit" id="pf-newsletter-submit" onclick="window.__pfSubmitNewsletter()">Send me the framework</button>' +
         '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>' +
+        FB_LINK_HTML +
       '</div>';
     document.body.appendChild(overlay);
   }
