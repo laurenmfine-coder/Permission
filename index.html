@@ -405,6 +405,18 @@
   /* Script used ONCE here — the word "newsletter" */
   .newsletter-script { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,3.8vw,4rem); font-weight:500; color:var(--terracotta); display:block; line-height:1.1; }
   .newsletter-right p { font-size:0.92rem; line-height:1.85; color:var(--gray); font-weight:300; margin-bottom:36px; }
+
+  /* FACEBOOK COMMUNITY CALLOUT */
+  .fb-community { background:var(--terracotta); padding:80px 72px; text-align:center; }
+  .fb-community-eyebrow { font-size:0.7rem; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:20px; }
+  .fb-community-title { font-family:'Playfair Display',serif; font-size:clamp(2.1rem,3.2vw,3rem); font-weight:600; color:#fff; line-height:1.15; margin-bottom:20px; }
+  .fb-community-body { font-size:1rem; line-height:1.8; color:rgba(255,255,255,0.9); max-width:560px; margin:0 auto 36px; }
+  .fb-community-btn { display:inline-flex; align-items:center; gap:12px; background:#fff; color:var(--terracotta); font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:18px 40px; border-radius:999px; text-decoration:none; transition:transform 0.25s ease, box-shadow 0.25s ease; box-shadow:0 8px 24px rgba(0,0,0,0.15); }
+  .fb-community-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+  .fb-community-btn svg { width:20px; height:20px; }
+  @media (max-width:768px) {
+    .fb-community { padding:56px 24px; }
+  }
   .nl-form { display:flex; }
   .nl-input { flex:1; padding:16px 22px; background:rgba(255,255,255,0.05); border:none; border-bottom:1px solid rgba(0,0,0,0.25); color:var(--black); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; }
   .nl-input:focus { border-bottom-color:var(--terracotta); }
@@ -624,6 +636,17 @@
       <a href="testimonials.html" class="testimonial-home-link">All testimonials →</a>
     </div>
   </div>
+</section>
+
+<!-- FACEBOOK COMMUNITY -->
+<section class="fb-community">
+  <p class="fb-community-eyebrow reveal">Free community</p>
+  <h2 class="fb-community-title reveal d1">You don't have to<br>figure this out alone.</h2>
+  <p class="fb-community-body reveal d2">Join the Permission to Change Facebook group, a free space for people navigating career pivots, reinvention, and the questions that come with both. Real conversation, no sales pitch.</p>
+  <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" class="fb-community-btn reveal d3">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+    Join the Facebook Group
+  </a>
 </section>
 
 <section class="work" id="work">
