@@ -122,13 +122,11 @@
       '<div class="pf-modal">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseNewsletter()">&times;</button>' +
         '<p class="pf-modal-eyebrow">Permission to Change</p>' +
-        '<h3 class="pf-modal-title">Get the Pivot Decision Framework</h3>' +
-        '<p class="pf-modal-body">A short worksheet for the moment you\'re standing at a fork and can\'t tell if it\'s fear or intuition talking. Free, instant download, plus occasional notes when there\'s something worth saying.</p>' +
-        '<input type="text" id="pf-newsletter-name" placeholder="First name">' +
-        '<input type="email" id="pf-newsletter-email" placeholder="Email address">' +
-        '<button class="pf-modal-submit" id="pf-newsletter-submit" onclick="window.__pfSubmitNewsletter()">Send me the framework</button>' +
-        '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>' +
-        FB_LINK_HTML +
+        '<h3 class="pf-modal-title">Let\'s talk, or join the conversation.</h3>' +
+        '<p class="pf-modal-body">A free 55-minute coaching session is the easiest way to see if this is a fit. Or, if you\'re not ready for that yet, join a free community of people working through the same questions.</p>' +
+        '<a class="pf-modal-submit" href="free-session.html" style="display:block;text-align:center;text-decoration:none;margin-bottom:10px;" onclick="window.__pfNewsletterCtaClick(\'booking\')">Book a Free Coaching Session</a>' +
+        '<a class="pf-modal-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;background:#fff;color:#23406E;border:1px solid #23406E;" onclick="window.__pfNewsletterCtaClick(\'facebook\')">Join the Free Facebook Group</a>' +
+        '<p class="pf-modal-note" style="margin-top:14px;">Not ready for either? <a href="resources.html" style="color:#8C8580;text-decoration:underline;">Grab the free Pivot Decision Framework worksheet</a> instead.</p>' +
       '</div>';
     document.body.appendChild(overlay);
   }
@@ -148,22 +146,11 @@
       gtag('event', 'exit_popup_click', { variant: 'facebook', page: window.location.pathname });
     }
   };
-  window.__pfSubmitNewsletter = function () {
-    var email = document.getElementById('pf-newsletter-email').value.trim();
-    var name = document.getElementById('pf-newsletter-name').value.trim();
-    if (!email || !emailValid(email)) { alert('Please enter a valid email address.'); return; }
-    var btn = document.getElementById('pf-newsletter-submit');
-    btn.disabled = true; btn.textContent = 'Sending...';
-    submitLead(email, name, 'HomepagePopup', 'pivot_framework_homepage', function (ok) {
-      var a = document.createElement('a');
-      a.href = 'pivot-decision-framework.pdf';
-      a.download = 'pivot-decision-framework.pdf';
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'homepage_popup' });
-      window.__pfCloseNewsletter();
-      alert(ok ? 'Sent! Your worksheet is downloading now.' : 'Your worksheet is downloading. Reach out at reasondxcoaching@gmail.com if you don\u2019t see a follow-up email.');
-      btn.disabled = false; btn.textContent = 'Send me the framework';
-    });
+  window.__pfNewsletterCtaClick = function (which) {
+    mark(NEWSLETTER_KEY);
+    if (typeof gtag === 'function') {
+      gtag('event', 'newsletter_popup_click', { variant: which, page: window.location.pathname });
+    }
   };
 
   function isTouchDevice() {
