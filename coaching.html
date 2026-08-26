@@ -152,6 +152,18 @@
     color: rgba(255,255,255,0.6); margin-top: 10px; font-weight: 300;
   }
 
+  /* PATHWAYS / AREAS OF FOCUS */
+  .pathways { padding:90px 64px; background:var(--cream); }
+  .pathways-header { max-width:640px; margin-bottom:56px; }
+  .pathways-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px; background:var(--cream-dark); }
+  .pathway-card { background:var(--cream); padding:40px 36px; text-decoration:none; display:block; position:relative; transition:background 0.3s; }
+  .pathway-card:hover { background:var(--cream-dark); }
+  .pathway-card::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--terracotta); transition:width 0.4s; }
+  .pathway-card:hover::before { width:100%; }
+  .pathway-card-title { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:500; color:var(--black); line-height:1.2; margin-bottom:14px; }
+  .pathway-card-body { font-size:0.86rem; line-height:1.75; color:var(--gray); font-weight:300; margin-bottom:18px; }
+  .pathway-card-link { font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); }
+
   /* WHY NOT A PLATFORM */
   .differentiator {
     background: var(--warm-dark);
@@ -284,6 +296,7 @@
     .coaching-hero { grid-template-columns:1fr; min-height:auto; }
     .coaching-hero-left { padding:120px 24px 60px; }
     .coaching-hero-right { height:320px; }
+    .pathways { padding:60px 24px; }
     .differentiator { grid-template-columns:1fr; gap:40px; padding:60px 24px; }
     .diff-comparison { grid-template-columns:1fr 1fr; }
     .services { padding:80px 24px; }
@@ -403,6 +416,47 @@
       <p class="coaching-hero-script">"I've lived every pivot<br>I guide others through."</p>
       <p class="coaching-hero-name">Lauren Fine, MD · Coach · TEDx Speaker</p>
     </div>
+  </div>
+</div>
+
+<!-- PATHWAYS / AREAS OF FOCUS -->
+<div class="pathways" id="pathways">
+  <div class="pathways-header">
+    <p class="section-eyebrow reveal">Areas of focus</p>
+    <h2 class="section-title reveal d1">One coach. A few<br>different <em>starting points.</em></h2>
+    <p class="services-note reveal d2" style="margin-top:24px;">Everyone I work with is navigating some version of the same thing: capacity, identity, and what comes next. Pick whichever sounds closest to where you are. The coaching underneath is the same.</p>
+  </div>
+  <div class="pathways-grid">
+    <a href="physician-coaching.html" class="pathway-card reveal">
+      <p class="pathway-card-title">Physician Coaching</p>
+      <p class="pathway-card-body">For physicians questioning their clinical path, considering non-clinical careers, or navigating what comes next.</p>
+      <p class="pathway-card-link">Explore &rarr;</p>
+    </a>
+    <a href="burnout-coaching.html" class="pathway-card reveal d1">
+      <p class="pathway-card-title">Burnout Recovery</p>
+      <p class="pathway-card-body">For high achievers running on empty, where rest alone hasn't fixed the exhaustion.</p>
+      <p class="pathway-card-link">Explore &rarr;</p>
+    </a>
+    <a href="boundary-setting.html" class="pathway-card reveal d2">
+      <p class="pathway-card-title">Boundary Setting</p>
+      <p class="pathway-card-body">For the person who can't say no, and is quietly exhausted by everything they've agreed to carry.</p>
+      <p class="pathway-card-link">Explore &rarr;</p>
+    </a>
+    <a href="career-reinvention.html" class="pathway-card reveal">
+      <p class="pathway-card-title">Career Reinvention</p>
+      <p class="pathway-card-body">For anyone standing at a career fork, deciding whether to stay, pivot, or build something new.</p>
+      <p class="pathway-card-link">Explore &rarr;</p>
+    </a>
+    <a href="ikigai-coaching.html" class="pathway-card reveal d1">
+      <p class="pathway-card-title">Ikigai Coaching</p>
+      <p class="pathway-card-body">For people looking for what makes their work and life feel worth showing up for, using real ikigai, not the Venn diagram.</p>
+      <p class="pathway-card-link">Explore &rarr;</p>
+    </a>
+    <a href="free-session.html" class="pathway-card reveal d2">
+      <p class="pathway-card-title">Not Sure Which Fits?</p>
+      <p class="pathway-card-body">Start with a free 55-minute session. Tell me where you are and I'll tell you honestly what makes sense.</p>
+      <p class="pathway-card-link">Book a Free Session &rarr;</p>
+    </a>
   </div>
 </div>
 
@@ -692,6 +746,8 @@
         <li><a href="about.html">About</a></li>
         <li><a href="coaching.html">Coaching Overview</a></li>
         <li><a href="physician-coaching.html">Physician Coaching</a></li>
+        <li><a href="burnout-coaching.html">Burnout Recovery</a></li>
+        <li><a href="boundary-setting.html">Boundary Setting</a></li>
         <li><a href="ikigai-coaching.html">Ikigai Coaching</a></li>
         <li><a href="career-reinvention.html">Career Reinvention</a></li>
         <li><a href="speaking.html">Speaking</a></li>
