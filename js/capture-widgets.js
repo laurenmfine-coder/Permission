@@ -87,79 +87,29 @@
     document.head.appendChild(s);
   }
 
-  // Which exit offer suits this page.
-  //
-  // One offer across every page was the flaw in the previous version: someone
-  // who has been on a blog post for eleven seconds was asked for an email, the
-  // same ask made of someone who had just read the pricing. An exit offer has
-  // to be smaller than the thing the person is already walking away from, so
-  // the cold pages now ask for nothing at all.
+  // Exit popup is a single Facebook group invite everywhere it fires. It
+  // stays off the pages where interrupting a conversion in progress would
+  // hurt (free-session, booking-confirmed, quiz).
   function exitVariant() {
     var p = window.location.pathname;
     if (/\/(free-session|booking-confirmed|quiz)\.html$/.test(p)) return null; // never interrupt a conversion
-    if (/\/resources\.html$/.test(p)) return 'worksheet';                       // came for downloads: fair trade
-    if (/\/(coaching|career-reinvention|physician-coaching|ikigai-coaching)\.html$/.test(p)) return 'question';
-    return 'quiz';                                                             // cold or browsing: no email
+    return 'facebook';
   }
 
-  var EXIT_CONTENT = {
-    quiz: {
-      eyebrow: 'Before you go',
-      title: 'Which path fits where you are?',
-      body: 'Three questions, two minutes, no email. You get a straight read on whether you need a focused sprint, sustained support, or a full redesign of what is next.',
-      cta: 'Take the two-minute quiz'
-    },
-    question: {
-      eyebrow: 'Before you go',
-      title: 'What is the thing you did not ask?',
-      body: 'No email needed and no follow-up. If something here left you with a question, ask it &mdash; anonymously is fine.',
-      cta: 'Send it'
-    },
-    worksheet: {
-      eyebrow: 'Before you go',
-      title: 'Get the Pivot Decision Framework',
-      body: 'A short worksheet for the moment you are standing at a fork and cannot tell if it is fear or intuition talking. Free, instant download.',
-      cta: 'Send me the framework'
-    }
-  };
-
-  function buildExitModal(variant) {
-    var c = EXIT_CONTENT[variant];
-    var fields;
-    if (variant === 'quiz') {
-      fields =
-        '<a class="pf-modal-submit" id="pf-exit-submit" href="quiz.html" ' +
-          'style="display:block;text-align:center;text-decoration:none;" ' +
-          'onclick="window.__pfExitQuizClick()">' + c.cta + '</a>' +
-        '<p class="pf-modal-note">No email, no sign-up. It just tells you where to start.</p>' +
-        FB_LINK_HTML;
-    } else if (variant === 'question') {
-      fields =
-        '<textarea id="pf-exit-question" placeholder="What are you actually trying to figure out?"></textarea>' +
-        '<input type="email" id="pf-exit-email" placeholder="Email (optional, only if you want a reply)">' +
-        '<button class="pf-modal-submit" id="pf-exit-submit" onclick="window.__pfSubmitExitQuestion()">' + c.cta + '</button>' +
-        '<p class="pf-modal-note">Leave the email blank and it stays anonymous. I read every one.</p>' +
-        FB_LINK_HTML;
-    } else {
-      fields =
-        '<input type="text" id="pf-exit-name" placeholder="First name">' +
-        '<input type="email" id="pf-exit-email" placeholder="Email address">' +
-        '<button class="pf-modal-submit" id="pf-exit-submit" onclick="window.__pfSubmitExit()">' + c.cta + '</button>' +
-        '<p class="pf-modal-note">No spam. Unsubscribe anytime.</p>' +
-        FB_LINK_HTML;
-    }
-
+  function buildExitModal() {
     var overlay = document.createElement('div');
     overlay.className = 'pf-overlay';
     overlay.id = 'pf-exit-overlay';
-    overlay.setAttribute('data-variant', variant);
     overlay.innerHTML =
       '<div class="pf-modal">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
-        '<p class="pf-modal-eyebrow">' + c.eyebrow + '</p>' +
-        '<h3 class="pf-modal-title">' + c.title + '</h3>' +
-        '<p class="pf-modal-body">' + c.body + '</p>' +
-        fields +
+        '<p class="pf-modal-eyebrow">Before you go</p>' +
+        '<h3 class="pf-modal-title">Join a community of people navigating the same thing.</h3>' +
+        '<p class="pf-modal-body">The Permission to Change Facebook group is free: real conversation with people in the middle of their own pivots, reinvention, and the questions that come with both. No sales pitch.</p>' +
+        '<a class="pf-modal-submit" id="pf-exit-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" ' +
+          'style="display:block;text-align:center;text-decoration:none;" ' +
+          'onclick="window.__pfExitFbClick()">Join the free Facebook group</a>' +
+        '<p class="pf-modal-note">No email, no sign-up on this end. It just takes you to Facebook.</p>' +
       '</div>';
     document.body.appendChild(overlay);
   }
@@ -192,68 +142,11 @@
     if (el) el.classList.remove('open');
     mark(NEWSLETTER_KEY);
   };
-  window.__pfExitQuizClick = function () {
+  window.__pfExitFbClick = function () {
     mark(EXIT_KEY);
     if (typeof gtag === 'function') {
-      gtag('event', 'exit_popup_click', { variant: 'quiz', page: window.location.pathname });
+      gtag('event', 'exit_popup_click', { variant: 'facebook', page: window.location.pathname });
     }
-  };
-  window.__pfSubmitExitQuestion = function () {
-    var q = document.getElementById('pf-exit-question').value.trim();
-    var email = document.getElementById('pf-exit-email').value.trim();
-    if (q.length < 10) { alert('Could you add a little more? A sentence is plenty.'); return; }
-    if (email && !emailValid(email)) { alert('That email address does not look right. You can also leave it blank.'); return; }
-    var btn = document.getElementById('pf-exit-submit');
-    btn.disabled = true; btn.textContent = 'Sending...';
-    fetch('/api/question', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        question: q,
-        email: email,
-        publishOk: false,
-        source: 'exit_intent',
-        context: document.title,
-        elapsedMs: 99999
-      })
-    }).then(function (res) {
-      return res.json().catch(function () { return {}; }).then(function (out) {
-        if (!res.ok) throw new Error(out.error || 'Something went wrong on my end.');
-      });
-    }).then(function () {
-      mark(EXIT_KEY);
-      if (typeof gtag === 'function') {
-        gtag('event', 'question_submitted', {
-          has_email: email ? 'yes' : 'no', publish_ok: 'no', source: 'exit_intent'
-        });
-      }
-      window.__pfCloseExit();
-      alert(email
-        ? 'Got it. I read these myself and I\u2019ll come back to you at that address.'
-        : 'Got it. You asked anonymously so I cannot reply, but it is read.');
-    }).catch(function (err) {
-      alert(err.message || 'That did not go through. You can email me at reasondxcoaching@gmail.com.');
-    }).then(function () {
-      btn.disabled = false; btn.textContent = 'Send it';
-    });
-  };
-  window.__pfSubmitExit = function () {
-    var email = document.getElementById('pf-exit-email').value.trim();
-    var name = document.getElementById('pf-exit-name').value.trim();
-    if (!email || !emailValid(email)) { alert('Please enter a valid email address.'); return; }
-    var btn = document.getElementById('pf-exit-submit');
-    btn.disabled = true; btn.textContent = 'Sending...';
-    submitLead(email, name, 'ExitIntentPopup', 'pivot_framework_exit', function (ok) {
-      var a = document.createElement('a');
-      a.href = 'pivot-decision-framework.pdf';
-      a.download = 'pivot-decision-framework.pdf';
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'exit_intent' });
-      mark(EXIT_KEY);
-      window.__pfCloseExit();
-      alert(ok ? 'Sent! Your worksheet is downloading now.' : 'Your worksheet is downloading. Reach out at reasondxcoaching@gmail.com if you don\u2019t see a follow-up email.');
-      btn.disabled = false; btn.textContent = 'Send me the framework';
-    });
   };
   window.__pfSubmitNewsletter = function () {
     var email = document.getElementById('pf-newsletter-email').value.trim();
@@ -281,7 +174,7 @@
     if (daysAgo(EXIT_KEY) < EXIT_DAYS) return;
     var variant = exitVariant();
     if (!variant) return;
-    buildExitModal(variant);
+    buildExitModal();
     var triggered = false;
 
     function fire() {
@@ -292,7 +185,7 @@
       // Without a "shown" count there is no denominator, so there was
       // previously no way to tell whether this converts at 1% or 20%.
       if (typeof gtag === 'function') {
-        gtag('event', 'exit_popup_shown', { variant: variant, page: window.location.pathname });
+        gtag('event', 'exit_popup_shown', { variant: 'facebook', page: window.location.pathname });
       }
     }
 
