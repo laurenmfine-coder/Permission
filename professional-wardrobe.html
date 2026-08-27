@@ -68,7 +68,8 @@
   .page-header-right { font-size:0.95rem; line-height:1.85; color:var(--gray); font-weight:300; padding-bottom:8px; }
 
   /* HERO COLLAGE */
-  .hero-collage { margin:0 64px 80px; aspect-ratio:21/9; background:var(--cream-dark); display:flex; align-items:center; justify-content:center; color:var(--gray); font-size:0.85rem; font-family:'DM Sans',sans-serif; text-align:center; padding:20px; }
+  .hero-collage { margin:0 64px 80px; display:grid; grid-template-columns:repeat(6,1fr); gap:3px; }
+  .hero-collage img { width:100%; aspect-ratio:4/5; object-fit:cover; }
 
   /* MIX & MATCH */
   .mix-match { padding:0 64px 88px; }
@@ -96,11 +97,6 @@
     .mix-piece { width:78px; height:98px; }
     .mix-glyph { font-size:1.1rem; }
   }
-
-  /* STORE FILTER BAR */
-  .cat-bar { padding:0 64px 32px; display:flex; gap:3px; flex-wrap:wrap; }
-  .cat-btn { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); border:none; background:var(--cream-dark); padding:12px 24px; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:400; transition:all 0.25s; }
-  .cat-btn:hover, .cat-btn.active { background:var(--black); color:var(--white); }
 
   /* WARDROBE GRID */
   .tools-section { padding:16px 64px 100px; }
@@ -164,8 +160,7 @@
     .nav-links { display:flex !important; flex-wrap:wrap; gap:8px 16px; width:100%; justify-content:center; order:3; }
     .nav-links a { font-size:0.68rem; }
     .page-header { grid-template-columns:1fr; padding:120px 24px 48px; }
-    .hero-collage { margin:0 24px 48px; }
-    .cat-bar { padding:0 24px 24px; }
+    .hero-collage { margin:0 24px 48px; grid-template-columns:repeat(3,1fr); }
     .tools-section { padding:16px 24px 80px; }
     .tools-grid { grid-template-columns:1fr; }
     .intro-note { padding:0 24px 32px; }
@@ -218,7 +213,14 @@
   </div>
 </div>
 
-<div class="hero-collage">[ six-item collage photo goes here ]</div>
+<div class="hero-collage">
+  <img src="wardrobe-blazer.jpg" alt="One-button blazer">
+  <img src="wardrobe-dress.jpg" alt="Ponte midi dress">
+  <img src="wardrobe-jean.jpg" alt="Cuffed straight ankle jean">
+  <img src="wardrobe-jacket.jpg" alt="Faux leather jacket">
+  <img src="wardrobe-shirt.jpg" alt="Satin soft shirt">
+  <img src="wardrobe-pant.jpg" alt="Elle slim ankle pant">
+</div>
 
 <section class="mix-match">
   <div class="mix-match-head">
@@ -263,14 +265,6 @@
     </div>
   </div>
 </section>
-
-<!-- STORE FILTER -->
-<div class="cat-bar">
-  <button class="cat-btn active" onclick="filterStore('all',this)">All</button>
-  <button class="cat-btn" onclick="filterStore('whbm',this)">White House Black Market</button>
-  <button class="cat-btn" onclick="filterStore('loft',this)">LOFT</button>
-  <button class="cat-btn" onclick="filterStore('ann-taylor',this)">Ann Taylor</button>
-</div>
 
 <section class="tools-section">
   <div class="tools-grid" id="wardrobe-grid">
@@ -347,34 +341,6 @@
       </div>
     </div>
 
-    <!-- LOFT placeholder — duplicate this card per item once you've
-         picked pieces and generated ShopMy embed codes. Keep
-         data-store="loft" so the filter bar picks it up. -->
-    <div class="tool-card" data-store="loft">
-      <div class="piece-image"><!-- ShopMy embed: LOFT item --></div>
-      <div class="tool-body">
-        <span class="tool-badge">LOFT</span>
-        <p class="tool-type">[ category label ]</p>
-        <h2 class="tool-title">[ item name ]</h2>
-        <p class="tool-desc">[ one line on why you love it ]</p>
-        <p class="tool-price"><del>$[ was ]</del>$[ now ]</p>
-        <a class="tool-cta" href="#" target="_blank" rel="noopener">Shop the piece</a>
-      </div>
-    </div>
-
-    <!-- Ann Taylor placeholder — same pattern, data-store="ann-taylor" -->
-    <div class="tool-card" data-store="ann-taylor">
-      <div class="piece-image"><!-- ShopMy embed: Ann Taylor item --></div>
-      <div class="tool-body">
-        <span class="tool-badge">Ann Taylor</span>
-        <p class="tool-type">[ category label ]</p>
-        <h2 class="tool-title">[ item name ]</h2>
-        <p class="tool-desc">[ one line on why you love it ]</p>
-        <p class="tool-price"><del>$[ was ]</del>$[ now ]</p>
-        <a class="tool-cta" href="#" target="_blank" rel="noopener">Shop the piece</a>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -435,14 +401,6 @@
 </footer>
 
 <script>
-  function filterStore(store, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('#wardrobe-grid .tool-card').forEach(card => {
-      card.style.display = (store === 'all' || card.dataset.store === store) ? 'flex' : 'none';
-    });
-  }
-
   const mixObs = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('visible');
   }), { threshold: 0.2 });
