@@ -415,8 +415,29 @@
   .fb-community-btn { display:inline-flex; align-items:center; gap:12px; background:#fff; color:var(--terracotta); font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:18px 40px; border-radius:999px; text-decoration:none; transition:transform 0.25s ease, box-shadow 0.25s ease; box-shadow:0 8px 24px rgba(0,0,0,0.15); }
   .fb-community-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
   .fb-community-btn svg { width:20px; height:20px; }
+  .fb-community-groups-label { font-size:0.68rem; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin:52px 0 22px; }
+  .fb-community-groups { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .fb-community-note { font-size:0.82rem; line-height:1.8; color:rgba(255,255,255,0.62); max-width:620px; margin:26px auto 0; }
+
+  /* WORKSHEET FEATURE */
+  .wf-card { display:flex; max-width:900px; margin:0 auto; background:#fff; text-align:left; box-shadow:0 22px 60px rgba(0,0,0,0.22); overflow:hidden; }
+  .wf-cover { flex:0 0 38%; background:var(--terracotta-dark); padding:40px 34px; display:flex; flex-direction:column; justify-content:center; border-right:6px solid var(--gold); }
+  .wf-cover-eyebrow { font-size:0.6rem; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:16px; }
+  .wf-cover-title { font-family:'Playfair Display',serif; font-size:2rem; font-weight:600; color:#fff; line-height:1.1; margin-bottom:16px; }
+  .wf-cover-meta { font-size:0.74rem; letter-spacing:0.08em; color:rgba(255,255,255,0.6); line-height:1.9; }
+  .wf-body { flex:1; padding:40px 40px 36px; }
+  .wf-kicker { font-size:0.62rem; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .wf-title { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:600; color:var(--black); line-height:1.18; margin-bottom:14px; }
+  .wf-desc { font-size:0.9rem; line-height:1.8; color:var(--gray); margin-bottom:22px; }
+  .wf-btn { display:inline-block; background:var(--terracotta); color:#fff; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:16px 34px; text-decoration:none; transition:background 0.25s ease, transform 0.25s ease; }
+  .wf-btn:hover { background:var(--terracotta-dark); transform:translateY(-2px); }
   @media (max-width:768px) {
     .fb-community { padding:56px 24px; }
+    .wf-card { flex-direction:column; }
+    .wf-cover { flex:none; border-right:none; border-bottom:6px solid var(--gold); padding:32px 26px; }
+    .wf-body { padding:30px 26px 28px; }
+    .fb-community-groups { flex-direction:column; align-items:stretch; }
+    .fb-community-btn { justify-content:center; padding:16px 24px; font-size:0.72rem; }
   }
   .nl-form { display:flex; }
   .nl-input { flex:1; padding:16px 22px; background:rgba(255,255,255,0.05); border:none; border-bottom:1px solid rgba(0,0,0,0.25); color:var(--black); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:300; outline:none; transition:border-color 0.3s; }
@@ -668,15 +689,38 @@
   </div>
 </section>
 
-<!-- FACEBOOK COMMUNITY -->
-<section class="fb-community">
+<!-- FACEBOOK COMMUNITY + WORKSHEET -->
+<section class="fb-community" id="community">
   <p class="fb-community-eyebrow reveal">Free community</p>
   <h2 class="fb-community-title reveal d1">You don't have to<br>figure this out alone.</h2>
-  <p class="fb-community-body reveal d2">Join the Permission to Change Facebook group, a free space for people navigating career pivots, reinvention, and the questions that come with both. Real conversation, no sales pitch.</p>
-  <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" class="fb-community-btn reveal d3">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-    Join the Facebook Group
-  </a>
+  <p class="fb-community-body reveal d2">There are two free Facebook groups. They are not the same room. Start with the worksheet, then walk into the one that is yours.</p>
+
+  <div class="wf-card reveal d2">
+    <div class="wf-cover">
+      <p class="wf-cover-eyebrow">Free worksheet</p>
+      <p class="wf-cover-title">Which room<br>are you in?</p>
+      <p class="wf-cover-meta">Two pages<br>Both group missions<br>Five questions before you post</p>
+    </div>
+    <div class="wf-body">
+      <p class="wf-kicker">Start here</p>
+      <h3 class="wf-title">Which Room Are You In?</h3>
+      <p class="wf-desc">Both group missions side by side, so you know what each room is actually for. Then five questions worth answering before you introduce yourself: a Fact vs. Story split, the rule you never agreed to, and what nothing changing will cost you in two years. People who write something down first tend to post something real.</p>
+      <a href="which-room-are-you-in.pdf" download class="wf-btn">Download the worksheet</a>
+    </div>
+  </div>
+
+  <p class="fb-community-groups-label reveal d3">Then join the room that is yours</p>
+  <div class="fb-community-groups reveal d3">
+    <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" class="fb-community-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+      Permission to Change
+    </a>
+    <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" class="fb-community-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+      Physician Moms at a Crossroads
+    </a>
+  </div>
+  <p class="fb-community-note reveal d3">Both are free and there is no pitch. Permission to Change is open to anyone questioning the rules they inherited. Physician Moms at a Crossroads is for physician mothers weighing burnout, cutting back, or leaving clinical medicine.</p>
 </section>
 
 <section class="work" id="work">

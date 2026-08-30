@@ -342,6 +342,22 @@
       </div>
     </div>
 
+    <!-- Which Room Are You In? -->
+    <div class="tool-card reveal" data-cat="identity">
+      <p class="tool-type"><span>Community</span><span class="tool-badge free">Free</span></p>
+      <div class="tool-icon">🚪</div>
+      <h3 class="tool-title">Which Room Are You In?</h3>
+      <p class="tool-desc">Two free Facebook groups, two different rooms. This worksheet puts both missions side by side, then gives you five questions worth answering before you introduce yourself in either one.</p>
+      <ul class="tool-details">
+        <li>Both group missions, and who each room is for</li>
+        <li>A Fact vs. Story split on where you are now</li>
+        <li>The rule you are following that you never agreed to</li>
+        <li>A draft of your first post</li>
+      </ul>
+      <button class="tool-cta" onclick="openModal('Which Room Are You In')">Download Free</button>
+      <p style="font-size:0.75rem;color:var(--gray);margin-top:14px;line-height:1.6;">Ready to walk in? <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.3);">Permission to Change</a> or <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35, 64, 110,0.3);">Physician Moms at a Crossroads</a>.</p>
+    </div>
+
     <!-- The Pivot Decision Framework -->
     <div class="tool-card reveal" data-cat="decision">
       <p class="tool-type"><span>Decision-Making</span><span class="tool-badge free">Free</span></p>
@@ -604,6 +620,7 @@
   // Modal
   // Maps worksheet display name to PDF file in repo root
   const RESOURCE_WORKSHEETS = {
+    'Which Room Are You In': 'which-room-are-you-in.pdf',
     'Pivot Decision Framework': 'pivot-decision-framework.pdf',
     'Ikigai Mapping Worksheet': 'ikigai-mapping-worksheet.pdf',
     'Story Thread Finder': 'story-thread-finder.pdf',
