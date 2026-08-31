@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Lauren Fine, Allergist | Allergy, Home, Comfort &amp; Professional Picks</title>
-<meta name="description" content="Dr. Lauren Fine, board-certified allergist, on what actually helps: allergy-safe skincare, a lower-irritant home, everyday comfort, and picks for the professional day.">
+<title>Lauren's Recommendations | Allergy, Home, Comfort &amp; Professional</title>
+<meta name="description" content="A board-certified allergist on what actually helps: what allergy testing means and does not mean, lower-irritant skincare and home, and the professional wardrobe edit.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://laurenfine.com/allergist-edit.html">
+<link rel="canonical" href="https://laurenfine.com/recommendations.html">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://laurenfine.com/allergist-edit.html">
-<meta property="og:title" content="Dr. Lauren Fine, Allergist">
+<meta property="og:url" content="https://laurenfine.com/recommendations.html">
+<meta property="og:title" content="Lauren's Recommendations">
 <meta property="og:description" content="Allergy, home, comfort, and professional picks, chosen by a board-certified allergist.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
 <meta property="og:site_name" content="Dr. Lauren Fine, Allergist">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dr. Lauren Fine, Allergist">
+<meta name="twitter:title" content="Lauren's Recommendations">
 <meta name="twitter:description" content="Allergy, home, comfort, and professional picks, chosen by a board-certified allergist.">
 <meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
 
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Dr. Lauren Fine, Allergist",
-  "url": "https://laurenfine.com/allergist-edit.html",
+  "url": "https://laurenfine.com/recommendations.html",
   "description": "Allergy, home, comfort, and professional picks from a board-certified allergist.",
   "author": { "@type": "Person", "name": "Lauren Fine", "url": "https://laurenfine.com" }
 }
@@ -147,6 +147,69 @@
     .footer-bottom { flex-direction:column; gap:12px; }
   }
 
+  /* SECTION JUMP NAV */
+  .section-jump { padding:28px 64px 0; display:flex; gap:8px; flex-wrap:wrap; }
+  .section-jump a { font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); background:var(--cream-dark); padding:9px 18px; text-decoration:none; transition:background 0.3s,color 0.3s; }
+  .section-jump a:hover { background:var(--terracotta); color:var(--white); }
+  @media (max-width:960px) { .section-jump { padding:24px 24px 0; gap:6px; } .section-jump a { font-size:0.6rem; padding:8px 13px; } }
+
+  /* ===== PROFESSIONAL WARDROBE (merged from professional-wardrobe.html) ===== */
+  .page-header-script { font-family:'Playfair Display',serif; font-size:2.5rem; color:var(--gold); line-height:1.2; }
+  .hero-collage { margin:0 64px 80px; display:grid; grid-template-columns:repeat(6,1fr); gap:3px; }
+  .hero-collage img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+  .mix-match { padding:0 64px 88px; }
+  .mix-match-head { text-align:center; max-width:520px; margin:0 auto 56px; }
+  .mix-match-eyebrow { font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:16px; }
+  .mix-match-title { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.8rem,3vw,2.6rem); color:var(--black); line-height:1.2; }
+  .mix-match-title em { font-style:italic; color:var(--terracotta); }
+
+  .mix-row { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:64px; opacity:0; transform:translateY(24px); transition:opacity 0.8s ease, transform 0.8s ease; position:relative; flex-wrap:wrap; }
+  .mix-row.visible { opacity:1; transform:translateY(0); }
+  .mix-row:last-child { margin-bottom:0; }
+  .mix-piece { width:104px; height:130px; object-fit:cover; border-radius:2px; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  .mix-glyph { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--gold); font-style:italic; flex-shrink:0; }
+  .mix-label { width:100%; text-align:center; margin-top:20px; }
+  .mix-label-eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:6px; }
+  .mix-label-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:500; color:var(--black); }
+
+  .mix-bubble { display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--blush-light); border-radius:999px; padding:9px 18px; font-size:0.78rem; color:var(--gray); font-weight:300; margin-top:16px; opacity:0; transform:scale(0.9); transition:opacity 0.5s ease 0.35s, transform 0.5s ease 0.35s; }
+  .mix-row.visible .mix-bubble { opacity:1; transform:scale(1); }
+  .mix-bubble::before { content:'✦'; color:var(--gold); font-size:0.7rem; }
+
+  @media (max-width:960px) {
+    .mix-match { padding:0 24px 64px; }
+    .mix-row { gap:10px; margin-bottom:56px; }
+    .mix-piece { width:78px; height:98px; }
+    .mix-glyph { font-size:1.1rem; }
+  }
+  .tools-section { padding:16px 64px 100px; }
+  .tools-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+
+  .tool-card { background:var(--white); padding:0; position:relative; transition:transform 0.35s, box-shadow 0.35s; border-top:3px solid var(--blush); display:flex; flex-direction:column; }
+  .tool-card:hover { transform:translateY(-6px); box-shadow:0 20px 52px rgba(0,0,0,0.07); border-top-color:var(--terracotta); }
+
+  .piece-image { aspect-ratio:4/5; background:var(--cream-dark); border:1px dashed var(--blush-light); display:flex; align-items:center; justify-content:center; color:var(--gray); font-size:0.72rem; text-align:center; padding:16px; font-family:'DM Sans',sans-serif; }
+  /* This box is where the ShopMy embed snippet goes for each piece.
+     Replace the placeholder comment inside .piece-image with the embed
+     code from ShopMy (Collections > select item > Embed). Once the
+     embed is in place, delete the .tool-price and .tool-cta below it
+     since the ShopMy card already shows price and link. */
+
+  .tool-body { padding:32px 28px 36px; display:flex; flex-direction:column; flex:1; }
+  .tool-badge { display:inline-block; font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); background:var(--cream-dark); padding:4px 10px; margin-bottom:12px; align-self:flex-start; }
+  .tool-type { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:8px; }
+  .tool-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:500; color:var(--black); line-height:1.2; margin-bottom:12px; }
+  .tool-desc { font-size:0.84rem; line-height:1.8; color:var(--gray); font-weight:300; margin-bottom:20px; flex:1; }
+  .tool-price { font-size:0.84rem; color:var(--black); margin-bottom:20px; }
+  .tool-price del { color:var(--gray); margin-right:8px; }
+  .tool-cta { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--white); background:var(--black); padding:14px 24px; text-decoration:none; display:inline-block; text-align:center; transition:background 0.3s; align-self:flex-start; }
+  .tool-cta:hover { background:var(--terracotta); }
+  @media (max-width:960px) {
+    .hero-collage { margin:0 24px 48px; grid-template-columns:repeat(3,1fr); }
+    .tools-section { padding:16px 24px 80px; }
+    .tools-grid { grid-template-columns:1fr; }
+  }
+
   /* NAV DROPDOWN */
   .nav-has-drop { position:relative; }
   .nav-drop-toggle { font-family:inherit; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B6B; background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px; line-height:inherit; transition:color 0.3s; }
@@ -162,6 +225,12 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+
+  /* --- merge fixes --- */
+  .label-note a { color:#D9C08A; text-decoration:none; border-bottom:1px solid rgba(217,192,138,0.45); }
+  .label-note a:hover { color:#FFFFFF; border-bottom-color:#FFFFFF; }
+  .testing-q { border-left:0; padding-left:0; font-style:italic; color:var(--black); }
+  #testing, #cover, #spf, #hydrate, #soft, #sleep, #house, #professional, #references { scroll-margin-top:96px; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -201,19 +270,22 @@
 <header class="page-header">
   <div>
     <p class="header-eyebrow">Dr. Lauren Fine, Allergist</p>
-    <h1>Allergy. Home.<br><em>Comfort.</em></h1>
+    <h1>Allergy. Home.<br>Comfort. <em>Work.</em></h1>
   </div>
   <div class="page-header-right">
     <p>I am a board certified allergist and immunologist, and the question I get most often has nothing to do with medication. It is some version of: what is actually safe to put on my skin, sleep in, and wash with?</p>
-    <p style="margin-top:16px;">This is that answer, in the order I would actually change things, plus the pieces I reach for once I'm dressed and out the door. For the office, I keep a separate <a href="professional-wardrobe.html" style="color:var(--terracotta); border-bottom:1px solid rgba(35,64,110,0.35); text-decoration:none;">professional wardrobe edit</a>.</p>
+    <p style="margin-top:16px;">This is that answer, in the order I would actually change things. It starts with what the words on a label are worth, because that is the part nobody explains, and it ends with what I wear to work. Everything here is a recommendation, not a treatment.</p>
   </div>
 </header>
 
-<div style="padding:28px 64px 0; display:flex; gap:10px; flex-wrap:wrap;">
-  <span style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); background:var(--cream-dark); padding:9px 18px;">Allergy</span>
-  <span style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); background:var(--cream-dark); padding:9px 18px;">Home</span>
-  <span style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--terracotta); background:var(--cream-dark); padding:9px 18px;">Comfort</span>
-  <a href="professional-wardrobe.html" style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--terracotta); padding:9px 18px; text-decoration:none;">Professional &rarr;</a>
+<div class="section-jump">
+  <a href="#testing">What "allergy tested" means</a>
+  <a href="#cover">Sun</a>
+  <a href="#hydrate">Skin</a>
+  <a href="#soft">Comfort</a>
+  <a href="#sleep">Bedroom</a>
+  <a href="#house">Home</a>
+  <a href="#professional">Professional</a>
 </div>
 
 <div class="label-band">
@@ -225,17 +297,17 @@
     <div class="label-cell">
       <p class="label-word">Hypoallergenic</p>
       <p class="label-verdict">Not regulated</p>
-      <p class="label-note">There is no standard behind it and no test a product has to pass. Any company can print it on anything. It is the word people trust most and the one that tells you least.</p>
+      <p class="label-note">There is no standard behind it and no test a product has to pass. The FDA says plainly that <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">no federal standards or definitions</a> govern the word. It is the term people trust most and the one that tells you least.</p>
     </div>
     <div class="label-cell">
       <p class="label-word">Unscented</p>
       <p class="label-verdict">Often misleading</p>
-      <p class="label-note">A product can be unscented and still contain fragrance, added specifically to mask the smell of the other ingredients. If you react to fragrance, this word does not protect you.</p>
+      <p class="label-note">A product can be unscented and still contain fragrance, <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">added specifically to mask the smell</a> of the other ingredients. If you react to fragrance, this word does not protect you.</p>
     </div>
     <div class="label-cell">
       <p class="label-word">Fragrance free</p>
       <p class="label-verdict">Checkable</p>
-      <p class="label-note">It means none was added, and you can confirm it on the ingredient list. Together with "allergy tested," that is what I look for.</p>
+      <p class="label-note">It means none was added, and you can confirm it on the ingredient list. This is <a href="https://www.aad.org/public/everyday-care/itchy-skin/rash/itchy-rash-contact-dermatitis" target="_blank" rel="noopener">the term dermatologists tell patients to look for</a>. Together with "allergy tested," it is what I look for too.</p>
     </div>
   </div>
 </div>
@@ -245,6 +317,88 @@
   <p>What this list does is reduce what your skin has to deal with in the first place. Fewer irritants, less sun, less friction, fewer dust mites. That is unglamorous and it is most of the work.</p>
   <p>Change one thing at a time. If everything changes at once and your skin improves, you have learned nothing about which change mattered.</p>
 </div>
+
+<style>
+  .testing-band { background:var(--cream-dark); padding:96px 64px; }
+  .testing-head { max-width:760px; margin-bottom:56px; }
+  .testing-eyebrow { font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
+  .testing-title { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.9rem,3.2vw,2.9rem); color:var(--black); line-height:1.15; margin-bottom:24px; }
+  .testing-title em { font-style:italic; color:var(--terracotta); }
+  .testing-lede { font-size:1rem; line-height:1.85; color:var(--gray); font-weight:300; }
+  .testing-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+  .testing-card { background:var(--white); padding:40px 36px 42px; border-top:3px solid var(--blush); }
+  .testing-card.wide { grid-column:1 / -1; }
+  .testing-num { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
+  .testing-h { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:500; color:var(--black); line-height:1.25; margin-bottom:16px; }
+  .testing-p { font-size:0.9rem; line-height:1.85; color:var(--gray); font-weight:300; margin-bottom:14px; }
+  .testing-p:last-child { margin-bottom:0; }
+  .testing-p a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); }
+  .testing-p a:hover { border-bottom-color:var(--terracotta); }
+  .testing-q { border-left:2px solid var(--gold); padding-left:18px; font-style:italic; color:var(--black); }
+  .testing-foot { max-width:760px; margin-top:48px; }
+  .testing-foot p { font-size:0.95rem; line-height:1.85; color:var(--gray); font-weight:300; }
+  .testing-foot a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); }
+  @media (max-width:960px) {
+    .testing-band { padding:64px 24px; }
+    .testing-grid { grid-template-columns:1fr; }
+    .testing-card { padding:32px 24px 34px; }
+  }
+</style>
+
+<section class="testing-band reveal" id="testing">
+  <div class="testing-head">
+    <p class="testing-eyebrow">The testing</p>
+    <h2 class="testing-title">What "allergy tested" <em>actually</em> means</h2>
+    <p class="testing-lede">You will notice one brand appears on this page more than any other, so it is fair to ask why. The answer is not loyalty and nothing here is sponsored. It is that I can describe what their testing involves, and for most of what sits next to it on the shelf I cannot. Here is the part worth understanding, including the limits.</p>
+  </div>
+
+  <div class="testing-grid">
+
+    <div class="testing-card">
+      <p class="testing-num">01</p>
+      <h3 class="testing-h">"Hypoallergenic" is not a claim anyone has to prove</h3>
+      <p class="testing-p">The FDA is unusually blunt about this. <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">There are no federal standards or definitions</a> governing the term, the agency says, and it "means whatever a particular company wants it to mean." No manufacturer has to submit any substantiation to use it.</p>
+      <p class="testing-p">The FDA did try. A 1975 regulation would have required comparative testing before a product could carry the word. Two cosmetics companies sued and the D.C. Circuit <a href="https://openjurist.org/569/f2d/674/almay-inc-v-a-califano" target="_blank" rel="noopener">struck the rule down in 1977</a>. One of those companies was Clinique. I would rather tell you that myself than have you find it somewhere else.</p>
+      <p class="testing-p">What filled the vacuum is measurable. When researchers analyzed skin care products marketed as hypoallergenic in the United States, <a href="https://doi.org/10.1016/j.jaci.2014.07.066" target="_blank" rel="noopener">89 percent contained at least one known contact allergen</a>.</p>
+    </div>
+
+    <div class="testing-card">
+      <p class="testing-num">02</p>
+      <h3 class="testing-h">What a real sensitization test looks like</h3>
+      <p class="testing-p">The protocol behind the phrase "allergy tested" is usually the Human Repeated Insult Patch Test. It runs on roughly <a href="https://ftp.cdc.gov/pub/Documents/OEL/06.%20Dotson/References/Basketter_2009_Cutan%20Ocular%20Toxicol.pdf" target="_blank" rel="noopener">100 to 200 volunteers</a>. Nine occluded patches go on the upper back across three weeks. Then a two week rest. Then a fresh challenge patch on skin that has never seen the product, read over the following days.</p>
+      <p class="testing-p">The design is deliberate and it is not asking whether the product stings. It is asking a harder question: whether repeated forced exposure can teach an immune system to react to something it previously ignored. That is what sensitization is, and it is permanent once it happens.</p>
+    </div>
+
+    <div class="testing-card">
+      <p class="testing-num">03</p>
+      <h3 class="testing-h">And what that test cannot tell you</h3>
+      <p class="testing-p">A panel of about 100 people cannot detect a sensitization rate below roughly one percent. Nine occluded exposures are nothing like how anyone actually uses a moisturizer. And in the words of the toxicologist reviewing the method, a negative result <span class="testing-q">"does not mean that sensitization will not occur in the exposed population."</span></p>
+      <p class="testing-p">So allergy tested is not a promise. It is a screen that catches strong sensitizers before a product ships. That is worth a great deal. It is not the same thing as safe for everyone, and any brand telling you otherwise is overselling.</p>
+    </div>
+
+    <div class="testing-card">
+      <p class="testing-num">04</p>
+      <h3 class="testing-h">Why fragrance is the ingredient I care most about</h3>
+      <p class="testing-p">Under US labeling law an entire fragrance mixture can appear on an ingredient list as <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">one word: "Fragrance."</a> Those formulas are protected as trade secrets. So on a scented product, the ingredient list genuinely cannot tell you what you are putting on your face.</p>
+      <p class="testing-p">That matters because fragrance chemicals are among the most common contact allergens found in clinic. In the most recent <a href="https://doi.org/10.1089/derm.2024.0474" target="_blank" rel="noopener">North American Contact Dermatitis Group series</a>, 3,056 patients were patch tested. Hydroperoxides of linalool, an oxidized fragrance ingredient, were positive in 10.1 percent of them.</p>
+      <p class="testing-p">Removing fragrance removes an entire category you have no way to audit. On this whole page, that is the single highest yield decision.</p>
+    </div>
+
+    <div class="testing-card wide">
+      <p class="testing-num">05</p>
+      <h3 class="testing-h">What Clinique actually claims, in their words and not mine</h3>
+      <p class="testing-p">Clinique states that every product is <a href="https://www.clinique.com/clinique-philosophy" target="_blank" rel="noopener">allergy tested and 100 percent fragrance free</a>, across skincare and makeup, and free from parabens and phthalates. They describe <a href="https://www.clinique.com/skin-school-blog/clinique-story/dr-norman-orentreich-pioneer-allergy-science" target="_blank" rel="noopener">testing at every stage of development</a>, including the Repeated Insult Patch Test, stability, sensory, clinical, ophthalmologist and safety in use testing, and put the running total at <a href="https://www.clinique.com/our-philosophy" target="_blank" rel="noopener">"nearly 6 million test applications to date."</a> The brand was built in 1968 around dermatologist Norman Orentreich's premise that what is left out of a formula matters as much as what goes in. Eye products are additionally <a href="https://www.clinique.com/eye-safety" target="_blank" rel="noopener">ophthalmologist tested and formulated for contact lens wearers</a>.</p>
+      <p class="testing-p">Those are the company's claims about itself. They are not an independent certification, because no such certification exists, which is the whole problem this page is about. What I can say is that the claims are specific rather than atmospheric, and that they apply to the entire line instead of one hero product. Specific claims are falsifiable. "Gentle" and "for sensitive skin" are not.</p>
+      <p class="testing-p">One clarification while we are being precise. Clinique funds a dermatology research center at Icahn Mount Sinai. That is <a href="https://www.mountsinai.org/about/newsroom/2024/clinique-partners-with-icahn-school-of-medicine-at-mount-sinai-to-establish-the-mount-sinaiclinique-healthy-skin-dermatology-center" target="_blank" rel="noopener">philanthropic research funding</a>, not a hospital testing or endorsing products, and it should not be read as one.</p>
+    </div>
+
+  </div>
+
+  <div class="testing-foot">
+    <p>None of this replaces patch testing. If your skin is reacting and you do not know to what, that is a diagnosis worth getting, and no ingredient list substitutes for it. What a fragrance free, allergy tested line does is reduce the number of variables you are carrying before you start. <a href="post-why-i-trust-clinique.html">The longer version of why I trust this brand is here.</a></p>
+  </div>
+</section>
+
 
 <section class="picks-section reveal" id="cover">
   <div class="picks-head">
@@ -586,8 +740,196 @@
   </div>
 </section>
 
+
+<section class="picks-section reveal" id="professional">
+  <div class="picks-head">
+    <p class="picks-eyebrow">Step seven</p>
+    <h2 class="picks-title">What I actually wear <em>to work</em></h2>
+    <p class="picks-lede">Everything above is about lowering what your skin has to deal with. This section is the other half of the day. Fiber and fit still matter once you are dressed for the office, and the same rules apply: smooth fibers, nothing that traps heat, and new pieces washed before the first wear. What follows is the edit I keep coming back to.</p>
+  </div>
+</section>
+
+<div class="hero-collage">
+  <img src="wardrobe-blazer.jpg" alt="One-button blazer">
+  <img src="wardrobe-dress.jpg" alt="Ponte midi dress">
+  <img src="wardrobe-jean.jpg" alt="Cuffed straight ankle jean">
+  <img src="wardrobe-jacket.jpg" alt="Faux leather jacket">
+  <img src="wardrobe-shirt.jpg" alt="Satin soft shirt">
+  <img src="wardrobe-pant.jpg" alt="Elle slim ankle pant">
+</div>
+
+<div class="intro-note" style="padding-top:8px;">
+  <p>I built this edit around one problem: most professional wardrobes aren't built for the actual shape of a busy day. You need to be comfortable enough to stand through a full clinic day or a packed conference schedule, put-together enough for a meeting that lands with no notice, and ready to go straight to dinner without a wardrobe change. Every piece here does double duty, so a handful of items can pack down small and still take you from day to night. And everything stays in a neutral palette on purpose, so nothing here fights with what's already in your closet.</p>
+  <p style="margin-top:8px;"><a href="post-i-didnt-ask-permission.html" style="color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.35); padding-bottom:1px; font-weight:400;">Why I built this without asking anyone first &rarr;</a></p>
+</div>
+
+<section class="mix-match">
+  <div class="mix-match-head">
+    <p class="mix-match-eyebrow">How the pieces work</p>
+    <h2 class="mix-match-title">Six pieces, <em>endless</em> outfits.</h2>
+  </div>
+
+  <div class="mix-row reveal">
+    <img class="mix-piece" src="wardrobe-shirt.jpg" alt="Satin soft shirt">
+    <span class="mix-glyph">+</span>
+    <img class="mix-piece" src="wardrobe-pant.jpg" alt="Elle slim ankle pant">
+    <span class="mix-glyph">+</span>
+    <img class="mix-piece" src="wardrobe-blazer.jpg" alt="One-button blazer">
+    <div class="mix-label">
+      <p class="mix-label-eyebrow">Look one</p>
+      <h3 class="mix-label-title">The desk</h3>
+      <span class="mix-bubble">Keep the blazer buttoned for client meetings, open it up for everyday desk work.</span>
+    </div>
+  </div>
+
+  <div class="mix-row reveal">
+    <img class="mix-piece" src="wardrobe-shirt.jpg" alt="Satin soft shirt">
+    <span class="mix-glyph">+</span>
+    <img class="mix-piece" src="wardrobe-jean.jpg" alt="Cuffed straight ankle jean">
+    <span class="mix-glyph">+</span>
+    <img class="mix-piece" src="wardrobe-jacket.jpg" alt="Faux leather jacket">
+    <div class="mix-label">
+      <p class="mix-label-eyebrow">Look two</p>
+      <h3 class="mix-label-title">The dinner</h3>
+      <span class="mix-bubble">Undo one more button, swap flats for heels, and you're out the door.</span>
+    </div>
+  </div>
+
+  <div class="mix-row reveal">
+    <img class="mix-piece" src="wardrobe-dress.jpg" alt="Ponte midi dress">
+    <span class="mix-glyph">+</span>
+    <img class="mix-piece" src="wardrobe-jacket.jpg" alt="Faux leather jacket">
+    <div class="mix-label">
+      <p class="mix-label-eyebrow">Look three</p>
+      <h3 class="mix-label-title">The day out</h3>
+      <span class="mix-bubble">Wears alone on warm days, layered under the jacket once it cools off.</span>
+    </div>
+  </div>
+</section>
+
+<section class="tools-section">
+  <div class="tools-grid" id="wardrobe-grid">
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-blazer.jpg" alt="WHBM Luxe Stretch One-Button Blazer" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The power piece</p>
+        <h2 class="tool-title">The one-button blazer</h2>
+        <p class="tool-desc">Tailored without being stiff. This is the piece that turns a simple shirt and pant into a full look for a meeting or a courtroom appearance.</p>
+        <p class="tool-price"><del>$210</del>$157.50</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82170824?s=sl1_pl1_cpl" target="_blank" rel="noopener">Shop the blazer</a>
+      </div>
+    </div>
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-dress.jpg" alt="WHBM Ponte Midi Dress" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The day-to-night dress</p>
+        <h2 class="tool-title">The ponte midi dress</h2>
+        <p class="tool-desc">Structured enough for the office, soft enough to wear all day. Add a layer for work, remove it for dinner.</p>
+        <p class="tool-price"><del>$180</del>$135</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82171213?s=sl1_pl1_cpl" target="_blank" rel="noopener">Shop the dress</a>
+      </div>
+    </div>
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-jean.jpg" alt="WHBM Cuffed High-Rise Straight Ankle Jean" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The weekend staple</p>
+        <h2 class="tool-title">The cuffed straight ankle jean</h2>
+        <p class="tool-desc">A relaxed fit with a cuffed hem that still feels put together, my go-to for weekends and travel days.</p>
+        <p class="tool-price"><del>$130</del>$97.50</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82171703?s=sl1_pl1_cpl" target="_blank" rel="noopener">Shop the jeans</a>
+      </div>
+    </div>
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-jacket.jpg" alt="WHBM Faux Leather Jacket" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The evening layer</p>
+        <h2 class="tool-title">The faux leather jacket</h2>
+        <p class="tool-desc">My favorite swap for the blazer once the day turns to dinner. Instant edge without trying too hard.</p>
+        <p class="tool-price"><del>$200</del>$150</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82172188?s=sl1_pl1_cpl" target="_blank" rel="noopener">Shop the jacket</a>
+      </div>
+    </div>
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-shirt.jpg" alt="WHBM Satin Soft Shirt" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The quiet workhorse</p>
+        <h2 class="tool-title">The satin soft shirt</h2>
+        <p class="tool-desc">The base layer for nearly every look in this edit. Tucked and buttoned for work, undone a little for after hours.</p>
+        <p class="tool-price"><del>$99</del>$74.25</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82172616" target="_blank" rel="noopener">Shop the shirt</a>
+      </div>
+    </div>
+
+    <div class="tool-card" data-store="whbm">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wardrobe-pant.jpg" alt="WHBM Luxe Stretch High-Rise Elle Slim Ankle Pant" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">White House Black Market</span>
+        <p class="tool-type">The everyday trouser</p>
+        <h2 class="tool-title">The Elle slim ankle pant</h2>
+        <p class="tool-desc">A high-rise, luxe stretch trouser that holds its shape through a long day and still feels comfortable by evening.</p>
+        <p class="tool-price"><del>$120</del>$90</p>
+        <a class="tool-cta" href="https://go.shopmy.us/p-82172878" target="_blank" rel="noopener">Shop the pant</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .refs { background:var(--white); padding:72px 64px 64px; border-top:1px solid var(--blush-light); }
+  .refs-eyebrow { font-size:0.66rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
+  .refs-title { font-family:'Playfair Display',serif; font-weight:300; font-size:1.6rem; color:var(--black); margin-bottom:10px; }
+  .refs-note { font-size:0.85rem; line-height:1.8; color:var(--gray); font-weight:300; max-width:680px; margin-bottom:32px; }
+  .refs-list { list-style:none; max-width:900px; }
+  .refs-list li { font-size:0.82rem; line-height:1.8; color:var(--gray); font-weight:300; padding:12px 0; border-bottom:1px solid var(--cream-dark); }
+  .refs-list li:last-child { border-bottom:none; }
+  .refs-list a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.28); }
+  .refs-list a:hover { border-bottom-color:var(--terracotta); }
+  .refs-sub { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--black); margin:28px 0 4px; }
+  @media (max-width:960px) { .refs { padding:56px 24px 48px; } }
+</style>
+
+<div class="refs" id="references">
+  <p class="refs-eyebrow">Sources</p>
+  <h2 class="refs-title">Where these numbers come from</h2>
+  <p class="refs-note">I would rather you check me than take my word for it. Everything factual on this page traces to one of the following. Where a claim is a company describing itself, I have said so on the page and listed it separately below.</p>
+
+  <p class="refs-sub">Regulatory and professional guidance</p>
+  <ul class="refs-list">
+    <li>US Food and Drug Administration. <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">"Hypoallergenic" Cosmetics.</a> On the absence of any federal standard behind the term.</li>
+    <li>US Food and Drug Administration. <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">Fragrances in Cosmetics.</a> On "unscented" products containing masking fragrance, and on fragrance mixtures being listed as a single trade-secret ingredient.</li>
+    <li>American Academy of Dermatology. <a href="https://www.aad.org/public/everyday-care/itchy-skin/rash/itchy-rash-contact-dermatitis" target="_blank" rel="noopener">Contact dermatitis: how to treat and prevent it.</a> On choosing "fragrance free" over "unscented."</li>
+    <li><a href="https://openjurist.org/569/f2d/674/almay-inc-v-a-califano" target="_blank" rel="noopener">Almay, Inc. v. Califano, 569 F.2d 674 (D.C. Cir. 1977).</a> The decision that vacated the FDA regulation defining "hypoallergenic." Clinique was a co-plaintiff.</li>
+  </ul>
+
+  <p class="refs-sub">Peer-reviewed literature</p>
+  <ul class="refs-list">
+    <li>Hamann CR, Bernard S, Hamann D, Hansen R, Thyssen JP. <a href="https://doi.org/10.1016/j.jaci.2014.07.066" target="_blank" rel="noopener">Is there a risk using hypoallergenic cosmetic pediatric products in the United States?</a> <em>Journal of Allergy and Clinical Immunology.</em> 2015;135(4):1070-1071. Source of the finding that 89 percent of US products marketed as hypoallergenic contained at least one known contact allergen.</li>
+    <li>Houle MC, DeKoven JG, Reeder MJ, Warshaw EM, et al. <a href="https://doi.org/10.1089/derm.2024.0474" target="_blank" rel="noopener">North American Contact Dermatitis Group Patch Test Results: 2021-2022.</a> <em>Dermatitis.</em> 2025. 3,056 patients patch tested across 12 centers; 72.0 percent had at least one positive reaction. Hydroperoxides of linalool 10.1 percent, methylisothiazolinone 11.5 percent.</li>
+    <li>Basketter DA. <a href="https://ftp.cdc.gov/pub/Documents/OEL/06.%20Dotson/References/Basketter_2009_Cutan%20Ocular%20Toxicol.pdf" target="_blank" rel="noopener">The human repeated insult patch test in the 21st century: a commentary.</a> <em>Cutaneous and Ocular Toxicology.</em> 2009. Source of the HRIPT protocol description and of its stated limitations, including that a negative result does not mean sensitization will not occur in the exposed population.</li>
+  </ul>
+
+  <p class="refs-sub">Company statements, quoted as such</p>
+  <ul class="refs-list">
+    <li>Clinique. <a href="https://www.clinique.com/our-philosophy" target="_blank" rel="noopener">Our Philosophy</a> and <a href="https://www.clinique.com/clinique-philosophy" target="_blank" rel="noopener">Clinique Philosophy</a>. Source of the "nearly 6 million test applications" figure and the allergy tested, 100 percent fragrance free, paraben and phthalate free claims.</li>
+    <li>Clinique. <a href="https://www.clinique.com/skin-school-blog/clinique-story/dr-norman-orentreich-pioneer-allergy-science" target="_blank" rel="noopener">Dr. Norman Orentreich, Pioneer of Allergy Science.</a> Source of the development-stage testing list and the 1968 founding account.</li>
+    <li>Clinique. <a href="https://www.clinique.com/eye-safety" target="_blank" rel="noopener">Eye Safety.</a> Source of the ophthalmologist tested and contact lens wearer claims.</li>
+    <li>Icahn School of Medicine at Mount Sinai. <a href="https://www.mountsinai.org/about/newsroom/2024/clinique-partners-with-icahn-school-of-medicine-at-mount-sinai-to-establish-the-mount-sinaiclinique-healthy-skin-dermatology-center" target="_blank" rel="noopener">Mount Sinai-Clinique Healthy Skin Dermatology Center.</a> A philanthropic research commitment, not product testing or endorsement.</li>
+  </ul>
+</div>
+
 <div class="external-section">
-  <p class="external-note">Some links on this page are affiliate links. If you make a purchase through one, I may earn a small commission at no extra cost to you. Nothing here is sponsored, and no brand has paid to be included. These are the products I recommend and use.</p>
+  <p class="external-note">Some links on this page are affiliate links. If you make a purchase through one, I may earn a small commission at no extra cost to you. Nothing here is sponsored, no brand has paid to be included, and no company reviewed this page before it went up. These are products I recommend and use.</p>
 </div>
 
 <div class="nl-strip">

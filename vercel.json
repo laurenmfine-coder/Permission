@@ -2,6 +2,26 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/allergist-edit",
+      "destination": "/recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/allergist-edit.html",
+      "destination": "/recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/professional-wardrobe",
+      "destination": "/recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/professional-wardrobe.html",
+      "destination": "/recommendations",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

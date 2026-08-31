@@ -148,6 +148,22 @@
     .footer-top { grid-template-columns:1fr; gap:40px; }
     .footer-bottom { flex-direction:column; gap:12px; }
   }
+
+  /* NAV DROPDOWN */
+  .nav-has-drop { position:relative; }
+  .nav-drop-toggle { font-family:inherit; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B6B; background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px; line-height:inherit; transition:color 0.3s; }
+  .nav-has-drop:hover .nav-drop-toggle, .nav-has-drop.open .nav-drop-toggle { color:#111; }
+  .nav-drop { position:absolute; top:100%; left:0; margin-top:14px; background:#FFFFFF; box-shadow:0 14px 40px rgba(0,0,0,0.10); list-style:none; min-width:200px; padding:10px 0; opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity 0.25s, transform 0.25s, visibility 0.25s; z-index:300; }
+  .nav-has-drop:hover .nav-drop, .nav-has-drop:focus-within .nav-drop, .nav-has-drop.open .nav-drop { opacity:1; visibility:visible; transform:translateY(0); }
+  .nav-drop li { display:block; margin:0; }
+  .nav-drop a { display:block; padding:11px 22px; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6B6B; white-space:nowrap; text-decoration:none; }
+  .nav-drop a::after { display:none !important; }
+  .nav-drop a:hover { color:#111; background:#F2EEE9; }
+  @media (max-width:900px) {
+    .nav-drop { position:static; margin:6px 0 0; box-shadow:none; padding:0; min-width:0; display:none; opacity:1; visibility:visible; transform:none; background:transparent; }
+    .nav-has-drop.open .nav-drop { display:block; }
+    .nav-drop a { padding:7px 0; }
+  }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
 <script>
@@ -168,12 +184,17 @@
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="coaching.html">Coaching</a></li>
-    <li><a href="writing-services.html">Writing Services</a></li>
     <li><a href="speaking.html">Speaking</a></li>
-    <li><a href="blog.html">Writing</a></li>
-    <li><a href="resources.html">Resources</a></li>
     <li><a href="media.html">Media</a></li>
-    <li><a href="professional-wardrobe.html">Wardrobe</a></li><li><a href="allergist-edit.html">Allergist's Edit</a></li>
+    <li><a href="recommendations.html">Lauren's Recommendations</a></li>
+    <li class="nav-has-drop">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span aria-hidden="true">&#9662;</span></button>
+      <ul class="nav-drop">
+        <li><a href="resources.html">Free Resources</a></li>
+        <li><a href="blog.html">Writing</a></li>
+        <li><a href="writing-services.html">Writing Services</a></li>
+      </ul>
+    </li>
   </ul>
   <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
 </nav>
@@ -237,7 +258,7 @@
 
   <hr>
 
-  <p>If you want to see where this particular leap of faith landed, <a href="professional-wardrobe.html">here's the wardrobe edit</a>. And if you're sitting on your own version of this, wondering whether it's allowed, <a href="free-session.html">let's talk it through</a>.</p>
+  <p>If you want to see where this particular leap of faith landed, <a href="recommendations.html#professional">here's the wardrobe edit</a>. And if you're sitting on your own version of this, wondering whether it's allowed, <a href="free-session.html">let's talk it through</a>.</p>
 
   <div id="pf-related-posts" style="margin-top:52px;padding-top:44px;border-top:1px solid #EDE9E4;"></div>
 </article>
@@ -300,7 +321,7 @@
         <li><a href="blog.html">Writing</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="media.html">Media</a></li>
-        <li><a href="professional-wardrobe.html">Wardrobe</a></li><li><a href="allergist-edit.html">Allergist's Edit</a></li>
+        <li><a href="recommendations.html">Lauren's Recommendations</a></li>
       </ul>
     </div>
     <div>
@@ -316,5 +337,23 @@
 
 <script src="js/capture-widgets.js" defer></script>
 <script src="js/related-posts.js" defer></script>
+<script>
+(function(){
+  var d=document.querySelector('.nav-has-drop');
+  if(!d) return;
+  var b=d.querySelector('.nav-drop-toggle');
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    var open=d.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.addEventListener('click',function(e){
+    if(!d.contains(e.target)){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
 </body>
 </html>
