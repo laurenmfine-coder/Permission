@@ -1,10 +1,5 @@
 {
   "cleanUrls": true,
-  "functions": {
-    "api/download.js": {
-      "includeFiles": "private-pdfs/*.pdf"
-    }
-  },
   "redirects": [
     {
       "source": "/allergist-edit",

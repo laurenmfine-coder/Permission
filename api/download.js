@@ -1,57 +1,27 @@
 // Vercel serverless function: gates worksheet PDF delivery behind a real,
 // server-side Loops contact call.
 //
-// The PDFs themselves live in private-pdfs/, which is excluded from the
-// public static deployment by .vercelignore. This function reads each one
-// with a literal fs.readFileSync path at module load time (see PDF_BYTES
-// below), which is what actually gets them bundled into the deployed
-// function — Vercel's Node File Trace bundler only picks up files it can
-// see referenced by a literal string at build time. There is no static
-// fallback and no "download anyway" path on failure — if the Loops call
-// does not succeed, no file is returned. That is the point of this endpoint.
+// The PDF bytes live base64-encoded inside api/_pdf-data.js (a plain
+// require()'d sibling module, not an external file read at runtime). Two
+// earlier approaches failed in production: first reading from
+// process.cwd()/private-pdfs at request time, then reading from a literal
+// fs.readFileSync path at module load — both assumed private-pdfs/ (which
+// .vercelignore excludes from the public deployment) would still be present
+// for the function to read via functions.includeFiles in vercel.json. It
+// wasn't: .vercelignore strips those files from the deployment source
+// entirely, before either the file tracer or includeFiles ever runs, so
+// there was nothing on disk for the function to find either way. A plain
+// require() of a sibling module has no such ambiguity — Node's own module
+// resolution always bundles it, the same way api/_pdf-data.js gets bundled
+// with this file. There is no static fallback and no "download anyway" path
+// on failure — if the Loops call does not succeed, no file is returned.
 //
 // Environment variables (Vercel -> Project -> Settings -> Environment Variables):
 //   LOOPS_API_KEY   required. Already set for api/intake.js and api/question.js.
 
-const fs = require('fs');
-const path = require('path');
+const PDF_DATA = require('./_pdf-data.js');
 
 const LOOPS_BASE = 'https://app.loops.so/api/v1';
-
-// Files are read once, at module load, using literal string paths — not a
-// path built from a variable. Vercel's Node File Trace bundler only detects
-// and includes files it can see referenced by a literal string at build
-// time; a dynamically-constructed path (e.g. path.join(dir, someVariable))
-// is invisible to it, which is what broke the first version of this
-// function — the Loops call succeeded but the file read failed on every
-// request, because none of the PDFs actually made it into the deployed
-// function. The functions.includeFiles entry in vercel.json is kept as a
-// second, redundant safety net, but this is the primary mechanism.
-const PDF_DIR = path.join(__dirname, '..', 'private-pdfs');
-
-function loadPdf(filename) {
-  try {
-    return fs.readFileSync(path.join(PDF_DIR, filename));
-  } catch (e) {
-    console.error('WORKSHEET_FILE_MISSING at module load:', filename, String(e));
-    return null;
-  }
-}
-
-// One literal fs.readFileSync call per file, each with a plain string
-// argument, so the bundler can trace every single one individually.
-const PDF_BYTES = {
-  'which-room-are-you-in.pdf': loadPdf('which-room-are-you-in.pdf'),
-  'say-no-scripts.pdf': loadPdf('say-no-scripts.pdf'),
-  'pivot-decision-framework.pdf': loadPdf('pivot-decision-framework.pdf'),
-  'ikigai-mapping-worksheet.pdf': loadPdf('ikigai-mapping-worksheet.pdf'),
-  'story-thread-finder.pdf': loadPdf('story-thread-finder.pdf'),
-  'career-values-audit.pdf': loadPdf('career-values-audit.pdf'),
-  'personal-statement-story-map.pdf': loadPdf('personal-statement-story-map.pdf'),
-  'identity-inventory.pdf': loadPdf('identity-inventory.pdf'),
-  'confidence-reframe-worksheet.pdf': loadPdf('confidence-reframe-worksheet.pdf'),
-  'sport-decision-guide.pdf': loadPdf('sport-decision-guide.pdf')
-};
 
 // Single source of truth for display name -> file on disk. The client only
 // ever sends the display name; it never sees or constructs a file path.
@@ -200,8 +170,16 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  let bytes = PDF_BYTES[file];
-  if (!bytes) {
+  let bytes;
+  const b64 = PDF_DATA[file];
+  if (b64) {
+    try {
+      bytes = Buffer.from(b64, 'base64');
+    } catch (e) {
+      bytes = null;
+    }
+  }
+  if (!bytes || !bytes.length) {
     console.error('WORKSHEET_FILE_MISSING at request time:', file);
     return res.status(500).json({
       error: 'Your email was saved, but the file did not load on my end. ' +

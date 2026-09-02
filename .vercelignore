@@ -1,9 +1,11 @@
 # The worksheet PDFs in private-pdfs/ are intentionally excluded from the
-# public static deployment. They are only reachable through api/download.js,
-# which is a serverless function bundled with its own copy of these files via
-# the "functions" -> "includeFiles" entry in vercel.json. That function only
-# returns a file after a successful server-side Loops contact call, so an
-# email address has to actually be captured before the PDF is served.
+# public static deployment. They are kept here only as the source-of-truth
+# reference copies for editing — api/download.js does NOT read from this
+# directory at runtime. It serves base64-embedded copies from
+# api/_pdf-data.js instead, since a plain require() of a sibling module is
+# reliably bundled by Vercel, unlike an external file read at runtime (which
+# is what this exclusion was originally meant to support, and which did not
+# work reliably across two attempts).
 #
 # Do not remove this line, and do not re-add these files to the repo root —
 # doing either makes every worksheet downloadable with no email required.
