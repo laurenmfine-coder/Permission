@@ -269,7 +269,7 @@
       <input type="text" class="modal-input" placeholder="Your first name" id="modal-name" />
       <input type="email" class="modal-input" placeholder="your@email.com" id="modal-email" />
       <div class="modal-checkbox-row">
-        <input type="checkbox" id="modal-substack" />
+        <input type="checkbox" id="modal-substack" checked />
         <label for="modal-substack">Also send me <strong>Permission to Change</strong>, my weekly newsletter on pivots, purpose, and the stories we tell ourselves.</label>
       </div>
       <button class="modal-submit" onclick="submitModal()">Download instantly, it's free</button>
@@ -664,7 +664,7 @@
     currentTool = toolName;
     document.getElementById('modal').classList.add('open');
     const cb = document.getElementById('modal-substack');
-    if (cb) cb.checked = false;
+    if (cb) cb.checked = true;
     if (typeof gtag === 'function') {
       gtag('event', 'lead_modal_open', { worksheet: toolName, source: 'resources_page' });
     }

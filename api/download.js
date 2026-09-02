@@ -2,12 +2,13 @@
 // server-side Loops contact call.
 //
 // The PDFs themselves live in private-pdfs/, which is excluded from the
-// public static deployment by .vercelignore. This function is the only way
-// to get the bytes: it is bundled with its own copy of private-pdfs/ via the
-// "functions" -> "includeFiles" entry in vercel.json, so it can read a file
-// from disk that no URL on the site can reach directly. There is no static
-// fallback and no "download anyway" path on failure — if the Loops call does
-// not succeed, no file is returned. That is the point of this endpoint.
+// public static deployment by .vercelignore. This function reads each one
+// with a literal fs.readFileSync path at module load time (see PDF_BYTES
+// below), which is what actually gets them bundled into the deployed
+// function — Vercel's Node File Trace bundler only picks up files it can
+// see referenced by a literal string at build time. There is no static
+// fallback and no "download anyway" path on failure — if the Loops call
+// does not succeed, no file is returned. That is the point of this endpoint.
 //
 // Environment variables (Vercel -> Project -> Settings -> Environment Variables):
 //   LOOPS_API_KEY   required. Already set for api/intake.js and api/question.js.
@@ -16,6 +17,41 @@ const fs = require('fs');
 const path = require('path');
 
 const LOOPS_BASE = 'https://app.loops.so/api/v1';
+
+// Files are read once, at module load, using literal string paths — not a
+// path built from a variable. Vercel's Node File Trace bundler only detects
+// and includes files it can see referenced by a literal string at build
+// time; a dynamically-constructed path (e.g. path.join(dir, someVariable))
+// is invisible to it, which is what broke the first version of this
+// function — the Loops call succeeded but the file read failed on every
+// request, because none of the PDFs actually made it into the deployed
+// function. The functions.includeFiles entry in vercel.json is kept as a
+// second, redundant safety net, but this is the primary mechanism.
+const PDF_DIR = path.join(__dirname, '..', 'private-pdfs');
+
+function loadPdf(filename) {
+  try {
+    return fs.readFileSync(path.join(PDF_DIR, filename));
+  } catch (e) {
+    console.error('WORKSHEET_FILE_MISSING at module load:', filename, String(e));
+    return null;
+  }
+}
+
+// One literal fs.readFileSync call per file, each with a plain string
+// argument, so the bundler can trace every single one individually.
+const PDF_BYTES = {
+  'which-room-are-you-in.pdf': loadPdf('which-room-are-you-in.pdf'),
+  'say-no-scripts.pdf': loadPdf('say-no-scripts.pdf'),
+  'pivot-decision-framework.pdf': loadPdf('pivot-decision-framework.pdf'),
+  'ikigai-mapping-worksheet.pdf': loadPdf('ikigai-mapping-worksheet.pdf'),
+  'story-thread-finder.pdf': loadPdf('story-thread-finder.pdf'),
+  'career-values-audit.pdf': loadPdf('career-values-audit.pdf'),
+  'personal-statement-story-map.pdf': loadPdf('personal-statement-story-map.pdf'),
+  'identity-inventory.pdf': loadPdf('identity-inventory.pdf'),
+  'confidence-reframe-worksheet.pdf': loadPdf('confidence-reframe-worksheet.pdf'),
+  'sport-decision-guide.pdf': loadPdf('sport-decision-guide.pdf')
+};
 
 // Single source of truth for display name -> file on disk. The client only
 // ever sends the display name; it never sees or constructs a file path.
@@ -164,11 +200,9 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  let bytes;
-  try {
-    bytes = fs.readFileSync(path.join(process.cwd(), 'private-pdfs', file));
-  } catch (e) {
-    console.error('WORKSHEET_FILE_MISSING:', file, String(e));
+  let bytes = PDF_BYTES[file];
+  if (!bytes) {
+    console.error('WORKSHEET_FILE_MISSING at request time:', file);
     return res.status(500).json({
       error: 'Your email was saved, but the file did not load on my end. ' +
              'Email reasondxcoaching@gmail.com and I will send it directly — sorry about that.',

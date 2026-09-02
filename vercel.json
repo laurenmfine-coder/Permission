@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "functions": {
     "api/download.js": {
-      "includeFiles": "private-pdfs/**"
+      "includeFiles": "private-pdfs/*.pdf"
     }
   },
   "redirects": [
