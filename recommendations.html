@@ -78,6 +78,26 @@
   .label-verdict { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
   .label-note { font-size:0.85rem; line-height:1.8; color:rgba(255,255,255,0.55); font-weight:300; }
 
+  .essentials-band { padding:72px 64px; background:var(--warm-dark); }
+  .essentials-head { max-width:720px; margin-bottom:44px; }
+  .essentials-eyebrow { font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
+  .essentials-title { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.9rem,3vw,2.8rem); color:var(--white); line-height:1.18; margin-bottom:20px; }
+  .essentials-title em { font-style:italic; color:var(--gold); }
+  .essentials-lede { font-size:0.94rem; line-height:1.9; color:rgba(255,255,255,0.6); font-weight:300; }
+  .essentials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .essentials-card { background:rgba(255,255,255,0.04); padding:34px 30px; border-top:2px solid var(--gold); display:flex; flex-direction:column; transition:background 0.3s; }
+  .essentials-card:hover { background:rgba(255,255,255,0.075); }
+  .essentials-top-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+  .essentials-num { font-family:'Playfair Display',serif; font-size:0.8rem; color:var(--gold); letter-spacing:0.14em; }
+  .essentials-icon { width:44px; height:44px; border-radius:50%; background:rgba(184,151,90,0.14); display:flex; align-items:center; justify-content:center; }
+  .essentials-icon svg { width:22px; height:22px; stroke:var(--gold); fill:none; stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; }
+  .essentials-label { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .essentials-name { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--white); margin-bottom:12px; line-height:1.28; }
+  .essentials-desc { font-size:0.85rem; line-height:1.75; color:rgba(255,255,255,0.55); font-weight:300; margin-bottom:24px; flex:1; }
+  .essentials-cta { font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--warm-dark); background:var(--gold); padding:13px 22px; text-decoration:none; display:inline-block; text-align:center; align-self:flex-start; transition:background 0.3s,color 0.3s; }
+  .essentials-cta:hover { background:var(--white); }
+  @media (max-width:960px) { .essentials-band { padding:56px 24px; } .essentials-grid { grid-template-columns:1fr; gap:16px; } }
+
   .intro-note { padding:72px 64px 8px; max-width:720px; }
   .intro-note p { font-size:0.98rem; line-height:1.9; color:var(--gray); font-weight:300; margin-bottom:18px; }
   .intro-note p strong { color:var(--black); font-weight:500; }
@@ -243,7 +263,7 @@
   .label-note a { color:#D9C08A; text-decoration:none; border-bottom:1px solid rgba(217,192,138,0.45); }
   .label-note a:hover { color:#FFFFFF; border-bottom-color:#FFFFFF; }
   .testing-q { border-left:0; padding-left:0; font-style:italic; color:var(--black); }
-  #testing, #cover, #spf, #hydrate, #soft, #sleep, #house, #professional, #references { scroll-margin-top:96px; }
+  #essentials, #testing, #cover, #spf, #hydrate, #soft, #sleep, #house, #professional, #references { scroll-margin-top:96px; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -291,7 +311,48 @@
   </div>
 </header>
 
+<div class="essentials-band" id="essentials">
+  <div class="essentials-head">
+    <p class="essentials-eyebrow">The three essentials</p>
+    <h2 class="essentials-title">Sunscreen. Retinol. <em>Hyaluronic acid.</em></h2>
+    <p class="essentials-lede">If you follow me on Instagram, you have heard me say this before: these are the three things worth doing every single day. Everything else on this page is detail. This is the part that actually moves the needle.</p>
+  </div>
+  <div class="essentials-grid">
+      <div class="essentials-card">
+        <div class="essentials-top-row">
+          <span class="essentials-num">01</span>
+          <div class="essentials-icon"><svg viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4.5"/></svg></div>
+        </div>
+        <p class="essentials-label">Sunscreen</p>
+        <h3 class="essentials-name">Moisture Surge Sheer Hydrator, SPF 28</h3>
+        <p class="essentials-desc">Broad spectrum protection built into your moisturizer, so it is the step you actually do every morning instead of the one you skip.</p>
+        <a class="essentials-cta" href="https://go.shopmy.us/p-82273979" target="_blank" rel="noopener">Shop the SPF</a>
+      </div>
+      <div class="essentials-card">
+        <div class="essentials-top-row">
+          <span class="essentials-num">02</span>
+          <div class="essentials-icon"><svg viewBox="0 0 24 24"><path d="M20.5 14.7A8 8 0 1 1 9.3 3.5a6.4 6.4 0 0 0 11.2 11.2z"/></svg></div>
+        </div>
+        <p class="essentials-label">Retinol</p>
+        <h3 class="essentials-name">Smart Night Clinical MD Repair Treatment, Retinol</h3>
+        <p class="essentials-desc">The one active worth being consistent about. Twice a week to start, building up only as skin tolerates it. Wear the SPF above, non-negotiably, while you use it.</p>
+        <a class="essentials-cta" href="https://go.shopmy.us/p-82273870" target="_blank" rel="noopener">Shop the retinol</a>
+      </div>
+      <div class="essentials-card">
+        <div class="essentials-top-row">
+          <span class="essentials-num">03</span>
+          <div class="essentials-icon"><svg viewBox="0 0 24 24"><path d="M12 3c2.5 3.5 5 7.2 5 10.5a5 5 0 0 1-10 0C7 10.2 9.5 6.5 12 3z"/></svg></div>
+        </div>
+        <p class="essentials-label">Hyaluronic acid</p>
+        <h3 class="essentials-name">Moisture Surge 100H Auto-Replenishing Hydrator</h3>
+        <p class="essentials-desc">Hyaluronic acid pulls water into skin and holds it there for up to 100 hours. This is what actually fixes dehydrated, tight-feeling skin, not another cleanser.</p>
+        <a class="essentials-cta" href="https://go.shopmy.us/p-82276017" target="_blank" rel="noopener">Shop the hydrator</a>
+      </div>
+  </div>
+</div>
+
 <div class="section-jump">
+  <a href="#essentials">The 3 Essentials</a>
   <a href="#spf">Skin</a>
   <a href="#testing">What "allergy tested" means</a>
   <a href="#cover">Sun</a>
