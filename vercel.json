@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/physician-moms",
+      "destination": "/physician-moms-emails.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/allergist-edit",

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get emails from Lauren Fine, MD | Physician Moms at a Crossroads</title>
+<meta name="description" content="Occasional emails from Lauren Fine, MD: practical tips, free worksheets, book and tool recommendations, and the occasional essay. A couple of emails a month, unsubscribe any time.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/physician-moms">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/physician-moms">
+<meta property="og:title" content="Get emails from Lauren Fine, MD">
+<meta property="og:description" content="Practical tips, free worksheets, book and tool recommendations, and the occasional essay. A couple of emails a month, unsubscribe any time.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --gold:#B8975A; --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    background:var(--cream-dark); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300;
+    min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { width:100%; max-width:460px; }
+  .wordmark {
+    display:block; text-align:center; font-family:'Playfair Display',serif; font-size:0.92rem; font-weight:500;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; margin-bottom:24px;
+  }
+  .card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.08); padding:36px 24px 32px; }
+  @media (min-width:540px) { .card { padding:52px 44px 46px; } }
+  .eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:16px; }
+  h1 {
+    font-family:'Playfair Display',serif; font-size:clamp(1.55rem,7vw,2.15rem); font-weight:400; line-height:1.22;
+    color:var(--black); text-align:center; margin-bottom:16px;
+  }
+  h1 em { font-style:italic; color:var(--terracotta); }
+  .lede { font-size:0.9rem; line-height:1.85; color:var(--gray); font-weight:300; text-align:center; margin-bottom:30px; }
+
+  .field { margin-bottom:18px; position:relative; }
+  .field label { display:block; font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--warm-dark); font-weight:500; margin-bottom:8px; }
+  .field .opt { text-transform:none; letter-spacing:0; color:var(--gray); font-weight:300; }
+  .field input {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--black);
+    background:var(--cream-dark); border:1px solid var(--cream-dark); padding:14px 15px;
+    transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+  .field input:focus { outline:none; border-color:var(--terracotta); background:var(--white); box-shadow:0 0 0 3px rgba(35,64,110,0.08); }
+  .field input::placeholder { color:#B0A9A2; }
+  .field-error { display:none; font-size:0.76rem; color:#9B3B2F; margin-top:7px; }
+  .field.invalid input { border-color:#9B3B2F; }
+  .field.invalid .field-error { display:block; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+  .btn {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--white); background:var(--black); border:none; padding:18px 24px; cursor:pointer;
+    transition:background 0.3s, opacity 0.2s; margin-top:8px;
+  }
+  .btn:hover { background:var(--terracotta); }
+  .btn:disabled { opacity:0.55; cursor:default; background:var(--black); }
+
+  .form-status { display:none; margin-top:16px; padding:13px 15px; font-size:0.83rem; line-height:1.6; background:#FAF3F1; border-left:2px solid #9B3B2F; color:#7A2E24; }
+  .form-status.show { display:block; }
+  .note { font-size:0.72rem; line-height:1.7; color:var(--gray); margin-top:18px; text-align:center; }
+
+  .success { display:none; text-align:center; }
+  .success.show { display:block; }
+  .check-mark { width:52px; height:52px; margin:0 auto 22px; border-radius:50%; background:var(--terracotta); display:flex; align-items:center; justify-content:center; }
+  .check-mark svg { width:22px; height:22px; stroke:var(--white); stroke-width:3; fill:none; }
+  .success h2 { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:400; color:var(--black); margin-bottom:14px; }
+  .success p { font-size:0.88rem; line-height:1.8; color:var(--gray); margin-bottom:8px; }
+
+  .fb-link-wrap { text-align:center; margin-top:26px; }
+  .fb-link { font-size:0.78rem; letter-spacing:0.02em; color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); padding-bottom:2px; }
+  .fb-link:hover { color:var(--warm-dark); }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2QBSJ9PRRQ');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="wordmark">Lauren Fine</a>
+  <div class="card">
+    <div id="formView">
+      <p class="eyebrow">Physician Moms at a Crossroads</p>
+      <h1>Get occasional emails <em>from Lauren</em></h1>
+      <p class="lede">Practical tips, free worksheets like the Pivot Decision Framework, book and tool recommendations, and the occasional essay. A couple of emails a month. Unsubscribe any time.</p>
+
+      <form id="signupForm" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field" id="firstNameField">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" placeholder="First name">
+          <p class="field-error">Please enter your first name.</p>
+        </div>
+
+        <div class="field" id="lastNameField">
+          <label for="lastName">Last name <span class="opt">(optional)</span></label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" placeholder="Last name">
+        </div>
+
+        <div class="field" id="emailField">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com">
+          <p class="field-error">Please enter a valid email address.</p>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">Sign me up</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+
+      <p class="note">Your email is safe. No spam, ever. Unsubscribe anytime with one click.</p>
+    </div>
+
+    <div class="success" id="successView">
+      <div class="check-mark"><svg viewBox="0 0 24 24"><polyline points="4 12 9 18 20 6"/></svg></div>
+      <h2>You're on the list.</h2>
+      <p>Your welcome email, including the Pivot Decision Framework, is on its way.</p>
+      <p>Don't see it in a few minutes? Check your promotions or spam folder.</p>
+    </div>
+  </div>
+
+  <div class="fb-link-wrap">
+    <a class="fb-link" href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener">&larr; Back to the Physician Moms at a Crossroads group</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  // To reuse this page for the Permission to Change FB Group at a different
+  // URL: duplicate this file, set PAGE_CONFIG.list to 'ptc', update the
+  // eyebrow/headline/lede copy and the Facebook link above to match that
+  // group, then add a matching rewrite in vercel.json (e.g.
+  // /permission-to-change-emails -> the new file). The API endpoint already
+  // supports the 'ptc' slug - no server-side changes needed.
+  var PAGE_CONFIG = { list: 'pmac', source: 'physician-moms-page' };
+
+  var form = document.getElementById('signupForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var formStatus = document.getElementById('formStatus');
+  var formView = document.getElementById('formView');
+  var successView = document.getElementById('successView');
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setInvalid(fieldId, invalid) {
+    var el = document.getElementById(fieldId);
+    if (el) el.classList.toggle('invalid', invalid);
+  }
+
+  function showStatus(msg) {
+    formStatus.textContent = msg;
+    formStatus.classList.add('show');
+  }
+  function hideStatus() {
+    formStatus.classList.remove('show');
+    formStatus.textContent = '';
+  }
+
+  ['firstName', 'email'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      setInvalid(id + 'Field', false);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    hideStatus();
+
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var emailOk = EMAIL_RE.test(email);
+
+    var valid = true;
+    if (!firstName) { setInvalid('firstNameField', true); valid = false; }
+    if (!emailOk) { setInvalid('emailField', true); valid = false; }
+    if (!valid) {
+      var firstBad = form.querySelector('.field.invalid input');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch('/api/intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        list: PAGE_CONFIG.list,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        source: PAGE_CONFIG.source,
+        company: document.getElementById('company').value
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (body) {
+        return { ok: r.ok, body: body };
+      });
+    }).then(function (result) {
+      if (!result.ok) {
+        showStatus(result.body.error || 'Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign me up';
+        return;
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'mailing_list_signup', { list: PAGE_CONFIG.list });
+      }
+      formView.style.display = 'none';
+      successView.classList.add('show');
+    }).catch(function () {
+      showStatus('Something went wrong. Please try again, or email reasondxcoaching@gmail.com.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign me up';
+    });
+  });
+})();
+</script>
+</body>
+</html>

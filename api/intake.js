@@ -1,14 +1,27 @@
-// Vercel serverless function: handles free-session intake submissions.
+// Vercel serverless function: shared lead-capture endpoint.
 //
-// Two things happen on every submission, both through Loops:
-//   1. the person is added to (or updated in) the Loops audience as a contact
-//   2. a notification email is sent to NOTIFY_EMAIL via Loops' transactional API
+// Two flows share this file, split by whether the request includes a `list`
+// slug:
+//
+//   1. Free-session request (original, no `list` field) - situation/focus
+//      required, contact upserted via create-then-update-on-409, plus a
+//      notification email to Lauren via Loops transactional.
+//
+//   2. Mailing-list signup (physician-moms-emails.html, and reusable for a
+//      Permission to Change FB Group page at another URL) - just firstName/
+//      email required. The contact is upserted via contacts/update directly,
+//      not create, since many of these people already exist in the Loops
+//      audience and create fails on an existing email. Loops' welcome
+//      automation for these groups fires on "Contact added to list," so the
+//      write has to actually set mailingLists true, not just touch the
+//      contact record - contacts/update with a mailingLists object does
+//      that. No notification email for this flow; the "notification" is the
+//      inline success state on the page itself.
 //
 // Environment variables (Vercel -> Project -> Settings -> Environment Variables):
 //   LOOPS_API_KEY           required. Loops -> Settings -> API.
-//   NOTIFY_EMAIL            optional. Where the notification lands.
-//                           Defaults to reasondxcoaching@gmail.com.
-//   LOOPS_TRANSACTIONAL_ID  optional. Overrides the published template below.
+//   NOTIFY_EMAIL            optional, free-session flow only.
+//   LOOPS_TRANSACTIONAL_ID  optional, free-session flow only.
 
 const LOOPS_BASE = 'https://app.loops.so/api/v1';
 
@@ -16,8 +29,17 @@ const LOOPS_BASE = 'https://app.loops.so/api/v1';
 // Not a secret — it identifies a template, it does not grant access.
 const DEFAULT_TRANSACTIONAL_ID = 'cmt0p89n207pk0i2k08fmv63a';
 
+// Server-side only. The client sends a short slug, never a raw Loops list ID -
+// this is what stops a request from writing an arbitrary contact into an
+// arbitrary Loops list.
+const MAILING_LISTS = {
+  pmac: { id: 'cmtf1p5pk0e6t0jzq4hrc53ad', source: 'physician-moms-page' },
+  ptc: { id: 'cmtf1onn39ltn0jww7hnm2272', source: 'permission-to-change-page' }
+};
+
 const REQUIRED = ['firstName', 'lastName', 'email', 'situation', 'focus'];
-const MAX = { firstName: 100, lastName: 100, email: 200, situation: 120, focus: 4000, source: 300 };
+const LIST_REQUIRED = ['firstName', 'email'];
+const MAX = { firstName: 100, lastName: 100, email: 200, situation: 120, focus: 4000, source: 300, list: 20 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function clean(value, limit) {
@@ -69,6 +91,33 @@ async function addToLoops(contact) {
   return { ok: res.ok, status: res.status, body: body.slice(0, 500) };
 }
 
+async function addToMailingList(contact, listMeta) {
+  const key = process.env.LOOPS_API_KEY;
+  if (!key) return { ok: false, skipped: 'LOOPS_API_KEY not set' };
+
+  const payload = {
+    email: contact.email,
+    firstName: contact.firstName,
+    lastName: contact.lastName,
+    source: listMeta.source,
+    mailingLists: {}
+  };
+  payload.mailingLists[listMeta.id] = true;
+
+  // Upsert directly - not create-then-update-on-409. Many of these people
+  // already exist in the audience, and contacts/create fails outright on an
+  // existing email rather than updating it, so create would fail for exactly
+  // the people this page is most likely to be reaching.
+  const res = await fetch(LOOPS_BASE + '/contacts/update', {
+    method: 'PUT',
+    headers: loopsHeaders(key),
+    body: JSON.stringify(payload)
+  });
+
+  const body = await res.text();
+  return { ok: res.ok, status: res.status, body: body.slice(0, 500) };
+}
+
 async function notify(contact) {
   const key = process.env.LOOPS_API_KEY;
   if (!key) return { ok: false, skipped: 'LOOPS_API_KEY not set' };
@@ -115,6 +164,47 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
+  // ---- Mailing-list signup flow ----
+  const listSlug = clean(data.list, MAX.list);
+  if (listSlug) {
+    const listMeta = MAILING_LISTS[listSlug];
+    if (!listMeta) {
+      return res.status(400).json({ error: 'Unknown mailing list.' });
+    }
+
+    const contact = {
+      firstName: clean(data.firstName, MAX.firstName),
+      lastName: clean(data.lastName, MAX.lastName),
+      email: clean(data.email, MAX.email).toLowerCase()
+    };
+
+    const missing = LIST_REQUIRED.filter(function (f) { return !contact[f]; });
+    if (missing.length) {
+      return res.status(400).json({ error: 'Missing required fields: ' + missing.join(', ') });
+    }
+    if (!EMAIL_RE.test(contact.email)) {
+      return res.status(400).json({ error: 'That email address does not look right.' });
+    }
+
+    const result = await addToMailingList(contact, listMeta);
+
+    if (!result.ok) {
+      console.error('LIST_SIGNUP_NOT_CAPTURED Loops call failed:', JSON.stringify({ listSlug: listSlug, result: result }));
+      return res.status(502).json({
+        error: 'Something on my end did not save your signup. Please try again in a minute, or email ' +
+               notifyAddress() + ' and I will add you directly.',
+        captured: false
+      });
+    }
+
+    // contacts/update is an upsert, so a duplicate submission (someone already
+    // on the list resubmitting) succeeds the same way a first-time signup
+    // does - same 200, same response shape, nothing for the client to branch on.
+    console.log('Mailing list signup:', JSON.stringify({ listSlug: listSlug, email: contact.email }));
+    return res.status(200).json({ ok: true, loops: true });
+  }
+
+  // ---- Free-session flow (original) ----
   const contact = {
     firstName: clean(data.firstName, MAX.firstName),
     lastName: clean(data.lastName, MAX.lastName),
