@@ -138,9 +138,11 @@
   .pick-price { font-size:1rem; color:var(--black); margin-bottom:18px; font-family:'Playfair Display',serif; }
 
   .picks-grid--2 { grid-template-columns:repeat(2,1fr); max-width:900px; }
+  .picks-grid--1 { grid-template-columns:1fr; max-width:520px; }
   .picks-grid--3 { grid-template-columns:repeat(3,1fr); }
-  @media (max-width:1180px) { .picks-grid--2, .picks-grid--3 { grid-template-columns:repeat(2,1fr); max-width:none; } }
-  @media (max-width:960px) { .picks-grid--2, .picks-grid--3 { grid-template-columns:1fr; } }
+  .picks-grid--4 { grid-template-columns:repeat(2,1fr); }
+  @media (max-width:1180px) { .picks-grid--2, .picks-grid--3, .picks-grid--4 { grid-template-columns:repeat(2,1fr); max-width:none; } }
+  @media (max-width:960px) { .picks-grid--2, .picks-grid--3, .picks-grid--4 { grid-template-columns:1fr; } }
 
   .external-section { padding:56px 64px 80px; background:var(--cream); }
   .external-note { font-size:0.78rem; letter-spacing:0.02em; color:var(--gray); font-style:italic; border-left:2px solid var(--blush); padding-left:20px; line-height:1.7; max-width:720px; }
@@ -567,7 +569,7 @@
     <h2 class="picks-title">Cover comes <em>before</em> cream</h2>
     <p class="picks-lede">Sunscreen is the last line of defense, not the first. Fabric does not wear off at hour two, does not need reapplying, and does not depend on you using the right amount. Put cloth between you and the sun first, then use SPF for what the cloth does not reach.</p>
   </div>
-  <div class="picks-grid picks-grid--2">
+  <div class="picks-grid picks-grid--1">
       <div class="pick-card">
         <div class="pick-body">
           <div class="pick-top-row">
@@ -582,17 +584,6 @@
           <a class="pick-cta" href="https://go.shopmy.us/p-82284201" target="_blank" rel="noopener">Shop the shirt</a>
         </div>
       </div>
-      <div class="pick-card">
-        <div class="pick-body">
-          <div class="pick-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="9" ry="2.5"/><path d="M6 14c0-4 2.5-9 6-9s6 5 6 9"/></svg></div>
-          <span class="pick-badge">Pact</span>
-          <p class="pick-type">The one to keep in a bag</p>
-          <h3 class="pick-title">Organic Cotton Packable Sun Hat</h3>
-          <p class="pick-desc">A brim shades the face, the ears, and the neck at once. Organic cotton with no wrinkle-resistant resin finish, which is worth knowing if your scalp or forehead reacts to new fabric.</p>
-          <p class="pick-price">$19</p>
-          <a class="pick-cta" href="https://go.shopmy.us/p-82284653" target="_blank" rel="noopener">Shop the hat</a>
-        </div>
-      </div>
   </div>
 </section>
 
@@ -602,7 +593,7 @@
     <h2 class="picks-title">Fabric is a <em>treatment decision</em></h2>
     <p class="picks-lede">Smooth fibers, no fragrance finishes, and nothing that traps heat. Overheating is one of the most reliable ways to make skin itch, which is why what you sleep in matters as much as what you put on. New clothes get washed before wearing, always.</p>
   </div>
-  <div class="picks-grid picks-grid--3">
+  <div class="picks-grid picks-grid--4">
       <div class="pick-card">
         <div class="pick-body">
           <div class="pick-icon"><svg viewBox="0 0 24 24"><path d="M8 3l4 2 4-2 3 4-3 2v11H5V9L2 7z"/></svg></div>
@@ -624,6 +615,16 @@
           <h3 class="pick-title">Gisele TENCEL Modal Pajama Set</h3>
           <p class="pick-desc">Modal is a fine, smooth fiber that moves heat away instead of holding it. If you wake up warm and itchy, this change does more than any cream will.</p>
           <a class="pick-cta" href="https://go.shopmy.us/p-82287497" target="_blank" rel="noopener">Shop the pajamas</a>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="pick-body">
+          <div class="pick-icon"><svg viewBox="0 0 24 24"><path d="M4 3v18M8 3v18M4 7h4M4 15h4"/></svg></div>
+          <span class="pick-badge">Eberjey</span>
+          <p class="pick-type">The matching set</p>
+          <h3 class="pick-title">Kari TENCEL Modal Cami & Short Set</h3>
+          <p class="pick-desc">Same fiber, cut lower for warm sleepers. Lace trim, but the modal underneath is doing the actual work of keeping heat off inflamed skin.</p>
+          <a class="pick-cta" href="https://eberjey.com/products/kari-cami-short-pj-set-wildberry" target="_blank" rel="noopener">Shop the set</a>
         </div>
       </div>
       <div class="pick-card">
