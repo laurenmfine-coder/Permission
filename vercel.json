@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/physician-moms",
-      "destination": "/physician-moms-emails.html"
+      "destination": "/physician-moms-emails"
     }
   ],
   "redirects": [
