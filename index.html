@@ -727,7 +727,7 @@
       <p class="wf-kicker">Start here</p>
       <h3 class="wf-title">Which Room Are You In?</h3>
       <p class="wf-desc">Both group missions side by side, so you know what each room is actually for. Then five questions worth answering before you introduce yourself: a Fact vs. Story split, the rule you never agreed to, and what nothing changing will cost you in two years. People who write something down first tend to post something real.</p>
-      <a href="which-room-are-you-in.pdf" download class="wf-btn">Download the worksheet</a>
+      <button type="button" onclick="openHeroModal('Which Room Are You In')" class="wf-btn" style="border:none;cursor:pointer;font-family:inherit;">Download the worksheet</button>
     </div>
   </div>
 
@@ -1141,17 +1141,9 @@
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
   // Lead capture modal (hero CTA)
-  // Maps worksheet display name to PDF file in repo root
-  const WORKSHEETS = {
-    'Pivot Decision Framework': 'pivot-decision-framework.pdf',
-    'Ikigai Mapping Worksheet': 'ikigai-mapping-worksheet.pdf',
-    'Story Thread Finder': 'story-thread-finder.pdf',
-    'Career Values Audit': 'career-values-audit.pdf',
-    'Personal Statement Story Map': 'personal-statement-story-map.pdf',
-    'Identity Inventory': 'identity-inventory.pdf',
-    'Confidence Reframe Worksheet': 'confidence-reframe-worksheet.pdf',
-    'Sport Decision Guide': 'sport-decision-guide.pdf'
-  };
+  // Worksheet files are not exposed to the client at all — api/download.js
+  // holds the display-name -> file mapping and only returns bytes after a
+  // server-side Loops call succeeds. This just names which one.
   let currentHeroWorksheet = '';
   function openHeroModal(worksheetName) {
     currentHeroWorksheet = worksheetName;
@@ -1165,6 +1157,16 @@
   function closeHeroModal() {
     document.getElementById('leadModal').classList.remove('open');
   }
+  function triggerBlobDownload(blob, filename) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
   function submitHeroModal() {
     const email = document.getElementById('lead-email').value.trim();
     const name = document.getElementById('lead-name').value.trim();
@@ -1176,63 +1178,43 @@
 
     // Read UTMs from URL so Substack traffic gets tagged correctly in Loops
     const params = new URLSearchParams(window.location.search);
-        const alsoSubstack = document.getElementById('lead-substack').checked;
-    
-        const notes = 'utm_source=' + (params.get('utm_source') || '') +
-                '; utm_medium=' + (params.get('utm_medium') || '') +
-                '; utm_campaign=' + (params.get('utm_campaign') || '') +
-                '; referrer=' + (document.referrer || '');
-        const formBody = 'firstName=' + encodeURIComponent(name || '') +
-                '&email=' + encodeURIComponent(email) +
-                '&source=' + encodeURIComponent('LaurenFine') +
-                '&userGroup=' + encodeURIComponent('CoachingLead') +
-                '&worksheet=' + encodeURIComponent(currentHeroWorksheet) +
-                '&leadStage=' + encodeURIComponent('worksheet_download') +
-                '&alsoSubstack=' + encodeURIComponent(alsoSubstack) +
-                '&notes=' + encodeURIComponent(notes);
-    
-        fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formBody
-        }).then(function(r) { return r.json().catch(function() { return {}; }); })
-          .then(function(result) {
-        if (typeof gtag === 'function') {
-          gtag('event', 'lead_capture', { worksheet: currentHeroWorksheet, source: 'homepage_hero' });
-          if (alsoSubstack) {
-            gtag('event', 'substack_optin', { source: 'homepage_hero', worksheet: currentHeroWorksheet });
-          }
-        }
-        // Trigger PDF download regardless of email success so the user always gets the worksheet
-        const file = WORKSHEETS[currentHeroWorksheet];
-        if (file) {
-          const a = document.createElement('a');
-          a.href = file;
-          a.download = file;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
-        alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentHeroWorksheet + ' is downloading now. Check your inbox shortly.');
-        closeHeroModal();
+    const alsoSubstack = document.getElementById('lead-substack').checked;
+    const notes = 'utm_source=' + (params.get('utm_source') || '') +
+            '; utm_medium=' + (params.get('utm_medium') || '') +
+            '; utm_campaign=' + (params.get('utm_campaign') || '') +
+            '; referrer=' + (document.referrer || '');
+
+    fetch('/api/download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: name,
+        email: email,
+        worksheet: currentHeroWorksheet,
+        alsoSubstack: alsoSubstack,
+        source: 'homepage_hero',
+        notes: notes
       })
-      .catch(function() {
-        // Network failure: still deliver the worksheet so the user is not blocked
-        const file = WORKSHEETS[currentHeroWorksheet];
-        if (file) {
-          const a = document.createElement('a');
-          a.href = file;
-          a.download = file;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
+    }).then(function(r) {
+      if (!r.ok) {
+        return r.json().then(function(body) { throw new Error(body.error || 'Something went wrong.'); });
+      }
+      return r.blob();
+    }).then(function(blob) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'lead_capture', { worksheet: currentHeroWorksheet, source: 'homepage_hero' });
+        if (alsoSubstack) {
+          gtag('event', 'substack_optin', { source: 'homepage_hero', worksheet: currentHeroWorksheet });
         }
-        alert('Your worksheet is downloading. We could not confirm your email subscription, but you can reach out anytime at reasondxcoaching@gmail.com.');
-        closeHeroModal();
-      })
-      .finally(function() {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Download instantly, it's free"; }
-      });
+      }
+      triggerBlobDownload(blob, currentHeroWorksheet.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.pdf');
+      alert('Thank you' + (name ? ', ' + name : '') + '! Your ' + currentHeroWorksheet + ' is downloading now. Check your inbox shortly.');
+      closeHeroModal();
+    }).catch(function(err) {
+      alert(err.message || 'Something went wrong. Please try again, or email reasondxcoaching@gmail.com.');
+    }).finally(function() {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Download instantly, it's free"; }
+    });
   }
   document.getElementById('leadModal').addEventListener('click', function(e) {
     if (e.target === this) closeHeroModal();

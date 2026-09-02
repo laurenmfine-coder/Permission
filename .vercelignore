@@ -1,0 +1,10 @@
+# The worksheet PDFs in private-pdfs/ are intentionally excluded from the
+# public static deployment. They are only reachable through api/download.js,
+# which is a serverless function bundled with its own copy of these files via
+# the "functions" -> "includeFiles" entry in vercel.json. That function only
+# returns a file after a successful server-side Loops contact call, so an
+# email address has to actually be captured before the PDF is served.
+#
+# Do not remove this line, and do not re-add these files to the repo root —
+# doing either makes every worksheet downloadable with no email required.
+private-pdfs/
