@@ -228,6 +228,11 @@
   .service-cta-col { padding-top: 4px; }
   .service-link { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; white-space:nowrap; transition:color 0.3s,border-color 0.3s; }
   .service-link:hover { color:var(--terracotta); border-color:var(--terracotta); }
+  .service-secondary { margin-top:16px; font-size:0.76rem; line-height:1.6; color:var(--gray); font-weight:300; }
+  .service-secondary-label { display:block; margin-bottom:5px; }
+  .service-secondary a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); padding-bottom:1px; white-space:nowrap; transition:color 0.3s,border-color 0.3s; }
+  .service-secondary a:hover { color:var(--warm-dark); border-color:var(--warm-dark); }
+  .service-secondary .sep { margin:0 7px; color:var(--gray); }
 
   /* PROCESS */
   .process { padding: 100px 64px; background: var(--cream-dark); }
@@ -568,6 +573,10 @@
       </div>
       <div class="service-cta-col">
         <a href="free-session.html" class="service-link" data-offering="clarity-sprint">Book a Free Coaching Session, No Sales Pitch</a>
+        <p class="service-secondary">
+          <span class="service-secondary-label">Already had your free session? Enrol here.</span>
+          <a href="https://calendly.com/reasondxcoaching/packages/73674d75-6ef2-43d1-8dcd-be1d79737f90" target="_blank" rel="noopener" data-book-package="clarity-sprint-55">55-min</a><span class="sep">&middot;</span><a href="https://calendly.com/reasondxcoaching/packages/f4cde459-bfcd-46c8-ae86-6dd141fa065b" target="_blank" rel="noopener" data-book-package="clarity-sprint-25">25-min</a>
+        </p>
       </div>
     </div>
 
@@ -586,6 +595,10 @@
       </div>
       <div class="service-cta-col">
         <a href="free-session.html" class="service-link" data-offering="change-navigation">Book a Free Coaching Session, No Sales Pitch</a>
+        <p class="service-secondary">
+          <span class="service-secondary-label">Already had your free session? Enrol here.</span>
+          <a href="https://calendly.com/reasondxcoaching/packages/4fed52f0-669d-477f-92cf-0672b546c0f8" target="_blank" rel="noopener" data-book-package="change-navigation-55">55-min</a><span class="sep">&middot;</span><a href="https://calendly.com/reasondxcoaching/packages/18014987-522b-4c8d-a742-2630c4820fb4" target="_blank" rel="noopener" data-book-package="change-navigation-25">25-min</a>
+        </p>
       </div>
     </div>
 
@@ -603,6 +616,10 @@
       </div>
       <div class="service-cta-col">
         <a href="free-session.html" class="service-link" data-offering="full-transformation">Book a Free Coaching Session, No Sales Pitch</a>
+        <p class="service-secondary">
+          <span class="service-secondary-label">Already had your free session? Enrol here.</span>
+          <a href="https://calendly.com/reasondxcoaching/packages/ed5e9520-d7c2-4496-8221-9d2051ab6593" target="_blank" rel="noopener" data-book-package="full-transformation-55">55-min</a><span class="sep">&middot;</span><a href="https://calendly.com/reasondxcoaching/packages/b6e5905f-3320-4505-bc8a-93b8669ee98e" target="_blank" rel="noopener" data-book-package="full-transformation-25">25-min</a>
+        </p>
       </div>
     </div>
   </div>
@@ -812,6 +829,22 @@
 </script>
 <script src="js/capture-widgets.js" defer></script>
 <script src="js/ask-box.js" defer></script>
+<script>
+  // Package Calendly links ("Already had your free session? Enrol here.").
+  // Distinct event name from free-session.html's booking_direct_click so
+  // these are countable separately in analytics - these are people already
+  // past the free session, buying a package directly.
+  document.querySelectorAll('[data-book-package]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        var parts = a.getAttribute('data-book-package').split('-');
+        var duration = parts.pop();
+        var pkg = parts.join('-');
+        gtag('event', 'package_booking_click', { package: pkg, duration: duration + '-min' });
+      }
+    });
+  });
+</script>
 <script>
 (function(){
   var d=document.querySelector('.nav-has-drop');
