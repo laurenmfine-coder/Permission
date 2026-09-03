@@ -2,11 +2,16 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/physician-moms",
-      "destination": "/physician-moms-emails"
+      "source": "/join",
+      "destination": "/join-emails"
     }
   ],
   "redirects": [
+    {
+      "source": "/physician-moms",
+      "destination": "/join",
+      "permanent": true
+    },
     {
       "source": "/allergist-edit",
       "destination": "/recommendations",
