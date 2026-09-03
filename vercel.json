@@ -4,6 +4,10 @@
     {
       "source": "/join",
       "destination": "/join-emails"
+    },
+    {
+      "source": "/shop",
+      "destination": "/recommendations"
     }
   ],
   "redirects": [
