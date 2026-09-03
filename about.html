@@ -132,9 +132,10 @@
   .about-hero-lede { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2vw,1.7rem); font-weight:300; font-style:italic; color:var(--gray); line-height:1.6; max-width:760px; }
 
   /* PORTRAIT BAND */
-  .portrait-band { background:linear-gradient(to bottom,var(--blush-light) 0%,var(--blush) 50%,#2E4C7E 100%); height:420px; position:relative; overflow:hidden; margin-bottom:80px; }
-  .portrait-band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%; }
-  .portrait-band-caption { position:absolute; bottom:32px; left:64px; right:64px; }
+  .portrait-band-wrap { background:linear-gradient(to bottom,var(--blush-light) 0%,var(--blush) 50%,#2E4C7E 100%); padding:64px 24px; margin-bottom:80px; }
+  .portrait-band { position:relative; width:100%; max-width:400px; aspect-ratio:2/3; overflow:hidden; margin:0 auto; box-shadow:0 24px 60px rgba(0,0,0,0.22); }
+  .portrait-band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 15%; }
+  .portrait-band-caption { position:absolute; bottom:24px; left:24px; right:24px; }
   .portrait-band-caption p { font-family:'Playfair Display',serif; font-size:1.15rem; font-style:italic; color:rgba(255,255,255,0.92); font-weight:300; max-width:560px; }
   .portrait-band-caption span { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-top:10px; display:inline-block; }
 
@@ -194,8 +195,9 @@
     nav { padding:20px 24px; }
           nav { flex-wrap:wrap; row-gap:8px; } .nav-links { display:flex !important; flex-wrap:wrap; gap:8px 16px; width:100%; justify-content:center; order:3; } .nav-links a { font-size:0.68rem; }
     .about-hero { padding: 120px 24px 60px; }
-    .portrait-band { height:320px; margin-bottom:60px; }
-    .portrait-band-caption { left:24px; right:24px; bottom:24px; }
+    .portrait-band-wrap { padding:40px 24px; margin-bottom:60px; }
+    .portrait-band { max-width:280px; }
+    .portrait-band-caption { left:16px; right:16px; bottom:16px; }
     .story { padding: 0 24px 80px; }
     .story-section { margin-bottom:56px; }
     .credentials { padding: 80px 24px; }
@@ -273,11 +275,13 @@
 </section>
 
 <!-- PORTRAIT BAND -->
-<div class="portrait-band">
-  <img src="headshot.jpg" alt="Lauren Fine, MD: physician, medical educator, TEDx speaker, and decision coach" />
-  <div class="portrait-band-caption">
-    <p>"I gave myself permission to add to the work, not abandon it. Now I help others do the same."</p>
-    <span>Lauren Fine, MD, FAAAAI</span>
+<div class="portrait-band-wrap">
+  <div class="portrait-band">
+    <img src="headshot.jpg" alt="Lauren Fine, MD: physician, medical educator, TEDx speaker, and decision coach" />
+    <div class="portrait-band-caption">
+      <p>"I gave myself permission to add to the work, not abandon it. Now I help others do the same."</p>
+      <span>Lauren Fine, MD, FAAAAI</span>
+    </div>
   </div>
 </div>
 
@@ -314,8 +318,10 @@
     <p>That work is now the coaching practice. Decision coaching. Transition coaching. Personal statement coaching for the high-stakes story. Speaking and workshops on permission, pivots, and the power of knowing your own story. Lauren is currently completing ICF coach training.</p>
   </div>
 
-  <div class="portrait-band" style="margin-bottom:72px;">
-    <img src="lauren-reaching.jpg" alt="Lauren Fine, MD, on location in Weston, Florida" />
+  <div class="portrait-band-wrap" style="margin-bottom:72px;">
+    <div class="portrait-band">
+      <img src="lauren-reaching.jpg" alt="Lauren Fine, MD, on location in Weston, Florida" />
+    </div>
   </div>
 
   <div class="story-section">
