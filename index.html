@@ -644,27 +644,40 @@
 
 <!-- SPLIT: TWO PATHS -->
 <style>
+  .split-wrap { padding:150px 64px 60px; }
+  .split-eyebrow { text-align:center; font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#23406E; margin-bottom:32px; }
+  .split-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; max-width:1000px; margin:0 auto; }
   .split-card { text-decoration:none; padding:56px 44px; display:flex; flex-direction:column; justify-content:space-between; min-height:280px; transition:transform 0.3s; }
   .split-card:hover { transform:translateY(-4px); }
+  .split-card-eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:16px; }
+  .split-card-title { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:1.2; }
+  .split-card-link { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; padding-bottom:3px; align-self:flex-start; margin-top:24px; }
+  @media (max-width:680px) {
+    .split-wrap { padding:130px 20px 40px; }
+    .split-eyebrow { font-size:0.82rem; letter-spacing:0.14em; margin-bottom:20px; }
+    .split-grid { grid-template-columns:1fr; max-width:480px; }
+    .split-card { padding:40px 28px; min-height:220px; }
+    .split-card-title { font-size:1.5rem; }
+  }
 </style>
-<section style="padding:150px 64px 60px;">
-  <p style="text-align:center; font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#23406E; margin-bottom:32px;">What brought you here today?</p>
-  <div class="split-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:3px; max-width:1000px; margin:0 auto;">
+<section class="split-wrap">
+  <p class="split-eyebrow">What brought you here today?</p>
+  <div class="split-grid">
 
     <a href="coaching.html" class="split-card" style="background-color:#182D4E;">
       <div>
-        <p style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:#E5E0DA; opacity:0.85; margin-bottom:16px;">Physician Coaching</p>
-        <h2 style="font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.6rem,2.6vw,2.2rem); color:#FFFFFF; line-height:1.2;">I'm a physician at a crossroads and need a thinking partner.</h2>
+        <p class="split-card-eyebrow" style="color:#E5E0DA; opacity:0.85;">Physician Coaching</p>
+        <h2 class="split-card-title" style="color:#FFFFFF;">I'm a physician at a crossroads and need a thinking partner.</h2>
       </div>
-      <span style="font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:#FFFFFF; border-bottom:1px solid #B8975A; padding-bottom:3px; align-self:flex-start; margin-top:24px;">See coaching &rarr;</span>
+      <span class="split-card-link" style="color:#FFFFFF; border-bottom:1px solid #B8975A;">See coaching &rarr;</span>
     </a>
 
     <a href="recommendations.html" class="split-card" style="background-color:#EDE9E4;">
       <div>
-        <p style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:#23406E; margin-bottom:16px;">Dr. Lauren Fine, Allergist</p>
-        <h2 style="font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.6rem,2.6vw,2.2rem); color:#1A1A1A; line-height:1.2;">I want an allergist's picks for skincare, home &amp; comfort.</h2>
+        <p class="split-card-eyebrow" style="color:#23406E;">Dr. Lauren Fine, Allergist</p>
+        <h2 class="split-card-title" style="color:#1A1A1A;">I want an allergist's picks for skincare, home &amp; comfort.</h2>
       </div>
-      <span style="font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #23406E; padding-bottom:3px; align-self:flex-start; margin-top:24px;">Shop the edit &rarr;</span>
+      <span class="split-card-link" style="color:#23406E; border-bottom:1px solid #23406E;">Shop the edit &rarr;</span>
     </a>
 
   </div>
