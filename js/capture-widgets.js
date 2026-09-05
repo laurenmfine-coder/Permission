@@ -1,10 +1,10 @@
 /* Site-wide email capture: exit-intent popup, plus a homepage-only
    scroll-triggered newsletter test.
-   Reuses the existing Loops newsletter-form endpoint (same one resources.html
-   already posts to), tagged with a distinct source per widget so leads can be
-   segmented in Loops without touching the backend. */
+   Posts to /api/subscribe, the site's single Flodesk signup endpoint (same one
+   resources.html posts to), tagged with a distinct source per widget so leads
+   can be told apart in Flodesk without touching the backend. */
 (function () {
-  var LOOPS_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f';
+  var SIGNUP_ENDPOINT = '/api/subscribe';
   var FB_GROUP_URL = 'https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr';
   var FB_LINK_HTML = '<a class="pf-fb-link" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener">Or join our free Facebook community &rarr;</a>';
   var STICKY_KEY = 'pf_sticky_dismissed';
@@ -50,7 +50,7 @@
       '&userGroup=' + encodeURIComponent('CoachingLead') +
       '&leadStage=' + encodeURIComponent(extra || source) +
       '&notes=' + encodeURIComponent(utmNotes());
-    fetch(LOOPS_ENDPOINT, {
+    fetch(SIGNUP_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formBody

@@ -375,7 +375,13 @@
   </div>
 </section>
 <!-- ASK ANONYMOUSLY -->
-<div class="ask-box-section" data-ask-box="free-session"></div>
+<div style="background:var(--cream-dark,#EDE9E4);padding:80px 64px;">
+  <div style="background:var(--white,#fff);border-top:3px solid var(--gold,#B8975A);box-shadow:0 8px 40px rgba(24,45,78,0.07);padding:48px 48px 42px;max-width:720px;margin:0 auto;">
+    <p style="font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta,#23406E);margin-bottom:16px;">A question first?</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:300;line-height:1.15;color:var(--black,#1A1A1A);margin-bottom:16px;">Ask me <em style="font-style:italic;color:var(--terracotta,#23406E);">anything</em>.</h3>
+    <p style="font-size:1rem;line-height:1.7;color:var(--black,#1A1A1A);opacity:.85;">If something here raises a question, email me at <a href="mailto:reasondxcoaching@gmail.com" style="color:var(--black,#1A1A1A);border-bottom:1px solid var(--gold,#B8975A);text-decoration:none;">reasondxcoaching@gmail.com</a>. I read and answer these myself.</p>
+  </div>
+</div>
 
 <footer>
   <div class="footer-top">
@@ -474,10 +480,10 @@
       btn.disabled = true;
       btn.textContent = 'Sending…';
       try {
-        const res = await fetch('/api/intake', {
+        const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify(Object.assign({ source: 'free-session-page' }, data))
         });
         const out = await res.json().catch(()=>({}));
         if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');
@@ -511,7 +517,6 @@
     });
   })();
 </script>
-<script src="js/ask-box.js" defer></script>
 <script>
 (function(){
   var d=document.querySelector('.nav-has-drop');

@@ -592,7 +592,7 @@
       '&leadStage=' + encodeURIComponent('waitlist') +
       '&notes=' + encodeURIComponent(notes);
 
-    fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+    fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formBody

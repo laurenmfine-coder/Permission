@@ -660,7 +660,7 @@
   // Modal
   // Worksheet files are not exposed to the client at all — api/download.js
   // holds the display-name -> file mapping and only returns bytes after a
-  // server-side Loops call succeeds. This function just names which one.
+  // server-side Flodesk call succeeds. This function just names which one.
   let currentTool = '';
   function openModal(toolName) {
     currentTool = toolName;
@@ -752,7 +752,7 @@
               '&leadStage=' + encodeURIComponent('waitlist') +
         '&notes=' + encodeURIComponent(notes);
   
-      fetch('https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f', {
+      fetch('/api/subscribe', {
             method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formBody

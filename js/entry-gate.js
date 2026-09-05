@@ -1,7 +1,7 @@
 /* Homepage entry gate.
    Shows once per visitor (first visit only, tracked permanently in
    localStorage) on the homepage. The visitor must pick one option to close
-   it: Substack, or occasional email updates (via the existing Loops
+   it: Substack, or occasional email updates (via the site's Flodesk signup
    endpoint). Both options collect an email address, by design.
    The page content underneath is never hidden or blocked; this is a
    dismissible overlay only, so search engines and ad-traffic landing pages
@@ -18,7 +18,7 @@
 (function () {
   var GATE_SEEN_KEY = 'pf_entry_gate_seen';
   var SESSION_GUARD_KEY = 'pf_popup_shown_session'; // shared key w/ capture-widgets.js
-  var LOOPS_ENDPOINT = 'https://app.loops.so/api/newsletter-form/cmr88hbdk18uj0j409a54v49f';
+  var SIGNUP_ENDPOINT = '/api/subscribe';
   var SUBSTACK_URL = 'https://permissiontochange.substack.com/subscribe';
 
   function isHomepage() {
@@ -122,7 +122,7 @@
       '&userGroup=' + encodeURIComponent('CoachingLead') +
       '&leadStage=' + encodeURIComponent('entry_gate_updates') +
       '&notes=' + encodeURIComponent('referrer=' + (document.referrer || ''));
-    fetch(LOOPS_ENDPOINT, {
+    fetch(SIGNUP_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formBody

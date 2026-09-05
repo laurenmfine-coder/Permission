@@ -875,7 +875,7 @@
   // Lead capture modal (hero CTA)
   // Worksheet files are not exposed to the client at all — api/download.js
   // holds the display-name -> file mapping and only returns bytes after a
-  // server-side Loops call succeeds. This just names which one.
+  // server-side Flodesk call succeeds. This just names which one.
   let currentHeroWorksheet = '';
   function openHeroModal(worksheetName) {
     currentHeroWorksheet = worksheetName;
@@ -908,7 +908,7 @@
     const submitBtn = document.querySelector('#leadModal .modal-submit');
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
-    // Read UTMs from URL so Substack traffic gets tagged correctly in Loops
+    // Read UTMs from URL so Substack traffic gets tagged correctly in Flodesk
     const params = new URLSearchParams(window.location.search);
     const alsoSubstack = document.getElementById('lead-substack').checked;
     const notes = 'utm_source=' + (params.get('utm_source') || '') +

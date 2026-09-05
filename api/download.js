@@ -1,5 +1,5 @@
 // Vercel serverless function: gates worksheet PDF delivery behind a real,
-// server-side Loops contact call.
+// server-side Flodesk subscriber call.
 //
 // The PDF bytes live base64-encoded inside api/_pdf-data.js (a plain
 // require()'d sibling module, not an external file read at runtime). Two
@@ -14,14 +14,15 @@
 // require() of a sibling module has no such ambiguity — Node's own module
 // resolution always bundles it, the same way api/_pdf-data.js gets bundled
 // with this file. There is no static fallback and no "download anyway" path
-// on failure — if the Loops call does not succeed, no file is returned.
+// on failure — if the Flodesk call does not succeed, no file is returned.
 //
 // Environment variables (Vercel -> Project -> Settings -> Environment Variables):
-//   LOOPS_API_KEY   required. Already set for api/intake.js and api/question.js.
+//   FLODESK_API_KEY     required. Flodesk -> My Account -> Integrations -> API keys.
+//   FLODESK_SEGMENT_ID  optional. Segment the download lead lands in.
 
 const PDF_DATA = require('./_pdf-data.js');
 
-const LOOPS_BASE = 'https://app.loops.so/api/v1';
+const { upsertSubscriber } = require('./_flodesk.js');
 
 // Single source of truth for display name -> file on disk. The client only
 // ever sends the display name; it never sees or constructs a file path.
@@ -45,75 +46,24 @@ function clean(value, limit) {
   return String(value == null ? '' : value).trim().slice(0, limit);
 }
 
-function loopsHeaders(key) {
-  return { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' };
-}
-
-async function addToLoops(contact) {
-  const key = process.env.LOOPS_API_KEY;
-  if (!key) return { ok: false, skipped: 'LOOPS_API_KEY not set' };
-
-  const payload = {
-    email: contact.email,
-    firstName: contact.firstName,
-    source: 'Free Resources',
-    userGroup: 'CoachingLead',
-    worksheet: contact.worksheet,
-    leadStage: 'worksheet_download',
-    referralSource: contact.source || '',
-    notes: contact.notes || '',
-    subscribed: true
-  };
-
-  const headers = loopsHeaders(key);
-
-  let res = await fetch(LOOPS_BASE + '/contacts/create', {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(payload)
-  });
-
-  // Loops returns 409 when the contact already exists — update instead of failing.
-  if (res.status === 409) {
-    res = await fetch(LOOPS_BASE + '/contacts/update', {
-      method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(payload)
-    });
-  }
-
-  const body = await res.text();
-  return { ok: res.ok, status: res.status, body: body.slice(0, 500) };
+async function addToFlodesk(contact) {
+  return upsertSubscriber(
+    { email: contact.email, firstName: contact.firstName, lastName: '' },
+    {
+      source: 'Free Resources',
+      lead_stage: 'worksheet_download',
+      worksheet: contact.worksheet
+    }
+  );
 }
 
 async function addToSubstack(contact) {
   // Mirrors the "also send me Permission to Change" checkbox from the old
   // client-only flow. Best-effort: this never blocks file delivery.
-  const key = process.env.LOOPS_API_KEY;
-  if (!key) return { ok: false, skipped: 'LOOPS_API_KEY not set' };
-
-  const headers = loopsHeaders(key);
-  const payload = {
-    email: contact.email,
-    firstName: contact.firstName,
-    source: 'Free Resources',
-    userGroup: 'SubstackReader',
-    subscribed: true
-  };
-
-  let res = await fetch(LOOPS_BASE + '/contacts/create', {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(payload)
-  });
-  if (res.status === 409) {
-    res = await fetch(LOOPS_BASE + '/contacts/update', {
-      method: 'PUT',
-      headers: headers,
-      body: JSON.stringify(payload)
-    });
-  }
-  return { ok: res.ok, status: res.status };
+  return upsertSubscriber(
+    { email: contact.email, firstName: contact.firstName, lastName: '' },
+    { source: 'Free Resources', lead_stage: 'substack_reader' }
+  );
 }
 
 module.exports = async function handler(req, res) {
@@ -154,7 +104,7 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'That email address does not look right.' });
   }
 
-  const jobs = [addToLoops(contact)];
+  const jobs = [addToFlodesk(contact)];
   if (data.alsoSubstack === true || data.alsoSubstack === 'true') {
     jobs.push(addToSubstack(contact));
   }
@@ -162,7 +112,7 @@ module.exports = async function handler(req, res) {
   const audience = results[0].status === 'fulfilled' ? results[0].value : { ok: false, error: String(results[0].reason) };
 
   if (!audience.ok) {
-    console.error('WORKSHEET_NOT_DELIVERED Loops call failed:', JSON.stringify({ worksheet, audience }));
+    console.error('WORKSHEET_NOT_DELIVERED Flodesk call failed:', JSON.stringify({ worksheet, audience }));
     return res.status(502).json({
       error: 'Something on my end did not confirm your email, so I did not want to send the file without it. ' +
              'Please try again, or email me directly at reasondxcoaching@gmail.com and I will send it over.',

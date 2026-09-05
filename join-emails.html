@@ -147,7 +147,7 @@
 
 <script>
 (function () {
-  var PAGE_CONFIG = { list: 'ptc', source: 'join-page' };
+  var PAGE_CONFIG = { source: 'join-page' };
 
   var form = document.getElementById('signupForm');
   var submitBtn = document.getElementById('submitBtn');
@@ -197,11 +197,10 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    fetch('/api/intake', {
+    fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        list: PAGE_CONFIG.list,
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -220,7 +219,7 @@
         return;
       }
       if (typeof gtag === 'function') {
-        gtag('event', 'mailing_list_signup', { list: PAGE_CONFIG.list });
+        gtag('event', 'mailing_list_signup', { source: PAGE_CONFIG.source });
       }
       formView.style.display = 'none';
       successView.classList.add('show');
