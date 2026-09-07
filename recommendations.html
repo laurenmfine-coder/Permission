@@ -227,6 +227,10 @@
   }
   .tools-section { padding:16px 64px 100px; }
   .tools-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+  .wfh-grid { grid-template-columns:repeat(3,1fr); }
+  @media (max-width:1100px) { .wfh-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:760px) { .wfh-grid { grid-template-columns:1fr; } }
+  .wfh-disclosure { font-size:0.72rem; line-height:1.7; color:var(--gray); font-weight:300; margin-top:18px; font-style:italic; }
 
   .tool-card { background:var(--white); padding:0; position:relative; transition:transform 0.35s, box-shadow 0.35s; border-top:3px solid var(--blush); display:flex; flex-direction:column; }
   .tool-card:hover { transform:translateY(-6px); box-shadow:0 20px 52px rgba(0,0,0,0.07); border-top-color:var(--terracotta); }
@@ -322,6 +326,35 @@
   </div>
 </header>
 
+<section class="picks-section reveal" id="work-from-home">
+  <div class="picks-head">
+    <p class="picks-eyebrow">What I wear to work from home</p>
+    <h2 class="picks-title">Comfortable is not the opposite of <em>ambitious</em></h2>
+    <p class="picks-lede">Working from home is still working. The pieces below hold up through a long stretch at a desk, a video call that gets scheduled with no notice, and whatever the day turns into after that. Soft enough to sit in for hours. Put-together enough that you do not have to change before the camera comes on.</p>
+    <!-- OPTIONAL, one line in Lauren's own words: what she actually reaches for first
+         most mornings and why. Leave it out rather than invent it. -->
+    <p class="wfh-disclosure">Some links in this section are affiliate links. If you buy through one I may earn a small commission at no extra cost to you. Nothing here is sponsored and no brand paid to be included.</p>
+  </div>
+
+  <div class="tools-grid wfh-grid" id="wfh-grid">
+    <!-- PRODUCT CARDS GO HERE. One block per piece, copied from this shape:
+
+    <div class="tool-card" data-store="BRAND-SLUG">
+      <div class="piece-image" style="background:none; border:none; padding:0;"><img src="wfh-FILENAME.jpg" alt="BRAND ITEM NAME" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="tool-body">
+        <span class="tool-badge">BRAND</span>
+        <p class="tool-type">THE ROLE IT PLAYS</p>
+        <h2 class="tool-title">ITEM NAME</h2>
+        <p class="tool-desc">Two sentences on why it earns a place.</p>
+        <p class="tool-price">$00</p>
+        <a class="tool-cta" href="SHOPMY-LINK" target="_blank" rel="noopener">Shop the ITEM</a>
+      </div>
+    </div>
+
+    -->
+  </div>
+</section>
+
 <div class="essentials-band" id="essentials">
   <div class="essentials-head">
     <p class="essentials-eyebrow">The three essentials</p>
@@ -364,6 +397,7 @@
 </div>
 
 <div class="section-jump">
+  <a href="#work-from-home">Work From Home</a>
   <a href="#essentials">The 3 Essentials</a>
   <a href="#spf">Skin</a>
   <a href="#testing">What "allergy tested" means</a>
