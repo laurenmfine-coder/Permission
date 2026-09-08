@@ -42,6 +42,11 @@
       "permanent": true
     },
     {
+      "source": "/expert-witness.html",
+      "destination": "/expert-witness",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
