@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physician Women at a Crossroads | Lauren Fine, MD</title>
+<meta name="description" content="A free private group for physician women who are somewhere between staying and going. No pitch, no program, no selling. Run by Lauren Fine, MD, allergist immunologist and medical educator.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/physician-women">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/physician-women">
+<meta property="og:title" content="Physician Women at a Crossroads">
+<meta property="og:description" content="A free private group for physician women who are somewhere between staying and going. No pitch, no program, no selling.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --gold:#B8975A; --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    background:var(--cream-dark); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300;
+    min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { width:100%; max-width:520px; }
+  .wordmark {
+    display:block; text-align:center; font-family:'Playfair Display',serif; font-size:0.92rem; font-weight:500;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; margin-bottom:24px;
+  }
+  .card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.08); padding:36px 24px 32px; }
+  @media (min-width:540px) { .card { padding:52px 46px 46px; } }
+  .eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:16px; }
+  h1 {
+    font-family:'Playfair Display',serif; font-size:clamp(1.55rem,6.4vw,2.15rem); font-weight:400; line-height:1.24;
+    color:var(--black); text-align:center; margin-bottom:20px;
+  }
+  h1 em { font-style:italic; color:var(--terracotta); }
+  .lede { font-size:0.92rem; line-height:1.85; color:var(--black); font-weight:300; margin-bottom:16px; }
+  .lede.muted { color:var(--gray); }
+
+  .rule { height:1px; background:var(--cream-dark); margin:30px 0; }
+
+  .kicker { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  ul.plain { list-style:none; margin-bottom:8px; }
+  ul.plain li { font-size:0.9rem; line-height:1.75; color:var(--black); padding-left:18px; position:relative; margin-bottom:9px; }
+  ul.plain li:before { content:""; position:absolute; left:0; top:0.62em; width:6px; height:1px; background:var(--gold); }
+
+  .cta {
+    display:block; width:100%; text-align:center; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); border:none;
+    padding:19px 24px; cursor:pointer; text-decoration:none; transition:background 0.3s; margin-top:8px;
+  }
+  .cta:hover { background:var(--terracotta); }
+  .cta-note { font-size:0.72rem; line-height:1.7; color:var(--gray); margin-top:14px; text-align:center; }
+
+  .bio { display:flex; gap:16px; align-items:flex-start; margin-top:4px; }
+  .bio img { width:64px; height:64px; object-fit:cover; border-radius:50%; flex-shrink:0; }
+  .bio p { font-size:0.83rem; line-height:1.8; color:var(--gray); }
+  .bio strong { color:var(--black); font-weight:500; }
+
+  .field { margin-bottom:16px; position:relative; }
+  .field label { display:block; font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--warm-dark); font-weight:500; margin-bottom:8px; }
+  .field input {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--black);
+    background:var(--cream-dark); border:1px solid var(--cream-dark); padding:14px 15px;
+    transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+  .field input:focus { outline:none; border-color:var(--terracotta); background:var(--white); box-shadow:0 0 0 3px rgba(35,64,110,0.08); }
+  .field input::placeholder { color:#B0A9A2; }
+  .field-error { display:none; font-size:0.76rem; color:#9B3B2F; margin-top:7px; }
+  .field.invalid input { border-color:#9B3B2F; }
+  .field.invalid .field-error { display:block; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .btn-secondary {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--terracotta); background:var(--white); border:1px solid var(--terracotta);
+    padding:16px 24px; cursor:pointer; transition:background 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { background:var(--terracotta); color:var(--white); }
+  .btn-secondary:disabled { opacity:0.55; cursor:default; }
+  .form-status { display:none; margin-top:14px; padding:13px 15px; font-size:0.83rem; line-height:1.6; background:#FAF3F1; border-left:2px solid #9B3B2F; color:#7A2E24; }
+  .form-status.show { display:block; }
+  .email-done { display:none; font-size:0.88rem; line-height:1.8; color:var(--terracotta); padding:13px 0; }
+  .email-done.show { display:block; }
+  .foot { text-align:center; margin-top:24px; }
+  .foot a { font-size:0.76rem; color:var(--gray); text-decoration:none; border-bottom:1px solid rgba(140,133,128,0.35); padding-bottom:2px; }
+  .foot a:hover { color:var(--terracotta); }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2QBSJ9PRRQ');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="wordmark">Lauren Fine</a>
+
+  <div class="card">
+    <p class="eyebrow">A free private group</p>
+    <h1>Physician Women <em>at a Crossroads</em></h1>
+
+    <p class="lede">You have thought about leaving more than once this year. Maybe not out loud. It is not a thing you can bring up at work, and the people outside medicine do not quite get why it is complicated.</p>
+    <p class="lede muted">This is a room where that question is allowed. It is free and it is private. Nothing is for sale inside it.</p>
+
+    <a class="cta" id="joinBtn" href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener">Request to join the group</a>
+    <p class="cta-note">It opens on Facebook. I read every request myself.</p>
+
+    <div class="rule"></div>
+
+    <p class="kicker">What it is</p>
+    <ul class="plain">
+      <li>Physician women who are somewhere between staying and going.</li>
+      <li>Veterinarians, dentists and other women with the degree and the doubt are welcome too.</li>
+      <li>Questions, half-formed plans, and the parts you have not said out loud.</li>
+    </ul>
+
+    <p class="kicker" style="margin-top:24px;">What it is not</p>
+    <ul class="plain">
+      <li>No coaching pitch. No program. No selling.</li>
+      <li>Not a burnout and resilience group.</li>
+      <li>Not a place where anyone tells you to stay or go.</li>
+    </ul>
+
+    <div class="rule"></div>
+
+    <div class="bio">
+      <img src="/headshot.jpg" alt="Lauren Fine, MD">
+      <p><strong>Lauren Fine, MD</strong> is an allergist immunologist and a medical educator. She works with high achievers, in medicine and outside it, who are somewhere between staying and going.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="kicker">Not on Facebook?</p>
+    <p class="lede muted" style="margin-bottom:20px;">The Sunday Letter covers the same ground in your inbox. One letter, Sunday mornings.</p>
+
+    <form id="signupForm" novalidate>
+      <div class="hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="field" id="firstNameField">
+        <label for="firstName">First name</label>
+        <input type="text" id="firstName" name="firstName" autocomplete="given-name" placeholder="First name">
+        <p class="field-error">Please enter your first name.</p>
+      </div>
+      <div class="field" id="emailField">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com">
+        <p class="field-error">Please enter a valid email address.</p>
+      </div>
+      <button type="submit" class="btn-secondary" id="submitBtn">Send me the Sunday Letter</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+    <p class="email-done" id="emailDone">You are on the list. The next letter lands Sunday morning.</p>
+  </div>
+
+  <div class="foot"><a href="/">More from Lauren Fine, MD</a></div>
+</div>
+
+<script>
+(function () {
+  var SOURCE = 'physician-women-page';
+
+  var joinBtn = document.getElementById('joinBtn');
+  joinBtn.addEventListener('click', function () {
+    if (typeof gtag === 'function') {
+      gtag('event', 'group_join_click', { group: 'physician-women-at-a-crossroads', source: SOURCE });
+    }
+  });
+
+  var form = document.getElementById('signupForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var formStatus = document.getElementById('formStatus');
+  var emailDone = document.getElementById('emailDone');
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setInvalid(fieldId, invalid) {
+    var el = document.getElementById(fieldId);
+    if (el) el.classList.toggle('invalid', invalid);
+  }
+
+  ['firstName', 'email'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      setInvalid(id + 'Field', false);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formStatus.classList.remove('show');
+
+    var firstName = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var valid = true;
+    if (!firstName) { setInvalid('firstNameField', true); valid = false; }
+    if (!EMAIL_RE.test(email)) { setInvalid('emailField', true); valid = false; }
+    if (!valid) {
+      var firstBad = form.querySelector('.field.invalid input');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: firstName,
+        email: email,
+        source: SOURCE,
+        company: document.getElementById('company').value
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (body) {
+        return { ok: r.ok, body: body };
+      });
+    }).then(function (result) {
+      if (!result.ok) {
+        formStatus.textContent = result.body.error || 'Something went wrong. Please try again.';
+        formStatus.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send me the Sunday Letter';
+        return;
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'mailing_list_signup', { source: SOURCE });
+      }
+      form.style.display = 'none';
+      emailDone.classList.add('show');
+    }).catch(function () {
+      formStatus.textContent = 'Something went wrong. Please try again, or email reasondxcoaching@gmail.com.';
+      formStatus.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send me the Sunday Letter';
+    });
+  });
+})();
+</script>
+</body>
+</html>
