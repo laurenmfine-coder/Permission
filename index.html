@@ -613,7 +613,7 @@
 
 <!-- NAV -->
 <div class="fb-recruit-banner" style="background:var(--terracotta);color:#fff;text-align:center;padding:11px 16px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.03em;">
-  <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Join the free Permission to Change Facebook community &rarr;</a>
+  <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" onclick="trackGroupJoin('top-banner')" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Join Physician Women at a Crossroads, free &rarr;</a>
 </div>
   <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
@@ -645,7 +645,22 @@
 
 <!-- SPLIT: TWO PATHS -->
 <style>
-  .split-wrap { padding:150px 64px 60px; }
+  .group-band { padding:132px 64px 0; }
+  .group-band-inner { max-width:1000px; margin:0 auto; border:1px solid #B8975A; background:#FFFFFF; padding:44px 52px 40px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; }
+  .group-band-kicker { font-family:'DM Sans',sans-serif; font-size:0.62rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B8975A; margin-bottom:14px; }
+  .group-band-title { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(1.7rem,2.8vw,2.4rem); line-height:1.18; color:#1A1A1A; margin-bottom:16px; }
+  .group-band-title em { font-style:italic; color:#23406E; }
+  .group-band-sub { font-family:'DM Sans',sans-serif; font-size:0.94rem; font-weight:300; line-height:1.75; color:#1A1A1A; max-width:560px; }
+  .group-band-cta { display:inline-block; white-space:nowrap; background:#1A1A1A; color:#FFFFFF; font-family:'DM Sans',sans-serif; font-size:0.7rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; padding:19px 34px; text-decoration:none; transition:background 0.3s; }
+  .group-band-cta:hover { background:#23406E; }
+  .group-band-note { font-family:'DM Sans',sans-serif; font-size:0.74rem; line-height:1.6; color:#8C8580; margin-top:12px; text-align:center; }
+  .group-band-note a { color:#23406E; text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); }
+  @media (max-width:900px) {
+    .group-band { padding:180px 20px 0; }
+    .group-band-inner { grid-template-columns:1fr; gap:24px; padding:32px 24px 30px; }
+    .group-band-cta { display:block; text-align:center; }
+  }
+  .split-wrap { padding:56px 64px 60px; }
   .split-eyebrow { text-align:center; font-size:0.68rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#23406E; margin-bottom:32px; }
   .split-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; max-width:1000px; margin:0 auto; }
   .split-card { text-decoration:none; padding:56px 44px; display:flex; flex-direction:column; justify-content:space-between; min-height:280px; transition:transform 0.3s; }
@@ -655,13 +670,27 @@
   .split-card-link { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; padding-bottom:3px; align-self:flex-start; margin-top:24px; }
   .split-card-sub { font-size:0.86rem; line-height:1.75; font-weight:300; margin-top:16px; }
   @media (max-width:680px) {
-    .split-wrap { padding:195px 20px 40px; }
+    .split-wrap { padding:44px 20px 40px; }
     .split-eyebrow { font-size:0.82rem; letter-spacing:0.14em; margin-bottom:20px; }
     .split-grid { grid-template-columns:1fr; max-width:480px; }
     .split-card { padding:40px 28px; min-height:220px; }
     .split-card-title { font-size:1.5rem; }
   }
 </style>
+<section class="group-band">
+  <div class="group-band-inner">
+    <div>
+      <p class="group-band-kicker">Free private group</p>
+      <p class="group-band-title">Physician Women <em>at a Crossroads</em></p>
+      <p class="group-band-sub">You have thought about leaving more than once this year. Maybe not out loud. This is a room where that question is allowed. No coaching pitch, no program, nothing for sale inside it.</p>
+    </div>
+    <div>
+      <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" onclick="trackGroupJoin('homepage-band')" class="group-band-cta">Request to join</a>
+      <p class="group-band-note">Free and private.<br><a href="/physician-women">What is inside &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="split-wrap">
   <p class="split-eyebrow">What brought you here today?</p>
   <div class="split-grid">
@@ -874,6 +903,13 @@
   document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('on');ring.classList.add('on');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('on');ring.classList.remove('on');});});
   const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  function trackGroupJoin(source) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'group_join_click', { group: 'physician-women-at-a-crossroads', source: source });
+    }
+  }
+  window.trackGroupJoin = trackGroupJoin;
 
   // Lead capture modal (hero CTA)
   // Worksheet files are not exposed to the client at all — api/download.js
