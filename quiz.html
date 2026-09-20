@@ -251,6 +251,22 @@
       document.getElementById('resultBody').textContent = r.body;
       document.getElementById('resultCtaLink').href = r.href;
       window.__quizResultKey = key;
+
+      var qp = new URLSearchParams(window.location.search);
+      var bookParams = new URLSearchParams();
+      if (qp.get('utm_source')) bookParams.set('utm_source', qp.get('utm_source'));
+      if (qp.get('utm_medium')) bookParams.set('utm_medium', qp.get('utm_medium'));
+      if (qp.get('utm_campaign')) bookParams.set('utm_campaign', qp.get('utm_campaign'));
+      bookParams.set('utm_content', 'quiz_result_' + key);
+      document.getElementById('resultBookLink').href = 'free-session.html?' + bookParams.toString();
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'quiz_complete', {
+          result: key,
+          utm_source: qp.get('utm_source') || '(none)',
+          utm_campaign: qp.get('utm_campaign') || '(none)'
+        });
+      }
     }
   }
 

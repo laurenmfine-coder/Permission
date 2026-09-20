@@ -495,7 +495,13 @@
         const out = await res.json().catch(()=>({}));
         if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');
         if (typeof gtag === 'function') {
-          gtag('event', 'free_session_request', { situation: data.situation || 'unknown' });
+          var _qp = new URLSearchParams(window.location.search);
+          gtag('event', 'free_session_request', {
+            situation: data.situation || 'unknown',
+            utm_source: _qp.get('utm_source') || '(none)',
+            utm_campaign: _qp.get('utm_campaign') || '(none)',
+            utm_content: _qp.get('utm_content') || '(none)'
+          });
         }
         successName.textContent = data.firstName
           ? data.firstName.trim() + ', thank you. I’ve got your note.'
@@ -518,7 +524,13 @@
     document.querySelectorAll('[data-book-direct]').forEach(function (a) {
       a.addEventListener('click', function () {
         if (typeof gtag === 'function') {
-          gtag('event', 'booking_direct_click', { placement: a.getAttribute('data-book-direct') });
+          var _qp = new URLSearchParams(window.location.search);
+          gtag('event', 'booking_direct_click', {
+            placement: a.getAttribute('data-book-direct'),
+            utm_source: _qp.get('utm_source') || '(none)',
+            utm_campaign: _qp.get('utm_campaign') || '(none)',
+            utm_content: _qp.get('utm_content') || '(none)'
+          });
         }
       });
     });
