@@ -262,8 +262,24 @@
   .hero-body { font-size:1.05rem; font-weight:400; line-height:1.8; color:var(--black); max-width:480px; margin-bottom:64px; opacity:0; animation:fadeUp 0.9s ease 0.7s forwards; }
   .hero-actions { display:flex; gap:28px; align-items:center; opacity:0; animation:fadeUp 0.9s ease 0.9s forwards; }
 
-  .btn-primary { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); background:transparent; border:1.5px solid var(--terracotta); border-radius:999px; padding:16px 42px; text-decoration:none; display:inline-block; transition:background 0.3s,transform 0.2s; }
+  .btn-primary { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); border:none; padding:18px 44px; text-decoration:none; display:inline-block; transition:background 0.3s,transform 0.2s; }
   .btn-primary:hover { background:var(--terracotta); color:var(--white); transform:translateY(-2px); }
+
+  /* DIFFERENTIATOR — why this over a generic program, styled after the /humed page */
+  .differentiator { background:var(--terracotta-dark); padding:120px 64px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .diff-left .section-eyebrow { color:var(--gold); }
+  .diff-left .section-title { color:var(--white); }
+  .diff-left .section-title em { color:var(--blush); }
+  .diff-body { font-size:0.95rem; line-height:1.9; color:rgba(255,255,255,0.6); font-weight:300; margin-top:28px; max-width:480px; }
+  .diff-right { padding-top:12px; }
+  .diff-comparison { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+  .diff-col-header { padding:18px 24px; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:400; }
+  .diff-col-platform { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.4); }
+  .diff-col-lauren { background:var(--terracotta); color:var(--white); }
+  .diff-cell { padding:18px 24px; font-size:0.85rem; line-height:1.6; font-weight:300; border-top:1px solid rgba(255,255,255,0.08); }
+  .diff-cell-platform { background:rgba(255,255,255,0.03); color:rgba(255,255,255,0.4); }
+  .diff-cell-lauren { background:rgba(184,151,90,0.1); color:rgba(255,255,255,0.9); }
+  @media (max-width:900px) { .differentiator { grid-template-columns:1fr; gap:44px; padding:80px 24px; } }
   .btn-ghost { font-size:0.72rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:4px; transition:color 0.3s,border-color 0.3s; }
   .btn-ghost:hover { color:var(--terracotta); border-color:var(--terracotta); }
 
@@ -733,6 +749,27 @@
   </div>
   <div class="hero-right">
     <img src="lauren-hero-2026.jpg" alt="Lauren Fine, MD: Coach, TEDx Speaker, Story Strategist" />
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="differentiator">
+  <div class="diff-left">
+    <p class="section-eyebrow reveal">Why not a course or a program</p>
+    <h2 class="section-title reveal d1">Because your situation<br>is not a <em>template.</em></h2>
+    <p class="diff-body reveal d2">Generic programs sell you a framework and move on to the next cohort. This is a relationship with someone who has made the exact kind of leap you're weighing, and who will tell you the truth even when it isn't the pitch.</p>
+  </div>
+  <div class="diff-right reveal d3">
+    <div class="diff-comparison">
+      <div class="diff-col-header diff-col-platform">A generic program</div>
+      <div class="diff-col-header diff-col-lauren">Working with Lauren</div>
+      <div class="diff-cell diff-cell-platform">One-size-fits-all curriculum</div>
+      <div class="diff-cell diff-cell-lauren">Built around your actual decision</div>
+      <div class="diff-cell diff-cell-platform">Nudges you toward "yes, enroll"</div>
+      <div class="diff-cell diff-cell-lauren">Will tell you if coaching isn't the answer</div>
+      <div class="diff-cell diff-cell-platform">Cohort-paced, fixed schedule</div>
+      <div class="diff-cell diff-cell-lauren">Your pace, your calendar</div>
+    </div>
   </div>
 </section>
 
