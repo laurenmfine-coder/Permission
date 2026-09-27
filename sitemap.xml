@@ -170,9 +170,21 @@
   </url>
   <url>
     <loc>https://laurenfine.com/sunday-letter.html</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://laurenfine.com/sunday-letter-04-make-room.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://laurenfine.com/sunday-letter-03-who-you-are-when-the-title-is-gone.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://laurenfine.com/sunday-letter-02-no-is-a-complete-sentence-but-a-script-helps.html</loc>
