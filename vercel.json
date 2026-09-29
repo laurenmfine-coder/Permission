@@ -12,6 +12,26 @@
   ],
   "redirects": [
     {
+      "source": "/ikigai-coaching.html",
+      "destination": "/physician-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/ikigai-coaching",
+      "destination": "/physician-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/burnout-coaching.html",
+      "destination": "/physician-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/burnout-coaching",
+      "destination": "/physician-coaching",
+      "permanent": true
+    },
+    {
       "source": "/physician-moms",
       "destination": "/physician-women",
       "permanent": true

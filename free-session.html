@@ -214,6 +214,13 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+  .private-block { margin:28px 0; padding:20px 22px; border:1px solid var(--gold,#B8975A); background:rgba(184,151,90,0.06); }
+  .private-eyebrow { font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta,#23406E); margin-bottom:10px; }
+  .private-block ul { list-style:none; padding:0; margin:0; }
+  .private-block li { font-size:0.95rem; line-height:1.7; color:var(--black,#1A1A1A); padding-left:18px; position:relative; }
+  .private-block li::before { content:''; position:absolute; left:0; top:0.8em; width:8px; height:1px; background:var(--gold,#B8975A); }
+  .private-note { margin-top:12px; font-size:0.88rem; line-height:1.6; color:var(--black,#1A1A1A); opacity:.8; }
+  .private-note a { color:var(--black,#1A1A1A); border-bottom:1px solid var(--gold,#B8975A); text-decoration:none; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -227,23 +234,21 @@
 <body>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-<div class="fb-recruit-banner" style="background:var(--terracotta);color:#fff;text-align:center;padding:11px 16px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.03em;">
-  <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Join the free Permission to Change Facebook community &rarr;</a>
-</div>
 <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="coaching.html">Coaching</a></li>
-    <li><a href="speaking.html">Speaking</a></li>
-    <li><a href="media.html">Media</a></li>
+    <li><a href="physician-coaching.html">For Physicians</a></li>
+    <li><a href="physician-women.html">The Group</a></li>
     <li class="nav-has-drop">
-      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span aria-hidden="true">&#9662;</span></button>
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
+        <li><a href="media.html">Media</a></li>
         <li><a href="resources.html">Free Resources</a></li>
         <li><a href="sunday-letter.html">The Sunday Letter</a></li>
         <li><a href="blog.html">Writing</a></li>
-        <li><a href="writing-services.html">Writing Services</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
       </ul>
     </li>
   </ul>
@@ -252,7 +257,7 @@
     <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" aria-label="Permission to Change on Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
     <a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener" aria-label="Permission to Change Substack newsletter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg></a>
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
-    <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Join the Permission to Change Facebook Group"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+    <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
   <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
 </nav>
@@ -261,12 +266,12 @@
   <p class="hero-eyebrow reveal">No cost · No obligation</p>
   <h1 class="session-h1 reveal d1">Book a free <em>coaching session</em>.</h1>
   <p class="hero-script reveal d1">No sales pitch.</p>
-  <p class="session-lede reveal d2">This is a real session, not a screening call. You bring the thing you keep circling back to &mdash; the decision, the doubt, the version of your life you can't quite say out loud yet &mdash; and we spend the time on it.</p>
+  <p class="session-lede reveal d2">This is a real session, not a screening call. You bring the thing you keep circling back to: the decision, the doubt, the version of your life you can't quite say out loud yet. We spend the time on it.</p>
   <p class="session-lede reveal d2">I won't spend it selling you anything. <strong>If we're a fit, you'll know. If we're not, you'll still leave with something.</strong></p>
   <p class="session-lede reveal d2">Come with one thing you want to make room for. That is enough to start.</p>
   <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero" class="btn-hero-primary reveal d2">Pick a time on my calendar &rarr;</a>
   <p class="session-direct reveal d2"><span class="direct-sub">Prefer to add context first? Answer a few questions below and you'll pick your time right after.</span></p>
-  <p class="not-ready reveal d2">Not ready to book, just have a question? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a>. No pressure &mdash; I read and answer these myself.</p>
+  <p class="not-ready reveal d2">Not ready to book, just have a question? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a>. No pressure. I read and answer these myself.</p>
 </section>
 <div class="session-hero-right">
   <img src="lauren-smile-belt.jpg" alt="Lauren Fine, MD, career transition and life coach" />
@@ -291,7 +296,7 @@
   <div class="promise-item reveal d2">
     <span class="promise-num">03</span>
     <p class="promise-title">No pitch, no follow-up funnel</p>
-    <p class="promise-text">I'll tell you honestly if coaching is the right tool for what you're carrying &mdash; and if it isn't, I'll say that too.</p>
+    <p class="promise-text">I'll tell you honestly if coaching is the right tool for what you're carrying. If it isn't, I'll say that too.</p>
   </div>
 </section>
 
@@ -300,7 +305,17 @@
     <p class="form-aside-label">Before we meet</p>
     <h2>Tell me where you <em>actually</em> are.</h2>
     <p>A few questions so the session starts somewhere real instead of at the beginning. Nothing here is a test, and there's no right answer.</p>
-    <p>I read every one of these myself. As soon as you send it, you'll pick your time on my calendar &mdash; no waiting on me to email you back.</p>
+    <p>I read every one of these myself. As soon as you send it, you'll pick your time on my calendar. I'll confirm by email within 24 hours.</p>
+    <div class="private-block">
+      <p class="private-eyebrow">Your privacy</p>
+      <ul>
+        <li>Sessions are private.</li>
+        <li>I never contact your employer.</li>
+        <li>Coaching is not billed through insurance, so nothing goes to a payer.</li>
+        <li>Use a personal email if you prefer.</li>
+      </ul>
+      <p class="private-note">Packages start at $1,400, and any package can run as 25-minute sessions. <a href="coaching.html#services">See packages</a>. The first session is always free.</p>
+    </div>
     <p class="aside-quote">You don't need to have the words yet. You just need to be willing to look.</p>
     <p class="not-ready" style="margin-top:28px;">Not ready for this yet? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a> instead.</p>
   </aside>
@@ -314,9 +329,8 @@
           <p class="field-error">Please add your first name.</p>
         </div>
         <div class="field" id="f-last">
-          <label for="lastName">Last name</label>
-          <input type="text" id="lastName" name="lastName" autocomplete="family-name" placeholder="Fine" required>
-          <p class="field-error">Please add your last name.</p>
+          <label for="lastName">Last name <span class="opt">(optional)</span></label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" placeholder="Fine">
         </div>
       </div>
 
@@ -330,6 +344,7 @@
         <label for="situation">Which of these is closest to where you are?</label>
         <select id="situation" name="situation" required>
           <option value="" disabled selected>Choose the closest fit</option>
+          <option value="Physician staying in medicine, wants more room">I'm a physician who wants to stay in medicine, with more room for my life</option>
           <option value="Physician considering a change">I'm a physician considering a change</option>
           <option value="Healthcare professional rethinking the path">I'm in healthcare and rethinking the path</option>
           <option value="Career reinvention outside healthcare">I'm reinventing my career outside of healthcare</option>
@@ -338,7 +353,7 @@
           <option value="Successful but unfulfilled">Everything looks right on paper and it still doesn't fit</option>
           <option value="Something else">Something else</option>
         </select>
-        <p class="field-error">Pick whichever is closest &mdash; you can explain below.</p>
+        <p class="field-error">Pick whichever is closest. You can explain below.</p>
       </div>
 
       <div class="field" id="f-focus">
@@ -359,7 +374,7 @@
 
       <button type="submit" class="btn-submit" id="submitBtn">Request my free session</button>
       <p class="form-status" id="formStatus"></p>
-      <p class="form-note">I'll follow up personally. Your note stays between us, and you can unsubscribe from anything else at any time.</p>
+      <p class="form-note">I'll follow up personally. Your note stays between us. Submitting also adds you to The Sunday Letter. You can unsubscribe anytime.</p>
       <p class="form-note">Would rather just book? <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="form" style="color:var(--black);border-bottom:1px solid var(--gold);text-decoration:none;">Pick a time on my calendar</a> and we'll cover this live.</p>
     </form>
 
@@ -369,11 +384,11 @@
       </div>
       <h2>That's <em>in</em>.</h2>
       <p id="successName">Thank you. I've got your note.</p>
-      <p>I read these myself, so it won't be an autoresponder that gets back to you. One last step &mdash; pick a time that works for you.</p>
+      <p>I read these myself, so it won't be an autoresponder that gets back to you. One last step. Pick a time that works for you.</p>
       <div class="success-actions">
         <a href="https://calendly.com/reasondxcoaching/free-session" class="btn-submit" style="display:inline-block;text-decoration:none;">Pick your time</a>
       </div>
-      <p style="margin-top:1.25rem;font-size:0.9rem;opacity:.75;">Choosing a slot sends me a request &mdash; I'll confirm by email within 24 hours.</p>
+      <p style="margin-top:1.25rem;font-size:0.9rem;opacity:.75;">Choosing a slot sends me a request. I'll confirm by email within 24 hours.</p>
       <div class="success-actions">
         <a href="resources.html" class="btn-ghost">Something to read meanwhile</a>
         <a href="/" class="btn-ghost">Back to home</a>
@@ -395,19 +410,15 @@
     <div>
       <p class="footer-brand">Lauren Fine, MD</p>
       <p class="footer-tagline">You will never find time. You make room.</p>
-      <p class="footer-bio">Physician, TEDx speaker and life coach helping high achievers make room for what comes next.</p>
+      <p class="footer-bio">Physician, TEDx speaker and life coach helping women physicians make room for their lives without leaving medicine.</p>
     </div>
     <div>
       <p class="footer-col-label">Navigate</p>
       <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="coaching.html">Coaching Overview</a></li>
-        <li><a href="burnout-coaching.html">Burnout Recovery</a></li>
-        <li><a href="boundary-setting.html">Boundary Setting</a></li>
-        <li><a href="ikigai-coaching.html">Ikigai Coaching</a></li>
-        <li><a href="career-reinvention.html">Career Reinvention</a></li>
         <li><a href="physician-coaching.html">Physician Coaching</a></li>
-        <li><a href="non-clinical-careers-for-physicians.html">Non-Clinical Careers</a></li>
+        <li><a href="physician-women.html">The Group</a></li>
         <li><a href="speaking.html">Speaking</a></li>
         <li><a href="sunday-letter.html">The Sunday Letter</a></li>
         <li><a href="blog.html">Writing</a></li>
@@ -422,7 +433,7 @@
         <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" aria-label="Permission to Change on Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
         <a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener" aria-label="Permission to Change Substack newsletter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg></a>
               <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
-    <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Join the Permission to Change Facebook Group"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+    <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
       </div>
       <ul class="footer-links">
         <li><a href="https://reasondx.com" target="_blank" rel="noopener">ReasonDx</a></li>
@@ -454,7 +465,7 @@
     const status = document.getElementById('formStatus');
     const success = document.getElementById('successCard');
     const successName = document.getElementById('successName');
-    const required = ['firstName','lastName','email','situation','focus'];
+    const required = ['firstName','email','situation','focus'];
 
     function fieldOf(id){ return document.getElementById('f-' + id.replace('firstName','first').replace('lastName','last')); }
     function clearError(id){ const f = fieldOf(id); if (f) f.classList.remove('invalid'); }
@@ -491,7 +502,7 @@
         const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.assign({ source: 'free-session-page' }, data))
+          body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : ''].filter(Boolean).join(' | ') }))
         });
         const out = await res.json().catch(()=>({}));
         if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');

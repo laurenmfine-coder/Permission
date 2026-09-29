@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Physician Career Coach | Coaching for Doctors Considering a Pivot</title>
-<meta name="description" content="Physician career coaching for doctors questioning their clinical path, considering non-clinical careers, or navigating burnout. Lauren Fine, MD: physician, medical educator, TEDx speaker. Confidential 1:1 coaching, virtual or in-person.">
-<meta name="keywords" content="physician career coach, doctor career coach, coaching for physicians, non-clinical careers for physicians, physician burnout coach, physician transition coach, MD coach, career change for doctors">
+<meta name="description" content="Physician career coaching for doctors questioning their clinical path, considering non-clinical careers, or making room for their lives without leaving medicine. Lauren Fine, MD: physician, medical educator, TEDx speaker. Confidential 1:1 coaching, virtual or in-person.">
+<meta name="keywords" content="physician career coach, doctor career coach, coaching for physicians, non-clinical careers for physicians, physician transition coach, MD coach, career change for doctors">
 <meta name="author" content="Lauren Fine, MD">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://laurenfine.com/physician-coaching.html">
@@ -13,12 +13,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://laurenfine.com/physician-coaching.html">
 <meta property="og:title" content="Physician Coach for Career Reinvention | Lauren Fine, MD">
-<meta property="og:description" content="Coaching for physicians questioning their clinical path. ICF-track coach and TEDx speaker who made the transition herself.">
+<meta property="og:description" content="Coaching for physicians questioning their clinical path. ICF-track coach and TEDx speaker who still practices medicine.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Physician Coach for Career Reinvention | Lauren Fine, MD">
-<meta name="twitter:description" content="Coaching for physicians questioning their clinical path. Coach (ICF-track coach) who made the transition herself.">
+<meta name="twitter:description" content="Coaching for physicians questioning their clinical path. ICF-track coach who still practices medicine.">
 <meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
 
 <script type="application/ld+json">
@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Physician Coaching for Career Reinvention",
-  "description": "Coaching for physicians and medical professionals navigating career transitions and the question of what comes next. Provided by Lauren Fine, MD, who made the transition from full-time clinical practice to coaching. ICF-Track Coach.",
+  "description": "Coaching for physicians and medical professionals navigating career transitions and the question of what comes next. Provided by Lauren Fine, MD, a physician who still sees patients one day a week, teaches, builds, and coaches. ICF-Track Coach.",
   "url": "https://laurenfine.com/physician-coaching.html",
   "provider": {
     "@type": "Person",
@@ -289,7 +289,7 @@
     display: flex; gap: 16px; align-items: flex-start;
   }
   .for-you-list li::before {
-    content: '—'; color: var(--terracotta); flex-shrink: 0;
+    content: '·'; color: var(--terracotta); flex-shrink: 0;
     font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-top: 2px;
   }
   .for-you-right { background: var(--warm-dark); padding: 52px 48px; }
@@ -331,7 +331,12 @@
   @media (max-width: 960px) {
     nav { padding:20px 24px; }
     nav { flex-wrap:wrap; row-gap:8px; } .nav-links { display:flex !important; flex-wrap:wrap; gap:8px 16px; width:100%; justify-content:center; order:3; } .nav-links a { font-size:0.68rem; }
-    .coaching-hero { grid-template-columns:1fr; min-height:auto; }
+    .coaching-hero { grid-template-columns:minmax(0,1fr); min-height:auto; }
+    .hero-actions { flex-wrap:wrap; gap:16px; }
+    .hero-actions .fb-near-cta { margin-left:0 !important; }
+    .btn-primary { padding:16px 24px; max-width:100%; text-align:center; }
+    .coaching-h1 { font-size:clamp(2.4rem, 11vw, 3rem); }
+    .hero-script { font-size:clamp(1.6rem, 7vw, 2.2rem); }
     .coaching-hero-left { padding:120px 24px 60px; }
     .coaching-hero-right { height:320px; }
     .differentiator { grid-template-columns:1fr; gap:40px; padding:60px 24px; }
@@ -367,6 +372,16 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+  .hero-stay { font-size:1rem; line-height:1.75; color:var(--black); margin:-8px 0 20px; max-width:560px; padding-left:16px; border-left:2px solid var(--gold); }
+  .hero-stay strong { font-weight:500; }
+  .hero-price, .hero-private { margin-top:18px; font-size:0.9rem; color:var(--black); font-weight:400; }
+  .hero-private { margin-top:6px; color:var(--gray); font-weight:300; }
+  .hero-price a, .hero-private a { color:var(--terracotta); text-decoration:underline; text-underline-offset:3px; }
+  .private-block { max-width:520px; margin:0 auto 28px; padding:22px 26px; border:1px solid rgba(255,255,255,0.35); text-align:left; }
+  .private-eyebrow { font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:12px; }
+  .private-block ul { list-style:none; padding:0; margin:0; }
+  .private-block li { font-size:0.95rem; line-height:1.7; color:#fff; font-weight:300; padding-left:18px; position:relative; }
+  .private-block li::before { content:''; position:absolute; left:0; top:0.75em; width:8px; height:1px; background:var(--gold); }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -383,23 +398,21 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<div class="fb-recruit-banner" style="background:var(--terracotta);color:#fff;text-align:center;padding:11px 16px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.03em;">
-  <a href="/physician-women" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Join Physician Women at a Crossroads, a free private group &rarr;</a>
-</div>
 <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="coaching.html" class="active">Coaching</a></li>
-    <li><a href="speaking.html">Speaking</a></li>
-    <li><a href="media.html">Media</a></li>
+    <li><a href="physician-coaching.html">For Physicians</a></li>
+    <li><a href="physician-women.html">The Group</a></li>
     <li class="nav-has-drop">
-      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span aria-hidden="true">&#9662;</span></button>
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
+        <li><a href="media.html">Media</a></li>
         <li><a href="resources.html">Free Resources</a></li>
         <li><a href="sunday-letter.html">The Sunday Letter</a></li>
         <li><a href="blog.html">Writing</a></li>
-        <li><a href="writing-services.html">Writing Services</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
       </ul>
     </li>
   </ul>
@@ -408,7 +421,7 @@
     <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" aria-label="Permission to Change on Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
     <a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener" aria-label="Permission to Change Substack newsletter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg></a>
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
-    <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Join the Permission to Change Facebook Group"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+    <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
   <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
 </nav>
@@ -417,13 +430,17 @@
 <div class="coaching-hero">
   <div class="coaching-hero-left">
     <p class="hero-eyebrow">Physician Career Coaching</p>
-    <h1 class="coaching-h1">Coaching for the<br>physician quietly<br>asking, <em>"is this it?"</em></h1>
-    <p class="hero-script">you're not alone, and you're not broken</p>
-    <p class="coaching-hero-body">If you went to medical school because you wanted to help people, and now the work that used to feel meaningful feels mechanical, you're in the right place. I'm a physician who made the transition from full-time clinical practice to coaching. I work with physicians and high achievers navigating career reinvention.</p>
+    <h1 class="coaching-h1">Coaching for the<br>physician everyone<br><em>leans on.</em></h1>
+    <p class="hero-script">you don't have to leave medicine to get your life back</p>
+    <p class="coaching-hero-body">If you went to medical school because you wanted to help people, and now the work that used to feel meaningful feels mechanical, you're in the right place. You're not alone, and you're not broken.</p>
+    <p class="hero-stay"><strong>Do you need to be planning to leave medicine to work with me? No.</strong> About half of my physician clients ultimately stay in clinical practice. Sometimes the answer is staying with substantial changes.</p>
+    <p class="coaching-hero-body">I'm a physician too. I still see patients one day a week. I teach, I build, and I coach. I gave myself permission to add to the work, not abandon it.</p>
     <div class="hero-actions">
       <a href="free-session.html" class="btn-primary">Book a Free Coaching Session, No Sales Pitch</a> <a href="/physician-women" class="fb-near-cta" style="display:inline-block;margin-left:14px;font-size:0.78rem;color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;">or join Physician Women at a Crossroads, free &rarr;</a>
       <a href="#approach" class="btn-ghost">My Approach</a>
     </div>
+    <p class="hero-price">Packages start at $1,400. The first session is free. <a href="coaching.html#services">See packages &rarr;</a></p>
+    <p class="hero-private">Private. Not billed through insurance. <a href="#private">How privacy works &darr;</a></p>
         <p class="hero-callout" style="margin-top:14px; font-size:0.85rem; color:var(--gray); font-weight:300;">Weighing your options first? Read the guide to <a href="non-clinical-careers-for-physicians.html" style="color:var(--terracotta); text-decoration:underline;">non-clinical careers for physicians</a>.</p>
     <p class="hero-callout" style="margin-top:16px; font-size:0.85rem; color:var(--gray); font-weight:300;">New to coaching? <a href="index.html#what-is-coaching" style="color:var(--terracotta); text-decoration:underline;">Here's a quick primer on what life coaching actually is</a> before diving in.</p>
   </div>
@@ -451,14 +468,14 @@
       <div class="diff-cell diff-cell-platform">Successful by every external measure</div>
       <div class="diff-cell diff-cell-lauren">Quietly miserable by every internal one</div>
 
-      <div class="diff-cell diff-cell-platform">Thinking about leaving medicine</div>
-      <div class="diff-cell diff-cell-lauren">Stopped cold by "throwing it all away"</div>
-
       <div class="diff-cell diff-cell-platform">Don't want to leave entirely</div>
       <div class="diff-cell diff-cell-lauren">Know this isn't sustainable for 20 more years</div>
 
       <div class="diff-cell diff-cell-platform">Woman physician, exhausted</div>
-      <div class="diff-cell diff-cell-lauren">Tired of the double-bind that has nothing to do with you</div>
+      <div class="diff-cell diff-cell-lauren">A full clinic, a full home, and you're the one who always picks up</div>
+
+      <div class="diff-cell diff-cell-platform">Thinking about leaving medicine</div>
+      <div class="diff-cell diff-cell-lauren">Stopped cold by "throwing it all away"</div>
 
       <div class="diff-cell diff-cell-platform">Hit every milestone</div>
       <div class="diff-cell diff-cell-lauren">The trophies feel surprisingly light</div>
@@ -490,7 +507,7 @@
         </div>
       </div>
       <div class="service-cta-col">
-        <a href="#contact" class="service-link">Inquire</a>
+        <a href="free-session.html" class="service-link">Inquire</a>
       </div>
     </div>
 
@@ -507,7 +524,7 @@
         </div>
       </div>
       <div class="service-cta-col">
-        <a href="#contact" class="service-link">Inquire</a>
+        <a href="free-session.html" class="service-link">Inquire</a>
       </div>
     </div>
 
@@ -524,7 +541,7 @@
         </div>
       </div>
       <div class="service-cta-col">
-        <a href="#contact" class="service-link">Inquire</a>
+        <a href="free-session.html" class="service-link">Inquire</a>
       </div>
     </div>
   </div>
@@ -541,9 +558,9 @@
   <div class="for-you-grid">
     <ul class="for-you-list reveal d1">
       <li>You're a mid-career physician questioning whether the next 20 years should look like the last 20</li>
-      <li>You've been thinking about leaving clinical medicine, but the thought of "throwing it all away" stops you cold</li>
       <li>You don't want to leave medicine entirely, but the current setup isn't sustainable</li>
-      <li>You're a woman physician tired of the double-bind that has nothing to do with you</li>
+      <li>You're a woman physician with a full clinic and a full home, and you're the one who always picks up</li>
+      <li>You've been thinking about leaving clinical medicine, but the thought of "throwing it all away" stops you cold</li>
       <li>You're a high-achiever in any field whose external success has stopped feeling internally satisfying</li>
       <li>You're a medical educator or academic eroded by institutional politics, not the work itself</li>
       <li>You want to work with a coach who has actually made the transition, not just coached others through it</li>
@@ -599,6 +616,16 @@
   <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:16px;">Let's have a conversation.</h2>
   <p style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3.5rem);color:rgba(255,255,255,0.8);margin-bottom:48px;line-height:1.2;">No pressure. Just a conversation.</p>
   <p style="font-size:0.95rem;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300;max-width:520px;margin:0 auto 20px;">The first session is free and there's no obligation. Tell me where you are. I'll tell you honestly if coaching makes sense and if we're a good fit.</p>
+  <div class="private-block" id="private">
+    <p class="private-eyebrow">Your privacy</p>
+    <ul>
+      <li>Sessions are private.</li>
+      <li>I never contact your employer.</li>
+      <li>Coaching is not billed through insurance, so nothing goes to a payer.</li>
+      <li>Use a personal email if you prefer.</li>
+    </ul>
+  </div>
+  <p style="font-size:0.95rem;color:rgba(255,255,255,0.85);font-weight:300;margin-bottom:20px;">Packages start at $1,400. The first session is free. <a href="coaching.html#services" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">See packages</a></p>
   <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:44px;">Speaking and workshop inquiries welcome. Contact for rates.</p>
   <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center;">
     <a href="free-session.html" class="btn-primary" style="background:var(--black);font-size:0.75rem;">Book a Free Coaching Session, No Sales Pitch</a> <a href="/physician-women" class="fb-near-cta" style="display:inline-block;margin-left:14px;font-size:0.78rem;color:rgba(255,255,255,0.85);text-decoration:underline;text-underline-offset:3px;">or join Physician Women at a Crossroads, free &rarr;</a>
@@ -624,19 +651,15 @@
     <div>
       <p class="footer-brand">Lauren Fine, MD</p>
       <p class="footer-tagline">You will never find time. You make room.</p>
-      <p class="footer-bio">Physician, TEDx speaker and life coach helping high achievers make room for what comes next.</p>
+      <p class="footer-bio">Physician, TEDx speaker and life coach helping women physicians make room for their lives without leaving medicine.</p>
     </div>
     <div>
       <p class="footer-col-label">Navigate</p>
       <ul class="footer-links">
         <li><a href="about.html">About</a></li>
         <li><a href="coaching.html">Coaching Overview</a></li>
-        <li><a href="burnout-coaching.html">Burnout Recovery</a></li>
-        <li><a href="boundary-setting.html">Boundary Setting</a></li>
-        <li><a href="ikigai-coaching.html">Ikigai Coaching</a></li>
-        <li><a href="career-reinvention.html">Career Reinvention</a></li>
         <li><a href="physician-coaching.html">Physician Coaching</a></li>
-        <li><a href="non-clinical-careers-for-physicians.html">Non-Clinical Careers</a></li>
+        <li><a href="physician-women.html">The Group</a></li>
         <li><a href="speaking.html">Speaking</a></li>
         <li><a href="sunday-letter.html">The Sunday Letter</a></li>
         <li><a href="blog.html">Writing</a></li>
@@ -651,7 +674,7 @@
         <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" aria-label="Permission to Change on Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
         <a href="https://substack.com/@permissiontochange/posts" target="_blank" rel="noopener" aria-label="Permission to Change Substack newsletter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.539 24V10.812H1.46zM22.539 0H1.46v2.836h21.08V0z"/></svg></a>
               <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
-    <a href="https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Join the Permission to Change Facebook Group"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+    <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
       </div>
       <ul class="footer-links">
         <li><a href="https://reasondx.com" target="_blank" rel="noopener">ReasonDx</a></li>

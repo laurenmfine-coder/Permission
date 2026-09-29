@@ -5,7 +5,7 @@
    can be told apart in Flodesk without touching the backend. */
 (function () {
   var SIGNUP_ENDPOINT = '/api/subscribe';
-  var FB_GROUP_URL = 'https://www.facebook.com/share/g/1FKHQ7CaWW/?mibextid=wwXIfr';
+  var FB_GROUP_URL = 'https://www.facebook.com/groups/physicianmomsatacrossroads';
   var FB_LINK_HTML = '<a class="pf-fb-link" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener">Or join our free Facebook community &rarr;</a>';
   var STICKY_KEY = 'pf_sticky_dismissed';
   var EXIT_KEY = 'pf_exit_seen';
@@ -104,11 +104,11 @@
       '<div class="pf-modal">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
         '<p class="pf-modal-eyebrow">Before you go</p>' +
-        '<h3 class="pf-modal-title">Join a community of people navigating the same thing.</h3>' +
-        '<p class="pf-modal-body">The Permission to Change Facebook group is free: real conversation with people in the middle of their own pivots, reinvention, and the questions that come with both. No sales pitch.</p>' +
+        '<h3 class="pf-modal-title">The question you haven\'t said out loud.</h3>' +
+        '<p class="pf-modal-body">Physician Women at a Crossroads is a free private group for women physicians. No coaching pitch, no program, nothing for sale inside it.</p>' +
         '<a class="pf-modal-submit" id="pf-exit-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" ' +
           'style="display:block;text-align:center;text-decoration:none;" ' +
-          'onclick="window.__pfExitFbClick()">Join the free Facebook group</a>' +
+          'onclick="window.__pfExitFbClick()">Request to join the group</a>' +
         '<p class="pf-modal-note">No email, no sign-up on this end. It just takes you to Facebook.</p>' +
       '</div>';
     document.body.appendChild(overlay);
@@ -158,6 +158,10 @@
   }
 
   function initExitIntent() {
+    // Desktop only. On phones the old "fast upward flick" trigger misfired
+    // during ordinary reading and covered content, so touch devices never
+    // see this popup.
+    if (isTouchDevice()) return;
     if (daysAgo(EXIT_KEY) < EXIT_DAYS) return;
     var variant = exitVariant();
     if (!variant) return;
@@ -180,43 +184,6 @@
     document.addEventListener('mouseout', function (e) {
       if (e.clientY <= 0 && (!e.relatedTarget)) fire();
     });
-
-    // Mobile: there's no cursor to track leaving the viewport, so a fast
-    // upward scroll back toward the top, after the visitor has actually
-    // scrolled down and engaged with the page, is the closest real-world
-    // analog to "about to leave." Reaching for the URL bar, the back
-    // button, or the tab switcher all start with this same motion.
-    if (isTouchDevice()) {
-      var lastY = window.scrollY;
-      var lastT = Date.now();
-      var maxScrolled = window.scrollY;
-      var ticking = false;
-
-      window.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-          var y = window.scrollY;
-          var t = Date.now();
-          var dt = Math.max(t - lastT, 1);
-          var dy = y - lastY; // negative = scrolling up
-          var speed = -dy / dt; // px per ms, positive when scrolling up fast
-
-          if (y > maxScrolled) maxScrolled = y;
-
-          // Require: engaged (scrolled down at least ~250px at some point),
-          // currently near the top (within ~180px), and moving up fast
-          // (roughly a 300px+ upward flick in well under a second).
-          if (maxScrolled > 250 && y < 180 && speed > 0.9) {
-            fire();
-          }
-
-          lastY = y;
-          lastT = t;
-          ticking = false;
-        });
-      }, { passive: true });
-    }
   }
 
   // True when a "book a free session" call to action is currently on screen.
@@ -297,7 +264,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     injectCSS();
     initExitIntent();
-    initNewsletterTest();
+    // Homepage timed modal disabled: the homepage hero now carries an inline
+    // Sunday Letter signup next to the booking CTA, so a timed popup only
+    // interrupts. initNewsletterTest() is left defined but is not called.
     initStickyBar();
   });
 })();
