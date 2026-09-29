@@ -23,7 +23,8 @@
 
   function currentFile() {
     var parts = window.location.pathname.split('/');
-    return parts[parts.length - 1] || '';
+    var last = parts[parts.length - 1] || '';
+    return last && !/\.html$/.test(last) ? last + '.html' : last;
   }
 
   function pickRelated(current, count) {
@@ -50,7 +51,7 @@
     var html = '<p style="font-family:\'Playfair Display\',serif;font-size:1.25rem;font-weight:500;color:#1A1A1A;margin-bottom:20px;">You might also like</p>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">';
     picks.forEach(function (p) {
-      html += '<a href="' + p.file + '" style="display:block;padding:18px 20px;border:1px solid #EDE9E4;text-decoration:none;color:#1A1A1A;transition:border-color 0.2s;">' +
+      html += '<a href="/' + p.file.replace(/\.html$/, '') + '" style="display:block;padding:18px 20px;border:1px solid #EDE9E4;text-decoration:none;color:#1A1A1A;transition:border-color 0.2s;">' +
         '<span style="font-size:0.95rem;line-height:1.4;font-weight:400;">' + p.title + '</span>' +
         '</a>';
     });

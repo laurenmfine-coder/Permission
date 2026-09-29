@@ -92,7 +92,7 @@
   // hurt (free-session, booking-confirmed, quiz).
   function exitVariant() {
     var p = window.location.pathname;
-    if (/\/(free-session|booking-confirmed|quiz)\.html$/.test(p)) return null; // never interrupt a conversion
+    if (/\/(free-session|booking-confirmed|quiz)(\.html)?$/.test(p)) return null; // never interrupt a conversion
     return 'facebook';
   }
 
@@ -260,6 +260,16 @@
     // site echoing doubt back at the reader. Exit-intent popup remains as the
     // passive-capture mechanism instead.
   }
+
+
+  // Count every click that leads to the Facebook group, on any page, unless
+  // the link already reports itself through trackGroupJoin().
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="physicianmomsatacrossroads"]') : null;
+    if (!a || typeof gtag !== 'function') return;
+    if ((a.getAttribute('onclick') || '').indexOf('trackGroupJoin') !== -1) return;
+    gtag('event', 'group_join_click', { group: 'physician-women-at-a-crossroads', source: window.location.pathname });
+  }, true);
 
   document.addEventListener('DOMContentLoaded', function () {
     injectCSS();

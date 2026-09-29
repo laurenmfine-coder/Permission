@@ -345,6 +345,27 @@
 
   gtag('config', 'G-2QBSJ9PRRQ');
 </script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 
@@ -354,18 +375,18 @@
 <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="coaching.html">Coaching</a></li>
-    <li><a href="physician-coaching.html">For Physicians</a></li>
-    <li><a href="physician-women.html">The Group</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/coaching">Coaching</a></li>
+    <li><a href="/physician-coaching">For Physicians</a></li>
+    <li><a href="/physician-women">The Group</a></li>
     <li class="nav-has-drop">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
-        <li><a href="media.html">Media</a></li>
-        <li><a href="resources.html">Free Resources</a></li>
-        <li><a href="sunday-letter.html">The Sunday Letter</a></li>
-        <li><a href="blog.html">Writing</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="/media">Media</a></li>
+        <li><a href="/resources">Free Resources</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/speaking">Speaking</a></li>
       </ul>
     </li>
   </ul>
@@ -376,7 +397,7 @@
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
-  <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
+  <a href="/free-session" class="nav-cta">Free Session, No Pitch</a>
 </nav>
 
 <!-- POST HEADER -->
@@ -384,7 +405,7 @@
   <p class="post-breadcrumb">
     <a href="/">Home</a>
     <span>/</span>
-    <a href="blog.html">Writing</a>
+    <a href="/blog">Writing</a>
     <span>/</span>
     [Post Title Short]
   </p>
@@ -426,7 +447,7 @@
     <strong>Bold text</strong>
     <em>Italic text</em>
     <hr> (divider line between sections)
-    <a href="coaching.html">Link to another page</a>
+    <a href="/coaching">Link to another page</a>
     ================================================ -->
 
   <p>[Opening paragraph — this is what Google shows in search previews, so make it count. Start with the reader's problem or question, not with "I".]</p>
@@ -451,7 +472,7 @@
 
   <p>[Closing paragraph — end with something that opens a door. A question, an invitation, a next step. Link to your coaching page or invite them to subscribe.]</p>
 
-  <p>If this resonated, <a href="coaching.html">here's how we can work together</a> — or subscribe below to get the next piece in your inbox.</p>
+  <p>If this resonated, <a href="/coaching">here's how we can work together</a> — or subscribe below to get the next piece in your inbox.</p>
 
 
   <div style="margin-top:44px;padding:32px 28px;background:#FAF9F7;border:1px solid #EDE9E4;text-align:center;">
@@ -494,15 +515,15 @@
   <p class="related-label">Keep reading</p>
   <div class="related-grid">
     <!-- UPDATE: Replace these with real related posts as you build the library -->
-    <a href="blog.html" class="related-card">
+    <a href="/blog" class="related-card">
       <p class="related-tag">Career Pivot</p>
       <h3 class="related-title">[Related Post Title]</h3>
     </a>
-    <a href="blog.html" class="related-card">
+    <a href="/blog" class="related-card">
       <p class="related-tag">Identity</p>
       <h3 class="related-title">[Related Post Title]</h3>
     </a>
-    <a href="blog.html" class="related-card">
+    <a href="/blog" class="related-card">
       <p class="related-tag">Permission</p>
       <h3 class="related-title">[Related Post Title]</h3>
     </a>
@@ -520,13 +541,13 @@
     <div>
       <p class="footer-col-label">Navigate</p>
       <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="coaching.html">Coaching</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
-        <li><a href="sunday-letter.html">The Sunday Letter</a></li>
-        <li><a href="blog.html">Writing</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="media.html">Media</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/coaching">Coaching</a></li>
+        <li><a href="/speaking">Speaking</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/media">Media</a></li>
       </ul>
     </div>
     <div>
@@ -538,7 +559,7 @@
               <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
       </div>
-      <ul class="footer-links"><li><a href="mailto:hello@laurenfine.com">hello@laurenfine.com</a></li><li><a href="free-session.html">Book a Free Coaching Session</a></li><li><a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">Read on Substack</a></li></ul>
+      <ul class="footer-links"><li><a href="mailto:hello@laurenfine.com">hello@laurenfine.com</a></li><li><a href="/free-session">Book a Free Coaching Session</a></li><li><a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">Read on Substack</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">

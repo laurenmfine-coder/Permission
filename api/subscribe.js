@@ -1,8 +1,7 @@
 // Vercel serverless function: the single newsletter-signup endpoint.
 //
 // Every email-capture widget on the site posts here: the exit-intent popup
-// and homepage scroll widget (js/capture-widgets.js), the homepage entry gate
-// (js/entry-gate.js), the media page, the quiz result gate, the secondary
+// and homepage scroll widget (js/capture-widgets.js), the media page, the quiz result gate, the secondary
 // form on resources.html, and the /join page.
 //
 // It replaces the public Loops newsletter-form URL those widgets used to POST

@@ -6,10 +6,10 @@
 <title>Book a Free Coaching Session | Lauren Fine, MD</title>
 <meta name="description" content="Book a free coaching session with Lauren Fine, MD. No sales pitch, no obligation. Tell me where you are and what you're weighing, and we'll spend the time on you.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://laurenfine.com/free-session.html">
+<link rel="canonical" href="https://laurenfine.com/free-session">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://laurenfine.com/free-session.html">
+<meta property="og:url" content="https://laurenfine.com/free-session">
 <meta property="og:title" content="Book a Free Coaching Session | Lauren Fine, MD">
 <meta property="og:description" content="A free coaching session with Lauren Fine, MD. No sales pitch, no obligation.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
@@ -230,6 +230,27 @@
   gtag('js', new Date());
   gtag('config', 'G-2QBSJ9PRRQ');
 </script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
@@ -237,18 +258,18 @@
 <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="coaching.html">Coaching</a></li>
-    <li><a href="physician-coaching.html">For Physicians</a></li>
-    <li><a href="physician-women.html">The Group</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/coaching">Coaching</a></li>
+    <li><a href="/physician-coaching">For Physicians</a></li>
+    <li><a href="/physician-women">The Group</a></li>
     <li class="nav-has-drop">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
-        <li><a href="media.html">Media</a></li>
-        <li><a href="resources.html">Free Resources</a></li>
-        <li><a href="sunday-letter.html">The Sunday Letter</a></li>
-        <li><a href="blog.html">Writing</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="/media">Media</a></li>
+        <li><a href="/resources">Free Resources</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/speaking">Speaking</a></li>
       </ul>
     </li>
   </ul>
@@ -259,7 +280,7 @@
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
-  <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
+  <a href="#intakeForm" class="nav-cta">Free Session, No Pitch</a>
 </nav>
 <div class="session-hero-wrap">
 <section class="session-hero">
@@ -274,7 +295,7 @@
   <p class="not-ready reveal d2">Not ready to book, just have a question? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a>. No pressure. I read and answer these myself.</p>
 </section>
 <div class="session-hero-right">
-  <img src="lauren-smile-belt.jpg" alt="Lauren Fine, MD, career transition and life coach" />
+  <img src="lauren-smile-belt.jpg" width="1280" height="1920" fetchpriority="high" alt="Lauren Fine, MD, career transition and life coach" />
   <div class="session-hero-right-text">
     <p>&ldquo;I'll tell you the truth about whether this is the right room for you.&rdquo;</p>
     <span>Lauren Fine, MD</span>
@@ -314,7 +335,7 @@
         <li>Coaching is not billed through insurance, so nothing goes to a payer.</li>
         <li>Use a personal email if you prefer.</li>
       </ul>
-      <p class="private-note">Packages start at $1,400, and any package can run as 25-minute sessions. <a href="coaching.html#services">See packages</a>. The first session is always free.</p>
+      <p class="private-note">Packages start at $1,400, and any package can run as 25-minute sessions. <a href="/coaching#services">See packages</a>. The first session is always free.</p>
     </div>
     <p class="aside-quote">You don't need to have the words yet. You just need to be willing to look.</p>
     <p class="not-ready" style="margin-top:28px;">Not ready for this yet? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a> instead.</p>
@@ -386,11 +407,11 @@
       <p id="successName">Thank you. I've got your note.</p>
       <p>I read these myself, so it won't be an autoresponder that gets back to you. One last step. Pick a time that works for you.</p>
       <div class="success-actions">
-        <a href="https://calendly.com/reasondxcoaching/free-session" class="btn-submit" style="display:inline-block;text-decoration:none;">Pick your time</a>
+        <a href="https://calendly.com/reasondxcoaching/free-session" id="successBookLink" data-book-direct="success" class="btn-submit" style="display:inline-block;text-decoration:none;">Pick your time</a>
       </div>
       <p style="margin-top:1.25rem;font-size:0.9rem;opacity:.75;">Choosing a slot sends me a request. I'll confirm by email within 24 hours.</p>
       <div class="success-actions">
-        <a href="resources.html" class="btn-ghost">Something to read meanwhile</a>
+        <a href="/resources" class="btn-ghost">Something to read meanwhile</a>
         <a href="/" class="btn-ghost">Back to home</a>
       </div>
     </div>
@@ -415,15 +436,15 @@
     <div>
       <p class="footer-col-label">Navigate</p>
       <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="coaching.html">Coaching Overview</a></li>
-        <li><a href="physician-coaching.html">Physician Coaching</a></li>
-        <li><a href="physician-women.html">The Group</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
-        <li><a href="sunday-letter.html">The Sunday Letter</a></li>
-        <li><a href="blog.html">Writing</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="media.html">Media</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/coaching">Coaching Overview</a></li>
+        <li><a href="/physician-coaching">Physician Coaching</a></li>
+        <li><a href="/physician-women">The Group</a></li>
+        <li><a href="/speaking">Speaking</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/media">Media</a></li>
       </ul>
     </div>
     <div>
@@ -438,7 +459,7 @@
       <ul class="footer-links">
         <li><a href="https://reasondx.com" target="_blank" rel="noopener">ReasonDx</a></li>
         <li><a href="mailto:reasondxcoaching@gmail.com">reasondxcoaching@gmail.com</a></li>
-        <li><a href="free-session.html">Book a Free Coaching Session</a></li>
+        <li><a href="/free-session">Book a Free Coaching Session</a></li>
       </ul>
     </div>
   </div>
@@ -502,7 +523,7 @@
         const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : ''].filter(Boolean).join(' | ') }))
+          body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : '', (function(){ var q = new URLSearchParams(window.location.search); return 'utm_source=' + (q.get('utm_source') || '') + '; utm_medium=' + (q.get('utm_medium') || '') + '; utm_campaign=' + (q.get('utm_campaign') || '') + '; referrer=' + (document.referrer || ''); })()].filter(Boolean).join(' | ') }))
         });
         const out = await res.json().catch(()=>({}));
         if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');
@@ -518,6 +539,11 @@
         successName.textContent = data.firstName
           ? data.firstName.trim() + ', thank you. I’ve got your note.'
           : 'Thank you. I’ve got your note.';
+        var bookLink = document.getElementById('successBookLink');
+        if (bookLink) {
+          var fullName = [data.firstName, data.lastName].filter(Boolean).join(' ').trim();
+          bookLink.href = 'https://calendly.com/reasondxcoaching/free-session?name=' + encodeURIComponent(fullName) + '&email=' + encodeURIComponent((data.email || '').trim());
+        }
         form.style.display = 'none';
         success.classList.add('show');
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });

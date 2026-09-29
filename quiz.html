@@ -6,10 +6,10 @@
 <title>Which Coaching Path Fits You? | Lauren Fine, MD</title>
 <meta name="description" content="A two-minute quiz to find out whether the Clarity Sprint, Change Navigation, or Full Transformation package fits where you are right now.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://laurenfine.com/quiz.html">
+<link rel="canonical" href="https://laurenfine.com/quiz">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://laurenfine.com/quiz.html">
+<meta property="og:url" content="https://laurenfine.com/quiz">
 <meta property="og:title" content="Which Coaching Path Fits You? | Lauren Fine, MD">
 <meta property="og:description" content="A two-minute quiz to find the coaching package that fits where you are right now.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
@@ -116,28 +116,49 @@
 
   gtag('config', 'G-2QBSJ9PRRQ');
 </script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-logo">Lauren Fine</a>
   <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="coaching.html">Coaching</a></li>
-    <li><a href="physician-coaching.html">For Physicians</a></li>
-    <li><a href="physician-women.html">The Group</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/coaching">Coaching</a></li>
+    <li><a href="/physician-coaching">For Physicians</a></li>
+    <li><a href="/physician-women">The Group</a></li>
     <li class="nav-has-drop">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
-        <li><a href="media.html">Media</a></li>
-        <li><a href="resources.html">Free Resources</a></li>
-        <li><a href="sunday-letter.html">The Sunday Letter</a></li>
-        <li><a href="blog.html">Writing</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="/media">Media</a></li>
+        <li><a href="/resources">Free Resources</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/speaking">Speaking</a></li>
       </ul>
     </li>
   </ul>
-  <a href="free-session.html" class="nav-cta">Free Session, No Pitch</a>
+  <a href="/free-session" class="nav-cta">Free Session, No Pitch</a>
 </nav>
 
 <div class="quiz-wrap">
@@ -182,8 +203,8 @@
     <p class="result-body" id="resultBody"></p>
 
     <div class="result-unlocked show" id="resultUnlocked">
-      <a href="free-session.html" class="result-cta" id="resultBookLink">Book a free session</a>
-      <a href="coaching.html#services" class="result-cta result-cta-ghost" id="resultCtaLink">See this package</a>
+      <a href="/free-session" class="result-cta" id="resultBookLink">Book a free session</a>
+      <a href="/coaching#services" class="result-cta result-cta-ghost" id="resultCtaLink">See this package</a>
     </div>
 
     <div class="result-gate" id="resultGate">
@@ -313,9 +334,9 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formBody
-    }).then(function(r){ return r.json().catch(function(){ return {}; }); })
-      .then(function(){
-        if (typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'quiz', result: window.__quizResultKey });
+    }).then(function(r){ return r.ok; })
+      .then(function(ok){
+        if (ok && typeof gtag === 'function') gtag('event', 'lead_capture', { source: 'quiz', result: window.__quizResultKey });
         document.getElementById('quiz-name').style.display = 'none';
         document.getElementById('quiz-email').style.display = 'none';
         document.getElementById('quiz-submit').style.display = 'none';

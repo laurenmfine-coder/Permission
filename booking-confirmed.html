@@ -105,6 +105,27 @@
     }
   })();
 </script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 <nav>
@@ -141,7 +162,7 @@
     </div>
     <p class="closing-note">"The risk of trying was survivable. The certainty of regret was not."</p>
     <div class="actions">
-      <a href="/blog.html" class="btn-primary">Read the blog</a>
+      <a href="/blog" class="btn-primary">Read the blog</a>
       <a href="/" class="btn-ghost">Back to home</a>
     </div>
     <p class="group-note" style="margin-top:28px;font-size:0.92rem;line-height:1.7;color:#6B6B6B;text-align:center;">Physician? <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" style="color:#23406E;text-decoration:underline;text-underline-offset:3px;">Join Physician Women at a Crossroads</a>, a free private group. Nothing is for sale inside it.</p>
