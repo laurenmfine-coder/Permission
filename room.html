@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Room Is Yours? | Lauren Fine, MD</title>
+<meta name="description" content="Three quick questions. Find the free group that fits you and the worksheet for what is taking up the most room right now.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/room">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/room">
+<meta property="og:title" content="Which Room Is Yours?">
+<meta property="og:description" content="Three quick questions. Find your free group and the worksheet that fits where you are.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Which Room Is Yours?">
+<meta name="twitter:description" content="Three quick questions. Find your free group and the worksheet that fits where you are.">
+<meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --blush:#B8975A; --blush-light:#E5E0DA; --gold:#B8975A;
+    --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:26px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:10px; column-gap:16px; }
+  nav::before { content:''; position:absolute; inset:0; background:rgba(250,247,244,0.9); backdrop-filter:blur(16px); border-bottom:1px solid rgba(237,233,228,0.7); z-index:-1; }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; }
+  .nav-links { display:flex; flex-wrap:wrap; gap:30px; list-style:none; }
+  @media (max-width:1400px) {
+    nav { padding:22px 32px; column-gap:12px; }
+    .nav-links { gap:20px; }
+    .nav-social { gap:10px; margin-right:2px; }
+    .nav-social svg { width:19px; height:19px; }
+  }
+  .nav-links a { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray); text-decoration:none; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-cta { font-size:0.72rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); background:var(--black); padding:12px 28px; text-decoration:none; }
+  .nav-cta:hover { background:var(--terracotta); }
+  @media (max-width:900px){ .nav-links{ display:none; } nav{ padding:20px 24px; } }
+
+  .quiz-wrap { max-width:720px; margin:0 auto; padding:150px 24px 100px; }
+  .quiz-eyebrow { font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:16px; text-align:center; }
+  .quiz-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:500; text-align:center; line-height:1.2; margin-bottom:16px; }
+  .quiz-sub { font-size:0.95rem; color:var(--gray); text-align:center; max-width:480px; margin:0 auto 56px; line-height:1.6; }
+
+  .quiz-progress { display:flex; gap:6px; justify-content:center; margin-bottom:40px; }
+  .quiz-progress span { width:32px; height:3px; background:var(--cream-dark); }
+  .quiz-progress span.done { background:var(--terracotta); }
+
+  .quiz-step { display:none; }
+  .quiz-step.active { display:block; }
+  .quiz-q { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:500; margin-bottom:28px; text-align:center; line-height:1.35; }
+  .quiz-options { display:flex; flex-direction:column; gap:12px; }
+  .quiz-opt { display:block; width:100%; text-align:left; padding:18px 22px; border:1px solid var(--cream-dark); background:var(--white); font-family:inherit; font-size:0.92rem; color:var(--black); cursor:pointer; transition:border-color 0.2s,background 0.2s; }
+  .quiz-opt:hover { border-color:var(--terracotta); background:#FAF9F7; }
+
+  .quiz-result { display:none; text-align:center; }
+  .quiz-result.active { display:block; }
+  .result-eyebrow { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:14px; }
+  .result-title { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.4vw,2.2rem); font-weight:500; margin-bottom:16px; }
+  .result-body { font-size:0.95rem; line-height:1.7; color:var(--gray); max-width:520px; margin:0 auto 32px; }
+  .result-gate { max-width:380px; margin:0 auto; padding:32px 28px; background:#FAF9F7; border:1px solid var(--cream-dark); }
+  .result-gate input { width:100%; padding:12px 14px; border:1px solid var(--cream-dark); margin-bottom:10px; font-size:0.92rem; font-family:inherit; }
+  .result-gate input:focus { outline:none; border-color:var(--terracotta); }
+  .result-submit { width:100%; padding:13px; background:var(--terracotta); color:#fff; border:none; font-size:0.9rem; cursor:pointer; font-family:inherit; }
+  .result-submit:hover { background:var(--terracotta-dark); }
+  .result-submit:disabled { opacity:0.6; cursor:default; }
+  .result-unlocked { display:none; }
+  .result-unlocked.show { display:block; }
+  .result-unlocked .result-cta { display:inline-block; margin-top:8px; padding:14px 32px; background:var(--black); color:#fff; text-decoration:none; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; }
+  .result-unlocked .result-cta:hover { background:var(--terracotta); }
+  .result-unlocked .result-cta-ghost { background:none; color:var(--black); border:1px solid var(--cream-dark); margin-left:10px; }
+  .result-unlocked .result-cta-ghost:hover { background:var(--cream-dark); color:var(--black); }
+  .result-gate-label { font-size:0.85rem; line-height:1.6; color:var(--gray); margin-bottom:14px; font-weight:300; }
+  .result-gate-done { display:none; font-size:0.9rem; color:var(--gray); line-height:1.7; }
+  .result-gate-done.show { display:block; }
+  .quiz-restart { display:block; margin:28px auto 0; background:none; border:none; color:var(--gray); font-size:0.78rem; text-decoration:underline; cursor:pointer; font-family:inherit; }
+
+  footer { background:var(--black); color:#fff; padding:60px 64px 30px; margin-top:60px; }
+  .footer-copy { font-size:0.75rem; color:#8C8580; text-align:center; }
+
+  /* NAV DROPDOWN */
+  .nav-has-drop { position:relative; }
+  .nav-drop-toggle { font-family:inherit; font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B6B; background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px; line-height:inherit; transition:color 0.3s; }
+  .nav-has-drop:hover .nav-drop-toggle, .nav-has-drop.open .nav-drop-toggle { color:#111; }
+  .nav-drop { position:absolute; top:100%; left:0; margin-top:14px; background:#FFFFFF; box-shadow:0 14px 40px rgba(0,0,0,0.10); list-style:none; min-width:200px; padding:10px 0; opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity 0.25s, transform 0.25s, visibility 0.25s; z-index:300; }
+  .nav-has-drop:hover .nav-drop, .nav-has-drop:focus-within .nav-drop, .nav-has-drop.open .nav-drop { opacity:1; visibility:visible; transform:translateY(0); }
+  .nav-drop li { display:block; margin:0; }
+  .nav-drop a { display:block; padding:11px 22px; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6B6B; white-space:nowrap; text-decoration:none; }
+  .nav-drop a::after { display:none !important; }
+  .nav-drop a:hover { color:#111; background:#F2EEE9; }
+  @media (max-width:900px) {
+    .nav-drop { position:static; margin:6px 0 0; box-shadow:none; padding:0; min-width:0; display:none; opacity:1; visibility:visible; transform:none; background:transparent; }
+    .nav-has-drop.open .nav-drop { display:block; }
+    .nav-drop a { padding:7px 0; }
+  }
+
+  [hidden] { display:none !important; }
+  .quiz-back { display:none; margin:22px auto 0; background:none; border:none; color:var(--gray); font-size:0.78rem; cursor:pointer; font-family:inherit; }
+  .quiz-back.show { display:block; }
+  .quiz-opt { font-size:0.98rem; line-height:1.45; }
+  .quiz-opt:focus-visible { outline:2px solid #23406E; outline-offset:2px; }
+
+  .room-result { display:none; }
+  .room-result.active { display:block; }
+  .room-head { text-align:center; margin-bottom:36px; }
+  .room-head .result-body { margin-bottom:0; }
+  .room-cards { display:flex; flex-direction:column; gap:18px; }
+  .room-card { border:1px solid var(--cream-dark); background:#fff; padding:30px 32px; }
+  .room-card.primary { border-color:#B8975A; }
+  .room-kicker { font-size:0.66rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B8975A; margin-bottom:10px; }
+  .room-card-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:500; line-height:1.25; margin-bottom:10px; }
+  .room-card-title em { font-style:italic; color:#23406E; }
+  .room-card p.room-text { font-size:0.95rem; line-height:1.7; color:#4A4542; margin-bottom:18px; }
+  .room-note { font-size:0.8rem; color:var(--gray); line-height:1.6; margin:-6px 0 18px; }
+  .room-btn { display:inline-block; padding:14px 30px; background:var(--black); color:#fff; text-decoration:none; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; border:0; cursor:pointer; font-family:inherit; }
+  .room-btn:hover { background:#23406E; }
+  .room-btn:disabled { opacity:0.6; cursor:default; }
+  .room-form { display:grid; grid-template-columns:1fr 1fr auto; gap:10px; }
+  .room-form input { padding:13px 14px; border:1px solid var(--cream-dark); font-size:0.92rem; font-family:inherit; min-width:0; }
+  .room-form input:focus { outline:none; border-color:#23406E; }
+  .room-form .hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .room-fine { font-size:0.76rem; color:var(--gray); margin-top:10px; line-height:1.5; }
+  .room-msg { font-size:0.9rem; line-height:1.6; margin-top:12px; display:none; }
+  .room-msg.show { display:block; }
+  .room-msg.err { color:#8A2C1E; }
+  .room-quiet { text-align:center; font-size:0.9rem; color:var(--gray); margin-top:28px; line-height:1.7; }
+  .room-quiet a { color:#23406E; text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.35); }
+  @media (max-width:640px) {
+    .quiz-wrap { padding-top:170px; }
+    .room-card { padding:24px 20px; }
+    .room-form { grid-template-columns:1fr; }
+    .room-btn { width:100%; text-align:center; }
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2QBSJ9PRRQ');
+</script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Lauren Fine</a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/coaching">Coaching</a></li>
+    <li><a href="/physician-coaching">For Physicians</a></li>
+    <li><a href="/physician-women">The Group</a></li>
+    <li class="nav-has-drop">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
+      <ul class="nav-drop">
+        <li><a href="/media">Media</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/resources">Free Resources</a></li>
+        <li><a href="/sunday-letter">The Sunday Letter</a></li>
+        <li><a href="/blog">Writing</a></li>
+        <li><a href="/speaking">Speaking</a></li>
+      </ul>
+    </li>
+  </ul>
+  <a href="/free-session" class="nav-cta">Free Session, No Pitch</a>
+</nav>
+
+<main class="quiz-wrap">
+  <div id="quizIntro">
+    <p class="quiz-eyebrow">One minute</p>
+    <h1 class="quiz-title">Which room is yours?</h1>
+    <p class="quiz-sub">Three quick questions. You will get the free group that fits you and one worksheet for what is taking up the most room right now.</p>
+  </div>
+
+  <div class="quiz-progress" id="quizProgress" aria-hidden="true">
+    <span class="done"></span><span></span><span></span>
+  </div>
+
+  <div class="quiz-step active" data-step="0" data-key="who">
+    <p class="quiz-q">Which sounds most like you?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="pw">I'm a woman in medicine or another clinical field</button>
+      <button class="quiz-opt" data-val="hc">I work in medicine or healthcare</button>
+      <button class="quiz-opt" data-val="ha">I'm a high achiever in another field</button>
+    </div>
+  </div>
+
+  <div class="quiz-step" data-step="1" data-key="what">
+    <p class="quiz-q">What's taking up the most room right now?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="yes">I say yes to too much, and my own priorities keep losing</button>
+      <button class="quiz-opt" data-val="stay">I'm weighing whether to stay, cut back, or leave</button>
+      <button class="quiz-opt" data-val="next">I know something needs to change. I'm not sure what.</button>
+      <button class="quiz-opt" data-val="curious">Nothing urgent. I want ideas and good company.</button>
+    </div>
+  </div>
+
+  <div class="quiz-step" data-step="2" data-key="help">
+    <p class="quiz-q">What would help most right now?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="read">Something practical I can work through on my own</button>
+      <button class="quiz-opt" data-val="people">People who are in the same spot</button>
+      <button class="quiz-opt" data-val="talk">A real conversation about my situation</button>
+    </div>
+  </div>
+
+  <button type="button" class="quiz-back" id="quizBack">&larr; Back</button>
+
+  <section class="room-result" id="roomResult" aria-live="polite">
+    <div class="room-head">
+      <p class="result-eyebrow">Your room</p>
+      <h2 class="result-title" id="resultTitle"></h2>
+      <p class="result-body" id="resultBody"></p>
+    </div>
+
+    <div class="room-cards" id="roomCards">
+      <div class="room-card" id="cardGroup">
+        <p class="room-kicker">Free private group</p>
+        <p class="room-card-title" id="groupTitle"></p>
+        <p class="room-text" id="groupText"></p>
+        <p class="room-note" id="groupNote" hidden></p>
+        <a class="room-btn" id="groupLink" href="#" target="_blank" rel="noopener">Request to join</a>
+      </div>
+
+      <div class="room-card" id="cardSheet">
+        <p class="room-kicker">Your free worksheet</p>
+        <p class="room-card-title" id="sheetTitle"></p>
+        <p class="room-text" id="sheetText"></p>
+        <form class="room-form" id="sheetForm" novalidate>
+          <input type="text" id="sheetName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+          <input type="email" id="sheetEmail" placeholder="Email address" autocomplete="email" aria-label="Email address" required>
+          <input type="text" class="hp" id="sheetCompany" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="room-btn" id="sheetBtn">Send it</button>
+        </form>
+        <p class="room-fine">It downloads right away. You will also get The Sunday Letter, one email a week. Unsubscribe any time.</p>
+        <p class="room-msg" id="sheetMsg"></p>
+      </div>
+
+      <div class="room-card" id="cardTalk">
+        <p class="room-kicker">If you want to talk it through</p>
+        <p class="room-card-title">A free 55-minute session</p>
+        <p class="room-text">A full session about your situation. No pitch at the end. You leave with something useful either way.</p>
+        <a class="room-btn" id="talkLink" href="/free-session">Book a free session</a>
+      </div>
+    </div>
+
+    <p class="room-quiet" id="talkQuiet">Want to talk it through instead? <a id="talkQuietLink" href="/free-session">The first session is free and a full 55 minutes.</a></p>
+    <button class="quiz-restart" type="button" id="quizRestart">Start over</button>
+  </section>
+</main>
+
+<footer>
+  <p class="footer-copy">&copy; 2026 Lauren Fine, MD. All rights reserved. &middot; laurenfine.com</p>
+</footer>
+
+<script>
+(function(){
+  var GROUPS = {
+    'physician-women': {
+      title: 'Physician Women <em>at a Crossroads</em>',
+      url: 'https://www.facebook.com/groups/physicianmomsatacrossroads',
+      text: 'A free, private Facebook group for women in medicine who are somewhere between staying and going. Physicians, veterinarians, dentists and other clinicians. No pitch and nothing for sale inside it.',
+      note: ''
+    },
+    'make-room': {
+      title: 'Make Room <em>For It</em>',
+      url: 'https://www.facebook.com/groups/permissiontochange',
+      text: 'A free, private Facebook group for high achievers in any field, in medicine and outside it. Resources, honest conversation, and people working through the same questions. No pitch and nothing for sale inside it.',
+      // The group is renamed on Facebook on Oct 4, 2026. This note hides itself after that.
+      note: (new Date() < new Date('2026-10-06T00:00:00-04:00')) ? 'On Facebook it may still show its old name, Permission to Change, for a few more days.' : ''
+    }
+  };
+
+  var SHEETS = {
+    yes: {
+      name: 'Say No Scripts',
+      title: 'Say No Scripts',
+      text: 'Twelve word-for-word ways to turn something down without burning the bridge. For the next ask that would cost you more than it gives.',
+      line: 'You named the yes that keeps costing you. That is where to start.'
+    },
+    stay: {
+      name: 'Pivot Decision Framework',
+      title: 'The Pivot Decision Framework',
+      text: 'One decision, four lenses: values, practical feasibility, identity fit, and regret. A structured way to think it through before you act.',
+      line: 'You are weighing a real decision. Give it structure before you give it an answer.'
+    },
+    next: {
+      name: 'Ikigai Mapping Worksheet',
+      title: 'Ikigai Mapping Worksheet',
+      text: 'Map what you love, what you are good at, what is needed, and what can pay you. Then look at where they overlap.',
+      line: 'Not knowing what comes next is a starting point, not a problem.'
+    },
+    curious: {
+      name: 'Which Room Are You In',
+      title: 'Which Room Are You In?',
+      text: 'Both group missions side by side, plus five questions worth answering before your first post.',
+      line: 'Good company and good ideas are a fine reason to be here.'
+    }
+  };
+
+  var answers = {};
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.quiz-step'));
+  var bars = document.querySelectorAll('#quizProgress span');
+  var back = document.getElementById('quizBack');
+  var current = 0;
+  var qp = new URLSearchParams(window.location.search);
+
+  function room(){ return answers.who === 'pw' ? 'physician-women' : 'make-room'; }
+
+  function utm(content){
+    var p = new URLSearchParams();
+    ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ if (qp.get(k)) p.set(k, qp.get(k)); });
+    if (!p.get('utm_source')) p.set('utm_source', 'room_quiz');
+    p.set('utm_content', content);
+    return p.toString();
+  }
+
+  function track(name, params){ if (typeof gtag === 'function') gtag('event', name, params); }
+
+  function show(i){
+    current = i;
+    steps.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+    bars.forEach(function(b, idx){ b.classList.toggle('done', idx <= i); });
+    back.classList.toggle('show', i > 0 && i < steps.length);
+    if (i < steps.length) {
+      var first = steps[i].querySelector('.quiz-opt');
+      if (i > 0 && first) first.focus({ preventScroll:true });
+      return;
+    }
+    renderResult();
+  }
+
+  function renderResult(){
+    var r = room(), g = GROUPS[r], s = SHEETS[answers.what] || SHEETS.curious;
+    document.getElementById('quizIntro').hidden = true;
+    document.getElementById('quizProgress').hidden = true;
+    document.getElementById('resultTitle').innerHTML = g.title;
+    document.getElementById('resultBody').textContent = s.line;
+    document.getElementById('groupTitle').innerHTML = g.title;
+    document.getElementById('groupText').textContent = g.text;
+    var note = document.getElementById('groupNote');
+    note.textContent = g.note; note.hidden = !g.note;
+    document.getElementById('groupLink').href = g.url;
+    document.getElementById('sheetTitle').textContent = s.title;
+    document.getElementById('sheetText').textContent = s.text;
+    var talkHref = '/free-session?' + utm('room_' + r);
+    document.getElementById('talkLink').href = talkHref;
+    document.getElementById('talkQuietLink').href = talkHref;
+
+    // Order the cards by what they said would help most.
+    var cards = document.getElementById('roomCards');
+    var group = document.getElementById('cardGroup'), sheet = document.getElementById('cardSheet'), talk = document.getElementById('cardTalk');
+    var order = answers.help === 'people' ? [group, sheet] : answers.help === 'talk' ? [talk, group, sheet] : [sheet, group];
+    [group, sheet, talk].forEach(function(c){ c.classList.remove('primary'); c.hidden = true; });
+    order.forEach(function(c){ c.hidden = false; cards.appendChild(c); });
+    order[0].classList.add('primary');
+    document.getElementById('talkQuiet').hidden = answers.help === 'talk';
+
+    document.getElementById('roomResult').classList.add('active');
+    window.scrollTo({ top:0, behavior:'smooth' });
+    track('room_quiz_complete', { room:r, focus:answers.what, help:answers.help, utm_source:qp.get('utm_source') || '(none)' });
+  }
+
+  steps.forEach(function(step, idx){
+    step.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        answers[step.getAttribute('data-key')] = btn.getAttribute('data-val');
+        if (idx === 0) track('room_quiz_start', { utm_source:qp.get('utm_source') || '(none)' });
+        show(idx + 1);
+      });
+    });
+  });
+
+  back.addEventListener('click', function(){ if (current > 0) show(current - 1); });
+
+  document.getElementById('quizRestart').addEventListener('click', function(){
+    answers = {};
+    document.getElementById('roomResult').classList.remove('active');
+    document.getElementById('quizIntro').hidden = false;
+    document.getElementById('quizProgress').hidden = false;
+    var msg = document.getElementById('sheetMsg'); msg.className = 'room-msg';
+    document.getElementById('sheetForm').hidden = false;
+    show(0);
+  });
+
+  document.getElementById('groupLink').addEventListener('click', function(){
+    track('group_join_click', { source:'room_quiz', room:room() });
+  });
+  document.getElementById('talkLink').addEventListener('click', function(){
+    track('free_session_click', { source:'room_quiz', room:room() });
+  });
+
+  document.getElementById('sheetForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('sheetEmail').value.trim();
+    var name = document.getElementById('sheetName').value.trim();
+    var msg = document.getElementById('sheetMsg');
+    var btn = document.getElementById('sheetBtn');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.textContent = 'Please enter a valid email address.'; msg.className = 'room-msg show err'; return;
+    }
+    var s = SHEETS[answers.what] || SHEETS.curious;
+    btn.disabled = true; btn.textContent = 'Sending...';
+    msg.className = 'room-msg';
+    var notes = 'utm_source=' + (qp.get('utm_source') || '') + '; utm_medium=' + (qp.get('utm_medium') || '') +
+      '; utm_campaign=' + (qp.get('utm_campaign') || '') + '; referrer=' + (document.referrer || '');
+    fetch('/api/download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: name, email: email, worksheet: s.name,
+        company: document.getElementById('sheetCompany').value,
+        source: 'room_quiz', room: room(),
+        situation: answers.who + ' / ' + answers.what,
+        focus: 'wants: ' + answers.help,
+        notes: notes
+      })
+    }).then(function(r){
+      if (!r.ok) return r.json().then(function(b){ throw new Error(b.error || 'Something went wrong.'); });
+      return r.blob();
+    }).then(function(blob){
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = s.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      track('lead_capture', { source:'room_quiz', worksheet:s.name, room:room() });
+      document.getElementById('sheetForm').hidden = true;
+      msg.textContent = 'Done. Your worksheet is downloading. Check your downloads folder if it does not open.';
+      msg.className = 'room-msg show';
+    }).catch(function(err){
+      msg.textContent = err.message || 'Something went wrong. Please try again.';
+      msg.className = 'room-msg show err';
+    }).then(function(){
+      btn.disabled = false; btn.textContent = 'Send it';
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var d=document.querySelector('.nav-has-drop');
+  if(!d) return;
+  var b=d.querySelector('.nav-drop-toggle');
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    var open=d.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.addEventListener('click',function(e){
+    if(!d.contains(e.target)){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

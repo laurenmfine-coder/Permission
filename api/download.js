@@ -39,21 +39,38 @@ const WORKSHEETS = {
   'Sport Decision Guide': 'sport-decision-guide.pdf'
 };
 
-const MAX = { firstName: 100, email: 200, worksheet: 200, source: 300, notes: 500 };
+const MAX = { firstName: 100, email: 200, worksheet: 200, source: 300, notes: 500, room: 40, situation: 120, focus: 300 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function clean(value, limit) {
   return String(value == null ? '' : value).trim().slice(0, limit);
 }
 
+// Optional per-path segments for leads from the /room quiz. Set any of these
+// in Vercel to a Flodesk segment id and the matching welcome workflow fires;
+// leave them unset and the lead simply lands in FLODESK_SEGMENT_ID as before.
+const ROOM_SEGMENT_ENV = {
+  'physician-women': 'FLODESK_SEGMENT_ROOM_PHYSICIAN_WOMEN',
+  'make-room': 'FLODESK_SEGMENT_ROOM_MAKE_ROOM'
+};
+
 async function addToFlodesk(contact) {
+  const fromQuiz = contact.source === 'room_quiz';
+  const extra = [];
+  if (fromQuiz && ROOM_SEGMENT_ENV[contact.room]) {
+    extra.push(process.env[ROOM_SEGMENT_ENV[contact.room]] || '');
+  }
   return upsertSubscriber(
     { email: contact.email, firstName: contact.firstName, lastName: '' },
     {
-      source: 'Free Resources',
-      lead_stage: 'worksheet_download',
-      worksheet: contact.worksheet
-    }
+      source: fromQuiz ? 'Room Quiz' : 'Free Resources',
+      lead_stage: fromQuiz ? 'room_quiz_' + contact.room : 'worksheet_download',
+      worksheet: contact.worksheet,
+      situation: contact.situation,
+      focus: contact.focus,
+      notes: contact.notes
+    },
+    extra
   );
 }
 
@@ -94,7 +111,10 @@ module.exports = async function handler(req, res) {
     email: clean(data.email, MAX.email).toLowerCase(),
     worksheet: worksheet,
     source: clean(data.source, MAX.source),
-    notes: clean(data.notes, MAX.notes)
+    notes: clean(data.notes, MAX.notes),
+    room: clean(data.room, MAX.room),
+    situation: clean(data.situation, MAX.situation),
+    focus: clean(data.focus, MAX.focus)
   };
 
   if (!contact.email) {

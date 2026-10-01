@@ -33,7 +33,11 @@ function segmentIds() {
 // Upsert a subscriber. `customFields` is a flat object of strings; Flodesk
 // ignores keys that do not exist on the account, so an unknown field is a
 // no-op rather than an error.
-async function upsertSubscriber(contact, customFields) {
+//
+// `extraSegments` (optional) adds segment ids on top of FLODESK_SEGMENT_ID,
+// e.g. a per-path segment from the /room quiz so a matching welcome
+// workflow can fire. Empty or missing ids are dropped.
+async function upsertSubscriber(contact, customFields, extraSegments) {
   const key = process.env.FLODESK_API_KEY;
   if (!key) return { ok: false, skipped: 'FLODESK_API_KEY not set' };
 
@@ -51,6 +55,10 @@ async function upsertSubscriber(contact, customFields) {
   if (Object.keys(fields).length) payload.custom_fields = fields;
 
   const segments = segmentIds();
+  (extraSegments || []).forEach(function (id) {
+    const v = String(id || '').trim();
+    if (v && segments.indexOf(v) === -1) segments.push(v);
+  });
   if (segments.length) payload.segment_ids = segments.slice(0, 50);
 
   const res = await fetch(FLODESK_BASE + '/subscribers', {
