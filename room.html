@@ -181,7 +181,7 @@
     <li><a href="/about">About</a></li>
     <li><a href="/coaching">Coaching</a></li>
     <li><a href="/physician-coaching">For Physicians</a></li>
-    <li><a href="/physician-women">The Group</a></li>
+    <li><a href="/room">The Group</a></li>
     <li class="nav-has-drop">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
@@ -201,23 +201,14 @@
   <div id="quizIntro">
     <p class="quiz-eyebrow">One minute</p>
     <h1 class="quiz-title">Which room is yours?</h1>
-    <p class="quiz-sub">Three quick questions. You will get the free group that fits you and one worksheet for what is taking up the most room right now.</p>
+    <p class="quiz-sub">Three quick questions. You will get one worksheet for what is taking up the most room right now, and the free group where you can talk it through.</p>
   </div>
 
   <div class="quiz-progress" id="quizProgress" aria-hidden="true">
     <span class="done"></span><span></span><span></span>
   </div>
 
-  <div class="quiz-step active" data-step="0" data-key="who">
-    <p class="quiz-q">Which sounds most like you?</p>
-    <div class="quiz-options">
-      <button class="quiz-opt" data-val="pw">I'm a woman in medicine or another clinical field</button>
-      <button class="quiz-opt" data-val="hc">I work in medicine or healthcare</button>
-      <button class="quiz-opt" data-val="ha">I'm a high achiever in another field</button>
-    </div>
-  </div>
-
-  <div class="quiz-step" data-step="1" data-key="what">
+  <div class="quiz-step active" data-step="0" data-key="what">
     <p class="quiz-q">What's taking up the most room right now?</p>
     <div class="quiz-options">
       <button class="quiz-opt" data-val="yes">I say yes to too much, and my own priorities keep losing</button>
@@ -227,12 +218,20 @@
     </div>
   </div>
 
-  <div class="quiz-step" data-step="2" data-key="help">
+  <div class="quiz-step" data-step="1" data-key="help">
     <p class="quiz-q">What would help most right now?</p>
     <div class="quiz-options">
       <button class="quiz-opt" data-val="read">Something practical I can work through on my own</button>
       <button class="quiz-opt" data-val="people">People who are in the same spot</button>
       <button class="quiz-opt" data-val="talk">A real conversation about my situation</button>
+    </div>
+  </div>
+
+  <div class="quiz-step" data-step="2" data-key="who">
+    <p class="quiz-q">Last one. Where would you rather think out loud?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" data-val="ha">In a room open to anyone, in any field</button>
+      <button class="quiz-opt" data-val="pw">In a room just for women in medicine and other clinical fields</button>
     </div>
   </div>
 
@@ -295,9 +294,9 @@
       note: ''
     },
     'make-room': {
-      title: 'Make Room <em>For It</em>',
+      title: 'Make Room For It: <em>Talk It Through</em>',
       url: 'https://www.facebook.com/groups/permissiontochange',
-      text: 'A free, private Facebook group for high achievers in any field, in medicine and outside it. Resources, honest conversation, and people working through the same questions. No pitch and nothing for sale inside it.',
+      text: 'A free, private Facebook group for anyone who needs a place to think out loud. Talk it through with people in the same spot, and leave with your next step. Open to anyone, in any field. No pitch and nothing for sale inside it.',
       // The group is renamed on Facebook on Oct 4, 2026. This note hides itself after that.
       note: (new Date() < new Date('2026-10-06T00:00:00-04:00')) ? 'On Facebook it may still show its old name, Permission to Change, for a few more days.' : ''
     }

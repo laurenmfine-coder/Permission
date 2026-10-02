@@ -5,7 +5,15 @@
    can be told apart in Flodesk without touching the backend. */
 (function () {
   var SIGNUP_ENDPOINT = '/api/subscribe';
-  var FB_GROUP_URL = 'https://www.facebook.com/groups/physicianmomsatacrossroads';
+  // Physician pages send people to the women-in-medicine group. Every other page
+  // sends them to the open group, Make Room For It: Talk It Through.
+  var IS_PHYS_PAGE = /physician|non-clinical/.test(window.location.pathname);
+  var FB_GROUP_URL = IS_PHYS_PAGE
+    ? 'https://www.facebook.com/groups/physicianmomsatacrossroads'
+    : 'https://www.facebook.com/groups/permissiontochange';
+  var FB_GROUP_BLURB = IS_PHYS_PAGE
+    ? 'Physician Women at a Crossroads is a free private group for women in medicine. No coaching pitch, no program, nothing for sale inside it.'
+    : 'Make Room For It: Talk It Through is a free private group for anyone who needs a place to think out loud. Leave with your next step. Nothing for sale inside it.';
   var FB_LINK_HTML = '<a class="pf-fb-link" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener">Or join our free Facebook community &rarr;</a>';
   var STICKY_KEY = 'pf_sticky_dismissed';
   var EXIT_KEY = 'pf_exit_seen';
@@ -105,7 +113,7 @@
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
         '<p class="pf-modal-eyebrow">Before you go</p>' +
         '<h3 class="pf-modal-title">The question you haven\'t said out loud.</h3>' +
-        '<p class="pf-modal-body">Physician Women at a Crossroads is a free private group for women physicians. No coaching pitch, no program, nothing for sale inside it.</p>' +
+        '<p class="pf-modal-body">' + FB_GROUP_BLURB + '</p>' +
         '<a class="pf-modal-submit" id="pf-exit-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" ' +
           'style="display:block;text-align:center;text-decoration:none;" ' +
           'onclick="window.__pfExitFbClick()">Request to join the group</a>' +
@@ -265,10 +273,11 @@
   // Count every click that leads to the Facebook group, on any page, unless
   // the link already reports itself through trackGroupJoin().
   document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="physicianmomsatacrossroads"]') : null;
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="physicianmomsatacrossroads"], a[href*="groups/permissiontochange"]') : null;
     if (!a || typeof gtag !== 'function') return;
     if ((a.getAttribute('onclick') || '').indexOf('trackGroupJoin') !== -1) return;
-    gtag('event', 'group_join_click', { group: 'physician-women-at-a-crossroads', source: window.location.pathname });
+    var grp = a.href.indexOf('physicianmomsatacrossroads') !== -1 ? 'physician-women-at-a-crossroads' : 'make-room-for-it';
+    gtag('event', 'group_join_click', { group: grp, source: window.location.pathname });
   }, true);
 
   document.addEventListener('DOMContentLoaded', function () {
