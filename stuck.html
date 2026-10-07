@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Stuck Differential | Lauren Fine, MD</title>
+<meta name="description" content="A free guide that sorts feeling stuck into five types, so you know what is actually taking up your room. From Lauren Fine, MD, life coach.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://laurenfine.com/stuck">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/stuck">
+<meta property="og:title" content="What's Taking Up Your Room? The Stuck Differential">
+<meta property="og:description" content="Feeling stuck is not one thing. This free guide sorts it into five types so you know which one you are in.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --gold:#B8975A; --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    background:var(--cream-dark); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300;
+    min-height:100vh; min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:32px 16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { width:100%; max-width:520px; }
+  .wordmark {
+    display:block; text-align:center; font-family:'Playfair Display',serif; font-size:0.92rem; font-weight:500;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; margin-bottom:24px;
+  }
+  .card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.08); padding:36px 24px 32px; }
+  @media (min-width:540px) { .card { padding:52px 46px 46px; } }
+  .eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:16px; }
+  h1 {
+    font-family:'Playfair Display',serif; font-size:clamp(1.55rem,6.4vw,2.15rem); font-weight:400; line-height:1.24;
+    color:var(--black); text-align:center; margin-bottom:20px;
+  }
+  h1 em { font-style:italic; color:var(--terracotta); }
+  .lede { font-size:0.92rem; line-height:1.85; color:var(--black); font-weight:300; margin-bottom:16px; }
+  .lede.muted { color:var(--gray); }
+
+  .rule { height:1px; background:var(--cream-dark); margin:30px 0; }
+
+  .kicker { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  ul.plain { list-style:none; margin-bottom:8px; }
+  ul.plain li { font-size:0.9rem; line-height:1.75; color:var(--black); padding-left:18px; position:relative; margin-bottom:9px; }
+  ul.plain li:before { content:""; position:absolute; left:0; top:0.62em; width:6px; height:1px; background:var(--gold); }
+
+  .cta {
+    display:block; width:100%; text-align:center; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); border:none;
+    padding:19px 24px; cursor:pointer; text-decoration:none; transition:background 0.3s; margin-top:8px;
+  }
+  .cta:hover { background:var(--terracotta); }
+  .cta-note { font-size:0.72rem; line-height:1.7; color:var(--gray); margin-top:14px; text-align:center; }
+
+  .bio { display:flex; gap:16px; align-items:flex-start; margin-top:4px; }
+  .bio img { width:64px; height:64px; object-fit:cover; border-radius:50%; flex-shrink:0; }
+  .bio p { font-size:0.83rem; line-height:1.8; color:var(--gray); }
+  .bio strong { color:var(--black); font-weight:500; }
+
+  .field { margin-bottom:16px; position:relative; }
+  .field label { display:block; font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--warm-dark); font-weight:500; margin-bottom:8px; }
+  .field input {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--black);
+    background:var(--cream-dark); border:1px solid var(--cream-dark); padding:14px 15px;
+    transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+  .field input:focus { outline:none; border-color:var(--terracotta); background:var(--white); box-shadow:0 0 0 3px rgba(35,64,110,0.08); }
+  .field input::placeholder { color:#B0A9A2; }
+  .field-error { display:none; font-size:0.76rem; color:#9B3B2F; margin-top:7px; }
+  .field.invalid input { border-color:#9B3B2F; }
+  .field.invalid .field-error { display:block; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .btn-secondary {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--terracotta); background:var(--white); border:1px solid var(--terracotta);
+    padding:16px 24px; cursor:pointer; transition:background 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { background:var(--terracotta); color:var(--white); }
+  .btn-secondary:disabled { opacity:0.55; cursor:default; }
+  .form-status { display:none; margin-top:14px; padding:13px 15px; font-size:0.83rem; line-height:1.6; background:#FAF3F1; border-left:2px solid #9B3B2F; color:#7A2E24; }
+  .form-status.show { display:block; }
+  .email-done { display:none; font-size:0.88rem; line-height:1.8; color:var(--terracotta); padding:13px 0; }
+  .email-done.show { display:block; }
+  .foot { text-align:center; margin-top:24px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .foot a { font-size:0.76rem; color:var(--gray); text-decoration:none; border-bottom:1px solid rgba(140,133,128,0.35); padding-bottom:2px; }
+  .foot a:hover { color:var(--terracotta); }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2QBSJ9PRRQ');
+</script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="wordmark">Lauren Fine</a>
+
+  <div class="card">
+    <p class="eyebrow">Free guide</p>
+    <h1>What's taking up <em>your room</em>?</h1>
+
+    <p class="lede">Feeling stuck is not one thing. It comes in five kinds. Each one needs something different.</p>
+    <p class="lede muted">The Stuck Differential is a short self-check. Fifteen statements. Five types. You will know which kind of stuck you are in, and what to do first.</p>
+
+    <ul class="plain">
+      <li>A 15-statement workup you can finish in a few minutes.</li>
+      <li>The five types of stuck, and what each one needs.</li>
+      <li>What helps, and what makes it worse.</li>
+    </ul>
+
+    <div class="rule"></div>
+
+    <div id="gate">
+      <p class="kicker">Where should I send it?</p>
+      <form id="signupForm" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field" id="firstNameField">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" placeholder="First name">
+          <p class="field-error">Please enter your first name.</p>
+        </div>
+        <div class="field" id="emailField">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com">
+          <p class="field-error">Please enter a valid email address.</p>
+        </div>
+        <button type="submit" class="cta" id="submitBtn">Get the free guide</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+      <p class="cta-note">You will also get my Sunday Letter. Unsubscribe anytime.</p>
+    </div>
+
+    <div id="unlocked" style="display:none;">
+      <p class="kicker">You're in</p>
+      <p class="lede">Your guide is ready. Open it below and bookmark it.</p>
+      <a class="cta" id="guideBtn" href="https://canva.link/ug5lmqawkbnzzqc" target="_blank" rel="noopener">Open the Stuck Differential</a>
+      <p class="cta-note">Want to talk it through? <a href="https://www.facebook.com/groups/permissiontochange" target="_blank" rel="noopener" style="color:var(--terracotta);">Join the Make Room For It group</a>.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="bio">
+      <img src="/headshot.jpg" alt="Lauren Fine, MD">
+      <p><strong>Lauren Fine, MD</strong> is a life coach, physician and medical educator. She works with high achievers who feel stuck and want to make room for what matters.</p>
+    </div>
+  </div>
+
+  <div class="foot"><a href="/about">About Lauren</a><a href="/">More from Lauren Fine, MD</a></div>
+</div>
+
+<script>
+(function () {
+  var SOURCE = 'stuck-differential';
+  var form = document.getElementById('signupForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var formStatus = document.getElementById('formStatus');
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var LABEL = 'Get the free guide';
+
+  function setInvalid(fieldId, invalid) {
+    var el = document.getElementById(fieldId);
+    if (el) el.classList.toggle('invalid', invalid);
+  }
+  ['firstName', 'email'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { setInvalid(id + 'Field', false); });
+  });
+  function fail(msg) {
+    formStatus.textContent = msg;
+    formStatus.classList.add('show');
+    submitBtn.disabled = false;
+    submitBtn.textContent = LABEL;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formStatus.classList.remove('show');
+    var firstName = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var valid = true;
+    if (!firstName) { setInvalid('firstNameField', true); valid = false; }
+    if (!EMAIL_RE.test(email)) { setInvalid('emailField', true); valid = false; }
+    if (!valid) { var b = form.querySelector('.field.invalid input'); if (b) b.focus(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: firstName, email: email, source: SOURCE,
+        leadStage: 'lead-magnet', notes: 'Stuck Differential download',
+        company: document.getElementById('company').value
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (body) { return { ok: r.ok, body: body }; });
+    }).then(function (result) {
+      if (!result.ok) { fail(result.body.error || 'Something went wrong. Please try again.'); return; }
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { source: SOURCE });
+        gtag('event', 'mailing_list_signup', { source: SOURCE });
+      }
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('unlocked').style.display = 'block';
+    }).catch(function () {
+      fail('Something went wrong. Please try again, or email reasondxcoaching@gmail.com.');
+    });
+  });
+
+  document.getElementById('guideBtn').addEventListener('click', function () {
+    if (typeof gtag === 'function') gtag('event', 'lead_magnet_open', { source: SOURCE });
+  });
+})();
+</script>
+</body>
+</html>
