@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/js/attribution.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools & Worksheets | Lauren Fine, MD | Physician, Coach & TEDx Speaker</title>
@@ -787,7 +788,7 @@
     const submitBtn = document.querySelector('#modal .modal-submit');
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
-    const params = new URLSearchParams(window.location.search);
+    const params = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
     const alsoSubstack = document.getElementById('modal-substack').checked;
     const notes = 'utm_source=' + (params.get('utm_source') || '') +
       '; utm_medium=' + (params.get('utm_medium') || '') +
@@ -834,7 +835,7 @@
     const btn = document.querySelector('button[onclick="notifyMe()"]');
     if (btn) { btn.disabled = true; }
 
-        const params = new URLSearchParams(window.location.search);
+        const params = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
                                          const notes = 'utm_source=' + (params.get('utm_source') || '') +
         '; utm_medium=' + (params.get('utm_medium') || '') +
         '; utm_campaign=' + (params.get('utm_campaign') || '') +

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/js/attribution.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book a Free Coaching Session | Lauren Fine, MD</title>
@@ -527,12 +528,12 @@
         const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : '', (function(){ var q = new URLSearchParams(window.location.search); return 'utm_source=' + (q.get('utm_source') || '') + '; utm_medium=' + (q.get('utm_medium') || '') + '; utm_campaign=' + (q.get('utm_campaign') || '') + '; referrer=' + (document.referrer || ''); })()].filter(Boolean).join(' | ') }))
+          body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : '', (function(){ var q = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search)); return 'utm_source=' + (q.get('utm_source') || '') + '; utm_medium=' + (q.get('utm_medium') || '') + '; utm_campaign=' + (q.get('utm_campaign') || '') + '; referrer=' + (document.referrer || ''); })()].filter(Boolean).join(' | ') }))
         });
         const out = await res.json().catch(()=>({}));
         if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');
         if (typeof gtag === 'function') {
-          var _qp = new URLSearchParams(window.location.search);
+          var _qp = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
           gtag('event', 'free_session_request', {
             situation: data.situation || 'unknown',
             utm_source: _qp.get('utm_source') || '(none)',
@@ -566,7 +567,7 @@
     document.querySelectorAll('[data-book-direct]').forEach(function (a) {
       a.addEventListener('click', function () {
         if (typeof gtag === 'function') {
-          var _qp = new URLSearchParams(window.location.search);
+          var _qp = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
           gtag('event', 'booking_direct_click', {
             placement: a.getAttribute('data-book-direct'),
             utm_source: _qp.get('utm_source') || '(none)',

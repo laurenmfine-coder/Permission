@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/js/attribution.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Which Room Is Yours? | Lauren Fine, MD</title>
@@ -334,7 +335,7 @@
   var bars = document.querySelectorAll('#quizProgress span');
   var back = document.getElementById('quizBack');
   var current = 0;
-  var qp = new URLSearchParams(window.location.search);
+  var qp = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
 
   function room(){ return answers.who === 'pw' ? 'physician-women' : 'make-room'; }
 
