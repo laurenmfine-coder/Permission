@@ -137,6 +137,20 @@
 </script>
 
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "You're not bad at time management",
+  "description": "Sometimes you're carrying a list that was never realistically possible. Question the diagnosis, then learn how to say no to what doesn't belong on it.",
+  "thumbnailUrl": "https://laurenfine.com/reel-not-bad-at-time-management.jpg",
+  "contentUrl": "https://laurenfine.com/reel-not-bad-at-time-management.mp4",
+  "uploadDate": "2026-10-10",
+  "embedUrl": "https://laurenfine.com/make-time-for-healthy-habits",
+  "duration": "PT41S"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -281,6 +295,14 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+
+  .reel { display:grid; grid-template-columns:220px 1fr; gap:36px; align-items:center; background:var(--cream-dark); padding:28px; margin:48px 0; }
+  .reel video { width:100%; aspect-ratio:9/16; object-fit:cover; background:#182D4E; display:block; cursor:pointer; }
+  .post-body .reel-kicker, .reel-kicker { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; line-height:1.4; }
+  .post-body .reel-title, .reel-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:500; color:var(--black); line-height:1.25; margin:0 0 14px; }
+  .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
+  .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
+  @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -380,6 +402,18 @@
   <h2>Why you can't find time</h2>
   <p><a href="/work-life-balance">Healthy habits are always the first thing to go</a>. Work has deadlines. Kids have schedules. Other people ask for your time out loud. Your health does not ask. It waits quietly until it can't.</p>
   <p>So the fix is not motivation. It is room. Something has to come off the calendar, or shrink, for something healthy to fit.</p>
+
+  <div class="reel">
+    <video controls playsinline preload="none" poster="/reel-not-bad-at-time-management.jpg" aria-label="Video: You're not bad at time management">
+      <source src="/reel-not-bad-at-time-management.mp4" type="video/mp4">
+    </video>
+    <div>
+      <p class="reel-kicker">Watch · 41 seconds</p>
+      <p class="reel-title">You're not bad at time management</p>
+      <p class="reel-text">Sometimes you're carrying a list that was never realistically possible. Question the diagnosis, then learn how to say no to what doesn't belong on it.</p>
+      <p class="reel-more"><a href="/watch">More short videos</a></p>
+    </div>
+  </div>
 
   <h2>How much exercise do you actually need?</h2>
   <p><a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener">The CDC recommends that adults</a> get 150 minutes of moderate activity a week, plus muscle strengthening on two days. That is about 22 minutes a day. A brisk walk counts. So does a Pilates class, a bike ride, or carrying groceries up the stairs with purpose.</p>

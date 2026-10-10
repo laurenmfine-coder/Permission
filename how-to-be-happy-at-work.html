@@ -129,6 +129,20 @@
 </script>
 
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Fact vs. story",
+  "description": "Write down what actually happened. Then write the story you're telling yourself about it. The gap between the two is where you get stuck, and where you get unstuck.",
+  "thumbnailUrl": "https://laurenfine.com/reel-fact-vs-story.jpg",
+  "contentUrl": "https://laurenfine.com/reel-fact-vs-story.mp4",
+  "uploadDate": "2026-10-10",
+  "embedUrl": "https://laurenfine.com/how-to-be-happy-at-work",
+  "duration": "PT32S"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -273,6 +287,14 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+
+  .reel { display:grid; grid-template-columns:220px 1fr; gap:36px; align-items:center; background:var(--cream-dark); padding:28px; margin:48px 0; }
+  .reel video { width:100%; aspect-ratio:9/16; object-fit:cover; background:#182D4E; display:block; cursor:pointer; }
+  .post-body .reel-kicker, .reel-kicker { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; line-height:1.4; }
+  .post-body .reel-title, .reel-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:500; color:var(--black); line-height:1.25; margin:0 0 14px; }
+  .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
+  .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
+  @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -379,6 +401,18 @@
     <li><strong>Something bigger.</strong> Low mood that follows you home, trouble sleeping, or dread that does not lift on weekends. Fix: talk to your doctor or a licensed therapist. More on this below.</li>
   </ul>
   <p>If you are not sure which one is yours, the <a href="/stuck">Stuck Differential</a> walks you through it.</p>
+
+  <div class="reel">
+    <video controls playsinline preload="none" poster="/reel-fact-vs-story.jpg" aria-label="Video: Fact vs. story">
+      <source src="/reel-fact-vs-story.mp4" type="video/mp4">
+    </video>
+    <div>
+      <p class="reel-kicker">Watch · 32 seconds</p>
+      <p class="reel-title">Fact vs. story</p>
+      <p class="reel-text">Write down what actually happened. Then write the story you're telling yourself about it. The gap between the two is where you get stuck, and where you get unstuck.</p>
+      <p class="reel-more"><a href="/watch">More short videos</a></p>
+    </div>
+  </div>
 
   <h2>Stop compensating. Start changing how you work.</h2>
   <p>Most of us treat unhappy work like a bill we pay with the rest of our life. We buy something to feel better. We plan the next trip. We tell ourselves it is just a season. The relief is real, but it is short. You come back to the same Monday.</p>
