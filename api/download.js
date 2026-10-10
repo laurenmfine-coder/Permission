@@ -36,7 +36,12 @@ const WORKSHEETS = {
   'Personal Statement Story Map': 'personal-statement-story-map.pdf',
   'Identity Inventory': 'identity-inventory.pdf',
   'Confidence Reframe Worksheet': 'confidence-reframe-worksheet.pdf',
-  'Sport Decision Guide': 'sport-decision-guide.pdf'
+  'Sport Decision Guide': 'sport-decision-guide.pdf',
+  'The Yes Invoice': 'the-yes-invoice.pdf',
+  'The 24-Hour Rule': 'the-24-hour-rule.pdf',
+  'The Second Ask': 'the-second-ask.pdf',
+  'The Side-Build Map': 'the-side-build-map.pdf',
+  'Coach, Therapist, or Both?': 'coach-therapist-or-both.pdf'
 };
 
 const MAX = { firstName: 100, email: 200, worksheet: 200, source: 300, notes: 500, room: 40, situation: 120, focus: 300 };
