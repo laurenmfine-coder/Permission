@@ -146,6 +146,20 @@
 </script>
 
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "How to say no without shutting the other person down",
+  "description": "You do not have to choose between yes and a flat no. Say, \"Yes, I can do that. What do I take off my list?\" It turns your no into a visible trade.",
+  "thumbnailUrl": "https://laurenfine.com/reel-say-no.jpg",
+  "contentUrl": "https://laurenfine.com/reel-say-no.mp4",
+  "uploadDate": "2026-10-10",
+  "embedUrl": "https://laurenfine.com/how-to-say-no",
+  "duration": "PT26S"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -290,6 +304,14 @@
     .nav-has-drop.open .nav-drop { display:block; }
     .nav-drop a { padding:7px 0; }
   }
+
+  .reel { display:grid; grid-template-columns:220px 1fr; gap:36px; align-items:center; background:var(--cream-dark); padding:28px; margin:48px 0; }
+  .reel video { width:100%; aspect-ratio:9/16; object-fit:cover; background:#182D4E; display:block; cursor:pointer; }
+  .post-body .reel-kicker, .reel-kicker { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; line-height:1.4; }
+  .post-body .reel-title, .reel-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:500; color:var(--black); line-height:1.25; margin:0 0 14px; }
+  .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
+  .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
+  @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -450,6 +472,18 @@
     <li>"Here is what is on my plate right now. Which of these should come off to make room for this?"</li>
     <li>"I want to do this well. I can start it on the 15th, after the current deadline."</li>
   </ul>
+
+  <div class="reel">
+    <video controls playsinline preload="none" poster="/reel-say-no.jpg" aria-label="Video: How to say no without shutting the other person down">
+      <source src="/reel-say-no.mp4" type="video/mp4">
+    </video>
+    <div>
+      <p class="reel-kicker">Watch · Best Responses #26</p>
+      <p class="reel-title">How to say no without shutting the other person down</p>
+      <p class="reel-text">You do not have to choose between yes and a flat no. Say, "Yes, I can do that. What do I take off my list?" It turns your no into a visible trade.</p>
+      <p class="reel-more"><a href="/watch">More short videos</a></p>
+    </div>
+  </div>
 
   <h2>How to say no to family and friends</h2>
   <p>Family is harder. The history is longer and the guilt is louder. Keep it warm and short. You can love someone and still decline.</p>
