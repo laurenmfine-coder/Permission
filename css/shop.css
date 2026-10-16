@@ -128,3 +128,11 @@ body .picks-head .picks-lede{color:#5A544E;font-size:.96rem;line-height:1.8}
 .shop-inline p.shop-name{font-size:1.2rem;line-height:1.25;margin:0 0 8px}
 .shop-inline p.shop-desc{font-size:.95rem;line-height:1.65;margin:0 0 14px}
 @media (max-width:560px){.shop-inline p.shop-desc{font-size:.88rem}}
+
+/* FAQ accordion */
+.shop-faq details{border-bottom:1px solid var(--cream-dark);padding:22px 0}
+.shop-faq summary{cursor:pointer;list-style:none;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--black);display:flex;justify-content:space-between;gap:20px}
+.shop-faq summary::after{content:'+';color:var(--gold);font-family:'DM Sans',sans-serif}
+.shop-faq details[open] summary::after{content:'\2212'}
+.shop-faq p{margin-top:14px;font-size:.98rem;line-height:1.8;color:#5A544E;max-width:760px}
+.shop-note a{color:#fff;border-bottom:1px solid var(--gold);text-decoration:none}
