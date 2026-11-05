@@ -556,13 +556,33 @@
       btn.disabled = true;
       btn.textContent = 'Sending…';
       try {
-        const res = await fetch('/api/subscribe', {
+        // 1) Email the request to Lauren (FormSubmit). 2) Add to Flodesk. Run both at once.
+        var _q = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
+        var fullNameN = [data.firstName, data.lastName].filter(Boolean).join(' ').trim();
+        const notifyReq = fetch('https://formsubmit.co/ajax/reasondxcoaching@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'New talk request from ' + (fullNameN || data.email),
+            _template: 'table',
+            _captcha: 'false',
+            _replyto: (data.email || '').trim(),
+            Name: fullNameN,
+            Email: (data.email || '').trim(),
+            'Where they are': data.situation || '',
+            'What would make it worth their time': data.focus || '',
+            'How they found me': data.source || '',
+            Page: window.location.href,
+            UTM: 'source=' + (_q.get('utm_source') || '') + '; medium=' + (_q.get('utm_medium') || '') + '; campaign=' + (_q.get('utm_campaign') || ''),
+            _honey: data.company || ''
+          })
+        }).then(function (r) { return r.json().then(function (j) { if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'notify failed'); return j; }); });
+        fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : '', (function(){ var q = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search)); return 'utm_source=' + (q.get('utm_source') || '') + '; utm_medium=' + (q.get('utm_medium') || '') + '; utm_campaign=' + (q.get('utm_campaign') || '') + '; referrer=' + (document.referrer || ''); })()].filter(Boolean).join(' | ') }))
-        });
-        const out = await res.json().catch(()=>({}));
-        if (!res.ok) throw new Error(out.error || 'Something went wrong on our end.');
+        }).catch(function () {});
+        await notifyReq;
         if (typeof gtag === 'function') {
           var _qp = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
           gtag('event', 'free_session_request', {
@@ -587,7 +607,7 @@
         status.textContent = 'That didn’t go through. Please try once more, or email me directly at reasondxcoaching@gmail.com and I’ll take it from there.';
         status.classList.add('show');
         btn.disabled = false;
-        btn.textContent = 'Request my free session';
+        btn.textContent = 'Send and pick my time';
       }
     });
   })();
