@@ -8,6 +8,10 @@
     {
       "source": "/shop",
       "destination": "/recommendations"
+    },
+    {
+      "source": "/talk",
+      "destination": "/free-session"
     }
   ],
   "redirects": [

@@ -4,21 +4,21 @@
 <script src="/js/attribution.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Free Coaching Session | Lauren Fine, MD</title>
-<meta name="description" content="Book a free coaching session with Lauren Fine, MD. No sales pitch, no obligation. Tell me where you are and what you're weighing, and we'll spend the time on you.">
+<title>Let's Talk | Lauren Fine, MD</title>
+<meta name="description" content="Talk with Lauren Fine, MD. Have something quick? Book a single no-commitment call on Clarity. Want longer work? Start with a free conversation about coaching packages.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://laurenfine.com/free-session">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://laurenfine.com/free-session">
-<meta property="og:title" content="Book a Free Coaching Session | Lauren Fine, MD">
-<meta property="og:description" content="A free coaching session with Lauren Fine, MD. No sales pitch, no obligation.">
+<meta property="og:title" content="Let's Talk | Lauren Fine, MD">
+<meta property="og:description" content="A quick no-commitment call, or a free conversation about longer coaching work. No sales pitch.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
 <meta property="og:site_name" content="Lauren Fine, MD">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Book a Free Coaching Session | Lauren Fine, MD">
-<meta name="twitter:description" content="A free coaching session with Lauren Fine, MD. No sales pitch, no obligation.">
+<meta name="twitter:title" content="Let's Talk | Lauren Fine, MD">
+<meta name="twitter:description" content="A quick no-commitment call, or a free conversation about longer coaching work. No sales pitch.">
 <meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +94,19 @@
   .not-ready a { color:var(--black); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; transition:color 0.3s; }
   .not-ready a:hover { color:var(--terracotta); }
   .session-lede strong { color:var(--warm-dark); font-weight:500; }
+
+  /* TALK OPTIONS */
+  .talk-options { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:34px; max-width:760px; }
+  .talk-card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.07); padding:30px 28px 28px; display:flex; flex-direction:column; }
+  .talk-card + .talk-card { border-top-color:var(--gold); }
+  .talk-kicker { font-size:0.64rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin-bottom:12px; font-weight:500; }
+  .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:400; line-height:1.25; color:var(--black); margin-bottom:14px; }
+  .talk-title em { font-style:italic; color:var(--terracotta); }
+  .talk-text { font-size:0.92rem; line-height:1.75; color:var(--gray); font-weight:300; flex:1; }
+  .talk-card .btn-hero-primary { margin-top:22px; text-align:center; }
+  .talk-sub { margin-top:14px; font-size:0.84rem; color:var(--gray); }
+  .talk-sub a { color:var(--black); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:1px; }
+  @media (max-width:1200px) { .talk-options { grid-template-columns:1fr; } }
 
   /* PROMISE STRIP */
   .promise { max-width:1180px; margin:82px auto 0; padding:0 64px; display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
@@ -285,18 +298,29 @@
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
-  <a href="#intakeForm" class="nav-cta">Free Session, No Pitch</a>
+  <a href="#talk-options" class="nav-cta">Let's Talk</a>
 </nav>
 <div class="session-hero-wrap">
 <section class="session-hero">
-  <p class="hero-eyebrow reveal">No cost · No obligation</p>
-  <h1 class="session-h1 reveal d1">Book a free <em>coaching session</em>.</h1>
-  <p class="hero-script reveal d1">No sales pitch.</p>
-  <p class="session-lede reveal d2">This is a real session, not a screening call. You bring the thing you keep circling back to: the decision, the doubt, the version of your life you can't quite say out loud yet. We spend the time on it.</p>
-  <p class="session-lede reveal d2">I won't spend it selling you anything. <strong>If we're a fit, you'll know. If we're not, you'll still leave with something.</strong></p>
-  <p class="session-lede reveal d2">Come with one thing you want to make room for. That is enough to start.</p>
-  <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero" class="btn-hero-primary reveal d2">Pick a time on my calendar &rarr;</a>
-  <p class="session-direct reveal d2"><span class="direct-sub">Prefer to add context first? Answer a few questions below and you'll pick your time right after.</span></p>
+  <p class="hero-eyebrow reveal">Two ways to start</p>
+  <h1 class="session-h1 reveal d1">Let's <em>talk</em>.</h1>
+  <p class="hero-script reveal d1">Pick the size that fits.</p>
+  <p class="session-lede reveal d2">Some things need one good conversation. Some need a few months. Tell me which one you have, and we'll start there.</p>
+  <div class="talk-options reveal d2" id="talk-options">
+    <div class="talk-card">
+      <p class="talk-kicker">Something quick</p>
+      <h2 class="talk-title">One question. <em>No commitment.</em></h2>
+      <p class="talk-text">One decision to think through. One conversation you're dreading. Book a single call with me on Clarity. You pay by the minute, only for the time we use. No package, no follow-up.</p>
+      <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" data-talk="clarity-hero" class="btn-hero-primary">Quick call on Clarity &rarr;</a>
+    </div>
+    <div class="talk-card">
+      <p class="talk-kicker">Something bigger</p>
+      <h2 class="talk-title">A pattern. <em>A change you want to keep.</em></h2>
+      <p class="talk-text">Coaching packages run over weeks or months. We start with a free 55-minute conversation so you can see if it fits. No sales pitch.</p>
+      <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero" class="btn-hero-primary">Talk about a package &rarr;</a>
+      <p class="talk-sub"><a href="/coaching#services">See packages</a> &middot; <a href="#intakeForm">Add context first</a></p>
+    </div>
+  </div>
   <p class="not-ready reveal d2">Not ready to book, just have a question? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a>. No pressure. I read and answer these myself.</p>
 </section>
 <div class="session-hero-right">
@@ -312,7 +336,7 @@
   <div class="promise-item reveal">
     <span class="promise-num">01</span>
     <p class="promise-title">You do the talking</p>
-    <p class="promise-text">Fifty-five minutes, virtual, on your calendar. We start where you are, not with my credentials or my packages.</p>
+    <p class="promise-text">A quick call or longer work, it is virtual and on your calendar. We start where you are, not with my credentials or my packages.</p>
   </div>
   <div class="promise-item reveal d1">
     <span class="promise-num">02</span>
@@ -328,9 +352,10 @@
 
 <section class="form-section">
   <aside class="form-aside reveal">
-    <p class="form-aside-label">Before we meet</p>
+    <p class="form-aside-label">For longer work</p>
     <h2>Tell me where you <em>actually</em> are.</h2>
-    <p>A few questions so the session starts somewhere real instead of at the beginning. Nothing here is a test, and there's no right answer.</p>
+    <p>Thinking about a package? A few questions so our free conversation starts somewhere real instead of at the beginning. Nothing here is a test, and there's no right answer.</p>
+    <p>Just have something quick? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" data-talk="clarity-form" style="color:var(--black);border-bottom:1px solid var(--gold);text-decoration:none;">Book a single call on Clarity</a> instead.</p>
     <p>I read every one of these myself. As soon as you send it, you'll pick your time on my calendar. I'll confirm by email within 24 hours.</p>
     <div class="private-block">
       <p class="private-eyebrow">Your privacy</p>
@@ -340,7 +365,7 @@
         <li>Coaching is not billed through insurance, so nothing goes to a payer.</li>
         <li>Use a personal email if you prefer.</li>
       </ul>
-      <p class="private-note">Founding-client packages start at $500 (from $200 a session), and any package can run as 25-minute sessions. <a href="/coaching#services">See packages</a>. The first session is always free.</p>
+      <p class="private-note">Founding-client packages start at $500 (from $200 a session), and any package can run as 25-minute sessions. <a href="/coaching#services">See packages</a>. Every package starts with a free 55-minute conversation.</p>
     </div>
     <p class="aside-quote">You don't need to have the words yet. You just need to be willing to look.</p>
     <p class="not-ready" style="margin-top:28px;">Not ready for this yet? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a> instead.</p>
@@ -400,7 +425,7 @@
         <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
       </div>
 
-      <button type="submit" class="btn-submit" id="submitBtn">Request my free session</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Send and pick my time</button>
       <p class="form-status" id="formStatus"></p>
       <p class="form-note">I'll follow up personally. Your note stays between us. Submitting also adds you to The Sunday Letter. You can unsubscribe anytime.</p>
       <p class="form-note">Would rather just book? <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="form" style="color:var(--black);border-bottom:1px solid var(--gold);text-decoration:none;">Pick a time on my calendar</a> and we'll cover this live.</p>
@@ -470,7 +495,7 @@
       <ul class="footer-links">
         <li><a href="https://reasondx.com" target="_blank" rel="noopener">ReasonDx</a></li>
         <li><a href="mailto:reasondxcoaching@gmail.com">reasondxcoaching@gmail.com</a></li>
-        <li><a href="/free-session">Book a Free Coaching Session</a></li>
+        <li><a href="/free-session">Let's Talk</a></li>
       </ul>
     </div>
   </div>
@@ -570,6 +595,11 @@
 <script>
   // Track people who skip the intake form and book directly
   (function () {
+    document.querySelectorAll('[data-talk]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        try { if (typeof gtag === 'function') gtag('event', 'clarity_click', { placement: a.getAttribute('data-talk') }); } catch (e) {}
+      });
+    });
     document.querySelectorAll('[data-book-direct]').forEach(function (a) {
       a.addEventListener('click', function () {
         if (typeof gtag === 'function') {
