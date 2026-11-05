@@ -556,27 +556,27 @@
       btn.disabled = true;
       btn.textContent = 'Sending…';
       try {
-        // 1) Email the request to Lauren (FormSubmit). 2) Add to Flodesk. Run both at once.
+        // 1) Email the request to Lauren (Web3Forms). 2) Add to Flodesk. Run both at once.
         var _q = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search));
         var fullNameN = [data.firstName, data.lastName].filter(Boolean).join(' ').trim();
-        const notifyReq = fetch('https://formsubmit.co/ajax/reasondxcoaching@gmail.com', {
+        const notifyReq = fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            _subject: 'New talk request from ' + (fullNameN || data.email),
-            _template: 'table',
-            _captcha: 'false',
-            _replyto: (data.email || '').trim(),
+            access_key: 'f6a893b9-1784-4b24-a0d4-d8a387a97218',
+            subject: 'New talk request from ' + (fullNameN || data.email),
+            from_name: 'laurenfine.com Let\'s Talk form',
+            replyto: (data.email || '').trim(),
+            botcheck: data.company ? true : false,
             Name: fullNameN,
             Email: (data.email || '').trim(),
             'Where they are': data.situation || '',
             'What would make it worth their time': data.focus || '',
             'How they found me': data.source || '',
             Page: window.location.href,
-            UTM: 'source=' + (_q.get('utm_source') || '') + '; medium=' + (_q.get('utm_medium') || '') + '; campaign=' + (_q.get('utm_campaign') || ''),
-            _honey: data.company || ''
+            UTM: 'source=' + (_q.get('utm_source') || '') + '; medium=' + (_q.get('utm_medium') || '') + '; campaign=' + (_q.get('utm_campaign') || '')
           })
-        }).then(function (r) { return r.json().then(function (j) { if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'notify failed'); return j; }); });
+        }).then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.success) throw new Error(j.message || 'notify failed'); return j; }); });
         fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
