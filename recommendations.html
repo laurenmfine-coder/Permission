@@ -351,6 +351,186 @@
   </div>
 </header>
 
+<style id="edit-partners">
+  .edit { padding:88px 64px 96px; background:#FBF9F6; border-bottom:1px solid var(--cream-dark); }
+  .edit-inner { max-width:1180px; margin:0 auto; }
+  .edit-eyebrow { font-size:0.68rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:14px; }
+  .edit-eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); }
+  .edit-h2 { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(2.1rem,3.6vw,3.3rem); line-height:1.1; color:var(--black); max-width:760px; }
+  .edit-h2 em { font-style:italic; color:var(--terracotta); }
+  .edit-lede { font-size:1.05rem; line-height:1.8; color:#4A4540; max-width:620px; margin-top:18px; }
+
+  /* Eberjey feature */
+  .edit-feature { display:grid; grid-template-columns:7fr 5fr; gap:64px; align-items:center; margin:64px 0 88px; }
+  .edit-collage { position:relative; padding-bottom:12%; }
+  .edit-collage .c-main { display:block; width:72%; aspect-ratio:4/5; overflow:hidden; background:#EFEAE3; }
+  .edit-collage .c-side { display:block; position:absolute; right:0; bottom:0; width:44%; aspect-ratio:4/5; overflow:hidden; background:#EFEAE3; outline:10px solid #FBF9F6; }
+  .edit-collage img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.8s ease; }
+  .edit-collage a:hover img { transform:scale(1.03); }
+  .edit-kicker { font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--gray); margin-bottom:14px; }
+  .edit-brand { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,4vw,3.6rem); font-weight:400; line-height:1; color:var(--black); margin-bottom:22px; }
+  .edit-feature p.body { font-size:1.05rem; line-height:1.85; color:#3E3A36; margin-bottom:26px; }
+  .edit-links { display:flex; flex-wrap:wrap; gap:12px; }
+  .edit-btn { display:inline-block; padding:14px 24px; background:var(--black); color:#fff; text-decoration:none; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; transition:background 0.3s; }
+  .edit-btn:hover { background:var(--terracotta); }
+  .edit-btn.ghost { background:transparent; color:var(--black); border:1px solid var(--black); }
+  .edit-btn.ghost:hover { background:var(--black); color:#fff; }
+
+  /* Partner grid */
+  .edit-grid-head { display:flex; justify-content:space-between; align-items:end; gap:24px; border-top:1px solid var(--cream-dark); padding-top:40px; margin-bottom:32px; flex-wrap:wrap; }
+  .edit-grid-head h3 { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.6rem,2.4vw,2.2rem); color:var(--black); }
+  .edit-grid-head p { font-size:0.9rem; color:var(--gray); max-width:420px; line-height:1.7; }
+  .edit-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px 24px; }
+  .p-card { display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+  .p-tile { position:relative; aspect-ratio:4/5; overflow:hidden; background:#F1ECE5; margin-bottom:16px; }
+  .p-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.8s ease; }
+  .p-tile.pack img { object-fit:contain; padding:14%; mix-blend-mode:multiply; }
+  .p-card:hover .p-tile img { transform:scale(1.04); }
+  .p-tag { position:absolute; top:12px; left:12px; background:#fff; color:var(--black); font-size:0.56rem; letter-spacing:0.18em; text-transform:uppercase; padding:6px 10px; }
+  .p-brand { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gray); margin-bottom:6px; }
+  .p-name { font-family:'Playfair Display',serif; font-size:1.15rem; line-height:1.3; color:var(--black); margin-bottom:8px; }
+  .p-desc { font-size:0.88rem; line-height:1.65; color:#5A544E; margin-bottom:14px; flex:1; }
+  .p-row { display:flex; align-items:center; justify-content:space-between; gap:10px; border-top:1px solid var(--cream-dark); padding-top:12px; }
+  .p-code { font-family:'DM Sans',sans-serif; font-size:0.72rem; letter-spacing:0.08em; color:var(--terracotta); background:transparent; border:1px dashed rgba(35,64,110,0.45); padding:6px 10px; cursor:pointer; }
+  .p-code:hover { background:rgba(35,64,110,0.06); }
+  .p-code.copied { border-style:solid; }
+  .p-nocode { font-size:0.7rem; letter-spacing:0.06em; color:var(--gray); }
+  .p-shop { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--black); text-decoration:none; border-bottom:1px solid var(--black); padding-bottom:2px; white-space:nowrap; }
+  .p-note { font-size:0.74rem; color:var(--gray); margin:-6px 0 12px; line-height:1.5; }
+
+  /* Coffee strip */
+  .edit-strip { display:grid; grid-template-columns:5fr 7fr; gap:56px; align-items:center; margin-top:96px; background:#fff; }
+  .edit-strip .s-img { aspect-ratio:4/5; overflow:hidden; }
+  .edit-strip img { width:100%; height:100%; object-fit:cover; display:block; }
+  .edit-strip .s-body { padding:24px 48px 24px 0; }
+  .edit-strip h3 { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.8rem,2.8vw,2.6rem); line-height:1.15; color:var(--black); margin-bottom:16px; }
+  .edit-strip p { font-size:1rem; line-height:1.8; color:#4A4540; margin-bottom:24px; max-width:480px; }
+  .edit-disclose { font-size:0.78rem; color:var(--gray); margin-top:48px; line-height:1.6; max-width:720px; }
+
+  @media (max-width:1000px) {
+    .edit { padding:64px 24px 72px; }
+    .edit-feature { grid-template-columns:1fr; gap:36px; margin:44px 0 64px; }
+    .edit-grid { grid-template-columns:repeat(2,1fr); gap:32px 16px; }
+    .edit-strip { grid-template-columns:1fr; gap:0; }
+    .edit-strip .s-body { padding:28px 24px 32px; }
+    .p-row { flex-direction:column; align-items:flex-start; }
+  }
+</style>
+
+<section class="edit" id="brands">
+  <div class="edit-inner">
+    <p class="edit-eyebrow">The Edit &middot; November 2026</p>
+    <h2 class="edit-h2">Brands I work with, and the <em>codes</em> I set up for you</h2>
+    <p class="edit-lede">These are the brands I am partnering with right now. Where there is a code, tap it to copy, then use the shop link so the code applies at checkout.</p>
+
+    <div class="edit-feature">
+      <div class="edit-collage">
+        <a class="c-main" href="https://go.shopmy.us/p-84729560" target="_blank" rel="noopener sponsored"><img src="https://eberjey.com/cdn/shop/files/PJ1018-DESIV_1009.jpg?width=1200" alt="Eberjey Gisele long pajama set in desert sage and ivory" loading="lazy"></a>
+        <a class="c-side" href="https://go.shopmy.us/p-84729254" target="_blank" rel="noopener sponsored"><img src="https://eberjey.com/cdn/shop/files/PJ1212S-SANDT_1290_0006_PJ1018S-DESIV_0629.jpg?width=900" alt="Eberjey Gisele short pajama set" loading="lazy"></a>
+      </div>
+      <div>
+        <p class="edit-kicker">The most-shopped link on this page</p>
+        <p class="edit-brand">Eberjey</p>
+        <p class="body">The Gisele pajamas, in TENCEL modal. Modal is a fine, smooth fiber that moves heat away instead of holding it. If you wake up warm and itchy, this change does more than any cream will.</p>
+        <div class="edit-links">
+          <a class="edit-btn" href="https://go.shopmy.us/p-84729560" target="_blank" rel="noopener sponsored">Shop the long set</a>
+          <a class="edit-btn ghost" href="https://go.shopmy.us/p-84729254" target="_blank" rel="noopener sponsored">Shop the short set</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-grid-head">
+      <h3>This month&rsquo;s partners</h3>
+      <p>New arrivals first, then the brands with community codes.</p>
+    </div>
+
+    <div class="edit-grid">
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-102196077" target="_blank" rel="noopener sponsored"><span class="p-tag">Just arrived</span><img src="partner-veronica-beard.jpg" alt="Lauren Fine in a navy Veronica Beard double-breasted blazer" loading="lazy"></a>
+        <p class="p-brand">Veronica Beard</p>
+        <p class="p-name">Tailored blazers and knits</p>
+        <p class="p-desc">A navy double-breasted blazer and a gray knit zip-up just landed at my house.</p>
+        <div class="p-row"><span class="p-nocode">Code coming soon</span><a class="p-shop" href="https://go.shopmy.us/p-102196077" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-102196188" target="_blank" rel="noopener sponsored"><span class="p-tag">Just arrived</span><img src="partner-material.jpg" alt="Material The Forever Peeler and MK Free Board" loading="lazy"></a>
+        <p class="p-brand">Material</p>
+        <p class="p-name">The MK Free Board &amp; Forever Peeler</p>
+        <p class="p-desc">A dishwasher-safe cutting board made without PFAS or permanent microplastics.</p>
+        <div class="p-row"><span class="p-nocode">Code coming soon</span><a class="p-shop" href="https://go.shopmy.us/p-102196188" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-102299639" target="_blank" rel="noopener sponsored"><img src="partner-truffle.jpg" alt="Truffle Clarity clear cases" loading="lazy"></a>
+        <p class="p-brand">Truffle</p>
+        <p class="p-name">Clarity Jetset Case</p>
+        <p class="p-desc">Clear cases for skincare, makeup and travel, so you can see what you have at a glance.</p>
+        <p class="p-note">Code ends January 1.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM15">PHYSICIANMOM15 &middot; 15%</button><a class="p-shop" href="https://go.shopmy.us/p-102299639" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-100375292" target="_blank" rel="noopener sponsored"><img src="https://pilatesuniversity1883.com/cdn/shop/files/7C7830F4-8F0C-4FD5-AD20-827F93ABE96A.jpg?v=1786400710&width=1000" alt="Pilates University 1883" loading="lazy"></a>
+        <p class="p-brand">Pilates University 1883</p>
+        <p class="p-name">Grip socks for Pilates days</p>
+        <p class="p-desc">The biggest discount on this page.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM25">PHYSICIANMOM25 &middot; 25%</button><a class="p-shop" href="https://go.shopmy.us/p-100375292" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-102196314" target="_blank" rel="noopener sponsored"><img src="https://auratenewyork.com/cdn/shop/files/AU24.03.19-25W.png?v=1740174572&width=1000" alt="Aurate New York jewelry" loading="lazy"></a>
+        <p class="p-brand">Aurate</p>
+        <p class="p-name">Fine jewelry</p>
+        <p class="p-desc">Pieces made to wear every day.</p>
+        <p class="p-note">Excludes Frye, sample and archive sales, and cleaning kits.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM20">PHYSICIANMOM20 &middot; 20%</button><a class="p-shop" href="https://go.shopmy.us/p-102196314" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile pack" href="https://go.shopmy.us/p-101915644" target="_blank" rel="noopener sponsored"><img src="https://omniluxled.com/cdn/shop/files/Contour_Face_PDP_Image_1.png?v=1784569105&width=1000" alt="Omnilux Contour Face LED mask" loading="lazy"></a>
+        <p class="p-brand">Omnilux</p>
+        <p class="p-name">LED light therapy</p>
+        <p class="p-desc">Medical-grade LED masks for at-home use.</p>
+        <p class="p-note">Excludes bundles and gift cards.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM10">PHYSICIANMOM10 &middot; 10%</button><a class="p-shop" href="https://go.shopmy.us/p-101915644" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile" href="https://go.shopmy.us/p-101915222" target="_blank" rel="noopener sponsored"><img src="https://www.mutha.com/cdn/shop/files/Social_sharing_image_and_SEO_-_v2.jpg?v=1782491121&width=1000" alt="MUTHA body and skin care" loading="lazy"></a>
+        <p class="p-brand">MUTHA</p>
+        <p class="p-name">Body and skin care</p>
+        <p class="p-desc">The Eye Maintenance Eye Mask is their bestseller.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM15">PHYSICIANMOM15 &middot; 15%</button><a class="p-shop" href="https://go.shopmy.us/p-101915222" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+      <div class="p-card">
+        <a class="p-tile pack" href="https://go.shopmy.us/p-100312775" target="_blank" rel="noopener sponsored"><img src="https://naturium.com/cdn/shop/files/PDP_GlowGetterBodyButter_front_v2.webp?v=1774290302&width=1000" alt="Naturium Glow Getter Multi-Oil Body Butter" loading="lazy"></a>
+        <p class="p-brand">Naturium</p>
+        <p class="p-name">Skin and body care</p>
+        <p class="p-desc">The Glow Getter Body Butter is their bestseller.</p>
+        <p class="p-note">First order only.</p>
+        <div class="p-row"><button class="p-code" type="button" data-code="PHYSICIANMOM10">PHYSICIANMOM10 &middot; 10%</button><a class="p-shop" href="https://go.shopmy.us/p-100312775" target="_blank" rel="noopener sponsored">Shop</a></div>
+      </div>
+    </div>
+
+    <div class="edit-strip">
+      <div class="s-img"><img src="coffee-station.jpg" alt="Lauren Fine's coffee station with a Nespresso machine, Bialetti moka pot and milk frother" loading="lazy"></div>
+      <div class="s-body">
+        <p class="edit-kicker">At home</p>
+        <h3>My coffee station</h3>
+        <p>The Nespresso, the Bialetti, the frother and the double-walled glasses. Everything I use, in one place.</p>
+        <a class="edit-btn ghost" href="/quiet-morning-coffee-setup">See my coffee picks</a>
+      </div>
+    </div>
+
+    <p class="edit-disclose">These are affiliate links. I may earn a commission when you shop through them, at no cost to you. I only share brands I use.</p>
+  </div>
+</section>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.p-code'); if(!b) return;
+  var c=b.getAttribute('data-code'), t=b.innerHTML;
+  var done=function(){ b.classList.add('copied'); b.textContent='Copied'; setTimeout(function(){ b.innerHTML=t; b.classList.remove('copied'); },1600); };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(c).then(done,done); } else { done(); }
+});
+</script>
+
+
+
 <div class="picks-head" style="padding:56px 64px 0; max-width:900px;">
     <p class="picks-eyebrow">Start here</p>
     <h2 class="picks-title">Why perimenopause changes <em>everything</em> about your skin</h2>
@@ -360,18 +540,14 @@
   </div>
 
 <div class="section-jump">
+  <a href="#brands">Brands I work with</a>
   <a href="#spf">Sunscreen</a>
   <a href="#vitc">Vitamin C</a>
   <a href="#hydrate">Hyaluronic Acid</a>
   <a href="#retinol">Retinol</a>
   <a href="#testing">What "allergy tested" means</a>
-  <a href="#work-from-home">Work From Home</a>
-  <a href="#cover">Sun</a>
-  <a href="#soft">Comfort</a>
   <a href="#sleep">Bedroom</a>
   <a href="#house">Home</a>
-  <a href="#professional">Professional</a>
-  <a href="#travel">Travel</a>
   <a href="#bookshelf">Books</a>
   <a href="#shutdown">Shutdown Kit</a>
   <a href="#kitchen">Kitchen</a>
@@ -519,102 +695,20 @@
 
 
 
-<section class="picks-section reveal" id="work-from-home">
-  <div class="picks-head">
-    <p class="picks-eyebrow">What I wear to work from home</p>
-    <h2 class="picks-title">Comfortable is not the opposite of <em>ambitious</em></h2>
-    <p class="picks-lede">Working from home is still working. The pieces below hold up through a long stretch at a desk, a video call that gets scheduled with no notice, and whatever the day turns into after that. Soft enough to sit in for hours. Put-together enough that you do not have to change before the camera comes on.</p>
-    <!-- OPTIONAL, one line in Lauren's own words: what she actually reaches for first
-         most mornings and why. Leave it out rather than invent it. -->
-    <p class="picks-lede" style="margin-top:18px;">Where these came from: my sister introduced me to Varley, Eberjey, Lake and Boll &amp; Branch. She writes about French-inspired living, travel and style at <a href="https://everydayparisian.com" target="_blank" rel="noopener" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(35,64,110,0.35);">Everyday Parisian</a>.</p>
-    <p class="wfh-disclosure">Some links in this section are affiliate links. If you buy through one I may earn a small commission at no extra cost to you. Nothing here is sponsored and no brand paid to be included.</p>
-  </div>
-
-  <div class="shop-grid wfh-grid" id="wfh-grid">
-<a class="shop-card" id="varley-hawley-half-zip-sweat" data-store="varley" href="https://go.shopmy.us/p-84727740" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The one on camera</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/78db6f1070b3857f9cf99de1ec09fca81f6a6f9d_1_VAR01461_HAWLEY_HALF_ZIP_SWEAT_PORCELAIN_BLUE.jpg?width=760" alt="Varley Hawley Half-Zip Sweat in Porcelain Blue" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">Hawley Half-Zip Sweat</h3><p class="shop-desc">Porcelain blue, in their DoubleSoft knit. A collar reads as dressed on a video call, and a half zip lets you open it the second the call ends.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="varley-the-wide-leg-pant" data-store="varley" href="https://go.shopmy.us/p-84728238" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The desk pant</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/3661bee97146497c6a6bf1c65088aba5763d371d_VAR02104_THE_WIDE_LEG_PANT_28_PRISTINE_011.jpg?width=760" alt="Varley The Wide Leg Pant in Pristine" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">The Wide Leg Pant</h3><p class="shop-desc">Pristine. Soft enough to sit in all day, long and clean enough through the leg that they do not read as sweatpants when you stand up to answer the door.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="varley-betsy-sweat" data-store="varley" href="https://go.shopmy.us/p-84729055" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The throw-on layer</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/32ba5016ca9e20a15b84733cb63568893c74a4c3_1_VAR00979_BETSY_SWEAT_PRISTINE_037.jpg?width=760" alt="Varley Betsy Sweat in Pristine" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">Betsy Sweat</h3><p class="shop-desc">Pristine. The piece that goes over whatever you already have on when the house gets cold or someone turns their camera on unannounced.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="varley-ritchie-short-sleeve-sweat" data-store="varley" href="https://go.shopmy.us/p-84728625" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The warm-day top</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/8212a88306a6058aa035b805028d34bf91302309_1_VAR02013_RITCHIE_SHORT_SLEEVE_SWEAT_IVORY_MARL_004.jpg?width=760" alt="Varley Ritchie Short Sleeve Sweat in Ivory Marl" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">Ritchie Short Sleeve Sweat</h3><p class="shop-desc">Ivory marl. Sweatshirt weight with short sleeves, which is the right answer for a Florida desk day with the air conditioning fighting the window.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="varley-coulter-high-rise-short-3-5" data-store="varley" href="https://go.shopmy.us/p-84728461" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The short, shorter</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/c6ee996d448a2d447e713578f28b524093800ebe_1_VAR01758_COULTER_HIGH_RISE_SHORT_3.5_PRISTINE_043.jpg?width=760" alt="Varley Coulter High-Rise Short in Pristine" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">Coulter High-Rise Short 3.5"</h3><p class="shop-desc">Pristine. High rise, so it stays put through a day of sitting. Pairs with any of the tops above without looking like gym kit.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="varley-atrium-high-rise-short-4-5" data-store="varley" href="https://go.shopmy.us/p-84728822" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The short, longer</span><img src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/b1226bbad61cc5d0eb1f46b7bd419feb93c6f912_1_VAR01759_ATRIUM_HIGH_RISE_SHORT_4.5_LIGHT_GREY_MARL_043.jpg?width=760" alt="Varley Atrium High-Rise Short in Light Grey Marl" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Varley</p><h3 class="shop-name">Atrium High-Rise Short 4.5"</h3><p class="shop-desc">Light grey marl. One inch longer than the Coulter, which is the difference between shorts you wear at your desk and shorts you will also walk the dog in.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="eberjey-gisele-shortie-short-pj-set" data-store="eberjey" href="https://go.shopmy.us/p-84729254" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The short set</span><img src="https://eberjey.com/cdn/shop/files/PJ1212S-SANDT_1290_0006_PJ1018S-DESIV_0629.jpg?width=760" alt="Eberjey Gisele Shortie Short PJ Set in Desert Sage and Ivory" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Gisele Shortie Short PJ Set</h3><p class="shop-desc">Desert sage and ivory, in TENCEL modal. The set that survives a hot night and still looks like something you would answer the door in.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="eberjey-gisele-relaxed-short-pj-set" data-store="eberjey" href="https://go.shopmy.us/p-84729968" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The relaxed short set</span><img src="https://eberjey.com/cdn/shop/files/Low_Res-PJ1018SN-ICIV-F.jpg?width=760" alt="Eberjey Gisele Relaxed Short PJ Set in Ice Blue and Ivory" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Gisele Relaxed Short PJ Set</h3><p class="shop-desc">Ice blue and ivory. Same fabric, easier cut through the body if you do not want anything close to you while you sleep.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="eberjey-gisele-long-pj-set" data-store="eberjey" href="https://go.shopmy.us/p-84729560" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The long set</span><img src="https://eberjey.com/cdn/shop/files/PJ1018-DESIV_1009.jpg?width=760" alt="Eberjey Gisele Long PJ Set in Desert Sage and Ivory" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Gisele Long PJ Set</h3><p class="shop-desc">Desert sage and ivory. Full length for a cold room or a house where the thermostat is not yours to set.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="eberjey-gisele-slouchy-pj-set" data-store="eberjey" href="https://go.shopmy.us/p-84729779" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The slouchy set</span><img src="https://eberjey.com/cdn/shop/files/Low_Res-TZ1018LC_NAIV-F.jpg?width=760" alt="Eberjey Gisele Slouchy PJ Set in Navy and Ivory" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Gisele Slouchy PJ Set</h3><p class="shop-desc">Navy and ivory. No buttons, nothing structured. This is the one for a sick day or a Sunday that never quite starts.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="lake-pajamas-dreammodal-kimono-pajama-set" data-store="lake" href="https://go.shopmy.us/p-84730171" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The wrap set</span><img src="https://lakepajamas.com/cdn/shop/files/LAKE_Webcrop_Spring2025_KimonoSet_Fog_1200x1800_469e4421-1758-44c8-a953-905daec8b878.jpg?width=760" alt="Lake Pajamas DreamModal Kimono Pajama Set in Fog" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Lake Pajamas</p><h3 class="shop-name">DreamModal Kimono Pajama Set</h3><p class="shop-desc">Fog. A wrap front instead of buttons, in their modal. Reaches for it on the nights getting dressed for bed feels like one task too many.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="lake-pajamas-pima-shorts-set" data-store="lake" href="https://go.shopmy.us/p-84730366" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The cotton set</span><img src="https://lakepajamas.com/cdn/shop/files/LAKE_Fall3_2026_SS_CocoaClubStripe1200x1800.jpg?width=760" alt="Lake Pajamas Pima Shorts Set in Cocoa Club Stripe" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Lake Pajamas</p><h3 class="shop-name">Pima Shorts Set</h3><p class="shop-desc">Cocoa club stripe, in pima cotton. Cotton rather than modal, for anyone who runs warm and wants something that breathes rather than drapes.</p><span class="shop-cta">Shop it</span></a>
-</div>
-</section>
-
-<section class="mix-match">
-  <div class="mix-match-head">
-    <p class="mix-match-eyebrow">How the pieces work</p>
-    <h2 class="mix-match-title">Three pairings I <em>actually</em> repeat.</h2>
-  </div>
-
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/78db6f1070b3857f9cf99de1ec09fca81f6a6f9d_1_VAR01461_HAWLEY_HALF_ZIP_SWEAT_PORCELAIN_BLUE.jpg?width=320" alt="Hawley half-zip" loading="lazy">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/3661bee97146497c6a6bf1c65088aba5763d371d_VAR02104_THE_WIDE_LEG_PANT_28_PRISTINE_011.jpg?width=320" alt="The Wide Leg Pant" loading="lazy">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Pairing one</p>
-      <h3 class="mix-label-title">The video call</h3>
-      <span class="mix-bubble">A collar on top, a clean line below. Reads as dressed from the chest up and feels like nothing from the waist down.</span>
-    </div>
-  </div>
-
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/8212a88306a6058aa035b805028d34bf91302309_1_VAR02013_RITCHIE_SHORT_SLEEVE_SWEAT_IVORY_MARL_004.jpg?width=320" alt="Ritchie short sleeve sweat" loading="lazy">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/b1226bbad61cc5d0eb1f46b7bd419feb93c6f912_1_VAR01759_ATRIUM_HIGH_RISE_SHORT_4.5_LIGHT_GREY_MARL_043.jpg?width=320" alt="Atrium high-rise short" loading="lazy">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Pairing two</p>
-      <h3 class="mix-label-title">The warm desk day</h3>
-      <span class="mix-bubble">Sweatshirt weight without the sleeves, and the longer short. Air conditioning inside, ninety degrees the second you open the door.</span>
-    </div>
-  </div>
-
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/32ba5016ca9e20a15b84733cb63568893c74a4c3_1_VAR00979_BETSY_SWEAT_PRISTINE_037.jpg?width=320" alt="Betsy sweat" loading="lazy">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="https://cdn.shopify.com/s/files/1/0009/8562/8738/files/c6ee996d448a2d447e713578f28b524093800ebe_1_VAR01758_COULTER_HIGH_RISE_SHORT_3.5_PRISTINE_043.jpg?width=320" alt="Coulter high-rise short" loading="lazy">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Pairing three</p>
-      <h3 class="mix-label-title">The in and out</h3>
-      <span class="mix-bubble">Pull the sweat over the short and go. This is the one that handles a school run, a pharmacy stop and back to the desk.</span>
-    </div>
-  </div>
-</section>
 
 
 
 
-<section class="picks-section reveal" id="cover">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step three</p>
-    <h2 class="picks-title">Cover comes <em>before</em> cream</h2>
-    <p class="picks-lede">Sunscreen is the last line of defense, not the first. Fabric does not wear off at hour two, does not need reapplying, and does not depend on you using the right amount. Put cloth between you and the sun first, then use SPF for what the cloth does not reach.</p>
-  </div>
-  <div class="shop-feature-wrap --1"><a class="shop-feature" id="cadets-breeze-upf-hooded-sun-shirt" href="https://go.shopmy.us/p-95170389" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The everyday layer</span><img src="https://static.shopmy.us/uploads/pretty-prod-1770907690737" alt="Cadets Breeze UPF Hooded Sun Shirt" class="contain" loading="lazy"></div><div class="shop-feature-body"><p class="shop-brand">Cadets</p><h3 class="shop-name">Breeze UPF Hooded Sun Shirt</h3><p class="shop-price">$54</p><p class="shop-desc">A UPF rating measures how much UV the fabric blocks, and it does not wear off at hour two. The hood covers the neck and ears a hat misses. Wet or stretched fabric protects less, so dry and loose beats soaked and tight.</p><span class="shop-btn">Shop the shirt</span></div></a></div>
-</section>
 
-<section class="picks-section reveal" id="soft">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step four</p>
-    <h2 class="picks-title">Fabric is a <em>treatment decision</em></h2>
-    <p class="picks-lede">Smooth fibers, no fragrance finishes, and nothing that traps heat. Overheating is one of the most reliable ways to make skin itch, which is why what you sleep in matters as much as what you put on. New clothes get washed before wearing, always.</p>
-  </div>
-  <div class="shop-grid shop-grid--4 --4">
-<a class="shop-card" id="pact-organic-cotton-tank-dress" href="https://go.shopmy.us/p-99718559" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The everyday piece</span><img src="https://media.wearpact.com/product/hist/w25-blk.jpg" alt="Pact Organic Soft-Slub Essential Muscle Tee Dress" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Pact</p><h3 class="shop-name">Soft-Slub Essential Muscle Tee Dress</h3><p class="shop-desc">Organic cotton with no wrinkle or stain resin finish. Those finishes are a common cause of reactions to brand new clothing and almost nobody suspects them.</p><span class="shop-cta">Shop the dress</span></a>
-<a class="shop-card" id="eberjey-gisele-tencel-modal-pajama-set" href="https://go.shopmy.us/p-84729560" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">What to sleep in</span><img src="https://eberjey.com/cdn/shop/files/PJ1018-DESIV_1009.jpg?width=900" alt="Eberjey Gisele TENCEL Modal Pajama Set" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Gisele TENCEL Modal Pajama Set</h3><p class="shop-desc">Modal is a fine, smooth fiber that moves heat away instead of holding it. If you wake up warm and itchy, this change does more than any cream will.</p><span class="shop-cta">Shop the pajamas</span></a>
-<a class="shop-card" id="eberjey-kari-tencel-modal-cami-short-set" href="https://go.shopmy.us/p-83578411?s=sl1_stk_cpl" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The matching set</span><img src="https://eberjey.com/cdn/shop/files/CU4060S-WILDB_1670_2.jpg?width=900" alt="Eberjey Kari TENCEL Modal Cami & Short Set" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Eberjey</p><h3 class="shop-name">Kari TENCEL Modal Cami & Short Set</h3><p class="shop-desc">Same fiber, cut lower for warm sleepers. Lace trim, but the modal underneath is doing the actual work of keeping heat off inflamed skin.</p><span class="shop-cta">Shop the set</span></a>
-<a class="shop-card" id="haven-well-within-washable-silk-camisole" href="https://go.shopmy.us/p-82288097" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The layering trick</span><img src="https://www.havenwellwithin.com/dw/image/v2/BKGN_PRD/on/demandware.static/-/Sites-master-catalog-talbots/default/dwa49e7b2e/images/243735112/243735112_7002.jpg" alt="Haven Well Within Washable Silk Camisole" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Haven Well Within</p><h3 class="shop-name">Washable Silk Camisole</h3><p class="shop-desc">Silk is the smoothest fiber there is against inflamed skin, and this one washes. Wear it under a wool blazer and you get to keep the blazer.</p><span class="shop-cta">Shop the camisole</span></a>
-</div>
-</section>
+
+
+
+
+
 
 <section class="picks-section reveal" id="sleep">
   <div class="picks-head">
-    <p class="picks-eyebrow">Step five</p>
+    <p class="picks-eyebrow">The bedroom</p>
     <h2 class="picks-title">You spend a <em>third of your life</em> in this one room</h2>
     <p class="picks-lede">If you are allergic to dust mites, the mattress is the reservoir and everything else in the room is downstream of it. Start there, then upgrade what actually touches your skin. Every item here can be laundered.</p>
   </div>
@@ -633,7 +727,7 @@
 
 <section class="picks-section reveal" id="house">
   <div class="picks-head">
-    <p class="picks-eyebrow">Step six</p>
+    <p class="picks-eyebrow">The house</p>
     <h2 class="picks-title">The <em>low-irritant</em> house</h2>
     <p class="picks-lede">The things around you all day matter more than the things you put on your face for ninety seconds. Air and humidity are the two levers that actually move the needle, and neither is expensive.</p>
   </div>
@@ -645,13 +739,7 @@
 </section>
 
 
-<section class="picks-section reveal" id="professional">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step seven</p>
-    <h2 class="picks-title">What I actually wear <em>to work</em></h2>
-    <p class="picks-lede">Everything above is about lowering what your skin has to deal with. This section is the other half of the day. Fiber and fit still matter once you are dressed for the office, and the same rules apply: smooth fibers, nothing that traps heat, and new pieces washed before the first wear. What follows is the edit I keep coming back to.</p>
-  </div>
-</section>
+
 
 <div class="hero-collage">
   <img src="wardrobe-blazer.jpg" alt="One-button blazer">
@@ -667,63 +755,9 @@
   <p style="margin-top:8px;"><a href="/post-i-didnt-ask-permission" style="color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.35); padding-bottom:1px; font-weight:400;">Why I built this without asking anyone first &rarr;</a></p>
 </div>
 
-<section class="mix-match">
-  <div class="mix-match-head">
-    <p class="mix-match-eyebrow">How the pieces work</p>
-    <h2 class="mix-match-title">Six pieces, <em>endless</em> outfits.</h2>
-  </div>
 
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="wardrobe-shirt.jpg" alt="Satin soft shirt">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="wardrobe-pant.jpg" alt="Elle slim ankle pant">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="wardrobe-blazer.jpg" alt="One-button blazer">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Look one</p>
-      <h3 class="mix-label-title">The desk</h3>
-      <span class="mix-bubble">Keep the blazer buttoned for client meetings, open it up for everyday desk work.</span>
-    </div>
-  </div>
 
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="wardrobe-shirt.jpg" alt="Satin soft shirt">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="wardrobe-jean.jpg" alt="Cuffed straight ankle jean">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="wardrobe-jacket.jpg" alt="Faux leather jacket">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Look two</p>
-      <h3 class="mix-label-title">The dinner</h3>
-      <span class="mix-bubble">Undo one more button, swap flats for heels, and you're out the door.</span>
-    </div>
-  </div>
 
-  <div class="mix-row reveal">
-    <img class="mix-piece" src="wardrobe-dress.jpg" alt="Ponte midi dress">
-    <span class="mix-glyph">+</span>
-    <img class="mix-piece" src="wardrobe-jacket.jpg" alt="Faux leather jacket">
-    <div class="mix-label">
-      <p class="mix-label-eyebrow">Look three</p>
-      <h3 class="mix-label-title">The day out</h3>
-      <span class="mix-bubble">Wears alone on warm days, layered under the jacket once it cools off.</span>
-    </div>
-  </div>
-</section>
-
-<section class="picks-section reveal" id="travel">
-  <div class="picks-head">
-    <p class="picks-eyebrow">On the road</p>
-    <h2 class="picks-title">Travel lighter, <em>come home calmer</em></h2>
-    <p class="picks-lede">Pack for what is actually on your schedule each day, and give small things a home. These are the travel picks from my Philadelphia letter. <a href="/sunday-letter-05-philadelphia-a-standby-seat-and-a-surprise" style="color:var(--terracotta);">Read the full trip guide</a>.</p>
-  </div>
-  <div class="shop-grid shop-grid--4 --4">
-<a class="shop-card" id="heys-puffer-travel-tote" href="https://go.shopmy.us/p-91357072" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">My favorite bag</span><img src="https://us.heys.com/cdn/shop/files/Puffer_Travel_Tote_Front_View_Black.jpg?width=900" alt="Heys Puffer Travel Tote" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Heys</p><h3 class="shop-name">Puffer Travel Tote</h3><p class="shop-desc">Under 2 lbs, a padded pocket for a 15.6" laptop, nine interior pockets, and it fits as a personal item.</p><span class="shop-cta">Shop the tote</span></a>
-<a class="shop-card" id="away-the-bigger-carry-on" href="https://go.shopmy.us/p-89879828" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The suitcase</span><img src="https://www.awaytravel.com/cdn/shop/files/PDP_Cabana_PC_BCO_01.jpg?width=900" alt="Away The Bigger Carry-On" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Away</p><h3 class="shop-name">The Bigger Carry-On</h3><p class="shop-desc">The larger version of Away's carry-on, for trips that need a little more room.</p><span class="shop-cta">Shop the suitcase</span></a>
-<a class="shop-card" id="bagail-8-piece-packing-cubes" href="https://go.shopmy.us/p-91415750" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Give small things a home</span><img src="https://img-va.myshopline.com/image/store/1764052937487/69cf39c13897a-shopline-opt-69cf39c10dc42.webp" alt="BAGAIL 8-Piece Packing Cubes" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">BAGAIL</p><h3 class="shop-name">8-Piece Packing Cubes</h3><p class="shop-desc">Chargers in one cube, toiletries in another, and the same spot in every hotel room.</p><span class="shop-cta">Shop the cubes</span></a>
-<a class="shop-card" id="anker-10k-power-bank-with-built-in-usb-c-cable" href="https://go.shopmy.us/p-89884633" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">For long conference days</span><img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1c1bd9c3-1349-4992-8a82-78e81eb72db1.png" alt="Anker 10K Power Bank with Built-In USB-C Cable" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Anker</p><h3 class="shop-name">10K Power Bank with Built-In USB-C Cable</h3><p class="shop-desc">No hunting for an outlet in a cold ballroom.</p><span class="shop-cta">Shop the power bank</span></a>
-</div>
-</section>
 
 <section class="picks-section reveal" id="bookshelf">
   <div class="picks-head">
