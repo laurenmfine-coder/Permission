@@ -382,7 +382,7 @@
   .edit-grid-head p { font-size:0.9rem; color:var(--gray); max-width:420px; line-height:1.7; }
   .edit-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px 24px; }
   .p-card { display:flex; flex-direction:column; text-decoration:none; color:inherit; }
-  .p-tile { position:relative; aspect-ratio:4/5; overflow:hidden; background:#F1ECE5; margin-bottom:16px; }
+  .p-tile { display:block; position:relative; aspect-ratio:4/5; overflow:hidden; background:#F1ECE5; margin-bottom:16px; }
   .p-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.8s ease; }
   .p-tile.pack img { object-fit:contain; padding:14%; mix-blend-mode:multiply; }
   .p-card:hover .p-tile img { transform:scale(1.04); }
@@ -415,13 +415,15 @@
     .edit-strip .s-body { padding:28px 24px 32px; }
     .p-row { flex-direction:column; align-items:flex-start; }
   }
+  .edit-likes { background:#fff; }
+  .likes-group { margin-top:64px; }
 </style>
 
 <section class="edit" id="brands">
   <div class="edit-inner">
     <p class="edit-eyebrow">The Edit &middot; November 2026</p>
-    <h2 class="edit-h2">Brands I work with, and the <em>codes</em> I set up for you</h2>
-    <p class="edit-lede">These are the brands I am partnering with right now. Where there is a code, tap it to copy, then use the shop link so the code applies at checkout.</p>
+    <h2 class="edit-h2">Brands I work with, and brands I just <em>love</em></h2>
+    <p class="edit-lede">Some of these are partners. Some I simply use and love. Where there is a code, tap it to copy, then use the shop link so the code applies at checkout.</p>
 
     <div class="edit-feature">
       <div class="edit-collage">
@@ -440,8 +442,8 @@
     </div>
 
     <div class="edit-grid-head">
-      <h3>This month&rsquo;s partners</h3>
-      <p>New arrivals first, then the brands with community codes.</p>
+      <h3>This month&rsquo;s favorites</h3>
+      <p>New arrivals first, then the brands with codes for this community.</p>
     </div>
 
     <div class="edit-grid">
@@ -517,7 +519,7 @@
       </div>
     </div>
 
-    <p class="edit-disclose">These are affiliate links. I may earn a commission when you shop through them, at no cost to you. I only share brands I use.</p>
+    
   </div>
 </section>
 <script>
@@ -529,363 +531,47 @@ document.addEventListener('click',function(e){
 });
 </script>
 
-
-
-<div class="picks-head" style="padding:56px 64px 0; max-width:900px;">
-    <p class="picks-eyebrow">Start here</p>
-    <h2 class="picks-title">Why perimenopause changes <em>everything</em> about your skin</h2>
-    <p class="picks-lede">Estrogen does more for skin than most people realize. It regulates collagen production, holds onto water, and keeps the barrier that protects you from irritants intact. When estrogen starts declining in perimenopause, all three of those jobs get harder. Research puts the number at roughly 30 percent of skin collagen lost in the first five years after menopause, with continued loss of about one to two percent a year after that. That shows up as thinner skin, less bounce, more visible lines, and skin that feels drier no matter how much you moisturize.</p>
-    <p class="picks-lede" style="margin-top:16px;">You cannot stop estrogen from declining. What you can do is reduce the damage stacking on top of it, protect the collagen you still have, and replace some of what skin can no longer hold onto itself. That is what these ingredients do, and it is why I keep coming back to the same four every time someone asks me where to start.</p>
-    <p class="picks-lede" style="margin-top:16px;">Four products. That is it. Sunscreen, a vitamin C toner, hyaluronic acid, and retinol. Every one of them does a specific, measurable job, and I explain what that job is below each pick. Nothing else on a crowded skincare shelf is doing something these four are not already covering. A $200 "potion" is not a stronger version of any of this. Most of the time it is the same handful of active ingredients in fancier packaging, priced for the story on the label, not the chemistry inside the bottle. The only thing it reliably does is make your money disappear.</p>
-  </div>
-
-<div class="section-jump">
-  <a href="#brands">Brands I work with</a>
-  <a href="#spf">Sunscreen</a>
-  <a href="#vitc">Vitamin C</a>
-  <a href="#hydrate">Hyaluronic Acid</a>
-  <a href="#retinol">Retinol</a>
-  <a href="#testing">What "allergy tested" means</a>
-  <a href="#sleep">Bedroom</a>
-  <a href="#house">Home</a>
-  <a href="#bookshelf">Books</a>
-  <a href="#shutdown">Shutdown Kit</a>
-  <a href="#kitchen">Kitchen</a>
-  <a href="#pilates">Pilates</a>
-  <a href="#closet">Closet</a>
+<section class="edit edit-likes" id="likes">
+  <div class="edit-inner">
+    <p class="edit-eyebrow">Everything else I love</p>
+    <h2 class="edit-h2">Stylish, useful, and a little <em>luxurious</em></h2>
+<div class="likes">
+<div class="likes-group"><div class="edit-grid-head"><h3>Workwear</h3><p>White House Black Market, the pieces I repeat.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-99735149" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="wardrobe-blazer.jpg" alt="White House Black Market The one-button blazer" loading="lazy"></span><p class="p-brand">White House Black Market</p><p class="p-name">The one-button blazer</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-82171213?s=sl1_pl1_cpl" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="wardrobe-dress.jpg" alt="White House Black Market The ponte midi dress" loading="lazy"></span><p class="p-brand">White House Black Market</p><p class="p-name">The ponte midi dress</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-82172616" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="wardrobe-shirt.jpg" alt="White House Black Market The satin soft shirt" loading="lazy"></span><p class="p-brand">White House Black Market</p><p class="p-name">The satin soft shirt</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-82172878" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="wardrobe-pant.jpg" alt="White House Black Market The Elle slim ankle pant" loading="lazy"></span><p class="p-brand">White House Black Market</p><p class="p-name">The Elle slim ankle pant</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
+<div class="likes-group"><div class="edit-grid-head"><h3>The bedroom</h3><p>Sleep in something nice.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-82282968" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="https://www.havenwellwithin.com/dw/image/v2/BKGN_PRD/on/demandware.static/-/Sites-master-catalog-talbots/default/dwd57b946e/images/234750007/234750007_0739.jpg" alt="Haven Well Within Washable Silk Pillowcase" loading="lazy"></span><p class="p-brand">Haven Well Within</p><p class="p-name">Washable Silk Pillowcase</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-84738818" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/07152022_Set0_5_ADAMS_White_SignatureHemmed_SheetSet_Bundle_Stack_Carousel_L1_0430_liq_FINAL_BB22_1_2_1.png?width=760" alt="Boll &amp; Branch Signature Hemmed Sheet Set" loading="lazy"></span><p class="p-brand">Boll &amp; Branch</p><p class="p-name">Signature Hemmed Sheet Set</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-84739328" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/2031BollandBranch24542WhiteSignatureHemmedDuvetSet_FINAL_BB22_51a38128-a174-4448-9a4d-e43dd5d70b05.jpg?width=760" alt="Boll &amp; Branch Signature Hemmed Duvet Set" loading="lazy"></span><p class="p-brand">Boll &amp; Branch</p><p class="p-name">Signature Hemmed Duvet Set</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93293557" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://www.datocms-assets.com/98401/1769721785-restore-3-carousel-putty-1-v2.webp" alt="Hatch Restore 3" loading="lazy"></span><p class="p-brand">Hatch</p><p class="p-name">Restore 3</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
+<div class="likes-group"><div class="edit-grid-head"><h3>The kitchen</h3><p>Pieces that last.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-93291666" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://cb.scene7.com/is/image/Crate/LeCreuSg5p5qDtchOvenSeaSSF23?wid=1000&hei=1000" alt="Le Creuset Signature Round Dutch Oven, 5.5 qt" loading="lazy"></span><p class="p-brand">Le Creuset</p><p class="p-name">Signature Round Dutch Oven, 5.5 qt</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93291730" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://cb.scene7.com/is/image/Crate/Staub5p5QRndCocotteCherryS19?wid=1000&hei=1000" alt="Staub Round Cocotte, 5.5 qt" loading="lazy"></span><p class="p-brand">Staub</p><p class="p-name">Round Cocotte, 5.5 qt</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
+<div class="likes-group"><div class="edit-grid-head"><h3>Pilates</h3><p>For class and at home.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-99720213" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://carbon38.com/cdn/shop/products/MAND-112011030-BLUNAV-prolite-Color-MIDNIGHT_fa7d036c-2925-439d-9060-b8d25162a35f.jpg?width=1000" alt="Manduka PRO Lite Yoga Mat, 4.7mm" loading="lazy"></span><p class="p-brand">Manduka</p><p class="p-name">PRO Lite Yoga Mat, 4.7mm</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93292476" target="_blank" rel="noopener sponsored"><span class="p-tile"><img src="https://www.taviactive.com/cdn/shop/files/Kalea_Bow-Noir_01_7b152136-1c72-4424-a840-8dc67930c0fd.jpg?width=1000" alt="Tavi Kalea Grip Socks" loading="lazy"></span><p class="p-brand">Tavi</p><p class="p-name">Kalea Grip Socks</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
+<div class="likes-group"><div class="edit-grid-head"><h3>Closet and desk</h3><p>Small things that make every day easier.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-93292902" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://images.containerstore.com/catalogimages/487840/10093670-non-slip-velvet-suit-hanger.jpg" alt="The Container Store Non-Slip Velvet Hangers" loading="lazy"></span><p class="p-brand">The Container Store</p><p class="p-name">Non-Slip Velvet Hangers</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-99719834" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://static.shopmy.us/pins/zoom-95170277-1792242974249-.jpg" alt="VaeFae Adjustable Bamboo Drawer Dividers, 6-Pack" loading="lazy"></span><p class="p-brand">VaeFae</p><p class="p-name">Adjustable Bamboo Drawer Dividers, 6-Pack</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93294028" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://www.1101.com/store/techo/2027/images/og/wb27_whitelineiv.jpg" alt="Hobonichi Techo Weeks 2027" loading="lazy"></span><p class="p-brand">Hobonichi</p><p class="p-name">Techo Weeks 2027</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
+<div class="likes-group"><div class="edit-grid-head"><h3>On my nightstand</h3><p>Books worth your time.</p></div><div class="edit-grid">
+<a class="p-card" href="https://go.shopmy.us/p-93293972" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://covers.openlibrary.org/b/id/11990973-L.jpg" alt="Oliver Burkeman Four Thousand Weeks" loading="lazy"></span><p class="p-brand">Oliver Burkeman</p><p class="p-name">Four Thousand Weeks</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93293843" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://covers.openlibrary.org/b/id/10543310-L.jpg" alt="Nedra Glover Tawwab Set Boundaries, Find Peace" loading="lazy"></span><p class="p-brand">Nedra Glover Tawwab</p><p class="p-name">Set Boundaries, Find Peace</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+<a class="p-card" href="https://go.shopmy.us/p-93293725" target="_blank" rel="noopener sponsored"><span class="p-tile pack"><img src="https://covers.openlibrary.org/b/id/13567895-L.jpg" alt="Pooja Lakshmin, MD Real Self-Care" loading="lazy"></span><p class="p-brand">Pooja Lakshmin, MD</p><p class="p-name">Real Self-Care</p><span class="p-shop" style="align-self:flex-start;">Shop</span></a>
+</div></div>
 </div>
-
-<section class="picks-section reveal" id="spf">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step one</p>
-    <h2 class="picks-title">Sunscreen protects the collagen <em>you have left</em></h2>
-    <p class="picks-lede">Here is the part that surprises people: UV exposure does not just cause new damage, it accelerates the same collagen breakdown that declining estrogen already started. UV light activates enzymes called matrix metalloproteinases that break down collagen faster than it can rebuild, and that process runs on top of, not separate from, what perimenopause is already doing. Skipping sunscreen during this decade costs you more than it did in your twenties. Wear it daily, rain or shine, and reapply if you're outside for more than two hours.</p>
-  </div>
-  <div class="shop-feature-wrap --1"><a class="shop-feature" id="vanicream-facial-moisturizer-spf-30" href="https://go.shopmy.us/p-84893729" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">#1 dermatologist recommended for sensitive skin</span><img src="vanicream-spf.jpg" alt="Vanicream Facial Moisturizer SPF 30" loading="lazy"></div><div class="shop-feature-body"><p class="shop-brand">Vanicream</p><h3 class="shop-name">Facial Moisturizer SPF 30</h3><p class="shop-desc">Free of dyes, fragrance, lanolin, parabens and formaldehyde releasers, the specific ingredients most often flagged in patch testing. Vanicream is the most cited "low allergen" brand in allergy and dermatology literature, not just marketing language, and it is the one I actually recommend to patients with sensitive skin. There is no sunscreen at any price that protects collagen better than a broad spectrum SPF you will actually wear every day.</p><span class="shop-btn">Shop Vanicream SPF</span></div></a></div>
-</section>
-
-<section class="picks-section reveal" id="vitc">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step two</p>
-    <h2 class="picks-title">Vitamin C wakes up dull skin <em>before</em> anything else goes on</h2>
-    <p class="picks-lede">Vitamin C is an antioxidant, so it works differently than sunscreen or hyaluronic acid. It helps neutralize free radical damage from UV and pollution before that damage has a chance to break down collagen, and it supports the collagen production process directly. A toner is the easiest place to get it: applied right after cleansing, it preps skin to absorb whatever comes next more effectively, and it gives you a visible brightness boost on its own within a few uses. You do not need a $200 vitamin C serum to get a real antioxidant benefit. A well-formulated drugstore toner does the job for a fraction of the price.</p>
-  </div>
-  <div class="shop-feature-wrap --1"><a class="shop-feature" id="no7-radiance-vitamin-c-toner" href="https://go.shopmy.us/p-88179000?s=sl1_stk_cpl" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">2% vitamin C, drugstore price</span><img src="no7-vitamin-c-toner.png" alt="No7 Radiance+ Vitamin C Glow Toner 200ml" class="contain" loading="lazy"></div><div class="shop-feature-body"><p class="shop-brand">No7</p><h3 class="shop-name">Radiance+ Vitamin C Toner</h3><p class="shop-desc">Applied with a cotton pad right after cleansing, morning or night. It is formulated with 2 percent vitamin C alongside aloe and cucumber, so it hydrates while it brightens instead of stripping skin the way some older-style toners do. This is the one I keep in the same spot every day, not because it is fancy, but because it works and I never have to think about it.</p><span class="shop-btn">Shop No7 Vitamin C Toner</span></div></a></div>
-</section>
-
-<section class="picks-section reveal" id="hydrate">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step three</p>
-    <h2 class="picks-title">Hyaluronic acid replaces what estrogen <em>used to hold onto</em></h2>
-    <p class="picks-lede">Your skin makes its own hyaluronic acid, and estrogen helps regulate how much. As estrogen drops, so does your skin's natural water-holding capacity, which is a big part of why skin that used to bounce back now feels tight and looks dull. Topical hyaluronic acid cannot restore estrogen, but it can pull water into skin and hold it there, directly compensating for what your skin is now producing less of on its own. Apply it to damp skin, then seal it with a moisturizer so the water it pulls in does not evaporate straight back out.</p>
-  </div>
-  <div class="shop-feature-wrap --1"><a class="shop-feature" id="derma-botanica-overnight-repair-serum" href="https://go.shopmy.us/p-88179360?s=sl1_stk_cpl" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">5% hyaluronic acid, several molecular weights</span><img src="derma-botanica-ha.png" alt="Derma Botanica Overnight Repair Serum with 5% Hyaluronic Acid" class="contain" loading="lazy"></div><div class="shop-feature-body"><p class="shop-brand">Derma Botanica</p><h3 class="shop-name">Overnight Repair Serum</h3><p class="shop-desc">This is the one on my own counter. It uses hyaluronic acid at several different molecular weights, which pulls water into both the surface and deeper layers of skin instead of just the top. Niacinamide is in there too, to support the skin barrier while the hyaluronic acid does its job. Apply at night, before a moisturizer, and let it work while you sleep.</p><span class="shop-btn">Shop the Overnight Repair Serum</span></div></a></div>
-</section>
-
-<section class="picks-section reveal" id="retinol">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Step four</p>
-    <h2 class="picks-title">Retinol is the one active that actually rebuilds <em>collagen</em></h2>
-    <p class="picks-lede">Sunscreen prevents damage, vitamin C fights it off before it lands, and hyaluronic acid replaces lost water, but none of them tell skin to make more collagen. Retinol does. It is the topical ingredient with the most consistent clinical evidence for stimulating new collagen synthesis, which is exactly the process perimenopause slows down. It also increases sun sensitivity while you use it, which is why sunscreen above is non-negotiable alongside it, not optional. Start two to three nights a week, and give it eight to twelve weeks before judging whether it is working, that is roughly how long visible collagen changes take to show up.</p>
-  </div>
-  <div class="shop-feature-wrap --1"><a class="shop-feature" id="cerave-skin-renewing-retinol-serum" href="https://go.shopmy.us/p-84896071" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Encapsulated, developed with dermatologists</span><img src="cerave-retinol-serum.jpg" alt="CeraVe Retinol Serum for Face with Niacinamide and Hyaluronic Acid" loading="lazy"></div><div class="shop-feature-body"><p class="shop-brand">CeraVe</p><h3 class="shop-name">Skin Renewing Retinol Serum</h3><p class="shop-desc">Fragrance-free with encapsulated retinol technology, which slow-releases the active over time instead of delivering it all at once. Paired with niacinamide and ceramides to reduce the redness and flaking that stops most people from sticking with retinol at all. Two to three nights a week to start, building up only as skin tolerates it.</p><span class="shop-btn">Shop CeraVe Retinol Serum</span></div></a></div>
-</section>
-
-<div class="label-band">
-  <div class="label-head">
-    <p class="label-eyebrow">Start here</p>
-    <h2 class="label-title">Three words on the label. Only <em>one</em> is checkable.</h2>
-  </div>
-  <div class="label-grid">
-    <div class="label-cell">
-      <p class="label-word">Hypoallergenic</p>
-      <p class="label-verdict">Not regulated</p>
-      <p class="label-note">There is no standard behind it and no test a product has to pass. The FDA says plainly that <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">no federal standards or definitions</a> govern the word. It is the term people trust most and the one that tells you least.</p>
-    </div>
-    <div class="label-cell">
-      <p class="label-word">Unscented</p>
-      <p class="label-verdict">Often misleading</p>
-      <p class="label-note">A product can be unscented and still contain fragrance, <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">added specifically to mask the smell</a> of the other ingredients. If you react to fragrance, this word does not protect you.</p>
-    </div>
-    <div class="label-cell">
-      <p class="label-word">Fragrance free</p>
-      <p class="label-verdict">Checkable</p>
-      <p class="label-note">It means none was added, and you can confirm it on the ingredient list. This is <a href="https://www.aad.org/public/everyday-care/itchy-skin/rash/itchy-rash-contact-dermatitis" target="_blank" rel="noopener">the term dermatologists tell patients to look for</a>. Together with "allergy tested," it is what I look for too.</p>
-    </div>
-  </div>
-</div>
-
-<div class="intro-note">
-  <p><strong>A note on how to use this.</strong> Nothing here treats a condition. If your skin is genuinely inflamed, or you have eczema or hives that are not controlled, that is a conversation with your own physician, not a shopping list.</p>
-  <p>What this list does is reduce what your skin has to deal with and give it what it needs less of as estrogen declines: protection, antioxidant defense, water, and a reason to keep making collagen. Four products, four jobs, nothing overlapping and nothing missing. Change one thing at a time. If everything changes at once and your skin improves, you have learned nothing about which change mattered.</p>
-</div>
-
-<style>
-  .testing-band { background:var(--cream-dark); padding:96px 64px; }
-  .testing-head { max-width:760px; margin-bottom:56px; }
-  .testing-eyebrow { font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
-  .testing-title { font-family:'Playfair Display',serif; font-weight:300; font-size:clamp(1.9rem,3.2vw,2.9rem); color:var(--black); line-height:1.15; margin-bottom:24px; }
-  .testing-title em { font-style:italic; color:var(--terracotta); }
-  .testing-lede { font-size:1rem; line-height:1.85; color:var(--gray); font-weight:300; }
-  .testing-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
-  .testing-card { background:var(--white); padding:40px 36px 42px; border-top:3px solid var(--blush); }
-  .testing-card.wide { grid-column:1 / -1; }
-  .testing-num { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
-  .testing-h { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:500; color:var(--black); line-height:1.25; margin-bottom:16px; }
-  .testing-p { font-size:0.9rem; line-height:1.85; color:var(--gray); font-weight:300; margin-bottom:14px; }
-  .testing-p:last-child { margin-bottom:0; }
-  .testing-p a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); }
-  .testing-p a:hover { border-bottom-color:var(--terracotta); }
-  .testing-q { border-left:2px solid var(--gold); padding-left:18px; font-style:italic; color:var(--black); }
-  .testing-foot { max-width:760px; margin-top:48px; }
-  .testing-foot p { font-size:0.95rem; line-height:1.85; color:var(--gray); font-weight:300; }
-  .testing-foot a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.3); }
-  @media (max-width:960px) {
-    .testing-band { padding:64px 24px; }
-    .testing-grid { grid-template-columns:1fr; }
-    .testing-card { padding:32px 24px 34px; }
-  }
-</style>
-
-<section class="testing-band reveal" id="testing">
-  <div class="testing-head">
-    <p class="testing-eyebrow">The testing</p>
-    <h2 class="testing-title">What "allergy tested" <em>actually</em> means</h2>
-    <p class="testing-lede">"Allergy tested" and "hypoallergenic" get used constantly and mean almost nothing on their own. Here is the part worth understanding, including the limits, so the words on a label tell you something real.</p>
-  </div>
-
-  <div class="testing-grid">
-
-    <div class="testing-card">
-      <p class="testing-num">01</p>
-      <h3 class="testing-h">"Hypoallergenic" is not a claim anyone has to prove</h3>
-      <p class="testing-p">The FDA is unusually blunt about this. <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">There are no federal standards or definitions</a> governing the term, the agency says, and it "means whatever a particular company wants it to mean." No manufacturer has to submit any substantiation to use it.</p>
-      <p class="testing-p">The FDA did try. A 1975 regulation would have required comparative testing before a product could carry the word. Cosmetics companies sued and the D.C. Circuit <a href="https://openjurist.org/569/f2d/674/almay-inc-v-a-califano" target="_blank" rel="noopener">struck the rule down in 1977</a>. No comparative standard has existed since.</p>
-      <p class="testing-p">What filled the vacuum is measurable. When researchers analyzed skin care products marketed as hypoallergenic in the United States, <a href="https://doi.org/10.1016/j.jaci.2014.07.066" target="_blank" rel="noopener">89 percent contained at least one known contact allergen</a>.</p>
-    </div>
-
-    <div class="testing-card">
-      <p class="testing-num">02</p>
-      <h3 class="testing-h">What a real sensitization test looks like</h3>
-      <p class="testing-p">The protocol behind the phrase "allergy tested" is usually the Human Repeated Insult Patch Test. It runs on roughly <a href="https://ftp.cdc.gov/pub/Documents/OEL/06.%20Dotson/References/Basketter_2009_Cutan%20Ocular%20Toxicol.pdf" target="_blank" rel="noopener">100 to 200 volunteers</a>. Nine occluded patches go on the upper back across three weeks. Then a two week rest. Then a fresh challenge patch on skin that has never seen the product, read over the following days.</p>
-      <p class="testing-p">The design is deliberate and it is not asking whether the product stings. It is asking a harder question: whether repeated forced exposure can teach an immune system to react to something it previously ignored. That is what sensitization is, and it is permanent once it happens.</p>
-    </div>
-
-    <div class="testing-card">
-      <p class="testing-num">03</p>
-      <h3 class="testing-h">And what that test cannot tell you</h3>
-      <p class="testing-p">A panel of about 100 people cannot detect a sensitization rate below roughly one percent. Nine occluded exposures are nothing like how anyone actually uses a moisturizer. And in the words of the toxicologist reviewing the method, a negative result <span class="testing-q">"does not mean that sensitization will not occur in the exposed population."</span></p>
-      <p class="testing-p">So allergy tested is not a promise. It is a screen that catches strong sensitizers before a product ships. That is worth a great deal. It is not the same thing as safe for everyone, and any brand telling you otherwise is overselling.</p>
-    </div>
-
-    <div class="testing-card">
-      <p class="testing-num">04</p>
-      <h3 class="testing-h">Why fragrance is the ingredient I care most about</h3>
-      <p class="testing-p">Under US labeling law an entire fragrance mixture can appear on an ingredient list as <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">one word: "Fragrance."</a> Those formulas are protected as trade secrets. So on a scented product, the ingredient list genuinely cannot tell you what you are putting on your face.</p>
-      <p class="testing-p">That matters because fragrance chemicals are among the most common contact allergens found in clinic. In the most recent <a href="https://doi.org/10.1089/derm.2024.0474" target="_blank" rel="noopener">North American Contact Dermatitis Group series</a>, 3,056 patients were patch tested. Hydroperoxides of linalool, an oxidized fragrance ingredient, were positive in 10.1 percent of them.</p>
-      <p class="testing-p">Removing fragrance removes an entire category you have no way to audit. On this whole page, that is the single highest yield decision.</p>
-    </div>
-
-  </div>
-
-  <div class="testing-foot">
-    <p>None of this replaces patch testing. If your skin is reacting and you do not know to what, that is a diagnosis worth getting, and no ingredient list substitutes for it. What a fragrance free, allergy tested product does is reduce the number of variables you are carrying before you start.</p>
   </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="picks-section reveal" id="sleep">
-  <div class="picks-head">
-    <p class="picks-eyebrow">The bedroom</p>
-    <h2 class="picks-title">You spend a <em>third of your life</em> in this one room</h2>
-    <p class="picks-lede">If you are allergic to dust mites, the mattress is the reservoir and everything else in the room is downstream of it. Start there, then upgrade what actually touches your skin. Every item here can be laundered.</p>
-  </div>
-  <div class="shop-grid --3">
-<a class="shop-card" id="hygea-natural-dust-mite-allergen-mattress-protec" href="https://go.shopmy.us/p-82283053" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The one that matters most</span><img src="hygea-encasement.jpg" alt="Hygea Natural Dust Mite & Allergen Mattress Protector" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Hygea Natural</p><h3 class="shop-name">Dust Mite & Allergen Mattress Protector</h3><p class="shop-desc">A zippered encasement puts a physical barrier between you and the reservoir in the mattress. For anyone with a dust mite allergy this is the highest-value item on the page.</p><span class="shop-cta">Shop the protector</span></a>
-<a class="shop-card" id="haven-well-within-washable-silk-pillowcase" href="https://go.shopmy.us/p-82282968" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">For skin and hair</span><img src="https://www.havenwellwithin.com/dw/image/v2/BKGN_PRD/on/demandware.static/-/Sites-master-catalog-talbots/default/dwd57b946e/images/234750007/234750007_0739.jpg" alt="Haven Well Within Washable Silk Pillowcase" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Haven Well Within</p><h3 class="shop-name">Washable Silk Pillowcase</h3><p class="shop-desc">Most silk pillowcases ask you to hand wash, which means they never get washed. This one goes in the machine, and washability is the whole point.</p><span class="shop-cta">Shop the pillowcase</span></a>
-<a class="shop-card" id="brooklinen-down-alternative-comforter" href="https://go.shopmy.us/p-82388772" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The reliable swap</span><img src="brooklinen-comforter.jpg" alt="Brooklinen Down Alternative Comforter" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Brooklinen</p><h3 class="shop-name">Down Alternative Comforter</h3><p class="shop-desc">DOWNMARK certified to strip out dust and allergens before the fill ever reaches you, which is the actual claim behind "hypoallergenic," not just a word on a tag. Fully machine washable, no dry cleaner trip required.</p><span class="shop-cta">Shop the comforter</span></a>
-<a class="shop-card" id="boll-branch-signature-hemmed-sheet-set" href="https://go.shopmy.us/p-84738818" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The soft one</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/07152022_Set0_5_ADAMS_White_SignatureHemmed_SheetSet_Bundle_Stack_Carousel_L1_0430_liq_FINAL_BB22_1_2_1.png?width=760" alt="Boll &amp; Branch Signature Hemmed Sheet Set in white" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Signature Hemmed Sheet Set</h3><p class="shop-desc">Sateen weave, which is the smooth, slightly cool one. Long-staple cotton sheds less lint than a short-staple sheet, and lint is one more thing settling in the bed.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="boll-branch-percale-hemmed-sheet-set" href="https://go.shopmy.us/p-84739045" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The cool one</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/percale-sheet-set-white-2026-badge.png?width=760" alt="Boll &amp; Branch Percale Hemmed Sheet Set in white" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Percale Hemmed Sheet Set</h3><p class="shop-desc">Percale is the crisp, flat weave. It breathes better than sateen, which matters if you sleep hot or live somewhere the air conditioning is doing all the work.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="boll-branch-linen-sheet-set" href="https://go.shopmy.us/p-84739164" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The one that gets better</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/03212023_SNYDER_White_Linen_SheetSet_Stack_Carousel_P1_1197_FINAL_BB22_1.jpg?width=760" alt="Boll &amp; Branch Linen Sheet Set in white" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Linen Sheet Set</h3><p class="shop-desc">Linen is the loosest weave of the three, so it moves the most air. It softens with every wash rather than wearing out, and it does not hold heat against you.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="boll-branch-signature-hemmed-duvet-set" href="https://go.shopmy.us/p-84739328" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The cover</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/2031BollandBranch24542WhiteSignatureHemmedDuvetSet_FINAL_BB22_51a38128-a174-4448-9a4d-e43dd5d70b05.jpg?width=760" alt="Boll &amp; Branch Signature Hemmed Duvet Set in white" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Signature Hemmed Duvet Set</h3><p class="shop-desc">A washable cover is what makes a comforter practical. The comforter goes in the wash a few times a year. The cover goes in as often as the sheets.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="boll-branch-signature-hemmed-pillowcase-set" href="https://go.shopmy.us/p-84739462" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The part touching your face</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/08012022_Set5_ADAMS_White_SignatureHemmed_Pillowcases_Stack_Carousel_P1_3841_FINAL_BB22.jpg?width=760" alt="Boll &amp; Branch Signature Hemmed Pillowcase Set in white" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Signature Hemmed Pillowcase Set</h3><p class="shop-desc">Your face is on this for seven hours. Buy the extra pair so a wash night never becomes a reason to skip changing them.</p><span class="shop-cta">Shop it</span></a>
-<a class="shop-card" id="boll-branch-organic-cotton-mattress-protector" href="https://go.shopmy.us/p-83579550" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The comfort layer</span><img src="https://cdn.shopify.com/s/files/1/1154/7838/files/MattressProtector_Overhead_2022_FINAL_BB22.jpg?width=760" alt="Boll &amp; Branch organic cotton mattress protector" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Boll &amp; Branch</p><h3 class="shop-name">Organic Cotton Mattress Protector</h3><p class="shop-desc">Organic cotton, padded, and machine washable. Worth being precise here: this protects the mattress and is gentle on sensitive skin, but it is not a sealed dust mite barrier. If allergy is the reason you are buying, the encasement above is the one that does that job.</p><span class="shop-cta">Shop it</span></a>
-</div>
-</section>
-
-<section class="picks-section reveal" id="house">
-  <div class="picks-head">
-    <p class="picks-eyebrow">The house</p>
-    <h2 class="picks-title">The <em>low-irritant</em> house</h2>
-    <p class="picks-lede">The things around you all day matter more than the things you put on your face for ninety seconds. Air and humidity are the two levers that actually move the needle, and neither is expensive.</p>
-  </div>
-  <div class="shop-grid --3">
-<a class="shop-card" id="maisonette-true-hepa-air-purifier" href="https://go.shopmy.us/p-82288694" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The air</span><img src="https://www.maisonette.com/cdn/shop/files/tLXtvXrgBIWeld3a8L2tBBQew.jpg" alt="Maisonette True HEPA Air Purifier" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Maisonette</p><h3 class="shop-name">True HEPA Air Purifier</h3><p class="shop-desc">True HEPA, not HEPA-type. The second phrase has no standard behind it. Size the unit to the room and run it in the bedroom, where you spend the most consecutive hours.</p><span class="shop-cta">Shop the purifier</span></a>
-<a class="shop-card" id="tractor-supply-dehumidifier-for-home-and-bedroom" href="https://go.shopmy.us/p-82289371" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The lever</span><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/6035945" alt="Tractor Supply Dehumidifier for Home and Bedroom" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Tractor Supply</p><h3 class="shop-name">Dehumidifier for Home and Bedroom</h3><p class="shop-desc">This is how you move that number, and in a humid climate it is the difference between the rest of this list working and not.</p><span class="shop-cta">Shop the dehumidifier</span></a>
-<a class="shop-card" id="atrix-vortex-bagless-hepa-canister-vacuum" href="https://go.shopmy.us/p-82289623" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The floors</span><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/2441871" alt="Atrix Vortex Bagless HEPA Canister Vacuum" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Atrix</p><h3 class="shop-name">Vortex Bagless HEPA Canister Vacuum</h3><p class="shop-desc">A vacuum without a sealed HEPA system pulls allergen off the floor and sprays the fine fraction back into the air you are standing in.</p><span class="shop-cta">Shop the vacuum</span></a>
-</div>
-</section>
-
-
-
-
-<div class="hero-collage">
-  <img src="wardrobe-blazer.jpg" alt="One-button blazer">
-  <img src="wardrobe-dress.jpg" alt="Ponte midi dress">
-  <img src="wardrobe-jean.jpg" alt="Cuffed straight ankle jean">
-  <img src="wardrobe-jacket.jpg" alt="Faux leather jacket">
-  <img src="wardrobe-shirt.jpg" alt="Satin soft shirt">
-  <img src="wardrobe-pant.jpg" alt="Elle slim ankle pant">
-</div>
-
-<div class="intro-note" style="padding-top:8px;">
-  <p>I built this edit around one problem: most professional wardrobes aren't built for the actual shape of a busy day. You need to be comfortable enough to stand through a full clinic day or a packed conference schedule, put-together enough for a meeting that lands with no notice, and ready to go straight to dinner without a wardrobe change. Every piece here does double duty, so a handful of items can pack down small and still take you from day to night. And everything stays in a neutral palette on purpose, so nothing here fights with what's already in your closet.</p>
-  <p style="margin-top:8px;"><a href="/post-i-didnt-ask-permission" style="color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.35); padding-bottom:1px; font-weight:400;">Why I built this without asking anyone first &rarr;</a></p>
-</div>
-
-
-
-
-
-<section class="picks-section reveal" id="bookshelf">
-  <div class="picks-head">
-    <p class="picks-eyebrow">The bookshelf</p>
-    <h2 class="picks-title">Make room, <em>in print</em></h2>
-    <p class="picks-lede">Five books on boundaries, time and doing less, better. They pair with the <a href="/how-to-set-boundaries" style="color:var(--terracotta);">How to Set Boundaries</a> and <a href="/work-life-balance" style="color:var(--terracotta);">Work-Life Balance</a> guides.</p>
-  </div>
-  <div class="shop-grid --3">
-<a class="shop-card" id="pooja-lakshmin-md-real-self-care" href="https://go.shopmy.us/p-93293725" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Self-care that changes things</span><img src="https://covers.openlibrary.org/b/id/13567895-L.jpg" alt="Pooja Lakshmin, MD Real Self-Care" class="book" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Pooja Lakshmin, MD</p><h3 class="shop-name">Real Self-Care</h3><p class="shop-desc">A psychiatrist on why bubble baths are not the fix, and how boundaries and values are.</p><span class="shop-cta">Shop the book</span></a>
-<a class="shop-card" id="cal-newport-slow-productivity" href="https://go.shopmy.us/p-93293783" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Doing fewer things</span><img src="https://covers.openlibrary.org/b/id/14545976-L.jpg" alt="Cal Newport Slow Productivity" class="book" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Cal Newport</p><h3 class="shop-name">Slow Productivity</h3><p class="shop-desc">Do fewer things, work at a natural pace, and obsess over quality.</p><span class="shop-cta">Shop the book</span></a>
-<a class="shop-card" id="nedra-glover-tawwab-set-boundaries-find-peace" href="https://go.shopmy.us/p-93293843" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The boundaries classic</span><img src="https://covers.openlibrary.org/b/id/10543310-L.jpg" alt="Nedra Glover Tawwab Set Boundaries, Find Peace" class="book" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Nedra Glover Tawwab</p><h3 class="shop-name">Set Boundaries, Find Peace</h3><p class="shop-desc">A therapist's guide to what boundaries are, and how to set them at work and at home.</p><span class="shop-cta">Shop the book</span></a>
-<a class="shop-card" id="melissa-urban-the-book-of-boundaries" href="https://go.shopmy.us/p-93293905" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Word-for-word scripts</span><img src="https://covers.openlibrary.org/b/id/12973122-L.jpg" alt="Melissa Urban The Book of Boundaries" class="book" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Melissa Urban</p><h3 class="shop-name">The Book of Boundaries</h3><p class="shop-desc">Boundaries with scripts for work, family, friends and yourself.</p><span class="shop-cta">Shop the book</span></a>
-<a class="shop-card" id="oliver-burkeman-four-thousand-weeks" href="https://go.shopmy.us/p-93293972" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">You will never find time</span><img src="https://covers.openlibrary.org/b/id/11990973-L.jpg" alt="Oliver Burkeman Four Thousand Weeks" class="book" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Oliver Burkeman</p><h3 class="shop-name">Four Thousand Weeks</h3><p class="shop-desc">Time management for people who know they will never get it all done.</p><span class="shop-cta">Shop the book</span></a>
-</div>
-</section>
-
-<section class="picks-section reveal" id="shutdown">
-  <div class="picks-head">
-    <p class="picks-eyebrow">End the day on purpose</p>
-    <h2 class="picks-title">The <em>shutdown</em> kit</h2>
-    <p class="picks-lede">Tools that make a boundary physical: a plan made in advance, a phone put away, a clear end to the day.</p>
-  </div>
-  <div class="shop-grid --4">
-<a class="shop-card" id="simplified-2027-weekly-planner" href="https://go.shopmy.us/p-93292782" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Decide before you are asked</span><img src="https://www.emilyley.com/cdn/shop/files/01Simplified-CY-2027-Dapperdesk-Weekly-Navy.jpg?width=1200" alt="Simplified 2027 Weekly Planner" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Simplified</p><h3 class="shop-name">2027 Weekly Planner</h3><p class="shop-desc">A bookbound weekly layout for planning the week before the week plans you.</p><span class="shop-cta">Shop the planner</span></a>
-<a class="shop-card" id="hobonichi-techo-weeks-2027" href="https://go.shopmy.us/p-93294028" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Slim and portable</span><img src="https://www.1101.com/store/techo/2027/images/og/wb27_whitelineiv.jpg" alt="Hobonichi Techo Weeks 2027" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Hobonichi</p><h3 class="shop-name">Techo Weeks 2027</h3><p class="shop-desc">A slim weekly planner that fits in a bag.</p><span class="shop-cta">Shop the planner</span></a>
-<a class="shop-card" id="kitchen-safe-time-locking-container" href="https://go.shopmy.us/p-93293339" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Put the phone away</span><img src="https://cdn.shopify.com/s/files/1/0250/0812/products/TheKitchenSafe.com_F_-_Red_Top_-_Transparent_Base.jpg" alt="Kitchen Safe Time Locking Container" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Kitchen Safe</p><h3 class="shop-name">Time Locking Container</h3><p class="shop-desc">Set a timer and the lid stays locked until it ends.</p><span class="shop-cta">Shop the lock box</span></a>
-<a class="shop-card" id="hatch-restore-3" href="https://go.shopmy.us/p-93293557" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Phone out of the bedroom</span><img src="https://www.datocms-assets.com/98401/1769721785-restore-3-carousel-putty-1-v2.webp" alt="Hatch Restore 3" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Hatch</p><h3 class="shop-name">Restore 3</h3><p class="shop-desc">A sunrise alarm and sound machine, so the phone can charge somewhere else.</p><span class="shop-cta">Shop the alarm</span></a>
-<a class="shop-card" id="time-timer-original-8-visual-timer" href="https://go.shopmy.us/p-99719467" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Call it done</span><img src="https://www.timetimer.com/cdn/shop/files/Time_Timer_Original_8_Visual_Timer.png?width=1000" alt="Time Timer Original 8&quot; Visual Timer" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Time Timer</p><h3 class="shop-name">Original 8" Visual Timer</h3><p class="shop-desc">Set the time, and stop when the red is gone.</p><span class="shop-cta">Shop the timer</span></a>
-</div>
-</section>
-
-<section class="picks-section reveal" id="kitchen">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Healthy habits</p>
-    <h2 class="picks-title">Make room <em>in the kitchen</em></h2>
-    <p class="picks-lede">Cook once, eat twice. More in <a href="/make-time-for-healthy-habits" style="color:var(--terracotta);">How to Make Time for Healthy Habits</a>.</p>
-  </div>
-  <div class="shop-grid --3">
-<a class="shop-card" id="pyrex-simply-store-10-piece-meal-prep-set" href="https://go.shopmy.us/p-93292213" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Cook once, eat twice</span><img src="https://static.athome.com/images/w_800,h_800,c_pad,f_auto,fl_lossy,q_auto/v1714059913/p/124395693/pyrex-simply-store-10-piece-3-cup-meal-prep-set.jpg" alt="Pyrex Simply Store 10-Piece Meal Prep Set" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Pyrex</p><h3 class="shop-name">Simply Store 10-Piece Meal Prep Set</h3><p class="shop-desc">Glass rectangles that go from fridge to microwave.</p><span class="shop-cta">Shop the set</span></a>
-<a class="shop-card" id="pyrex-6-piece-round-glass-set" href="https://go.shopmy.us/p-93292288" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Leftovers and lunches</span><img src="https://static.athome.com/images/w_800,h_800,c_pad,f_auto,fl_lossy,q_auto/v1714146498/p/124403191/pyrex-6-piece-round-blue-glass-food-storage-set-2c-4c-7c.jpg" alt="Pyrex 6-Piece Round Glass Set" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Pyrex</p><h3 class="shop-name">6-Piece Round Glass Set</h3><p class="shop-desc">Three nesting sizes with lids.</p><span class="shop-cta">Shop the set</span></a>
-<a class="shop-card" id="nordic-ware-naturals-baker-s-half-sheet" href="https://go.shopmy.us/p-93291479" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The workhorse</span><img src="https://www.nordicware.com/wp-content/uploads/2021/04/43100_Half_Sheet_Overhead_1000x1000__92562.1748023069.1280.1280.jpg" alt="Nordic Ware Naturals Baker's Half Sheet" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Nordic Ware</p><h3 class="shop-name">Naturals Baker's Half Sheet</h3><p class="shop-desc">Uncoated aluminum for sheet-pan dinners.</p><span class="shop-cta">Shop the pan</span></a>
-<a class="shop-card" id="nordic-ware-naturals-half-sheet-2-pack" href="https://go.shopmy.us/p-93291592" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Two at once</span><img src="https://assets.wfcdn.com/im/13536288/compr-r85/6011/60114165/Nordic+Ware+Naturals+Pack+Half+Sheet-33069998.jpg" alt="Nordic Ware Naturals Half Sheet, 2-Pack" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Nordic Ware</p><h3 class="shop-name">Naturals Half Sheet, 2-Pack</h3><p class="shop-desc">Two pans, so dinner and tomorrow's lunch roast together.</p><span class="shop-cta">Shop the set</span></a>
-<a class="shop-card" id="le-creuset-signature-round-dutch-oven-5-5-qt" href="https://go.shopmy.us/p-93291666" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">One-pot dinners</span><img src="https://cb.scene7.com/is/image/Crate/LeCreuSg5p5qDtchOvenSeaSSF23?wid=1000&hei=1000" alt="Le Creuset Signature Round Dutch Oven, 5.5 qt" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Le Creuset</p><h3 class="shop-name">Signature Round Dutch Oven, 5.5 qt</h3><p class="shop-desc">Enameled cast iron for soups, stews and bread.</p><span class="shop-cta">Shop the Dutch oven</span></a>
-<a class="shop-card" id="staub-round-cocotte-5-5-qt" href="https://go.shopmy.us/p-93291730" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">One-pot dinners</span><img src="https://cb.scene7.com/is/image/Crate/Staub5p5QRndCocotteCherryS19?wid=1000&hei=1000" alt="Staub Round Cocotte, 5.5 qt" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Staub</p><h3 class="shop-name">Round Cocotte, 5.5 qt</h3><p class="shop-desc">Enameled cast iron with a heavy, self-basting lid.</p><span class="shop-cta">Shop the cocotte</span></a>
-</div>
-</section>
-
-<section class="picks-section reveal" id="pilates">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Healthy habits</p>
-    <h2 class="picks-title">Pilates <em>at home</em></h2>
-    <p class="picks-lede">Start smaller than feels useful. Ten minutes on a mat counts.</p>
-  </div>
-  <div class="shop-grid shop-grid--4 --4">
-<a class="shop-card" id="prosourcefit-pilates-resistance-ring" href="https://go.shopmy.us/p-93291409" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">For the inner thighs and arms</span><img src="https://target.scene7.com/is/image/Target/GUEST_46b33dcf-c4eb-4625-b7f1-01e39590c336?wid=1000&hei=1000" alt="ProsourceFit Pilates Resistance Ring" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">ProsourceFit</p><h3 class="shop-name">Pilates Resistance Ring</h3><p class="shop-desc">A classic ring for mat work at home.</p><span class="shop-cta">Shop the ring</span></a>
-<a class="shop-card" id="toesox-jess-grip-socks" href="https://go.shopmy.us/p-99720244" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Grip for the reformer</span><img src="https://cdn.shopify.com/s/files/1/0739/4158/2081/files/LowRiseHT_HereForTheCakes_01.jpg?width=900" alt="ToeSox Half Toe Low Rise Grip Socks" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">ToeSox</p><h3 class="shop-name">Half Toe Low Rise Grip Socks</h3><p class="shop-price">$14</p><p class="shop-desc">Grippy soles for studio or home.</p><span class="shop-cta">Shop the socks</span></a>
-<a class="shop-card" id="tavi-kalea-grip-socks" href="https://go.shopmy.us/p-93292476" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Grip, with a bow</span><img src="https://www.taviactive.com/cdn/shop/files/Kalea_Bow-Noir_01_7b152136-1c72-4424-a840-8dc67930c0fd.jpg?width=1000" alt="Tavi Kalea Grip Socks" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Tavi</p><h3 class="shop-name">Kalea Grip Socks</h3><p class="shop-desc">Grippy soles in a softer style.</p><span class="shop-cta">Shop the socks</span></a>
-<a class="shop-card" id="manduka-pro-lite-yoga-mat-4-7mm" href="https://go.shopmy.us/p-99720213" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">A mat that lasts</span><img src="https://carbon38.com/cdn/shop/products/MAND-112011030-BLUNAV-prolite-Color-MIDNIGHT_fa7d036c-2925-439d-9060-b8d25162a35f.jpg?width=1000" alt="Manduka PRO Lite Yoga Mat, 4.7mm" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">Manduka</p><h3 class="shop-name">PRO Lite Yoga Mat, 4.7mm</h3><p class="shop-desc">Dense and lighter to carry than the full PRO.</p><span class="shop-cta">Shop the mat</span></a>
-</div>
-</section>
-
-<section class="picks-section reveal" id="closet">
-  <div class="picks-head">
-    <p class="picks-eyebrow">Clutter and closets</p>
-    <h2 class="picks-title">A closet that <em>clears your head</em></h2>
-    <p class="picks-lede">Give small things a home, and getting dressed gets easier.</p>
-  </div>
-  <div class="shop-grid --3">
-<a class="shop-card" id="the-container-store-non-slip-velvet-hangers" href="https://go.shopmy.us/p-93292902" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">More room on the rod</span><img src="https://images.containerstore.com/catalogimages/487840/10093670-non-slip-velvet-suit-hanger.jpg" alt="The Container Store Non-Slip Velvet Hangers" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">The Container Store</p><h3 class="shop-name">Non-Slip Velvet Hangers</h3><p class="shop-desc">Slim hangers that keep clothes from sliding off.</p><span class="shop-cta">Shop the hangers</span></a>
-<a class="shop-card" id="rebrilliant-bamboo-drawer-dividers" href="https://go.shopmy.us/p-99719834" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">Drawers that stay sorted</span><img src="https://static.shopmy.us/pins/zoom-95170277-1792242974249-.jpg" alt="VaeFae adjustable bamboo drawer dividers" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">VaeFae</p><h3 class="shop-name">Adjustable Bamboo Drawer Dividers, 6-Pack</h3><p class="shop-desc">Spring-loaded and expandable from about 16.6 to 21.8 inches, so they fit most drawers.</p><span class="shop-cta">Shop the dividers</span></a>
-<a class="shop-card" id="the-container-store-clearline-stackable-sweater" href="https://go.shopmy.us/p-93293053" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">See what you own</span><img src="https://images.containerstore.com/catalogimages/534949/4020SweaterDrawerV2_600.jpg" alt="The Container Store Clearline Stackable Sweater Drawer" class="contain" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">The Container Store</p><h3 class="shop-name">Clearline Stackable Sweater Drawer</h3><p class="shop-desc">Clear, stackable drawers for sweaters and bags.</p><span class="shop-cta">Shop the drawer</span></a>
-</div>
-</section>
-
-<p class="wfh-disclosure" style="max-width:900px;margin:0 auto 48px;padding:0 24px;">The links on this page are affiliate links. If you buy through one I may earn a small commission at no extra cost to you.</p>
-
-
-
-
-
-<section class="tools-section">
-  <div class="shop-grid " id="wardrobe-grid">
-<a class="shop-card" id="white-house-black-market-the-one-button-blazer" data-store="whbm" href="https://go.shopmy.us/p-99735149" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The power piece</span><img src="wardrobe-blazer.jpg" alt="WHBM Luxe Stretch One-Button Blazer" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The one-button blazer</h3><p class="shop-price">$210</p><p class="shop-desc">Tailored without being stiff. This is the piece that turns a simple shirt and pant into a full look for a meeting or a courtroom appearance.</p><span class="shop-cta">Shop the blazer</span></a>
-<a class="shop-card" id="white-house-black-market-the-ponte-midi-dress" data-store="whbm" href="https://go.shopmy.us/p-82171213?s=sl1_pl1_cpl" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The day-to-night dress</span><img src="wardrobe-dress.jpg" alt="WHBM Ponte Midi Dress" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The ponte midi dress</h3><p class="shop-price"><del>$180</del>$135</p><p class="shop-desc">Structured enough for the office, soft enough to wear all day. Add a layer for work, remove it for dinner.</p><span class="shop-cta">Shop the dress</span></a>
-<a class="shop-card" id="white-house-black-market-the-cuffed-straight-ank" data-store="whbm" href="https://go.shopmy.us/p-82171703?s=sl1_pl1_cpl" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The weekend staple</span><img src="wardrobe-jean.jpg" alt="WHBM Cuffed High-Rise Straight Ankle Jean" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The cuffed straight ankle jean</h3><p class="shop-price"><del>$130</del>$97.50</p><p class="shop-desc">A relaxed fit with a cuffed hem that still feels put together, my go-to for weekends and travel days.</p><span class="shop-cta">Shop the jeans</span></a>
-<a class="shop-card" id="white-house-black-market-the-faux-leather-jacket" data-store="whbm" href="https://go.shopmy.us/p-99735235" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The evening layer</span><img src="wardrobe-jacket.jpg" alt="WHBM Faux Leather Jacket" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The faux leather jacket</h3><p class="shop-price">$200</p><p class="shop-desc">My favorite swap for the blazer once the day turns to dinner. Instant edge without trying too hard.</p><span class="shop-cta">Shop the jacket</span></a>
-<a class="shop-card" id="white-house-black-market-the-satin-soft-shirt" data-store="whbm" href="https://go.shopmy.us/p-82172616" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The quiet workhorse</span><img src="wardrobe-shirt.jpg" alt="WHBM Satin Soft Shirt" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The satin soft shirt</h3><p class="shop-price"><del>$99</del>$74.25</p><p class="shop-desc">The base layer for nearly every look in this edit. Tucked and buttoned for work, undone a little for after hours.</p><span class="shop-cta">Shop the shirt</span></a>
-<a class="shop-card" id="white-house-black-market-the-elle-slim-ankle-pan" data-store="whbm" href="https://go.shopmy.us/p-82172878" target="_blank" rel="noopener sponsored"><div class="shop-tile"><span class="shop-tag">The everyday trouser</span><img src="wardrobe-pant.jpg" alt="WHBM Luxe Stretch High-Rise Elle Slim Ankle Pant" loading="lazy"><span class="shop-quick">Shop now</span></div><p class="shop-brand">White House Black Market</p><h3 class="shop-name">The Elle slim ankle pant</h3><p class="shop-price"><del>$120</del>$90</p><p class="shop-desc">A high-rise, luxe stretch trouser that holds its shape through a long day and still feels comfortable by evening.</p><span class="shop-cta">Shop the pant</span></a>
-</div>
-</section>
-
-<style>
-  .refs { background:var(--white); padding:72px 64px 64px; border-top:1px solid var(--blush-light); }
-  .refs-eyebrow { font-size:0.66rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
-  .refs-title { font-family:'Playfair Display',serif; font-weight:300; font-size:1.6rem; color:var(--black); margin-bottom:10px; }
-  .refs-note { font-size:0.85rem; line-height:1.8; color:var(--gray); font-weight:300; max-width:680px; margin-bottom:32px; }
-  .refs-list { list-style:none; max-width:900px; }
-  .refs-list li { font-size:0.82rem; line-height:1.8; color:var(--gray); font-weight:300; padding:12px 0; border-bottom:1px solid var(--cream-dark); }
-  .refs-list li:last-child { border-bottom:none; }
-  .refs-list a { color:var(--terracotta); text-decoration:none; border-bottom:1px solid rgba(35,64,110,0.28); }
-  .refs-list a:hover { border-bottom-color:var(--terracotta); }
-  .refs-sub { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--black); margin:28px 0 4px; }
-  @media (max-width:960px) { .refs { padding:56px 24px 48px; } }
-</style>
-
-<div class="refs" id="references">
-  <p class="refs-eyebrow">Sources</p>
-  <h2 class="refs-title">Where these numbers come from</h2>
-  <p class="refs-note">I would rather you check me than take my word for it. Everything factual on this page traces to one of the following. Where a claim is a company describing itself, I have said so on the page and listed it separately below.</p>
-
-  <p class="refs-sub">Regulatory and professional guidance</p>
-  <ul class="refs-list">
-    <li>US Food and Drug Administration. <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">"Hypoallergenic" Cosmetics.</a> On the absence of any federal standard behind the term.</li>
-    <li>US Food and Drug Administration. <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener">Fragrances in Cosmetics.</a> On "unscented" products containing masking fragrance, and on fragrance mixtures being listed as a single trade-secret ingredient.</li>
-    <li>American Academy of Dermatology. <a href="https://www.aad.org/public/everyday-care/itchy-skin/rash/itchy-rash-contact-dermatitis" target="_blank" rel="noopener">Contact dermatitis: how to treat and prevent it.</a> On choosing "fragrance free" over "unscented."</li>
-    <li><a href="https://openjurist.org/569/f2d/674/almay-inc-v-a-califano" target="_blank" rel="noopener">Almay, Inc. v. Califano, 569 F.2d 674 (D.C. Cir. 1977).</a> The decision that vacated the FDA regulation defining "hypoallergenic."</li>
-  </ul>
-
-  <p class="refs-sub">Peer-reviewed literature</p>
-  <ul class="refs-list">
-    <li>Hamann CR, Bernard S, Hamann D, Hansen R, Thyssen JP. <a href="https://doi.org/10.1016/j.jaci.2014.07.066" target="_blank" rel="noopener">Is there a risk using hypoallergenic cosmetic pediatric products in the United States?</a> <em>Journal of Allergy and Clinical Immunology.</em> 2015;135(4):1070-1071. Source of the finding that 89 percent of US products marketed as hypoallergenic contained at least one known contact allergen.</li>
-    <li>Houle MC, DeKoven JG, Reeder MJ, Warshaw EM, et al. <a href="https://doi.org/10.1089/derm.2024.0474" target="_blank" rel="noopener">North American Contact Dermatitis Group Patch Test Results: 2021-2022.</a> <em>Dermatitis.</em> 2025. 3,056 patients patch tested across 12 centers; 72.0 percent had at least one positive reaction. Hydroperoxides of linalool 10.1 percent, methylisothiazolinone 11.5 percent.</li>
-    <li>Basketter DA. <a href="https://ftp.cdc.gov/pub/Documents/OEL/06.%20Dotson/References/Basketter_2009_Cutan%20Ocular%20Toxicol.pdf" target="_blank" rel="noopener">The human repeated insult patch test in the 21st century: a commentary.</a> <em>Cutaneous and Ocular Toxicology.</em> 2009. Source of the HRIPT protocol description and of its stated limitations, including that a negative result does not mean sensitization will not occur in the exposed population.</li>
-  </ul>
-</div>
 
 <div class="external-section">
-  <p class="external-note">Some links on this page are affiliate links. If you make a purchase through one, I may earn a small commission at no extra cost to you. Nothing here is sponsored, no brand has paid to be included, and no company reviewed this page before it went up. These are products I recommend and use.</p>
+  <p class="external-note">Some links on this page are affiliate links. If you make a purchase through one, I may earn a small commission at no extra cost to you. Some products were gifted by the brands I partner with. No company reviewed this page before it went up.</p>
 </div>
 
 <div class="nl-strip">
@@ -893,8 +579,8 @@ document.addEventListener('click',function(e){
     <h2 class="nl-strip-title">This edit will<br>keep growing.</h2>
   </div>
   <div>
-    <p class="nl-body">Travel and conference kits, what to pack when you cannot control the hotel soap, and the questions I get asked most in clinic.</p>
-    <a href="https://www.instagram.com/permission_to_change/" target="_blank" rel="noopener" class="nl-cta">Follow along on Instagram</a>
+    <p class="nl-body">New partners, new codes and the things I am loving right now.</p>
+    <a href="https://www.instagram.com/make_room_for_it/" target="_blank" rel="noopener" class="nl-cta">Follow along on Instagram</a>
   </div>
 </div>
 
