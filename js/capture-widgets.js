@@ -87,11 +87,92 @@
     '.pf-fb-link{display:block;margin-top:10px;font-size:0.78rem;text-align:center;color:#23406E;text-decoration:underline;text-underline-offset:3px;}' +
     '@media(max-width:640px){.pf-modal{padding:30px 22px;}}';
 
+  var INLINE_CSS =
+    '.pf-modal-input{display:block;width:100%;box-sizing:border-box;padding:12px 14px;margin:0 0 10px;border:1px solid #D9D3CC;background:#fff;font-family:inherit;font-size:1rem;color:#1A1A1A;}' +
+    '.pf-inline{background:#EDE9E4;border-top:3px solid #B8975A;padding:32px 34px;margin:48px 0;font-family:"DM Sans",sans-serif;}' +
+    '.pf-inline-eyebrow{font-size:0.68rem !important;letter-spacing:0.2em;text-transform:uppercase;color:#23406E !important;margin:0 0 10px !important;line-height:1.4 !important;}' +
+    '.pf-inline-title{font-family:"Playfair Display",serif;font-size:1.6rem !important;font-weight:400;line-height:1.25 !important;color:#1A1A1A !important;margin:0 0 12px !important;}' +
+    '.pf-inline-text{font-size:1rem !important;line-height:1.7 !important;color:#4A4540 !important;margin:0 0 18px !important;}' +
+    '.pf-inline form{display:flex;gap:10px;flex-wrap:wrap;}' +
+    '.pf-inline input{flex:1 1 180px;min-width:0;padding:13px 14px;border:1px solid #D9D3CC;background:#fff;font-family:inherit;font-size:1rem;color:#1A1A1A;}' +
+    '.pf-inline button{padding:13px 22px;background:#23406E;color:#fff;border:0;cursor:pointer;font-family:inherit;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;}' +
+    '.pf-inline button:hover{background:#182D4E;}' +
+    '.pf-inline-note{font-size:0.85rem !important;color:#6E6863 !important;margin:14px 0 0 !important;line-height:1.6 !important;}' +
+    '.pf-inline-note a{color:#23406E !important;}' +
+    '.pf-inline-msg{font-size:1rem !important;color:#1A1A1A !important;margin:0 !important;}' +
+    '@media (max-width:600px){.pf-inline{padding:26px 22px;}.pf-inline button{width:100%;}}';
+
+  // Inline signup placed partway through article pages. Readers arriving from
+  // search get a small next step (a worksheet plus The Sunday Letter) at the
+  // moment they are most engaged, plus a quiet link to the free session.
+  function inlineOffer() {
+    var p = window.location.pathname;
+    if (/boundar|say-no|people-pleasing|guilt/.test(p)) {
+      return { tool: 'Is This One Worth It?', url: '/worth-it',
+        title: 'Not sure this one is worth the fight?',
+        text: 'Get the free two-minute worksheet that helps you decide whether to let it go or hold the line, with scripts. Plus The Sunday Letter: one short letter and one tool you can use, every Sunday morning.' };
+    }
+    if (/mental-load|overwhelm|make-time|make-room|work-life/.test(p)) {
+      return { tool: 'The Invisible List', url: '/invisible-list',
+        title: 'Get the list out of your head.',
+        text: 'Get the free Invisible List worksheet to see everything you are carrying and hand off two things. Plus The Sunday Letter: one short letter and one tool you can use, every Sunday morning.' };
+    }
+    return { tool: '', url: '',
+      title: 'One short letter. One tool you can use.',
+      text: 'The Sunday Letter lands Sunday mornings with one essay, one exercise you can actually do, and a few links worth your time. Free.' };
+  }
+
+  function initInlineSignup() {
+    var art = document.querySelector('article.post-body');
+    if (!art || document.querySelector('.pf-inline')) return;
+    if (/worth-it|invisible-list|free-session|booking-confirmed|join-emails|template/.test(window.location.pathname)) return;
+    var ps = Array.prototype.filter.call(art.children, function (el) { return el.tagName === 'P'; });
+    if (ps.length < 6) return;
+    var anchor = ps[Math.floor(ps.length * 0.4)];
+    var o = inlineOffer();
+    var box = document.createElement('aside');
+    box.className = 'pf-inline';
+    box.setAttribute('aria-label', 'Free worksheet and newsletter signup');
+    box.innerHTML =
+      '<p class="pf-inline-eyebrow">Free' + (o.tool ? ' worksheet &middot; ' + o.tool : ' &middot; The Sunday Letter') + '</p>' +
+      '<p class="pf-inline-title">' + o.title + '</p>' +
+      '<p class="pf-inline-text">' + o.text + '</p>' +
+      '<form novalidate>' +
+        '<input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">' +
+        '<input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>' +
+        '<button type="submit">' + (o.tool ? 'Send it to me' : 'Get the letter') + '</button>' +
+      '</form>' +
+      '<p class="pf-inline-note">Unsubscribe anytime. Rather talk it through? <a href="/free-session?utm_source=site&amp;utm_content=inline_article">Your first coaching session is free</a>.</p>';
+    anchor.parentNode.insertBefore(box, anchor.nextSibling);
+    var form = box.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim(), name = form.name.value.trim();
+      if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
+      form.querySelector('button').disabled = true;
+      submitLead(email, name, 'inline_article', 'inline_' + window.location.pathname, function () {
+        mark(EXIT_KEY);
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'inline_article', page: window.location.pathname }); } catch (err) {}
+        var msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> The next letter lands Sunday morning.';
+        if (o.url) msg += ' <a href="' + o.url + '" style="color:#23406E;">Open ' + o.tool + ' now &rarr;</a>';
+        form.outerHTML = msg + '</p>';
+      });
+    });
+    if (typeof gtag === 'function') {
+      try {
+        var seen = false;
+        new IntersectionObserver(function (en, obs) {
+          if (!seen && en[0].isIntersecting) { seen = true; gtag('event', 'inline_signup_view', { page: window.location.pathname }); obs.disconnect(); }
+        }).observe(box);
+      } catch (err) {}
+    }
+  }
+
   function injectCSS() {
     if (document.getElementById('pf-widget-style')) return;
     var s = document.createElement('style');
     s.id = 'pf-widget-style';
-    s.textContent = CSS;
+    s.textContent = CSS + INLINE_CSS;
     document.head.appendChild(s);
   }
 
@@ -101,7 +182,7 @@
   function exitVariant() {
     var p = window.location.pathname;
     if (/\/(free-session|booking-confirmed|quiz)(\.html)?$/.test(p)) return null; // never interrupt a conversion
-    return 'facebook';
+    return 'sunday_letter';
   }
 
   function buildExitModal() {
@@ -109,17 +190,31 @@
     overlay.className = 'pf-overlay';
     overlay.id = 'pf-exit-overlay';
     overlay.innerHTML =
-      '<div class="pf-modal">' +
+      '<div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-exit-title">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
-        '<p class="pf-modal-eyebrow">Before you go</p>' +
-        '<h3 class="pf-modal-title">The question you haven\'t said out loud.</h3>' +
-        '<p class="pf-modal-body">' + FB_GROUP_BLURB + '</p>' +
-        '<a class="pf-modal-submit" id="pf-exit-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" ' +
-          'style="display:block;text-align:center;text-decoration:none;" ' +
-          'onclick="window.__pfExitFbClick()">Request to join the group</a>' +
-        '<p class="pf-modal-note">No email, no sign-up on this end. It just takes you to Facebook.</p>' +
+        '<p class="pf-modal-eyebrow">Before you go &middot; The Sunday Letter</p>' +
+        '<h3 class="pf-modal-title" id="pf-exit-title">One short letter. One tool you can use.</h3>' +
+        '<p class="pf-modal-body">Every Sunday morning: one essay, one exercise you can actually do that week, and a few links worth your time. Free.</p>' +
+        '<form id="pf-exit-form" novalidate>' +
+          '<input class="pf-modal-input" type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">' +
+          '<input class="pf-modal-input" type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>' +
+          '<button class="pf-modal-submit" type="submit" style="width:100%;">Send me the Sunday Letter</button>' +
+        '</form>' +
+        '<p class="pf-modal-note">Unsubscribe anytime. ' + FB_LINK_HTML + '</p>' +
       '</div>';
     document.body.appendChild(overlay);
+    var form = overlay.querySelector('#pf-exit-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim(), name = form.name.value.trim();
+      if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
+      form.querySelector('button').disabled = true;
+      submitLead(email, name, 'exit_popup', 'exit_popup_sunday_letter', function () {
+        mark(EXIT_KEY);
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'exit_popup', page: window.location.pathname }); } catch (err) {}
+        form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p>';
+      });
+    });
   }
 
   function buildNewsletterModal() {
@@ -184,7 +279,7 @@
       // Without a "shown" count there is no denominator, so there was
       // previously no way to tell whether this converts at 1% or 20%.
       if (typeof gtag === 'function') {
-        gtag('event', 'exit_popup_shown', { variant: 'facebook', page: window.location.pathname });
+        gtag('event', 'exit_popup_shown', { variant: 'sunday_letter', page: window.location.pathname });
       }
     }
 
@@ -287,5 +382,6 @@
     // Sunday Letter signup next to the booking CTA, so a timed popup only
     // interrupts. initNewsletterTest() is left defined but is not called.
     initStickyBar();
+    initInlineSignup();
   });
 })();

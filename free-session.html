@@ -96,6 +96,15 @@
   .session-lede strong { color:var(--warm-dark); font-weight:500; }
 
   /* TALK OPTIONS */
+  .fs-quotes { max-width:1100px; margin:0 auto; padding:10px 64px 70px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .fs-quote { background:var(--cream-dark,#EDE9E4); padding:30px 32px; margin:0; border-top:3px solid var(--gold,#B8975A); }
+  .fs-quote blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.55; color:var(--black,#1A1A1A); margin:0 0 14px; }
+  .fs-quote figcaption { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gray,#6E6863); }
+  .fs-quotes-link { grid-column:1 / -1; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
+  .fs-quotes-link a { color:var(--terracotta,#23406E); text-decoration:none; }
+  @media (max-width:960px) { .fs-quotes { grid-template-columns:1fr; padding:0 24px 56px; } }
+  .btn-hero-ghost { background:transparent; color:var(--black); border:1px solid var(--black); }
+  .btn-hero-ghost:hover { background:var(--black); color:var(--white); }
   .talk-options { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:34px; max-width:760px; }
   .talk-card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.07); padding:30px 28px 28px; display:flex; flex-direction:column; }
   .talk-card + .talk-card { border-top-color:var(--gold); }
@@ -298,27 +307,27 @@
     <a href="https://youtube.com/@permissiontochange" target="_blank" rel="noopener" aria-label="Permission to Change on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.19 31.19 0 0 0 0 12a31.19 31.19 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.19 31.19 0 0 0 24 12a31.19 31.19 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12z"/></svg></a>
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
   </div>
-  <a href="#talk-options" class="nav-cta">Let's Talk</a>
+  <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="nav" class="nav-cta">Book Free Session</a>
 </nav>
 <div class="session-hero-wrap">
 <section class="session-hero">
-  <p class="hero-eyebrow reveal">Two ways to start</p>
+  <p class="hero-eyebrow reveal">Your first session is free</p>
   <h1 class="session-h1 reveal d1">Let's <em>talk</em>.</h1>
   <p class="hero-script reveal d1">Pick the size that fits.</p>
   <p class="session-lede reveal d2">Some things need one good conversation. Some need a few months. Tell me which one you have, and we'll start there.</p>
   <div class="talk-options reveal d2" id="talk-options">
     <div class="talk-card">
+      <p class="talk-kicker">Start here &middot; Free</p>
+      <h2 class="talk-title">A pattern. <em>A change you want to keep.</em></h2>
+      <p class="talk-text">Coaching packages run over weeks or months. We start with a free 55-minute conversation so you can see if it fits. No sales pitch.</p>
+      <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero" class="btn-hero-primary">Book my free session &rarr;</a>
+      <p class="talk-sub"><a href="/coaching#services">See packages</a> &middot; <a href="#intakeForm">Add context first</a></p>
+    </div>
+    <div class="talk-card">
       <p class="talk-kicker">Something quick</p>
       <h2 class="talk-title">One question. <em>No commitment.</em></h2>
       <p class="talk-text">One decision to think through. One conversation you're dreading. Book a single call with me on Clarity. You pay by the minute, only for the time we use. No package, no follow-up.</p>
-      <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" data-talk="clarity-hero" class="btn-hero-primary">Quick call on Clarity &rarr;</a>
-    </div>
-    <div class="talk-card">
-      <p class="talk-kicker">Something bigger</p>
-      <h2 class="talk-title">A pattern. <em>A change you want to keep.</em></h2>
-      <p class="talk-text">Coaching packages run over weeks or months. We start with a free 55-minute conversation so you can see if it fits. No sales pitch.</p>
-      <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="hero" class="btn-hero-primary">Talk about a package &rarr;</a>
-      <p class="talk-sub"><a href="/coaching#services">See packages</a> &middot; <a href="#intakeForm">Add context first</a></p>
+      <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" data-talk="clarity-hero" class="btn-hero-primary btn-hero-ghost">Quick call on Clarity &rarr;</a>
     </div>
   </div>
   <p class="not-ready reveal d2">Not ready to book, just have a question? <a href="mailto:reasondxcoaching@gmail.com?subject=A%20question%20before%20I%20book">Email me</a> or <a href="sms:+17867633990">text (786) 763-3990</a>. No pressure. I read and answer these myself.</p>
@@ -348,6 +357,18 @@
     <p class="promise-title">No pitch, no follow-up funnel</p>
     <p class="promise-text">I'll tell you honestly if coaching is the right tool for what you're carrying. If it isn't, I'll say that too.</p>
   </div>
+</section>
+
+<section class="fs-quotes">
+  <figure class="fs-quote reveal">
+    <blockquote>&ldquo;She meets you where you are, leads with heart, and helps you find your way forward.&rdquo;</blockquote>
+    <figcaption>Margaret &middot; Career transition</figcaption>
+  </figure>
+  <figure class="fs-quote reveal d1">
+    <blockquote>&ldquo;I always felt like I was engaging in coaching that was specific to me, rather than following an algorithm or process that could be applied to anyone.&rdquo;</blockquote>
+    <figcaption>Jon &middot; A year of coaching in his current role</figcaption>
+  </figure>
+  <p class="fs-quotes-link"><a href="/testimonials">Read the full reviews &rarr;</a></p>
 </section>
 
 <section class="form-section">
