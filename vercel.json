@@ -36,11 +36,6 @@
       "permanent": true
     },
     {
-      "source": "/physician-moms",
-      "destination": "/physician-women",
-      "permanent": true
-    },
-    {
       "source": "/physician-women.html",
       "destination": "/physician-women",
       "permanent": true
