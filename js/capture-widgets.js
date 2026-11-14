@@ -88,6 +88,7 @@
     '@media(max-width:640px){.pf-modal{padding:30px 22px;}}';
 
   var INLINE_CSS =
+    '.pf-modal-input{display:block;width:100%;box-sizing:border-box;padding:12px 14px;margin:0 0 10px;border:1px solid #D9D3CC;background:#fff;font-family:inherit;font-size:1rem;color:#1A1A1A;}' +
     '.pf-inline{background:#EDE9E4;border-top:3px solid #B8975A;padding:32px 34px;margin:48px 0;font-family:"DM Sans",sans-serif;}' +
     '.pf-inline-eyebrow{font-size:0.68rem !important;letter-spacing:0.2em;text-transform:uppercase;color:#23406E !important;margin:0 0 10px !important;line-height:1.4 !important;}' +
     '.pf-inline-title{font-family:"Playfair Display",serif;font-size:1.6rem !important;font-weight:400;line-height:1.25 !important;color:#1A1A1A !important;margin:0 0 12px !important;}' +
@@ -150,6 +151,7 @@
       if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
       form.querySelector('button').disabled = true;
       submitLead(email, name, 'inline_article', 'inline_' + window.location.pathname, function () {
+        mark(EXIT_KEY);
         try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'inline_article', page: window.location.pathname }); } catch (err) {}
         var msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> The next letter lands Sunday morning.';
         if (o.url) msg += ' <a href="' + o.url + '" style="color:#23406E;">Open ' + o.tool + ' now &rarr;</a>';
@@ -180,7 +182,7 @@
   function exitVariant() {
     var p = window.location.pathname;
     if (/\/(free-session|booking-confirmed|quiz)(\.html)?$/.test(p)) return null; // never interrupt a conversion
-    return 'facebook';
+    return 'sunday_letter';
   }
 
   function buildExitModal() {
@@ -188,17 +190,31 @@
     overlay.className = 'pf-overlay';
     overlay.id = 'pf-exit-overlay';
     overlay.innerHTML =
-      '<div class="pf-modal">' +
+      '<div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-exit-title">' +
         '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
-        '<p class="pf-modal-eyebrow">Before you go</p>' +
-        '<h3 class="pf-modal-title">The question you haven\'t said out loud.</h3>' +
-        '<p class="pf-modal-body">' + FB_GROUP_BLURB + '</p>' +
-        '<a class="pf-modal-submit" id="pf-exit-submit" href="' + FB_GROUP_URL + '" target="_blank" rel="noopener" ' +
-          'style="display:block;text-align:center;text-decoration:none;" ' +
-          'onclick="window.__pfExitFbClick()">Request to join the group</a>' +
-        '<p class="pf-modal-note">No email, no sign-up on this end. It just takes you to Facebook.</p>' +
+        '<p class="pf-modal-eyebrow">Before you go &middot; The Sunday Letter</p>' +
+        '<h3 class="pf-modal-title" id="pf-exit-title">One short letter. One tool you can use.</h3>' +
+        '<p class="pf-modal-body">Every Sunday morning: one essay, one exercise you can actually do that week, and a few links worth your time. Free.</p>' +
+        '<form id="pf-exit-form" novalidate>' +
+          '<input class="pf-modal-input" type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">' +
+          '<input class="pf-modal-input" type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>' +
+          '<button class="pf-modal-submit" type="submit" style="width:100%;">Send me the Sunday Letter</button>' +
+        '</form>' +
+        '<p class="pf-modal-note">Unsubscribe anytime. ' + FB_LINK_HTML + '</p>' +
       '</div>';
     document.body.appendChild(overlay);
+    var form = overlay.querySelector('#pf-exit-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim(), name = form.name.value.trim();
+      if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
+      form.querySelector('button').disabled = true;
+      submitLead(email, name, 'exit_popup', 'exit_popup_sunday_letter', function () {
+        mark(EXIT_KEY);
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'exit_popup', page: window.location.pathname }); } catch (err) {}
+        form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p>';
+      });
+    });
   }
 
   function buildNewsletterModal() {
@@ -263,7 +279,7 @@
       // Without a "shown" count there is no denominator, so there was
       // previously no way to tell whether this converts at 1% or 20%.
       if (typeof gtag === 'function') {
-        gtag('event', 'exit_popup_shown', { variant: 'facebook', page: window.location.pathname });
+        gtag('event', 'exit_popup_shown', { variant: 'sunday_letter', page: window.location.pathname });
       }
     }
 
