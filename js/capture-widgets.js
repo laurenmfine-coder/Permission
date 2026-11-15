@@ -155,6 +155,7 @@
         try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'inline_article', page: window.location.pathname }); } catch (err) {}
         var msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> The next letter lands Sunday morning.';
         if (o.url) msg += ' <a href="' + o.url + '" style="color:#23406E;">Open ' + o.tool + ' now &rarr;</a>';
+        msg += '<br>Want to talk it through? <a href="https://calendly.com/reasondxcoaching/free-session" style="color:#23406E;">Book your free session &rarr;</a>';
         form.outerHTML = msg + '</p>';
       });
     });
@@ -212,7 +213,7 @@
       submitLead(email, name, 'exit_popup', 'exit_popup_sunday_letter', function () {
         mark(EXIT_KEY);
         try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'exit_popup', page: window.location.pathname }); } catch (err) {}
-        form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p>';
+        form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p><a class="pf-modal-submit" href="https://calendly.com/reasondxcoaching/free-session" style="display:block;text-align:center;text-decoration:none;">Book your free session</a>';
       });
     });
   }

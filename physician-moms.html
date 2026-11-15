@@ -454,9 +454,10 @@
     var body='firstName='+encodeURIComponent(f.firstName.value.trim())+'&email='+encodeURIComponent(em)+'&company='+encodeURIComponent(f.company.value)+
       '&source=hub_physician_mom&situation=physician_mom&leadStage=hub_signup&notes='+encodeURIComponent('page=physician-moms; referrer='+document.referrer);
     fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-      .then(function(r){ if(!r.ok) throw 0; f.hidden=true; document.getElementById('hubDone').hidden=false;
+      .then(function(r){ if(!r.ok) throw 0;
         try{ localStorage.setItem('pf_exit_seen', String(Date.now())); }catch(x){}
-        if(typeof gtag==='function') gtag('event','generate_lead',{source:'hub_physician_mom'}); })
+        if(typeof gtag==='function') gtag('event','generate_lead',{source:'hub_physician_mom'});
+        location.href='/thank-you?topic=physician_mom'; })
       .catch(function(){ b.disabled=false; err.textContent='That did not go through. Please try again, or email reasondxcoaching@gmail.com.'; });
   });
   document.querySelectorAll('[data-hub-cta]').forEach(function(a){ a.addEventListener('click',function(){ if(typeof gtag==='function') gtag('event','hub_cta_click',{hub:'physician_mom',placement:a.getAttribute('data-hub-cta')}); }); });
@@ -494,6 +495,9 @@
         <li><a href="/make-room">Make Room Guides</a></li>
         <li><a href="/blog">Writing</a></li>
         <li><a href="/resources">Resources</a></li>
+        <li><a href="/physician-moms">For Physician Moms</a></li>
+        <li><a href="/boundaries">Boundaries</a></li>
+        <li><a href="/habits">Healthy Habits</a></li>
         <li><a href="/media">Media</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/writing-services">Writing Services</a></li>
