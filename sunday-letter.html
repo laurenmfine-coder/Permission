@@ -332,6 +332,45 @@
 
 </head>
 <body>
+<!-- Poll thank-you: shown only when a reader arrives from a Sunday Letter poll link (?poll=...). -->
+<style>
+  .poll-thanks { position:fixed; inset:0; z-index:2000; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(24,45,78,0.55); }
+  .poll-thanks[hidden] { display:none; }
+  .poll-thanks-card { background:#fff; max-width:460px; width:100%; padding:44px 36px 36px; border-top:4px solid var(--gold); text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.18); }
+  .poll-thanks-kicker { font-family:'DM Sans',sans-serif; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .poll-thanks-title { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; line-height:1.15; color:var(--black); margin-bottom:16px; }
+  .poll-thanks-body { font-family:'DM Sans',sans-serif; font-size:1rem; line-height:1.65; color:#4A4642; margin-bottom:28px; }
+  .poll-thanks-btn { display:inline-block; padding:15px 28px; background:var(--terracotta); color:#fff; border:0; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; }
+  .poll-thanks-btn:hover { background:var(--terracotta-dark); }
+  @media (max-width:520px){ .poll-thanks-card { padding:36px 22px 28px; } .poll-thanks-title { font-size:1.6rem; } }
+</style>
+<div class="poll-thanks" id="poll-thanks" role="dialog" aria-modal="true" aria-labelledby="poll-thanks-title" hidden>
+  <div class="poll-thanks-card">
+    <p class="poll-thanks-kicker">The Sunday Letter</p>
+    <h2 class="poll-thanks-title" id="poll-thanks-title">Thank you. Your answer is in.</h2>
+    <p class="poll-thanks-body">Head back to the email to answer the other questions. Want to say more? Just reply to the email. I read every one.</p>
+    <button type="button" class="poll-thanks-btn" id="poll-thanks-close">Keep reading</button>
+  </div>
+</div>
+<script>
+(function(){
+  var m = /[?&]poll=([^&#]+)/.exec(window.location.search);
+  if (!m) return;
+  var vote = decodeURIComponent(m[1]);
+  var box = document.getElementById('poll-thanks');
+  // These readers are already subscribers, so keep the Sunday Letter exit popup away.
+  try { sessionStorage.setItem('pf_popup_shown_session', '1'); } catch (e) {}
+  box.hidden = false;
+  try { if (typeof gtag === 'function') gtag('event', 'sunday_letter_poll_vote', { vote: vote }); } catch (e) {}
+  // Drop the parameter so a refresh or a shared link does not show this again.
+  try { history.replaceState(null, '', window.location.pathname + window.location.hash); } catch (e) {}
+  function close(){ box.hidden = true; }
+  document.getElementById('poll-thanks-close').addEventListener('click', close);
+  box.addEventListener('click', function(e){ if (e.target === box) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  document.getElementById('poll-thanks-close').focus();
+})();
+</script>
 
 
 <nav>
