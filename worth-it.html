@@ -263,6 +263,9 @@
   .il-script { border-left:2px solid var(--gold); padding:6px 0 6px 24px; font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; line-height:1.6; margin:10px 0 24px; }
   .il-note { font-size:0.9rem !important; color:var(--gray); }
   .il-print-lines { display:none; }
+  .pdf-form { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+  .pdf-form input { flex:1 1 180px; min-width:0; }
+  .pdf-form .il-btn { margin:0; }
   @media (max-width:960px) { .il-wrap { padding:32px 24px 60px; } .il-key { grid-template-columns:1fr; } .il-table td.il-item { width:auto; } .il-table tr { display:block; padding:8px 0; } .il-table td { display:block; border:0; padding:4px 0; } }
   @media print {
     nav, footer, .post-cta, .il-noprint, .post-breadcrumb { display:none !important; }
@@ -415,6 +418,19 @@
     <div class="faq-item"><h3>How do I set boundaries with family without starting a fight?</h3><p>Say what you will do, not what they must do. Skip the debate and the persuading. One or two calm sentences, such as "We're hosting this year. We'd love to have you," leave nothing to argue with. Line up an ally before the moment comes so you are not the only voice.</p></div>
     <div class="faq-item"><h3>How do I set boundaries with family without feeling guilty?</h3><p>Decide first whether this one is worth holding. If it is a preference and only you pay the price, letting it go can be a real choice. If it is a value, if someone else pays, or if it happens every time, holding the line protects the people you love. The four questions on this page help you tell which is which.</p></div>
   </section>
+  <section class="il-step il-noprint" id="get-pdf">
+    <p class="il-step-num">Keep a copy</p>
+    <h2>Get the printable PDF</h2>
+    <p>A clean, printable version of this worksheet, plus The Sunday Letter every Sunday morning. Unsubscribe anytime.</p>
+    <form class="pdf-form" novalidate data-topic="worth-it">
+      <label style="position:absolute;left:-9999px" aria-hidden="true">Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+      <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <button class="il-btn" type="submit">Send me the PDF</button>
+    </form>
+    <p class="il-note pdf-err" role="alert"></p>
+  </section>
+
   <section class="il-step">
     <p>This worksheet is part of a series in <a href="/sunday-letter">The Sunday Letter</a> on the mental load. Each week takes one piece of it. Last week was <a href="/invisible-list">the invisible list</a>. For more holiday scripts, read <a href="/boundaries-with-family">how to set boundaries with family</a>. <a href="/join-emails">Get it every Sunday</a>.</p>
     <p>Want to talk it through? <a href="/free-session">Your first coaching session is free</a>. More free tools are on the <a href="/resources">resources page</a>.</p>
@@ -465,6 +481,25 @@
 })();
 </script>
 
+<script>
+(function(){
+  document.querySelectorAll('.pdf-form').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); var em=f.email.value.trim(), err=f.parentNode.querySelector('.pdf-err'), t=f.getAttribute('data-topic');
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ err.textContent='Please enter an email I can reach you at.'; f.email.focus(); return; }
+      var b=f.querySelector('button'); b.disabled=true; err.textContent='';
+      var body='firstName='+encodeURIComponent(f.firstName.value.trim())+'&email='+encodeURIComponent(em)+'&company='+encodeURIComponent(f.company.value)+
+        '&source=worksheet_pdf_'+t+'&leadStage=worksheet_pdf&notes='+encodeURIComponent('worksheet='+t+'; referrer='+document.referrer);
+      fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+        .then(function(r){ if(!r.ok) throw 0; try{localStorage.setItem('pf_exit_seen',String(Date.now()));}catch(x){}
+          if(typeof gtag==='function') gtag('event','generate_lead',{source:'worksheet_pdf_'+t});
+          location.href='/thank-you?topic='+t; })
+        .catch(function(){ b.disabled=false; err.textContent='That did not go through. Please try again, or email reasondxcoaching@gmail.com.'; });
+    });
+  });
+})();
+</script>
+
 <div class="post-cta">
   <div>
     <h2 class="post-cta-title">
@@ -496,6 +531,9 @@
         <li><a href="/make-room">Make Room Guides</a></li>
         <li><a href="/blog">Writing</a></li>
         <li><a href="/resources">Resources</a></li>
+        <li><a href="/physician-moms">For Physician Moms</a></li>
+        <li><a href="/boundaries">Boundaries</a></li>
+        <li><a href="/habits">Healthy Habits</a></li>
         <li><a href="/media">Media</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/writing-services">Writing Services</a></li>

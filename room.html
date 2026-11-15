@@ -280,6 +280,7 @@
     </div>
 
     <p class="room-quiet" id="talkQuiet">Want to talk it through instead? <a id="talkQuietLink" href="/free-session">The first session is free and a full 55 minutes.</a></p>
+    <p class="room-quiet" id="hubMore" hidden>More free tools for you: <a id="hubMoreLink" href="/boundaries"></a></p>
     <button class="quiz-restart" type="button" id="quizRestart">Start over</button>
   </section>
 </main>
@@ -381,6 +382,9 @@
     var talkHref = '/free-session?' + utm('room_' + r);
     document.getElementById('talkLink').href = talkHref;
     document.getElementById('talkQuietLink').href = talkHref;
+    var hub = room() === 'physician-women' ? ['/physician-moms','The physician moms page'] : (answers.what === 'yes' ? ['/boundaries','The boundaries page'] : null);
+    var hm = document.getElementById('hubMore');
+    if (hub) { var hl = document.getElementById('hubMoreLink'); hl.href = hub[0] + '?utm_source=site&utm_content=room_quiz'; hl.textContent = hub[1] + ' \u2192'; hm.hidden = false; } else { hm.hidden = true; }
 
     // Order the cards by what they said would help most.
     var cards = document.getElementById('roomCards');
