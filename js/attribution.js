@@ -81,3 +81,72 @@
     document.querySelectorAll('a[href*="calendly.com/reasondxcoaching"]').forEach(tagCalendly);
   });
 })();
+
+/* Signup alerts. Site signups go to Flodesk through the API, and Flodesk does
+   not send a notice for those. So when any newsletter or worksheet signup on
+   the site succeeds, this also emails Lauren through Web3Forms (the same
+   service the free-session form already uses). Runs on every page because
+   this file loads first everywhere. The free-session form sends its own
+   alert, so it is skipped here. */
+(function () {
+  if (!window.fetch || window.__lfSignupAlerts) return;
+  window.__lfSignupAlerts = true;
+  var W3F_KEY = 'f6a893b9-1784-4b24-a0d4-d8a387a97218';
+  var ENDPOINTS = /\/api\/(subscribe|download)(\?|$)/;
+  var origFetch = window.fetch;
+
+  function parseBody(body) {
+    var out = {};
+    if (!body) return out;
+    try {
+      if (typeof body === 'string') {
+        var s = body.trim();
+        if (s.charAt(0) === '{') return JSON.parse(s);
+        new URLSearchParams(s).forEach(function (v, k) { out[k] = v; });
+      } else if (body instanceof URLSearchParams || (window.FormData && body instanceof FormData)) {
+        body.forEach(function (v, k) { if (typeof v === 'string') out[k] = v; });
+      }
+    } catch (e) {}
+    return out;
+  }
+
+  function alertLauren(d) {
+    var email = (d.email || '').trim();
+    if (!email || d.company) return;
+    var seen = window.__lfAlerted || (window.__lfAlerted = {});
+    if (seen[email.toLowerCase()]) return;
+    seen[email.toLowerCase()] = true;
+    var name = [d.firstName || d.first_name || d.name || '', d.lastName || ''].join(' ').trim();
+    var source = d.source || d.worksheet || '';
+    try {
+      origFetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: W3F_KEY,
+          subject: 'New Sunday Letter signup: ' + (name || email),
+          from_name: 'laurenfine.com signups',
+          replyto: email,
+          Name: name,
+          Email: email,
+          'Signed up from': source,
+          Worksheet: d.worksheet || '',
+          Page: location.href.split('?')[0]
+        })
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  window.fetch = function (input, init) {
+    var url = typeof input === 'string' ? input : (input && input.url) || '';
+    var method = ((init && init.method) || (input && input.method) || 'GET').toUpperCase();
+    var p = origFetch.apply(this, arguments);
+    if (method !== 'POST' || !ENDPOINTS.test(url) || /\/free-session(\.html)?$/.test(location.pathname)) return p;
+    var data = parseBody(init && init.body);
+    return p.then(function (res) {
+      if (res && res.ok) alertLauren(data);
+      return res;
+    });
+  };
+})();
