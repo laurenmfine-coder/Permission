@@ -288,6 +288,10 @@
 .dz-badge{position:absolute;top:12px;left:12px;z-index:3;background:#B33A3A;color:#fff;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px}
 .dz-badge--hot{background:var(--gold)}
 .deal--member .dz-badge{left:auto;right:12px;top:16px}
+.dz .deal{scroll-margin-top:190px}
+@media(max-width:700px){.dz .deal{scroll-margin-top:80px}}
+.dz .deal:target{outline:2px solid var(--gold);outline-offset:6px}
+.dz .dz-alt-link{display:block;text-align:center;margin-top:10px;font-size:13px;color:inherit;text-decoration:underline;text-underline-offset:3px}
 .dz-empty{text-align:center;padding:40px 0;font-size:1rem;color:#4A4540}
 .dz-empty a{color:var(--terracotta)}
 .dz-signup{background:var(--warm-dark);color:#fff;margin:72px 0;position:relative}
@@ -416,7 +420,7 @@
     <p class="dz-lede">You do not have time to hunt for codes. I check every sale on the brand&rsquo;s own site, so you can shop in five minutes and get on with your day.</p>
     <div class="dz-stats">
       <div><strong>30</strong><span>Sales checked</span></div>
-      <div><strong>4</strong><span>Exclusive codes</span></div>
+      <div><strong>5</strong><span>Exclusive codes</span></div>
       <div><strong>65%</strong><span>Biggest discount</span></div>
     </div>
     <div class="dz-ctas">
@@ -460,6 +464,7 @@
     <p class="deals-lede">Brands shared these codes with me for my readers. Tap &ldquo;Get my code and shop.&rdquo; The code copies for you and the store opens.</p>
   </div>
   <div class="deals-grid deals-grid--member">
+    <article class="deal deal--member" data-cat="codes" id="meaningful-beauty"><div class="deal-photo"><span class="deal-flag">New code</span><img src="https://static.shopmy.us/uploads/img-lookbook_item_sibling_13204436-1788295499698" alt="Meaningful Beauty Ultra Lifting and Filling Treatment" class="" loading="eager"></div><div class="deal-body"><p class="deal-brand">Meaningful Beauty</p><p class="deal-offer">15% off. The Ultra Lifting and Filling Treatment from my reel, plus the Youth Activating Eye Serum.</p><div class="deal-code deal-code--hidden" data-c="UEhZU0lDSUFOTU9NMTU="><span class="deal-code-val"></span></div><a class="deal-link deal-reveal" href="https://go.shopmy.us/p-105448276" target="_blank" rel="noopener sponsored">Get my code and shop</a><a class="dz-alt-link" href="https://go.shopmy.us/p-105448261" target="_blank" rel="noopener sponsored">Or shop the eye serum</a></div></article>
     <article class="deal deal--member" data-cat="codes"><div class="deal-photo"><span class="deal-flag">Member code</span><img src="https://pilatesuniversity1883.com/cdn/shop/files/7C7830F4-8F0C-4FD5-AD20-827F93ABE96A.jpg?v=1786400710&amp;width=1000" alt="Pilates University 1883 activewear" class="" loading="lazy"></div><div class="deal-body"><p class="deal-brand">Pilates University</p><p class="deal-offer">25% off.</p><div class="deal-code deal-code--hidden" data-c="UEhZU0lDSUFOTU9NMjU="><span class="deal-code-val"></span></div><a class="deal-link deal-reveal" href="https://go.shopmy.us/p-101325380" target="_blank" rel="noopener sponsored">Get my code and shop</a></div></article>
     <article class="deal deal--member" data-cat="codes"><div class="deal-photo"><span class="deal-flag">Member code</span><img src="https://naturium.com/cdn/shop/files/PDP_GlowGetterBodyButter_front_v2.webp?v=1774290302&amp;width=1000" alt="Naturium Glow Getter Multi-Oil Body Butter" class="" loading="lazy"></div><div class="deal-body"><p class="deal-brand">Naturium</p><p class="deal-offer">10% off.</p><div class="deal-code deal-code--hidden" data-c="UEhZU0lDSUFOTU9NMTA="><span class="deal-code-val"></span></div><a class="deal-link deal-reveal" href="https://go.shopmy.us/p-100312775" target="_blank" rel="noopener sponsored">Get my code and shop</a></div></article>
     <article class="deal deal--member" data-cat="codes" data-end="2026-12-31"><div class="deal-photo"><span class="deal-flag">Member code</span><img src="/partner-truffle.jpg" alt="Truffle Clarity clear cases" class="" loading="lazy"></div><div class="deal-body"><p class="deal-brand">Truffle</p><p class="deal-offer">15% off. Through Dec 31.</p><div class="deal-code deal-code--hidden" data-c="UEhZU0lDSUFOTU9NMTU="><span class="deal-code-val"></span></div><a class="deal-link deal-reveal" href="https://go.shopmy.us/p-101600952" target="_blank" rel="noopener sponsored">Get my code and shop</a></div></article>
@@ -753,5 +758,15 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  // Land on a linked card (e.g. /deals#meaningful-beauty from a pin) even after images load and shift the layout.
+  var id=location.hash.slice(1); if(!id) return;
+  var el=document.getElementById(id); if(!el||!el.classList.contains('deal')) return;
+  function go(){ el.scrollIntoView({block:'start',behavior:'instant'}); }
+  window.addEventListener('load',function(){ setTimeout(go,50); });
+  if(window.gtag) gtag('event','deals_deeplink',{card:id});
+})();
+</script>
 </body>
 </html>
