@@ -128,7 +128,8 @@
     if (/worth-it|invisible-list|free-session|booking-confirmed|join-emails|template/.test(window.location.pathname)) return;
     var ps = Array.prototype.filter.call(art.children, function (el) { return el.tagName === 'P'; });
     if (ps.length < 6) return;
-    var anchor = ps[Math.floor(ps.length * 0.4)];
+    var slot = art.querySelector('[data-signup-slot]');
+    var anchor = slot || ps[Math.floor(ps.length * 0.4)];
     var o = inlineOffer();
     var box = document.createElement('aside');
     box.className = 'pf-inline';
