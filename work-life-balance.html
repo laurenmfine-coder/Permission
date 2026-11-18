@@ -352,6 +352,46 @@
     html { scroll-behavior:auto !important; }
   }
 </style>
+<style>
+.wlb-jump{margin:18px 0 8px;}
+.wlb-jump a{display:inline-block;background:#23406E;color:#fff !important;text-decoration:none !important;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;}
+.wlb-check{border:1px solid #D9CFC2;background:#FBF8F4;padding:24px 26px;margin:24px 0;}
+.wlb-check-kicker{font-family:'DM Sans',sans-serif;font-size:.74rem !important;letter-spacing:.16em;text-transform:uppercase;color:#B8975A !important;margin:0 0 10px !important;}
+.wlb-check ul{list-style:none;padding:0 !important;margin:0 !important;}
+.wlb-check li{margin:0 !important;padding:9px 0;border-bottom:1px solid #EBE3D8;}
+.wlb-check li:last-child{border-bottom:0;}
+.wlb-check label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;line-height:1.55;}
+.wlb-check input{width:20px;height:20px;margin-top:3px;flex:0 0 auto;accent-color:#23406E;}
+.wlb-score{margin:16px 0 0 !important;font-size:1.02rem;}
+.wlb-score strong{font-size:1.4rem;color:#23406E;}
+.wlb-kit{background:#23406E;color:#fff;padding:30px 30px 24px;margin:28px 0;}
+.wlb-kit p{color:#fff !important;}
+.wlb-kit-eyebrow{font-family:'DM Sans',sans-serif;font-size:.74rem !important;letter-spacing:.16em;text-transform:uppercase;color:#D9BE8A !important;margin:0 0 8px !important;}
+.wlb-kit-title{font-family:'Playfair Display',serif;font-size:1.6rem !important;line-height:1.25;margin:0 0 10px !important;}
+.wlb-kit-text{font-size:1rem !important;line-height:1.65;margin:0 0 16px !important;opacity:.95;}
+.wlb-kit form,.wlb-letter{display:flex;flex-wrap:wrap;gap:10px;margin:0;}
+.wlb-kit input,.wlb-letter input{flex:1 1 180px;padding:13px 14px;border:1px solid #CFC6BA;font-size:1rem;font-family:inherit;background:#fff;color:#1A1A1A;}
+.wlb-kit button,.wlb-letter button{padding:13px 22px;border:0;background:#B8975A;color:#fff;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;}
+.wlb-kit-note{font-size:.85rem !important;margin:12px 0 0 !important;opacity:.85;}
+.wlb-kit a{color:#D9BE8A !important;}
+.wlb-tool{margin:-6px 0 18px !important;}
+.wlb-tool a{font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#B8975A !important;text-decoration:none !important;border-bottom:1px solid #B8975A;}
+.wlb-hub{margin:40px 0;padding:30px 0;border-top:1px solid #D9CFC2;border-bottom:1px solid #D9CFC2;}
+.wlb-hub-kicker{font-family:'DM Sans',sans-serif;font-size:.74rem !important;letter-spacing:.16em;text-transform:uppercase;color:#B8975A !important;margin:0 0 6px !important;}
+.wlb-hub-title{margin-top:0 !important;}
+.wlb-hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px;}
+.wlb-hub-card{display:block;padding:18px 18px 16px;border:1px solid #D9CFC2;background:#fff;text-decoration:none !important;color:#1A1A1A !important;transition:border-color .2s,transform .2s;}
+.wlb-hub-card:hover{border-color:#23406E;transform:translateY(-2px);}
+.wlb-hub-card span{display:block;font-size:.88rem;color:#6E6863;margin-bottom:6px;}
+.wlb-hub-card strong{display:block;font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:500;color:#23406E;}
+.wlb-hub-card--dark{background:#23406E;border-color:#23406E;}
+.wlb-hub-card--dark span{color:#D9BE8A;}
+.wlb-hub-card--dark strong{color:#fff;}
+.wlb-letter{margin-top:12px;max-width:480px;}
+.wlb-letter-note{font-size:.85rem !important;margin-top:10px !important;opacity:.85;}
+.wlb-letter-note a{color:inherit !important;text-decoration:underline !important;}
+@media (max-width:600px){.wlb-kit{padding:24px 20px;}.wlb-kit button,.wlb-letter button{width:100%;}}
+</style>
 </head>
 <body>
 
@@ -418,6 +458,7 @@
 <article class="post-body">
   <p>Most of us picture work-life balance as a scale. Work on one side, life on the other, perfectly level. Then we feel like failures because the scale never sits still.</p>
   <p>Here is a better definition. <strong>Work-life balance means your work leaves enough of you for the rest of your life.</strong> Enough energy, enough attention, enough time for the people and things that matter to you. It is not a 50/50 split. It is a question of what is left over.</p>
+  <p class="wlb-jump"><a href="#balance-check">Take the 30-second balance check &darr;</a></p>
 
   <h2>What does work-life balance mean?</h2>
   <p>Work-life balance is the degree to which your job and your life outside it can both get what they need from you, without one constantly starving the other. Some weeks work takes more. Some weeks home does. Balance is not the same split every day. It is whether things even out over time, and whether you have a say in how.</p>
@@ -428,16 +469,31 @@
   <p>But most people's "everything else" eight hours is not free. It is commuting, cooking, kids, laundry, and email you didn't finish. So use the rule as a mirror, not a target. Ask: of my eight non-work hours, how many are actually mine?</p>
 
   <h2>Signs your work-life balance is unhealthy</h2>
-  <ul>
-    <li>You check messages first thing in the morning and last thing at night.</li>
-    <li>Your days off are spent recovering, not living.</li>
-    <li>You cancel plans with friends or family more than you keep them.</li>
-    <li><a href="/make-time-for-healthy-habits">Exercise, cooking, and sleep are the first things to go</a> when work gets busy.</li>
-    <li>You feel guilty when you rest.</li>
-    <li>You count down to your next vacation.</li>
-    <li><a href="/how-to-be-happy-at-work">The people at home get the tired version of you</a>.</li>
-  </ul>
+  <div class="wlb-check" id="balance-check">
+    <p class="wlb-check-kicker">The balance check &middot; tick every one that sounds like you</p>
+    <ul>
+      <li><label><input type="checkbox"> <span>You check messages first thing in the morning and last thing at night.</span></label></li>
+      <li><label><input type="checkbox"> <span>Your days off are spent recovering, not living.</span></label></li>
+      <li><label><input type="checkbox"> <span>You cancel plans with friends or family more than you keep them.</span></label></li>
+      <li><label><input type="checkbox"> <span><a href="/make-time-for-healthy-habits">Exercise, cooking, and sleep are the first things to go</a> when work gets busy.</span></label></li>
+      <li><label><input type="checkbox"> <span>You feel guilty when you rest.</span></label></li>
+      <li><label><input type="checkbox"> <span>You count down to your next vacation.</span></label></li>
+      <li><label><input type="checkbox"> <span><a href="/how-to-be-happy-at-work">The people at home get the tired version of you</a>.</span></label></li>
+    </ul>
+    <p class="wlb-score" aria-live="polite"><strong id="wlb-count">0</strong> of 7. <span id="wlb-verdict">Tick the ones that fit.</span></p>
+  </div>
   <p>If three or more of these sound familiar, your work is taking more than its share.</p>
+  <aside class="wlb-kit" id="starter-kit" aria-label="Free Make Room starter kit">
+    <p class="wlb-kit-eyebrow">Free &middot; The Make Room starter kit</p>
+    <p class="wlb-kit-title">Get your first hour back this week.</p>
+    <p class="wlb-kit-text">Two one-page worksheets. <strong>The Yes Invoice</strong> shows what your commitments are really costing you. <strong>The 24-Hour Rule</strong> stops the ten-second yes before it happens. Plus The Sunday Letter: one short letter and one tool you can use, every Sunday morning.</p>
+    <form id="wlb-kit-form" novalidate>
+      <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <button type="submit">Send me the kit</button>
+    </form>
+    <p class="wlb-kit-note">Both PDFs download right away. Unsubscribe anytime.</p>
+  </aside>
 
   <h2>Why is work-life balance important?</h2>
   <p>Because the cost of imbalance shows up in your body, not only your mood. In 2021, the World Health Organization and the International Labour Organization published the first global estimate of the health toll of long hours. <a href="https://www.ilo.org/global/about-the-ilo/newsroom/news/WCMS_792131/lang--en/index.htm" target="_blank" rel="noopener">They linked working 55 or more hours a week</a> to 745,000 deaths from stroke and heart disease in 2016.</p>
@@ -471,7 +527,7 @@
 
   <h2>Is work-life balance a myth?</h2>
   <p>The perfect version is. Nobody gets an even split every day, and chasing one is a fast way to feel like you are failing. The core idea holds up, though. You can build a life where work has limits, where you recover between hard weeks, and where the people you love get more than your leftovers.</p>
-  <p>What makes balance feel like a myth is usually load. If your list was never possible in the hours you have, no system will balance it. That is the moment to look at what to put down. <a href="/how-to-reduce-mental-load">How to reduce your mental load</a> and <a href="/how-to-stop-feeling-overwhelmed">how to stop feeling overwhelmed</a> are good places to start.</p>
+  <p data-signup-slot>What makes balance feel like a myth is usually load. If your list was never possible in the hours you have, no system will balance it. That is the moment to look at what to put down. <a href="/how-to-reduce-mental-load">How to reduce your mental load</a> and <a href="/how-to-stop-feeling-overwhelmed">how to stop feeling overwhelmed</a> are good places to start.</p>
 
   <h2>Seven ways to make room, starting this week</h2>
   <h3>1. One in, one out</h3>
@@ -484,10 +540,24 @@
   <p>High achievers lose hours on the last 5 percent. When the work is good enough to do its job, call it done and move on.</p>
   <h3>5. Stop answering on the spot</h3>
   <p>Most overcommitment happens in a ten-second yes. Say "Let me get back to you tomorrow." Then decide with a clear head.</p>
+  <p class="wlb-tool"><a href="#starter-kit">Free: The 24-Hour Rule worksheet &rarr;</a></p>
   <h3>6. Audit your yeses</h3>
   <p>For one week, list everything you agreed to and what it cost. <a href="/resources#yes-invoice">The Yes Invoice</a> is a free worksheet for this. Most people find two or three commitments they can hand back.</p>
+  <p class="wlb-tool"><a href="#starter-kit">Get The Yes Invoice in the free starter kit &rarr;</a></p>
   <h3>7. Try it for two weeks</h3>
   <p>Do not overhaul your life. Pick one change from this list and run it for two weeks. Then look at what you got back.</p>
+  <section class="wlb-hub" aria-label="Pick your next step">
+    <p class="wlb-hub-kicker">Pick your next step</p>
+    <h2 class="wlb-hub-title">Where is your time going?</h2>
+    <div class="wlb-hub-grid">
+      <a href="/how-to-set-boundaries" class="wlb-hub-card"><span>Work keeps spilling into home</span><strong>How to set boundaries</strong></a>
+      <a href="/how-to-say-no" class="wlb-hub-card"><span>You say yes before you think</span><strong>How to say no, with scripts</strong></a>
+      <a href="/how-to-say-your-workload-is-too-much" class="wlb-hub-card"><span>The job outgrew your hours</span><strong>Tell your boss it is too much</strong></a>
+      <a href="/make-time-for-healthy-habits" class="wlb-hub-card"><span>Exercise and sleep go first</span><strong>Make time for healthy habits</strong></a>
+      <a href="/boundaries-with-family" class="wlb-hub-card"><span>Family wants more than you have</span><strong>Boundaries with family</strong></a>
+      <a href="/room" class="wlb-hub-card wlb-hub-card--dark"><span>Not sure where to start?</span><strong>Take the 2-minute quiz</strong></a>
+    </div>
+  </section>
 
   <h2>Tips for work-life balance when working from home</h2>
   <p>Working from home removes the commute, which can give you back real time. It also removes the walls. When your desk is ten steps from your kitchen, work can reach you at any hour.</p>
@@ -571,8 +641,13 @@
     </h2>
   </div>
   <div class="post-cta-right">
-    <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
-    <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    <p>The Sunday Letter: one short letter and one tool you can use, every Sunday morning. Free.</p>
+    <form id="wlb-letter-form" class="wlb-letter" novalidate>
+      <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <button type="submit">Get the letter</button>
+    </form>
+    <p class="wlb-letter-note">Unsubscribe anytime. Or <a href="https://www.facebook.com/groups/permissiontochange" target="_blank" rel="noopener">join the free Facebook group &rarr;</a></p>
   </div>
 </div>
 
@@ -676,6 +751,44 @@
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+<script>
+(function(){
+  function ga(n,p){try{if(typeof gtag==='function')gtag('event',n,p||{});}catch(e){}}
+  function valid(v){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);}
+  function notes(){var q=new URLSearchParams(location.search);return 'utm_source='+(q.get('utm_source')||'')+'; utm_medium='+(q.get('utm_medium')||'')+'; utm_campaign='+(q.get('utm_campaign')||'')+'; referrer='+(document.referrer||'');}
+  // Balance check
+  var boxes=document.querySelectorAll('#balance-check input'),cnt=document.getElementById('wlb-count'),ver=document.getElementById('wlb-verdict'),logged=false;
+  function score(){var n=0;boxes.forEach(function(b){if(b.checked)n++;});cnt.textContent=n;
+    ver.innerHTML=n===0?'Tick the ones that fit.':n<3?'You have some room. Protect it. The starter kit below helps you keep it.':n<5?'Work is taking more than its share. Start with the free starter kit below.':'Work is taking far more than its share. Start small: one change from the kit below, for two weeks.';
+    if(!logged&&n>0){logged=true;ga('balance_check_start');}}
+  boxes.forEach(function(b){b.addEventListener('change',score);});
+  // Starter kit: two gated downloads through /api/download
+  function blobDl(blob,name){var u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}
+  function getSheet(email,name,sheet,file){return fetch('/api/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:name,email:email,worksheet:sheet,source:'work_life_balance_kit',notes:notes()})}).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){blobDl(b,file);});}
+  var kf=document.getElementById('wlb-kit-form');
+  if(kf)kf.addEventListener('submit',function(e){e.preventDefault();var email=kf.email.value.trim(),name=kf.name.value.trim();
+    if(!valid(email)){kf.email.focus();kf.email.style.borderColor='#B5654A';return;}
+    var btn=kf.querySelector('button');btn.disabled=true;btn.textContent='Sending...';
+    getSheet(email,name,'The Yes Invoice','the-yes-invoice.pdf').then(function(){return getSheet(email,name,'The 24-Hour Rule','the-24-hour-rule.pdf');}).then(function(){
+      ga('generate_lead',{source:'work_life_balance_kit',page:location.pathname});
+      kf.outerHTML='<p style="font-size:1.05rem;margin:0;"><strong>Your kit is downloading.</strong> The Sunday Letter lands Sunday morning. Want to talk it through? <a href="/free-session?utm_source=site&amp;utm_content=wlb_kit">Your first session is free &rarr;</a></p>';
+    }).catch(function(){btn.disabled=false;btn.textContent='Send me the kit';alert('Something went wrong. Please try again, or email ReasonDxCoaching@gmail.com.');});
+  });
+  document.querySelectorAll('.wlb-tool a').forEach(function(a){a.addEventListener('click',function(){ga('wlb_tool_click',{tool:a.textContent});});});
+  document.querySelectorAll('.wlb-hub-card').forEach(function(a){a.addEventListener('click',function(){ga('wlb_hub_click',{to:a.getAttribute('href')});});});
+  // Bottom Sunday Letter signup through /api/subscribe
+  var lf=document.getElementById('wlb-letter-form');
+  if(lf)lf.addEventListener('submit',function(e){e.preventDefault();var email=lf.email.value.trim(),name=lf.name.value.trim();
+    if(!valid(email)){lf.email.focus();lf.email.style.borderColor='#B5654A';return;}
+    lf.querySelector('button').disabled=true;
+    var body='firstName='+encodeURIComponent(name)+'&email='+encodeURIComponent(email)+'&source=work_life_balance_bottom&userGroup=CoachingLead&leadStage=sunday_letter&notes='+encodeURIComponent(notes());
+    fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){
+      ga('generate_lead',{source:'work_life_balance_bottom',page:location.pathname});
+      lf.outerHTML='<p style="margin:12px 0 0;"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p>';
+    }).catch(function(){lf.querySelector('button').disabled=false;});
   });
 })();
 </script>
