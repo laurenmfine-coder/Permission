@@ -492,7 +492,7 @@
       <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
       <button type="submit">Send me the kit</button>
     </form>
-    <p class="wlb-kit-note">Both PDFs download right away. Unsubscribe anytime.</p>
+    <p class="wlb-kit-note">Both PDFs are yours right away. Unsubscribe anytime.</p>
   </aside>
 
   <h2>Why is work-life balance important?</h2>
@@ -772,9 +772,13 @@
   if(kf)kf.addEventListener('submit',function(e){e.preventDefault();var email=kf.email.value.trim(),name=kf.name.value.trim();
     if(!valid(email)){kf.email.focus();kf.email.style.borderColor='#B5654A';return;}
     var btn=kf.querySelector('button');btn.disabled=true;btn.textContent='Sending...';
-    getSheet(email,name,'The Yes Invoice','the-yes-invoice.pdf').then(function(){return getSheet(email,name,'The 24-Hour Rule','the-24-hour-rule.pdf');}).then(function(){
+    getSheet(email,name,'The Yes Invoice','the-yes-invoice.pdf').then(function(){
       ga('generate_lead',{source:'work_life_balance_kit',page:location.pathname});
-      kf.outerHTML='<p style="font-size:1.05rem;margin:0;"><strong>Your kit is downloading.</strong> The Sunday Letter lands Sunday morning. Want to talk it through? <a href="/free-session?utm_source=site&amp;utm_content=wlb_kit">Your first session is free &rarr;</a></p>';
+      var box=document.createElement('div');
+      box.innerHTML='<p style="font-size:1.05rem;margin:0 0 12px;"><strong>The Yes Invoice is downloading.</strong> One more:</p><button type="button" id="wlb-second" style="padding:13px 22px;border:0;background:#B8975A;color:#fff;font-family:DM Sans,sans-serif;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Download The 24-Hour Rule</button><p style="margin:14px 0 0;">The Sunday Letter lands Sunday morning. Want to talk it through? <a href="/free-session?utm_source=site&amp;utm_content=wlb_kit">Your first session is free &rarr;</a></p>';
+      kf.replaceWith(box);
+      var b2=document.getElementById('wlb-second');
+      b2.addEventListener('click',function(){b2.disabled=true;b2.textContent='Downloading...';getSheet(email,name,'The 24-Hour Rule','the-24-hour-rule.pdf').then(function(){b2.textContent='Downloaded';}).catch(function(){b2.disabled=false;b2.textContent='Try again';});});
     }).catch(function(){btn.disabled=false;btn.textContent='Send me the kit';alert('Something went wrong. Please try again, or email ReasonDxCoaching@gmail.com.');});
   });
   document.querySelectorAll('.wlb-tool a').forEach(function(a){a.addEventListener('click',function(){ga('wlb_tool_click',{tool:a.textContent});});});
