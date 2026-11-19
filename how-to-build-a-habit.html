@@ -328,6 +328,21 @@
   .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
   .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
   @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
+
+  /* talk-cta */
+  .post-body .talk-box { border:1px solid rgba(184,151,90,0.55); background:#FBF8F3; padding:28px 30px; margin:44px 0; }
+  .post-body .talk-box .talk-kicker { font-family:'DM Sans',sans-serif; font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin:0 0 8px; }
+  .post-body .talk-box .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; line-height:1.3; color:var(--black); margin:0 0 18px; }
+  .post-body .talk-box .talk-opts { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .post-body .talk-box a.talk-opt { display:block; background:#fff; border:1px solid rgba(0,0,0,0.1); padding:16px 18px; text-decoration:none; color:var(--black); }
+  .post-body .talk-box a.talk-opt:hover { border-color:#B8975A; }
+  .post-body .talk-box .talk-opt-name { font-family:'Playfair Display',serif; font-size:1.08rem; margin:0 0 4px; }
+  .post-body .talk-box .talk-opt-desc { font-size:0.9rem; line-height:1.55; margin:0 0 10px; color:var(--black); }
+  .post-body .talk-box .talk-opt-go { font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #B8975A; }
+  .post-body .talk-line { border-top:1px solid rgba(0,0,0,0.1); padding-top:18px; margin-top:36px; font-size:0.98rem; }
+  .post-cta-right .talk-alt { margin-top:18px; font-size:0.95rem; }
+  .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
+  @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -478,6 +493,15 @@
   <p>Lay out your walking shoes the night before. Keep the water bottle on your desk. Put the book on your pillow. Every bit of friction you remove is one less decision on a tired day.</p>
   <p>And expect it to be dull. I wrote about this in <a href="/sunday-letter-07-three-myths-that-are-costing-you-money-and-sleep">three myths that are costing you money and sleep</a>. Lasting change is small, repeated and a little boring. Boring is often a sign the habit is working.</p>
 
+    <aside class="talk-box" data-talk="mid">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Stuck on your own version of this?</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'mid'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_mid" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'mid'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>What is habit stacking, and does it work?</h2>
   <p>Habit stacking means attaching a new habit to one you already do every day. James Clear popularized the term in his 2018 book <em>Atomic Habits</em>. It builds on the work of Stanford behavior scientist BJ Fogg, whose <em>Tiny Habits</em> method pairs a very small new behavior with an existing routine he calls an anchor.</p>
   <p>The formula is simple:</p>
@@ -540,6 +564,16 @@
   <p>Pick one habit. Make it small. Give it a time and a place. Try it for two weeks.</p>
   <p>This article is general information, not medical advice. If you are building a habit related to a health condition, talk with your doctor.</p>
 
+  
+  <aside class="talk-box" data-talk="end">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Talk it through with me.</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'end'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_end" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'end'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Frequently asked questions</h2>
   <h3>How long does it take to form a habit?</h3>
   <p>Longer than most people expect. In a 2010 University College London study led by Phillippa Lally, the typical time for a daily behavior to become automatic was about 66 days. Individual times ranged from 18 days to an estimated 254 days.</p>
@@ -584,6 +618,7 @@
   <div class="post-cta-right">
     <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
     <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    <p class="talk-alt">Rather talk? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'footer'})">Book a quick call</a> or <a href="/free-session?utm_source=site&amp;utm_content=postcta" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'footer'})">a free first session</a>.</p>
   </div>
 </div>
 

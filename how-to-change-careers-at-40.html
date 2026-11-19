@@ -310,6 +310,21 @@
   @media (max-width:700px){ .sl-panel { padding:28px 22px; } }
   .sl-panel.borrowed { border-left:3px solid var(--gold); }
   .sl-panel .src { display:block; font-size:0.85rem; color:var(--gray); margin-top:14px; }
+
+  /* talk-cta */
+  .post-body .talk-box { border:1px solid rgba(184,151,90,0.55); background:#FBF8F3; padding:28px 30px; margin:44px 0; }
+  .post-body .talk-box .talk-kicker { font-family:'DM Sans',sans-serif; font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin:0 0 8px; }
+  .post-body .talk-box .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; line-height:1.3; color:var(--black); margin:0 0 18px; }
+  .post-body .talk-box .talk-opts { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .post-body .talk-box a.talk-opt { display:block; background:#fff; border:1px solid rgba(0,0,0,0.1); padding:16px 18px; text-decoration:none; color:var(--black); }
+  .post-body .talk-box a.talk-opt:hover { border-color:#B8975A; }
+  .post-body .talk-box .talk-opt-name { font-family:'Playfair Display',serif; font-size:1.08rem; margin:0 0 4px; }
+  .post-body .talk-box .talk-opt-desc { font-size:0.9rem; line-height:1.55; margin:0 0 10px; color:var(--black); }
+  .post-body .talk-box .talk-opt-go { font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #B8975A; }
+  .post-body .talk-line { border-top:1px solid rgba(0,0,0,0.1); padding-top:18px; margin-top:36px; font-size:0.98rem; }
+  .post-cta-right .talk-alt { margin-top:18px; font-size:0.95rem; }
+  .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
+  @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -464,6 +479,15 @@
   <p>The same steps apply at 50, with two differences. First, your runway to retirement is shorter, so the financial plan matters more. Know your monthly number before you start. Second, your experience is a bigger asset. Employers and clients pay for judgment, and at 50 you have a lot of it.</p>
   <p>Age is rarely the real barrier. The real barriers are usually money, identity and fear of starting at the bottom. Each of those can be planned for. None of them is solved by waiting.</p>
 
+    <aside class="talk-box" data-talk="mid">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Stuck on your own version of this?</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'mid'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_mid" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'mid'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Why a midlife career change feels so hard</h2>
   <p>It is not only practical. Your career may be tied to how you see yourself, how your family sees you, and years of sacrifice to get where you are. Leaving can feel like throwing that away. It is not. What you built goes with you and feeds what comes next.</p>
   <p>It also helps to notice whose voice is in your head when you say "I should stay." Some of the rules we live by were handed to us. You are allowed to keep the ones that still fit and put down the ones that do not.</p>
@@ -532,6 +556,16 @@
 
   <p>Further along? Read <a href="/midlife-reinvention">midlife reinvention</a> and <a href="/how-to-reinvent-yourself-at-50">how to reinvent yourself at 50</a>.</p>
 
+  
+  <aside class="talk-box" data-talk="end">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Talk it through with me.</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'end'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_end" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'end'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Frequently asked questions</h2>
   <h3>Is 40 too old to change careers?</h3>
   <p>No. At 40 you likely have 25 or more working years left, which is longer than most people have already worked. You also bring skills and judgment that a 25-year-old does not have yet.</p>
@@ -571,6 +605,7 @@
   <div class="post-cta-right">
     <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
     <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    <p class="talk-alt">Rather talk? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'footer'})">Book a quick call</a> or <a href="/free-session?utm_source=site&amp;utm_content=postcta" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'footer'})">a free first session</a>.</p>
   </div>
 </div>
 

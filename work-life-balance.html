@@ -321,6 +321,21 @@
   .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
   .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
   @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
+
+  /* talk-cta */
+  .post-body .talk-box { border:1px solid rgba(184,151,90,0.55); background:#FBF8F3; padding:28px 30px; margin:44px 0; }
+  .post-body .talk-box .talk-kicker { font-family:'DM Sans',sans-serif; font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin:0 0 8px; }
+  .post-body .talk-box .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; line-height:1.3; color:var(--black); margin:0 0 18px; }
+  .post-body .talk-box .talk-opts { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .post-body .talk-box a.talk-opt { display:block; background:#fff; border:1px solid rgba(0,0,0,0.1); padding:16px 18px; text-decoration:none; color:var(--black); }
+  .post-body .talk-box a.talk-opt:hover { border-color:#B8975A; }
+  .post-body .talk-box .talk-opt-name { font-family:'Playfair Display',serif; font-size:1.08rem; margin:0 0 4px; }
+  .post-body .talk-box .talk-opt-desc { font-size:0.9rem; line-height:1.55; margin:0 0 10px; color:var(--black); }
+  .post-body .talk-box .talk-opt-go { font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #B8975A; }
+  .post-body .talk-line { border-top:1px solid rgba(0,0,0,0.1); padding-top:18px; margin-top:36px; font-size:0.98rem; }
+  .post-cta-right .talk-alt { margin-top:18px; font-size:0.95rem; }
+  .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
+  @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -524,6 +539,15 @@
   <p>Work-life harmony is a newer term. It pictures work and life fitting together like parts of a song, instead of competing on a scale. Harmony allows for seasons. A launch month can be loud at work and quiet at home, as long as the whole year still sounds right to you.</p>
   <p>The idea helps because it drops the demand for equal parts. The risk is the same as with integration. A pleasant word can cover a schedule that never gives anything back. Whatever you call it, test it the same way. Does work leave enough of you for the rest of your life? If the answer has been no for months, the label does not matter.</p>
 
+    <aside class="talk-box" data-talk="mid">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Stuck on your own version of this?</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'mid'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_mid" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'mid'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Is work-life balance a myth?</h2>
   <p>The perfect version is. Nobody gets an even split every day, and chasing one is a fast way to feel like you are failing. The core idea holds up, though. You can build a life where work has limits, where you recover between hard weeks, and where the people you love get more than your leftovers.</p>
   <p data-signup-slot>What makes balance feel like a myth is usually load. If your list was never possible in the hours you have, no system will balance it. That is the moment to look at what to put down. <a href="/how-to-reduce-mental-load">How to reduce your mental load</a> and <a href="/how-to-stop-feeling-overwhelmed">how to stop feeling overwhelmed</a> are good places to start.</p>
@@ -592,7 +616,17 @@
   <h2>Make room</h2>
   <p>You will never find time. You make room. If you are not sure where to start, take the free <a href="/room">Which Room Is Yours? quiz</a> or <a href="/free-session">book a free 55-minute session</a>. No sales pitch.</p>
 
-    <h2 id="more-on-this-topic">More on this topic</h2>
+    
+  <aside class="talk-box" data-talk="end">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Talk it through with me.</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'end'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_end" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'end'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
+  <h2 id="more-on-this-topic">More on this topic</h2>
   <ul>
     <li><a href="/decision-coaching">Decision coaching for big decisions</a></li>
     <li><a href="/career-reinvention">Career reinvention coaching</a></li>

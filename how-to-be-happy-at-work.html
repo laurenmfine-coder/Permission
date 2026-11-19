@@ -295,6 +295,21 @@
   .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
   .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
   @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
+
+  /* talk-cta */
+  .post-body .talk-box { border:1px solid rgba(184,151,90,0.55); background:#FBF8F3; padding:28px 30px; margin:44px 0; }
+  .post-body .talk-box .talk-kicker { font-family:'DM Sans',sans-serif; font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin:0 0 8px; }
+  .post-body .talk-box .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; line-height:1.3; color:var(--black); margin:0 0 18px; }
+  .post-body .talk-box .talk-opts { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .post-body .talk-box a.talk-opt { display:block; background:#fff; border:1px solid rgba(0,0,0,0.1); padding:16px 18px; text-decoration:none; color:var(--black); }
+  .post-body .talk-box a.talk-opt:hover { border-color:#B8975A; }
+  .post-body .talk-box .talk-opt-name { font-family:'Playfair Display',serif; font-size:1.08rem; margin:0 0 4px; }
+  .post-body .talk-box .talk-opt-desc { font-size:0.9rem; line-height:1.55; margin:0 0 10px; color:var(--black); }
+  .post-body .talk-box .talk-opt-go { font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #B8975A; }
+  .post-body .talk-line { border-top:1px solid rgba(0,0,0,0.1); padding-top:18px; margin-top:36px; font-size:0.98rem; }
+  .post-cta-right .talk-alt { margin-top:18px; font-size:0.95rem; }
+  .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
+  @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -434,6 +449,15 @@
   <p>Pick one change. Run it for two weeks. Then ask: am I a little less miserable? If yes, keep it and add another. If no, you have learned something too.</p>
   <p>After leaving full-time clinical practice I no longer was charting in the evenings. I had time to read with my daughter who at that time was just learning to read. She needed extra attention, and my son was just a year old and also needed me. I needed them just as much, and the decision to pivot to a different career balance taught me that, although only in retrospect.</p>
 
+    <aside class="talk-box" data-talk="mid">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Stuck on your own version of this?</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'mid'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_mid" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'mid'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Should I tell my boss I'm not happy at work?</h2>
   <p>Often, yes. But bring a specific problem and a specific ask, not a general feeling. "I'm unhappy" is hard to act on. "I'm spending ten hours a week on scheduling. Can we move that to someone else so I can focus on the clinical work?" is easy to act on. Good managers want to keep good people. Give them something they can fix.</p>
 
@@ -451,7 +475,17 @@
   <h2>Make room</h2>
   <p>You do not have to love every day at work to be happy at work. You need work that fits, and room for the rest of your life. If you want help finding the real reason, <a href="/free-session">book a free 55-minute session</a>. No sales pitch.</p>
 
-    <h2 id="more-on-this-topic">More on this topic</h2>
+    
+  <aside class="talk-box" data-talk="end">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Talk it through with me.</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'end'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_end" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'end'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
+  <h2 id="more-on-this-topic">More on this topic</h2>
   <ul>
     <li><a href="/should-i-quit-my-job">Should I quit my job?</a></li>
     <li><a href="/decision-coaching">Decision coaching for big decisions</a></li>
@@ -493,6 +527,7 @@
   <div class="post-cta-right">
     <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
     <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    <p class="talk-alt">Rather talk? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'footer'})">Book a quick call</a> or <a href="/free-session?utm_source=site&amp;utm_content=postcta" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'footer'})">a free first session</a>.</p>
   </div>
 </div>
 
