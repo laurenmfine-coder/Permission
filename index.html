@@ -723,6 +723,8 @@
     <li class="nav-has-drop">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">More <span aria-hidden="true">&#9662;</span></button>
       <ul class="nav-drop">
+        <li><a href="/clinique">Clinique Favorites</a></li>
+        <li><a href="/grove">Grove Favorites</a></li>
         <li><a href="/media">Media</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/resources">Free Resources</a></li>
@@ -1081,6 +1083,45 @@
 </section>
 
 <!-- DIFFERENTIATOR -->
+<section class="fav-band" id="favorites">
+<style>
+  .fav-band { background:#FFFFFF; padding:100px 64px; }
+  .fav-inner { max-width:1100px; margin:0 auto; }
+  .fav-kicker { font-family:'DM Sans',sans-serif; font-size:0.62rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B8975A; margin-bottom:14px; }
+  .fav-title { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(1.9rem,3.2vw,2.7rem); line-height:1.15; color:#1A1A1A; margin-bottom:14px; }
+  .fav-title em { font-style:italic; color:#23406E; }
+  .fav-lead { font-family:'DM Sans',sans-serif; font-size:0.98rem; font-weight:300; line-height:1.8; color:#1A1A1A; max-width:620px; margin-bottom:40px; }
+  .fav-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .fav-card { display:block; border:1px solid #E5E0DA; background:#FFFFFF; text-decoration:none; color:#1A1A1A; transition:border-color .2s; }
+  .fav-card:hover { border-color:#B8975A; }
+  .fav-img { aspect-ratio:4/3; background:#F6F3EF; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .fav-img img { width:100%; height:100%; object-fit:cover; }
+  .fav-img img.contain { object-fit:contain; padding:28px; }
+  .fav-body { padding:26px 28px 30px; }
+  .fav-brand { font-family:'DM Sans',sans-serif; font-size:0.62rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8975A; margin-bottom:8px; }
+  .fav-name { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:#182D4E; margin-bottom:10px; }
+  .fav-desc { font-family:'DM Sans',sans-serif; font-size:0.92rem; font-weight:300; line-height:1.75; margin-bottom:18px; }
+  .fav-cta { font-family:'DM Sans',sans-serif; font-size:0.68rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#FFFFFF; background:#1A1A1A; display:inline-block; padding:12px 20px; }
+  .fav-card:hover .fav-cta { background:#23406E; }
+  @media (max-width:900px) { .fav-band { padding:72px 24px; } .fav-grid { grid-template-columns:1fr; } }
+</style>
+  <div class="fav-inner">
+    <p class="fav-kicker">Lauren's favorite brands</p>
+    <h2 class="fav-title">The two brands <em>I use every day.</em></h2>
+    <p class="fav-lead">Clinique for my skin. Grove for my home. Both keep fragrance out, which is the first thing I look for on any label.</p>
+    <div class="fav-grid">
+      <a class="fav-card" href="/clinique">
+        <div class="fav-img"><img src="clinique-spf-photo.jpg" alt="Clinique SPF 50 Mineral Sunscreen Fluid for Face on a sunlit vanity" loading="lazy"></div>
+        <div class="fav-body"><p class="fav-brand">Clinique</p><p class="fav-name">My first brand, almost 30 years ago</p><p class="fav-desc">Sunscreen and mascara are my everyday pair. A one-minute routine that works for anyone, fragrance free and allergy tested.</p><span class="fav-cta">See my Clinique picks</span></div>
+      </a>
+      <a class="fav-card" href="/grove">
+        <div class="fav-img"><img src="https://static.shopmy.us/pins/zoom-107706310-1795098658289-732913450657_FP_1.jpg" alt="Seventh Generation Liquid Laundry Detergent, Free &amp; Clear" class="contain" loading="lazy"></div>
+        <div class="fav-body"><p class="fav-brand">Grove</p><p class="fav-name">A fragrance-free home</p><p class="fav-desc">Reading cleaning labels is part of my job, and that extends to my home too. My Seventh Generation favorites, plus the VIP50 deal.</p><span class="fav-cta">See my Grove picks</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="differentiator">
   <div class="diff-left">
     <p class="section-eyebrow reveal">Why not a course or a program</p>
@@ -1205,6 +1246,8 @@
       </ul>
       <p class="footer-col-label" style="margin-top:28px;">From the allergist</p>
       <ul class="footer-links">
+        <li><a href="/clinique">My Clinique favorites</a></li>
+        <li><a href="/grove">My Grove favorites</a></li>
         <li><a href="/post-why-i-trust-clinique">Is Clinique hypoallergenic?</a></li>
         <li><a href="/hypoallergenic-skin-care">Hypoallergenic skin care</a></li>
         <li><a href="/dust-mite-allergy">Dust mite allergy</a></li>
