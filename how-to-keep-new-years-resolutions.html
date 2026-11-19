@@ -336,6 +336,21 @@
   .post-body .reel-text, .reel-text { font-size:1rem; line-height:1.7; color:#4A4540; margin-bottom:16px; }
   .post-body .reel-more, .reel-more { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; margin:0; }
   @media (max-width:700px) { .reel { grid-template-columns:1fr; gap:22px; padding:22px; } .reel video { max-width:300px; margin:0 auto; } }
+
+  /* talk-cta */
+  .post-body .talk-box { border:1px solid rgba(184,151,90,0.55); background:#FBF8F3; padding:28px 30px; margin:44px 0; }
+  .post-body .talk-box .talk-kicker { font-family:'DM Sans',sans-serif; font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--terracotta); margin:0 0 8px; }
+  .post-body .talk-box .talk-title { font-family:'Playfair Display',serif; font-size:1.45rem; line-height:1.3; color:var(--black); margin:0 0 18px; }
+  .post-body .talk-box .talk-opts { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .post-body .talk-box a.talk-opt { display:block; background:#fff; border:1px solid rgba(0,0,0,0.1); padding:16px 18px; text-decoration:none; color:var(--black); }
+  .post-body .talk-box a.talk-opt:hover { border-color:#B8975A; }
+  .post-body .talk-box .talk-opt-name { font-family:'Playfair Display',serif; font-size:1.08rem; margin:0 0 4px; }
+  .post-body .talk-box .talk-opt-desc { font-size:0.9rem; line-height:1.55; margin:0 0 10px; color:var(--black); }
+  .post-body .talk-box .talk-opt-go { font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#23406E; border-bottom:1px solid #B8975A; }
+  .post-body .talk-line { border-top:1px solid rgba(0,0,0,0.1); padding-top:18px; margin-top:36px; font-size:0.98rem; }
+  .post-cta-right .talk-alt { margin-top:18px; font-size:0.95rem; }
+  .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
+  @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
@@ -497,6 +512,15 @@
 
   <!-- LAUREN: add your own example of a goal you kept or dropped here, and what you had to take off your plate to make room for it -->
 
+    <aside class="talk-box" data-talk="mid">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Stuck on your own version of this?</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'mid'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_mid" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'mid'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>How do you stick to your goals after the first few weeks?</h2>
   <p>Setting the goal is the easy part. The hard part starts around the third week, when the novelty fades and real life pushes back. These are the habits that carry a goal through that stretch.</p>
 
@@ -563,6 +587,16 @@
   <p>A resolution is a decision about what matters to you this year. That decision only holds if your calendar agrees with it. So make the goal small, give it a time and place, and take something out to make room for it. Then try it for two weeks.</p>
   <p>I write more about making room in <a href="/sunday-letter">The Sunday Letter</a> and on <a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">my Substack, Permission to Change</a>. If you want help deciding which goal matters most and what has to come off your plate, you can <a href="/free-session">book a free 55-minute session</a>. No sales pitch. You can also read more about how <a href="/coaching">coaching</a> works.</p>
 
+  
+  <aside class="talk-box" data-talk="end">
+    <p class="talk-kicker">Want to talk it through?</p>
+    <p class="talk-title">Talk it through with me.</p>
+    <div class="talk-opts">
+      <a class="talk-opt" href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'end'})"><p class="talk-opt-name">Quick call</p><p class="talk-opt-desc">A short paid call on Clarity for one question or one decision.</p><span class="talk-opt-go">Book a quick call</span></a>
+      <a class="talk-opt" href="/free-session?utm_source=site&amp;utm_content=talkbox_end" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'end'})"><p class="talk-opt-name">Free first session</p><p class="talk-opt-desc">55 minutes, free, for anyone considering coaching. No sales pitch.</p><span class="talk-opt-go">Book a free session</span></a>
+    </div>
+  </aside>
+
   <h2>Frequently asked questions</h2>
   <h3>What percentage of people keep their New Year's resolutions?</h3>
   <p>It depends on the study and how long you wait. In a 2002 study in the Journal of Clinical Psychology, 46% of resolvers were still succeeding at six months. In a 2020 study in PLOS ONE, 55% of participants considered themselves successful after a full year.</p>
@@ -609,6 +643,7 @@
   <div class="post-cta-right">
     <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
     <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    <p class="talk-alt">Rather talk? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'footer'})">Book a quick call</a> or <a href="/free-session?utm_source=site&amp;utm_content=postcta" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'footer'})">a free first session</a>.</p>
   </div>
 </div>
 
@@ -674,7 +709,7 @@
     <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" aria-label="Join Physician Women at a Crossroads on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
         <a href="https://www.pinterest.com/lmf1212/" target="_blank" rel="noopener" aria-label="Lauren Fine Coaching on Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
       </div>
-      <ul class="footer-links"><li><a href="mailto:reasondxcoaching@gmail.com">reasondxcoaching@gmail.com</a></li><li><a href="/free-session">Let's Talk</a></li><li><a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">Read on Substack</a></li></ul>
+      <ul class="footer-links"><li><a href="mailto:reasondxcoaching@gmail.com">reasondxcoaching@gmail.com</a></li><li><a href="/free-session">Free Session or Quick Call</a></li><li><a href="https://permissiontochange.substack.com" target="_blank" rel="noopener">Read on Substack</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">
