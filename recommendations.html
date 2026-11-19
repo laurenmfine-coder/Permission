@@ -4,20 +4,20 @@
 <script src="/js/attribution.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lauren's Recommendations | Allergy, Home, Comfort &amp; Professional</title>
-<meta name="description" content="A board-certified allergist on what actually helps: what allergy testing means and does not mean, lower-irritant skincare and home, and the professional wardrobe edit.">
+<title>Allergist-Recommended Products for Skin, Home and Work</title>
+<meta name="description" content="What a board-certified allergist recommends: fragrance-free skin care, an allergy-friendly home, Grove and Clinique picks, and a simple work wardrobe.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://laurenfine.com/recommendations">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://laurenfine.com/recommendations">
-<meta property="og:title" content="Lauren's Recommendations">
+<meta property="og:title" content="Allergist-Recommended Products for Skin, Home and Work">
 <meta property="og:description" content="Allergy, home, comfort, and professional picks, chosen by a board-certified allergist.">
 <meta property="og:image" content="https://laurenfine.com/headshot.jpg">
 <meta property="og:site_name" content="Dr. Lauren Fine, Allergist">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lauren's Recommendations">
+<meta name="twitter:title" content="Allergist-Recommended Products for Skin, Home and Work">
 <meta name="twitter:description" content="Allergy, home, comfort, and professional picks, chosen by a board-certified allergist.">
 <meta name="twitter:image" content="https://laurenfine.com/headshot.jpg">
 
@@ -310,6 +310,20 @@
   }
 </style>
 <link rel="stylesheet" href="/css/shop.css">
+<style>
+.rec-allergy{padding:72px 24px;background:#F5F0EA;}
+.rec-allergy-inner{max-width:1100px;margin:0 auto;}
+.rec-allergy-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#B8975A;margin:0 0 10px;}
+.rec-allergy-lede{color:#4A4540;margin:8px 0 28px;font-size:1.02rem;}
+.rec-allergy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.rec-allergy-card{display:block;background:#fff;border:1px solid #E3DBD0;padding:18px;text-decoration:none;color:#1A1A1A;transition:border-color .2s,transform .2s;}
+.rec-allergy-card:hover{border-color:#23406E;transform:translateY(-2px);}
+.rec-allergy-card img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:14px;background:#fff;}
+.rec-allergy-card img.contain{object-fit:contain;}
+.rec-allergy-card span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#6E6863;margin-bottom:6px;}
+.rec-allergy-card strong{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:1.15rem;color:#23406E;line-height:1.3;}
+.rec-allergy-card--text{display:flex;flex-direction:column;justify-content:flex-end;min-height:120px;}
+</style>
 </head>
 <body>
 
@@ -531,6 +545,22 @@ document.addEventListener('click',function(e){
 });
 </script>
 
+<section class="rec-allergy" id="allergist">
+  <div class="rec-allergy-inner">
+    <p class="rec-allergy-kicker">From the allergist</p>
+    <h2 class="edit-h2">Sensitive skin and an <em>allergy-friendly home</em></h2>
+    <p class="rec-allergy-lede">Fragrance free, allergy tested and easy to live with.</p>
+    <div class="rec-allergy-grid">
+      <a href="/post-why-i-trust-clinique" class="rec-allergy-card"><img src="/clinique-spf-photo.jpg" alt="Clinique SPF 50 mineral sunscreen" loading="lazy"><span>Clinique</span><strong>Is Clinique hypoallergenic? My everyday picks</strong></a>
+      <a href="/grove-promo-code" class="rec-allergy-card"><img src="https://static.shopmy.us/pins/zoom-107164895-1795012185372-GCO2025SensitiveSkinFreeClear32ozGR-156-6722-H_Render_61db3dcb-4cf8-4f30-a908-de908e944128.png" alt="Grove Co. Free and Clear laundry detergent" loading="lazy" class="contain"><span>Grove</span><strong>Fragrance-free home basics, and the best first-order deal</strong></a>
+      <a href="/best-skin-care-for-sensitive-skin" class="rec-allergy-card rec-allergy-card--text"><span>Skin care</span><strong>The best skin care for sensitive skin</strong></a>
+      <a href="/fragrance-free-laundry-detergent" class="rec-allergy-card rec-allergy-card--text"><span>Laundry</span><strong>Fragrance-free laundry detergent</strong></a>
+      <a href="/dust-mite-allergy" class="rec-allergy-card rec-allergy-card--text"><span>Bedroom</span><strong>Dust mite allergy: the bedroom checklist</strong></a>
+      <a href="/fragrance-free-cleaning-products" class="rec-allergy-card rec-allergy-card--text"><span>Cleaning</span><strong>Fragrance-free cleaning products</strong></a>
+    </div>
+  </div>
+</section>
+
 <section class="edit edit-likes" id="likes">
   <div class="edit-inner">
     <p class="edit-eyebrow">Everything else I love</p>
@@ -657,5 +687,6 @@ document.addEventListener('click',function(e){
   });
 })();
 </script>
+<script src="/js/affiliate-track.js" defer></script>
 </body>
 </html>
