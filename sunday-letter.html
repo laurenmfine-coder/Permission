@@ -336,6 +336,13 @@
     html { scroll-behavior:auto !important; }
   }
 </style>
+<style>
+.sl-form{display:flex;flex-wrap:wrap;gap:10px;margin:0;}
+.sl-form input{flex:1 1 180px;padding:14px;border:1px solid #CFC6BA;font-size:1rem;font-family:inherit;background:#fff;}
+.sl-form button.sl-btn{border:0;cursor:pointer;padding:15px 30px;background:var(--terracotta);color:#fff;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;}
+.sl-form-note{font-size:.85rem !important;color:#6E6863 !important;margin:10px 0 0 !important;}
+@media (max-width:600px){.sl-form button.sl-btn{width:100%;}}
+</style>
 </head>
 
 </head>
@@ -415,7 +422,12 @@
 
   <div class="sl-signup">
     <p>New letters land Sunday mornings. If you would rather not go looking for them, have them sent to you.</p>
-    <a href="/join-emails" class="sl-btn">Get The Sunday Letter</a>
+    <form id="sl-form" class="sl-form" novalidate>
+      <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+      <button type="submit" class="sl-btn">Get The Sunday Letter</button>
+    </form>
+    <p class="sl-form-note">Free. One email on Sunday mornings. Unsubscribe anytime.</p>
   </div>
 </div>
 
@@ -613,6 +625,18 @@
     if(e.key==='Escape'){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
   });
 })();
+</script>
+<script>
+(function(){var f=document.getElementById('sl-form');if(!f)return;
+f.addEventListener('submit',function(e){e.preventDefault();var email=f.email.value.trim(),name=f.name.value.trim();
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){f.email.focus();f.email.style.borderColor='#B5654A';return;}
+f.querySelector('button').disabled=true;var q=new URLSearchParams(location.search);
+var notes='utm_source='+(q.get('utm_source')||'')+'; utm_medium='+(q.get('utm_medium')||'')+'; utm_campaign='+(q.get('utm_campaign')||'')+'; referrer='+(document.referrer||'');
+var body='firstName='+encodeURIComponent(name)+'&email='+encodeURIComponent(email)+'&source=sunday_letter_page&userGroup=CoachingLead&leadStage=sunday_letter&notes='+encodeURIComponent(notes);
+fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){
+try{if(typeof gtag==='function')gtag('event','generate_lead',{source:'sunday_letter_page',page:location.pathname});}catch(x){}
+f.outerHTML='<p style="font-size:1.05rem;margin:0;"><strong>You are on the list.</strong> The next letter lands Sunday morning. Read any issue below while you wait.</p>';
+}).catch(function(){f.querySelector('button').disabled=false;});});})();
 </script>
 </body>
 </html>
