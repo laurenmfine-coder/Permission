@@ -4,8 +4,8 @@
 .cl-hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px;}
 .cl-hub-card{display:block;padding:18px 18px 16px;border:1px solid #D9CFC2;background:#fff;text-decoration:none !important;color:#1A1A1A !important;transition:border-color .2s,transform .2s;}
 .cl-hub-card:hover{border-color:#23406E;transform:translateY(-2px);}
-.cl-hub-card span{display:block;font-size:.88rem;color:#6E6863;margin-bottom:6px;}
-.cl-hub-card strong{display:block;font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:500;color:#23406E;}
+.cl-hub-card span{display:block;font-size:.88rem;color:#6E6863 !important;margin-bottom:6px;}
+.cl-hub-card strong{display:block;font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:500;color:#23406E !important;}
 .cl-hub-card--dark{background:#23406E;border-color:#23406E;}
-.cl-hub-card--dark span{color:#D9BE8A;}
-.cl-hub-card--dark strong{color:#fff;}
+.cl-hub-card--dark span{color:#D9BE8A !important;}
+.cl-hub-card--dark strong{color:#fff !important;}
