@@ -1,0 +1,29 @@
+name: Discover product photos
+on:
+  push:
+    branches: [main]
+    paths: ['tools/img/discover.json', 'tools/img/discover.py']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: images
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow requests
+      - run: python tools/img/discover.py
+      - name: Commit results
+        run: |
+          git config user.name "image-bot"
+          git config user.email "image-bot@users.noreply.github.com"
+          git add tools/img/candidates.json tools/img/sheets || true
+          git diff --cached --quiet || git commit -m "Product photo candidates [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
