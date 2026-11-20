@@ -47,10 +47,14 @@ async function existingFields(key, email) {
       signal: AbortSignal.timeout(2500)
     });
     if (res.status === 404) return {};
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn('FLODESK_LOOKUP_FAILED status ' + res.status + ' ' + (await res.text()).slice(0, 200));
+      return null;
+    }
     const body = await res.json();
     return (body && body.custom_fields) || {};
   } catch (e) {
+    console.warn('FLODESK_LOOKUP_ERROR ' + (e && e.name) + ' ' + (e && e.message));
     return null;
   }
 }
