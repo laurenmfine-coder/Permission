@@ -81,7 +81,16 @@ async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyF
   const fields = {};
   Object.keys(customFields || {}).forEach(function (k) {
     const v = customFields[k];
-    if (v != null && String(v).length) fields[k] = String(v).slice(0, 1000);
+    if (v != null && String(v).length) {
+      const val = String(v).slice(0, 1000);
+      fields[k] = val;
+      // Flodesk may store multi-word field keys in camelCase (first_source ->
+      // firstSource). Send both spellings; unknown keys are ignored.
+      if (k.indexOf('_') !== -1) {
+        const camel = k.replace(/_([a-z])/g, function (m, c) { return c.toUpperCase(); });
+        if (!(camel in fields)) fields[camel] = val;
+      }
+    }
   });
   if (Object.keys(fields).length) payload.custom_fields = fields;
 
