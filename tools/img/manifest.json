@@ -3,7 +3,6 @@
   "out": "img/deals/therabody.jpg",
   "src": "https://static.shopmy.us/pins/zoom-95145649-1792219196416-253765107_0435.jpg",
   "mode": "photo",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -11,7 +10,6 @@
  {
   "out": "img/deals/slip.jpg",
   "src": "https://static.shopmy.us/pins/zoom-95145665-1792219231695-11561768-2144958348785854.jpg",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -20,7 +18,6 @@
   "out": "img/deals/omnilux.jpg",
   "src": "https://omniluxled.com/cdn/shop/files/Contour_Face_PDP_Image_1.png?v=1784569105&width=1000",
   "mode": "photo",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -28,7 +25,6 @@
  {
   "out": "img/deals/clinique.jpg",
   "src": "https://www.clinique.com/cdn/shop/files/cl_sku_6CY401_3000x3000_0.png?width=800",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -37,14 +33,12 @@
   "out": "img/deals/aurate.jpg",
   "src": "https://static.shopmy.us/pins/zoom-107708757-1795099011805-aurate-earrings-gold-huggie-custom-540.png",
   "fill": 0.55,
-  "force": true,
   "w": 1200,
   "h": 900
  },
  {
   "out": "img/deals/away.jpg",
   "src": "https://www.awaytravel.com/cdn/shop/files/PDP_Cabana_PC_BCO_01.jpg?width=900",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -52,7 +46,6 @@
  {
   "out": "img/deals/grove.jpg",
   "src": "https://static.shopmy.us/pins/zoom-107164895-1795012185372-GCO2025SensitiveSkinFreeClear32ozGR-156-6722-H_Render_61db3dcb-4cf8-4f30-a908-de908e944128.png",
-  "force": true,
   "w": 1200,
   "h": 900,
   "fill": 0.74
@@ -61,14 +54,12 @@
   "out": "img/deals/le-creuset.jpg",
   "src": "https://cb.scene7.com/is/image/Crate/LeCreuSg5p5qDtchOvenSeaSSF23?wid=1000&hei=1000",
   "fill": 0.62,
-  "force": true,
   "w": 1200,
   "h": 900
  },
  {
   "out": "img/deals/meaningful-beauty.jpg",
   "src": "https://static.shopmy.us/uploads/img-lookbook_item_sibling_13204436-1788295499698",
-  "force": true,
   "w": 800,
   "h": 1000
  },
@@ -76,14 +67,12 @@
   "out": "img/deals/naturium.jpg",
   "src": "https://naturium.com/cdn/shop/files/PDP_GlowGetterBodyButter_front_v2.webp?v=1774290302&width=1000",
   "fill": 0.6,
-  "force": true,
   "w": 800,
   "h": 1000
  },
  {
   "out": "img/deals/truffle.jpg",
   "src": "https://truffleco.com/cdn/shop/products/TRUFFLE-Clarity-Jetset-Case_Black_leather_side.jpg?width=1000",
-  "force": true,
   "w": 800,
   "h": 1000
  },
@@ -91,7 +80,6 @@
   "out": "img/deals/pilates-university.jpg",
   "src": "https://pilatesuniversity1883.com/cdn/shop/files/7C7830F4-8F0C-4FD5-AD20-827F93ABE96A.jpg?v=1786400710&width=1000",
   "mode": "photo",
-  "force": true,
   "w": 800,
   "h": 1000
  },
@@ -99,8 +87,85 @@
   "out": "img/deals/literie.jpg",
   "src": "https://literiecandle.com/cdn/shop/files/holiday-shop-lifestyle-35x15.webp?width=1000",
   "mode": "photo",
-  "force": true,
   "w": 800,
   "h": 1000
+ },
+ {
+  "out": "img/deals/bluemercury.jpg",
+  "src": "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_400x.jpg?v=1759527034",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/banana-republic.jpg",
+  "src": "https://content.gapinc.com/b/0064/105/689/cn64105689.png?width=585",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/baublebar.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156725_SS_01_SQ.jpg?v=1795106667",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/buffy.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/2462/9621/products/10_PDP_Hemp_MiniFlangeWhiteDuvet_0013_RT.webp?v=1681766757",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/old-navy.jpg",
+  "src": "https://content.gapinc.com/d/gvide10h0m3bdv03f53t220n6n2ou5ho.jpg?TP=NAV",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74,
+  "mode": "photo"
+ },
+ {
+  "out": "img/deals/tumi.jpg",
+  "src": "https://tumi.scene7.com/is/image/Tumi/1589571041_main?wid=1200&hei=1200",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/kate-spade.jpg",
+  "src": "https://katespade.scene7.com/is/image/KateSpade/KQ735_600?wid=1200&hei=1200",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/neiman-marcus.jpg",
+  "src": "https://media.neimanmarcus.com/f_auto,q_auto:good,w_1200/01/nm_5702676_100147_m",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/samsonite.jpg",
+  "src": "https://shop.samsonite.com/dw/image/v2/BBZB_PRD/on/demandware.static/-/Sites-product-catalog/default/dwe3bb2e35/collections/_samsonite/cosmolite-3/500x500/804081726be01.jpg?sw=1200&sh=1200",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/helix.jpg",
+  "src": "https://res.cloudinary.com/helixsleep/image/upload/f_jpg/core_collection_2x_ddxkoq",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
+ },
+ {
+  "out": "img/deals/whbm.jpg",
+  "src": "wardrobe-blazer.jpg",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
  }
 ]

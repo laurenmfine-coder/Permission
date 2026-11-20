@@ -16,9 +16,12 @@ UA = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/53
       'Accept': 'image/avif,image/webp,image/png,image/jpeg,*/*'}
 
 def fetch(url):
-    r = requests.get(url, headers=UA, timeout=40)
-    r.raise_for_status()
-    im = Image.open(io.BytesIO(r.content))
+    if not url.startswith('http'):
+        im = Image.open(os.path.join(ROOT, url.lstrip('/')))
+    else:
+        r = requests.get(url, headers=UA, timeout=40)
+        r.raise_for_status()
+        im = Image.open(io.BytesIO(r.content))
     im.load()
     if max(im.size) > 1400:
         im.thumbnail((1400, 1400), Image.LANCZOS)
