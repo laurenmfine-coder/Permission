@@ -192,8 +192,9 @@
   "src": "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CamBag_Bundle_BlackBag_BlackCS_1x1_ca0c8b58-261a-4547-83c9-8d9147ba755e.png?v=1780093556",
   "w": 800,
   "h": 1000,
-  "mode": "studio",
-  "fill": 0.62
+  "mode": "photo",
+  "fill": 0.62,
+  "force": true
  },
  {
   "out": "img/deals/cosabella.jpg",
@@ -224,8 +225,9 @@
   "src": "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_pj-set_steamy_studio-1.jpg?v=1793621999",
   "w": 800,
   "h": 1000,
-  "mode": "contain",
-  "fill": 0.92
+  "mode": "photo",
+  "fill": 0.92,
+  "force": true
  },
  {
   "out": "img/deals/railey.jpg",
@@ -272,5 +274,12 @@
   "w": 800,
   "h": 1000,
   "mode": "photo"
+ },
+ {
+  "out": "img/deals/beekman-sale.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BSCRUB-GME.jpg?v=1738086466",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
  }
 ]
