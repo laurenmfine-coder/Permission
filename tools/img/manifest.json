@@ -1,15 +1,72 @@
 [
- {"out":"img/deals/therabody.jpg","src":"https://static.shopmy.us/pins/zoom-95145649-1792219196416-253765107_0435.jpg"},
- {"out":"img/deals/slip.jpg","src":"https://static.shopmy.us/pins/zoom-95145665-1792219231695-11561768-2144958348785854.jpg"},
- {"out":"img/deals/omnilux.jpg","src":"https://omniluxled.com/cdn/shop/files/Contour_Face_PDP_Image_1.png?v=1784569105&width=1000"},
- {"out":"img/deals/clinique.jpg","src":"https://www.clinique.com/cdn/shop/files/cl_sku_6CY401_3000x3000_0.png?width=800"},
- {"out":"img/deals/aurate.jpg","src":"https://static.shopmy.us/pins/zoom-107708757-1795099011805-aurate-earrings-gold-huggie-custom-540.png","fill":0.55},
- {"out":"img/deals/away.jpg","src":"https://www.awaytravel.com/cdn/shop/files/PDP_Cabana_PC_BCO_01.jpg?width=900"},
- {"out":"img/deals/grove.jpg","src":"https://static.shopmy.us/pins/zoom-107164895-1795012185372-GCO2025SensitiveSkinFreeClear32ozGR-156-6722-H_Render_61db3dcb-4cf8-4f30-a908-de908e944128.png"},
- {"out":"img/deals/le-creuset.jpg","src":"https://cb.scene7.com/is/image/Crate/LeCreuSg5p5qDtchOvenSeaSSF23?wid=1000&hei=1000","fill":0.62},
- {"out":"img/deals/meaningful-beauty.jpg","src":"https://static.shopmy.us/uploads/img-lookbook_item_sibling_13204436-1788295499698"},
- {"out":"img/deals/naturium.jpg","src":"https://naturium.com/cdn/shop/files/PDP_GlowGetterBodyButter_front_v2.webp?v=1774290302&width=1000","fill":0.6},
- {"out":"img/deals/truffle.jpg","src":"https://truffleco.com/cdn/shop/products/TRUFFLE-Clarity-Jetset-Case_Black_leather_side.jpg?width=1000"},
- {"out":"img/deals/pilates-university.jpg","src":"https://pilatesuniversity1883.com/cdn/shop/files/7C7830F4-8F0C-4FD5-AD20-827F93ABE96A.jpg?v=1786400710&width=1000"},
- {"out":"img/deals/literie.jpg","src":"https://literiecandle.com/cdn/shop/files/holiday-shop-lifestyle-35x15.webp?width=1000","mode":"photo"}
+ {
+  "out": "img/deals/therabody.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-95145649-1792219196416-253765107_0435.jpg",
+  "force": true
+ },
+ {
+  "out": "img/deals/slip.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-95145665-1792219231695-11561768-2144958348785854.jpg",
+  "force": true
+ },
+ {
+  "out": "img/deals/omnilux.jpg",
+  "src": "https://omniluxled.com/cdn/shop/files/Contour_Face_PDP_Image_1.png?v=1784569105&width=1000",
+  "force": true
+ },
+ {
+  "out": "img/deals/clinique.jpg",
+  "src": "https://www.clinique.com/cdn/shop/files/cl_sku_6CY401_3000x3000_0.png?width=800",
+  "force": true
+ },
+ {
+  "out": "img/deals/aurate.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-107708757-1795099011805-aurate-earrings-gold-huggie-custom-540.png",
+  "fill": 0.55,
+  "force": true
+ },
+ {
+  "out": "img/deals/away.jpg",
+  "src": "https://www.awaytravel.com/cdn/shop/files/PDP_Cabana_PC_BCO_01.jpg?width=900",
+  "force": true
+ },
+ {
+  "out": "img/deals/grove.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-107164895-1795012185372-GCO2025SensitiveSkinFreeClear32ozGR-156-6722-H_Render_61db3dcb-4cf8-4f30-a908-de908e944128.png",
+  "force": true
+ },
+ {
+  "out": "img/deals/le-creuset.jpg",
+  "src": "https://cb.scene7.com/is/image/Crate/LeCreuSg5p5qDtchOvenSeaSSF23?wid=1000&hei=1000",
+  "fill": 0.62,
+  "force": true
+ },
+ {
+  "out": "img/deals/meaningful-beauty.jpg",
+  "src": "https://static.shopmy.us/uploads/img-lookbook_item_sibling_13204436-1788295499698",
+  "force": true
+ },
+ {
+  "out": "img/deals/naturium.jpg",
+  "src": "https://naturium.com/cdn/shop/files/PDP_GlowGetterBodyButter_front_v2.webp?v=1774290302&width=1000",
+  "fill": 0.6,
+  "force": true
+ },
+ {
+  "out": "img/deals/truffle.jpg",
+  "src": "https://truffleco.com/cdn/shop/products/TRUFFLE-Clarity-Jetset-Case_Black_leather_side.jpg?width=1000",
+  "force": true
+ },
+ {
+  "out": "img/deals/pilates-university.jpg",
+  "src": "https://pilatesuniversity1883.com/cdn/shop/files/7C7830F4-8F0C-4FD5-AD20-827F93ABE96A.jpg?v=1786400710&width=1000",
+  "force": true,
+  "mode": "photo"
+ },
+ {
+  "out": "img/deals/literie.jpg",
+  "src": "https://literiecandle.com/cdn/shop/files/holiday-shop-lifestyle-35x15.webp?width=1000",
+  "mode": "photo",
+  "force": true
+ }
 ]

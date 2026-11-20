@@ -24,36 +24,49 @@ def fetch(url):
         im.thumbnail((1400, 1400), Image.LANCZOS)
     return im
 
-def knock_out_white(im):
+def border_stats(rgb):
+    w, h = rgb.size
+    px = rgb.load()
+    step = max(1, min(w, h) // 80)
+    pts = [(x, 0) for x in range(0, w, step)] + [(x, h - 1) for x in range(0, w, step)] + \
+          [(0, y) for y in range(0, h, step)] + [(w - 1, y) for y in range(0, h, step)]
+    cols = sorted(px[p] for p in pts)
+    med = tuple(sorted(c[i] for c in cols)[len(cols) // 2] for i in range(3))
+    near = sum(1 for c in cols if max(abs(c[i] - med[i]) for i in range(3)) <= 14) / len(cols)
+    return pts, med, near
+
+def knock_out_bg(im):
+    """Remove a flat background of any colour by flooding inward from the border.
+    Returns None when the border is not a flat colour (lifestyle photo)."""
     im = im.convert('RGBA')
     if im.getextrema()[3][0] < 250:      # already has transparency
         return im
     rgb = im.convert('RGB')
-    w, h = rgb.size
-    # candidate background: near-white pixels
-    cand = Image.eval(rgb.convert('L').point(lambda v: 255 if v >= 238 else 0), lambda v: v)
-    # require all channels high (avoid pale colours)
-    r, g, b = rgb.split()
-    px_r, px_g, px_b = r.load(), g.load(), b.load()
-    cm = cand.load()
-    for y in range(h):
-        for x in range(w):
-            if cm[x, y] and min(px_r[x, y], px_g[x, y], px_b[x, y]) < 232:
-                cm[x, y] = 0
-    # flood from the border so white areas inside the product stay
-    step = max(1, min(w, h) // 60)
-    pts = [(x, 0) for x in range(0, w, step)] + [(x, h - 1) for x in range(0, w, step)] + \
-          [(0, y) for y in range(0, h, step)] + [(w - 1, y) for y in range(0, h, step)]
+    pts, med, near = border_stats(rgb)
+    if near < 0.80:
+        return None
+    work = rgb.copy()
+    SENT = (255, 0, 254)
     for p in pts:
-        if cm[p] == 255:
-            ImageDraw.floodfill(cand, p, 128)
-    bg = cand.point(lambda v: 255 if v == 128 else 0)
-    alpha = ImageOps.invert(bg).filter(ImageFilter.GaussianBlur(0.8))
-    im.putalpha(alpha)
+        c = work.getpixel(p)
+        if c != SENT and max(abs(c[i] - med[i]) for i in range(3)) <= 14:
+            ImageDraw.floodfill(work, p, SENT, thresh=16)
+    mask = Image.new('L', work.size, 255)
+    wp, mp = work.load(), mask.load()
+    W, H = work.size
+    for y in range(H):
+        for x in range(W):
+            if wp[x, y] == SENT:
+                mp[x, y] = 0
+    mask = mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.8))
+    im.putalpha(mask)
     return im
 
 def studio(im, W, H, fill):
-    im = knock_out_white(im)
+    cut = knock_out_bg(im)
+    if cut is None:                      # busy background: fill the tile instead
+        return photo(im, W, H)
+    im = cut
     bbox = im.getchannel('A').point(lambda v: 255 if v > 12 else 0).getbbox()
     if bbox:
         im = im.crop(bbox)
