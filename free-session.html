@@ -553,7 +553,6 @@
           <option value="Physician considering a change">I'm a physician considering a change</option>
           <option value="Healthcare professional rethinking the path">I'm in healthcare and rethinking the path</option>
           <option value="Career reinvention outside healthcare">I'm reinventing my career outside of healthcare</option>
-          <option value="Applying: personal statement or interviews">I'm applying to something and need my story to land</option>
           <option value="Facing a major life decision">I'm facing a major life decision, not just a career one</option>
           <option value="Something else">Something else</option>
         </select>
@@ -576,9 +575,10 @@
         <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
       </div>
 
+      <label class="opt-letter" style="display:flex;gap:10px;align-items:flex-start;font-size:0.9rem;line-height:1.55;margin:0 0 18px;cursor:pointer;"><input type="checkbox" id="optLetter" name="letterOptIn" style="margin-top:4px;width:16px;height:16px;flex:0 0 auto;"> <span>Also send me The Sunday Letter, one short letter on Sunday mornings. Optional.</span></label>
       <button type="submit" class="btn-submit" id="submitBtn">Send and pick my time</button>
       <p class="form-status" id="formStatus"></p>
-      <p class="form-note">I'll follow up personally. Your note stays between us. Submitting also adds you to The Sunday Letter. You can unsubscribe anytime.</p>
+      <p class="form-note">I'll follow up personally. Your note stays between us.</p>
       <p class="form-note">Would rather just book? <a href="https://calendly.com/reasondxcoaching/free-session" data-book-direct="form" style="color:var(--black);border-bottom:1px solid var(--gold);text-decoration:none;">Pick a time on my calendar</a> and we'll cover this live.</p>
     </form>
 
@@ -755,7 +755,7 @@
             UTM: 'source=' + (_q.get('utm_source') || '') + '; medium=' + (_q.get('utm_medium') || '') + '; campaign=' + (_q.get('utm_campaign') || '')
           })
         }).then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.success) throw new Error(j.message || 'notify failed'); return j; }); });
-        fetch('/api/subscribe', {
+        if (document.getElementById('optLetter') && document.getElementById('optLetter').checked) fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(Object.assign({}, data, { source: 'free-session-page', notes: [data.notes, data.source ? ('Heard about: ' + data.source) : '', (function(){ var q = (window.lfParams ? window.lfParams() : new URLSearchParams(window.location.search)); return 'utm_source=' + (q.get('utm_source') || '') + '; utm_medium=' + (q.get('utm_medium') || '') + '; utm_campaign=' + (q.get('utm_campaign') || '') + '; referrer=' + (document.referrer || ''); })()].filter(Boolean).join(' | ') }))
