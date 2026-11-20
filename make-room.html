@@ -379,6 +379,7 @@
     html { scroll-behavior:auto !important; }
   }
 </style>
+<link rel="stylesheet" href="/css/lf-blocks.css">
 </head>
 <body>
 
@@ -522,8 +523,21 @@
     </h2>
   </div>
   <div class="post-cta-right">
-    <p>New essays on pivots, purpose, and the stories we tell ourselves. Delivered to your inbox when they're ready.</p>
-    <iframe src="https://permissiontochange.substack.com/embed" width="100%" height="150" style="border:1px solid rgba(255,255,255,0.15);background:#FFFFFF;max-width:480px;" frameborder="0" scrolling="no"></iframe>
+    
+    <div class="lf-kit" data-source="kit-make-room">
+  <p class="lf-kit-eyebrow">Free &middot; The Sunday Letter</p>
+  <p class="lf-kit-title">One short letter, Sunday mornings.</p>
+  <p class="lf-kit-text">One idea and one tool you can use that week. No noise. Unsubscribe anytime.</p>
+  <form novalidate>
+    <label class="lf-kit-hp" aria-hidden="true">Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+    <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <button type="submit">Send me the letter</button>
+  </form>
+  <p class="lf-kit-note">Your email stays with me. Unsubscribe anytime.</p>
+  <p class="lf-kit-status" role="alert"></p>
+  <p class="lf-kit-done"><strong>You are on the list.</strong> The next letter lands Sunday morning. Want to talk it through with someone? <a href="/free-session?utm_source=site&amp;utm_content=kit_make-room">Your first session is free &rarr;</a></p>
+</div>
     <p class="talk-alt">Rather talk? <a href="https://clarity.fm/laurenfine" target="_blank" rel="noopener" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'quick_call',placement:'footer'})">Book a quick call</a> or <a href="/free-session?utm_source=site&amp;utm_content=postcta" onclick="window.gtag&amp;&amp;gtag('event','talk_click',{option:'free_session',placement:'footer'})">a free first session</a>.</p>
   </div>
 </div>
@@ -617,5 +631,6 @@
   });
 })();
 </script>
+<script src="/js/lf-blocks.js" defer></script>
 </body>
 </html>

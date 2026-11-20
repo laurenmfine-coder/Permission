@@ -252,6 +252,7 @@
     html { scroll-behavior:auto !important; }
   }
 </style>
+<link rel="stylesheet" href="/css/lf-blocks.css">
 </head>
 <body>
 
@@ -293,6 +294,25 @@
   <h1 class="about-hero-h1">Physician. Medical educator. Founder. <em>Coach.</em></h1>
   <p class="about-hero-quote">"I gave myself permission to add to the work, not abandon it. Now I help others do the same."</p>
   <p class="about-hero-lede">Every pivot Lauren guides others through is one she has lived herself. That is not a tagline. It is the work.</p>
+  <div class="lf-hero-actions"><a href="/free-session?utm_source=site&amp;utm_content=about_hero" class="btn-primary">Book a free session</a><a href="#letter" class="lf-text-link">Not ready? Get The Sunday Letter &darr;</a></div>
+</section>
+
+<!-- CLIENT REVIEWS -->
+<section class="lf-proof" aria-label="Client reviews">
+  <p class="lf-proof-eyebrow">What clients say</p>
+  <div class="lf-proof-grid">
+    <figure>
+      <div class="lf-proof-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>&ldquo;I always felt like I was engaging in coaching that was specific to me, rather than following an algorithm or process that could be applied to anyone.&rdquo;</blockquote>
+      <figcaption>Jon &middot; A year of coaching in his current role</figcaption>
+    </figure>
+    <figure>
+      <div class="lf-proof-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>&ldquo;She meets you where you are, leads with heart, and helps you find your way forward.&rdquo;</blockquote>
+      <figcaption>Margaret &middot; Career transition</figcaption>
+    </figure>
+  </div>
+  <a class="lf-proof-link" href="/testimonials">Read the full reviews &rarr;</a>
 </section>
 
 <!-- PORTRAIT BAND -->
@@ -410,8 +430,24 @@
   <div class="about-cta-inner">
     <h2 class="about-cta-h2">Want to talk about <em>your</em> next chapter?</h2>
     <p class="about-cta-body">A free 55-minute coaching session is the easiest way to see whether coaching with Lauren is the right fit. Not a sales call. A real session. No pressure, no pitch.</p>
-    <a href="/free-session" class="btn-primary">Let's Talk</a> <a href="https://www.facebook.com/groups/physicianmomsatacrossroads" target="_blank" rel="noopener" class="fb-near-cta" style="display:inline-block;margin-left:14px;font-size:0.78rem;color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;">or join our free Facebook community &rarr;</a>
+    <a href="/free-session" class="btn-primary">Let's Talk</a> <a href="https://www.facebook.com/groups/permissiontochange" target="_blank" rel="noopener" class="fb-near-cta" style="display:inline-block;margin-left:14px;font-size:0.78rem;color:var(--terracotta);text-decoration:underline;text-underline-offset:3px;">or join our free Facebook community &rarr;</a>
     <a href="/coaching" class="btn-ghost">Explore coaching options</a>
+    <div style="display:flex;justify-content:center;margin-top:48px;">
+<div class="lf-kit" id="letter" data-source="kit-about">
+  <p class="lf-kit-eyebrow">Free &middot; The Sunday Letter</p>
+  <p class="lf-kit-title">One short letter, Sunday mornings.</p>
+  <p class="lf-kit-text">One idea and one tool you can use that week. No noise. Unsubscribe anytime.</p>
+  <form novalidate>
+    <label class="lf-kit-hp" aria-hidden="true">Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+    <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <button type="submit">Send me the letter</button>
+  </form>
+  <p class="lf-kit-note">Your email stays with me. Unsubscribe anytime.</p>
+  <p class="lf-kit-status" role="alert"></p>
+  <p class="lf-kit-done"><strong>You are on the list.</strong> The next letter lands Sunday morning. Want to talk it through with someone? <a href="/free-session?utm_source=site&amp;utm_content=kit_about">Your first session is free &rarr;</a></p>
+</div>
+    </div>
   </div>
 </section>
 
@@ -500,5 +536,6 @@
   });
 })();
 </script>
+<script src="/js/lf-blocks.js" defer></script>
 </body>
 </html>
