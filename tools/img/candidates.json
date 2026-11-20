@@ -1,0 +1,225 @@
+{
+ "ulta": {
+  "images": [],
+  "errors": [
+   "https://www.ulta.com/p/water-cream-oil-free-pore-minimizing-moisturizer-pimprod2015620: 404 Client Error: Not Found for url: https://www.ulta.com/p/water-cream-oil-free-pore-minimizing-moisturizer-pimprod2015"
+  ]
+ },
+ "bluemercury": {
+  "images": [
+   "http://bluemercury.com/cdn/shop/files/global_images-702685964881-1_grande.png?v=1765475164",
+   "https://bluemercury.com/cdn/shop/files/global_images-702685964881-1_600x600_crop_center.png?v=1765475164",
+   "https://bluemercury.com/cdn/shop/files/global_images-702685964881-1_400x.png?v=1765475164",
+   "https://bluemercury.com/cdn/shop/files/global_images-860425001361-1_400x.jpg?v=1773426585",
+   "https://bluemercury.com/cdn/shop/files/global_images-862833000325-1_400x.jpg?v=1758064323",
+   "https://bluemercury.com/cdn/shop/files/global_images-682223081617-1_400x.jpg?v=1769637663",
+   "https://bluemercury.com/cdn/shop/files/global_images_skin_1_400x.jpg?v=1762807852",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-Pink-811485034226-1_400x.jpg?v=1754432319",
+   "https://bluemercury.com/cdn/shop/files/global_images-850039663000-1_400x.jpg?v=1759765144",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-850019720228-1_400x.jpg?v=1790374927",
+   "https://bluemercury.com/cdn/shop/files/global_images-850035134887-1_400x.jpg?v=1773129966",
+   "https://bluemercury.com/cdn/shop/files/global_images-5060552905357-1_b9a4b4a8-87af-4731-aec5-625055c6f2f3_400x.jpg?v=1767888214",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-1Treatment-5060280377976-1_400x.jpg?v=1758728224",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-635494263008-1_400x.jpg?v=1781791334",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-817237012924-1_197e8eb1-5e27-48d2-9f3b-5a9eacd7ec92_400x.jpg?v=1786658045",
+   "https://bluemercury.com/cdn/shop/files/global_images-850027882024-1_99f05011-f4ab-433c-9313-6eaf883d1fcb_400x.jpg?v=1774980064",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-17floz-860009442115-1_400x.png?v=1784750290",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-850019720327-1_400x.jpg?v=1791984310",
+   "https://bluemercury.com/cdn/shop/files/variant_images-size-1floz-869542000103-1_400x.jpg?v=1784217185",
+   "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_400x.jpg?v=1759527034"
+  ],
+  "errors": [
+   "https://bluemercury.com/collections/holiday-gifts: 404 Client Error: Not Found for url: https://bluemercury.com/collections/holiday-gifts"
+  ]
+ },
+ "neiman-marcus": {
+  "images": [],
+  "errors": [
+   "https://www.neimanmarcus.com/c/handbags-cat46860739: 403 Client Error: Forbidden for url: https://www.neimanmarcus.com/c/handbags-cat46860739"
+  ]
+ },
+ "saks": {
+  "images": [],
+  "errors": [
+   "https://www.saksfifthavenue.com/c/jewelry-accessories/jewelry: 403 Client Error: HTTP Forbidden for url: https://www.saksfifthavenue.com/c/jewelry-accessories/jewelry"
+  ]
+ },
+ "nordstrom": {
+  "images": [],
+  "errors": []
+ },
+ "kate-spade": {
+  "images": [],
+  "errors": [
+   "https://www.katespade.com/shop/handbags/view-all: 403 Client Error: Forbidden for url: https://www.katespade.com/shop/handbags/view-all"
+  ]
+ },
+ "tumi": {
+  "images": [],
+  "errors": []
+ },
+ "serena-lily": {
+  "images": [],
+  "errors": [
+   "https://www.serenaandlily.com/bedding/quilts-coverlets: 403 Client Error: Forbidden for url: https://www.serenaandlily.com/bedding/quilts-coverlets",
+   "https://www.serenaandlily.com/: 403 Client Error: Forbidden for url: https://www.serenaandlily.com/"
+  ]
+ },
+ "loft": {
+  "images": [],
+  "errors": []
+ },
+ "ann-taylor": {
+  "images": [],
+  "errors": []
+ },
+ "jcrew": {
+  "images": [],
+  "errors": [
+   "https://www.jcrew.com/plp/womens/categories/clothing/sweaters: 403 Client Error: Forbidden for url: https://www.jcrew.com/plp/womens/categories/clothing/sweaters"
+  ]
+ },
+ "banana-republic": {
+  "images": [
+   "https://content.gapinc.com/b/0063/859/784/cn63859784.png?width=585",
+   "https://content.gapinc.com/b/0063/859/825/cn63859825.png?width=585",
+   "https://content.gapinc.com/b/0063/859/872/cn63859872.png?width=585",
+   "https://content.gapinc.com/b/0063/867/619/cn63867619.png?width=585",
+   "https://content.gapinc.com/b/0064/126/596/cn64126596.png?width=585",
+   "https://content.gapinc.com/b/0063/484/664/cn63484664.png?width=585",
+   "https://content.gapinc.com/b/0063/534/251/cn63534251.png?width=585",
+   "https://content.gapinc.com/b/0063/929/785/cn63929785.png?width=585",
+   "https://content.gapinc.com/b/0063/893/808/cn63893808.png?width=585",
+   "https://content.gapinc.com/b/0063/893/887/cn63893887.png?width=585",
+   "https://content.gapinc.com/b/0063/893/877/cn63893877.png?width=585",
+   "https://content.gapinc.com/b/0064/105/689/cn64105689.png?width=585",
+   "https://content.gapinc.com/b/0063/787/364/cn63787364.png?width=585",
+   "https://content.gapinc.com/b/0063/787/378/cn63787378.png?width=585",
+   "https://content.gapinc.com/b/0063/787/391/cn63787391.png?width=585",
+   "https://content.gapinc.com/b/0064/318/188/cn64318188.png?width=585",
+   "https://content.gapinc.com/b/0064/193/093/cn64193093.png?width=585",
+   "https://content.gapinc.com/b/0064/193/265/cn64193265.png?width=585",
+   "https://content.gapinc.com/b/0064/193/202/cn64193202.png?width=585",
+   "https://content.gapinc.com/b/0064/237/636/cn64237636.png?width=585"
+  ],
+  "errors": []
+ },
+ "talbots": {
+  "images": [],
+  "errors": []
+ },
+ "athleta": {
+  "images": [],
+  "errors": []
+ },
+ "baublebar": {
+  "images": [
+   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?crop=center&height=750&v=1793372620&width=750",
+   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=360",
+   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=540",
+   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=720",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156725_SS_01_SQ.jpg?v=1795106667",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156724_SS_01_SQ.jpg?v=1795106688",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176740_G_01_SQ_2.jpg?v=1794939630",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176739_G_01_SQ_2.jpg?v=1794939638",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176738_G_01_SQ_1.jpg?v=1794939644",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176737_G_01_SQ.jpg?v=1794939653",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176736_G_01_SQ_1.jpg?v=1794939660",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176735_G_01_SQ_1.jpg?v=1794939671",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176734_G_01_SQ_2.jpg?v=1794940056",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176732_G_01_SQ_1.jpg?v=1794939692",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176731_G_01_SQ_1.jpg?v=1794939698",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176730_G_01_SQ_1.jpg?v=1794939706",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176729_G_01_SQ_1.jpg?v=1794939800",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176728_G_01_SQ_1.jpg?v=1794939806",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176727_G_01_SQ_1.jpg?v=1794939818",
+   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/SWATCH_iPhone_18_Pro_Max.jpg?v=1794863023"
+  ],
+  "errors": []
+ },
+ "company-store": {
+  "images": [],
+  "errors": [
+   "https://www.thecompanystore.com/bedding/comforters/: 404 Client Error: Not Found for url: https://www.thecompanystore.com/bedding/comforters/"
+  ]
+ },
+ "buffy": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/185_Sharkskin_Fullbed.jpg?v=1787256943",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/01_White_Fullbed_af58f39c-0341-4e1c-84cc-5091bd9648b5.png?v=1784575808",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/157_Bone_Fabric_Buffy_r1_Buffy34_1.jpg?v=1763758408",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/157_Bone_Fabric_Buffy_r1_Buffy34_1.jpg?v=1763758408",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-2_3.webp?v=1787084783",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-2_3.webp?v=1787084783",
+   "https://cdn.shopify.com/s/files/1/2462/9621/products/PDP_Pillow_0160_Shopify.jpg?v=1614016422",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Screenshot_2026-07-24_at_9.57.47_AM_8a4d5fc9-2707-4acd-a47e-308340d836aa.png?v=1784901516",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-11_1White.png?v=1784299393",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Pink_Clay-Closeup_8.png?v=1784232295",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-11_1White.png?v=1784299393",
+   "https://cdn.shopify.com/s/files/1/2462/9621/products/BUF004_EUCALYPTUS_SHEETS_GREY_WINDOWPANE_BED_FRONT_A__1.webp?v=1763073348",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/CLOUDCC_WINTERWEIGHT_Fullbed_Retouched.png?v=1762990040",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/edit-b-3.png?v=1728571932",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Buffy_r1_04L_3196.jpg?v=1721215544",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Gemini_Generated_Image_xwr5hrxwr5hrxwr5.jpg?v=1790094693",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/Wiggle_pillow_pistachio_shell.jpg?v=1793043938",
+   "https://cdn.shopify.com/s/files/1/2462/9621/files/web-b5-Buffy_r1_04L_2960.jpg?v=1728642451",
+   "https://cdn.shopify.com/s/files/1/2462/9621/products/Stacks_Hemp_Combo_Messy_0082_RT_V2_1.webp?v=1702995532",
+   "https://cdn.shopify.com/s/files/1/2462/9621/products/10_PDP_Hemp_MiniFlangeWhiteDuvet_0013_RT.webp?v=1681766757"
+  ],
+  "errors": []
+ },
+ "helix": {
+  "images": [],
+  "errors": [
+   "https://helixsleep.com/products.json: 404 Client Error: Not Found for url: https://helixsleep.com/products.json",
+   "https://helixsleep.com/collections/pillows: 403 Client Error: Forbidden for url: https://helixsleep.com/collections/pillows"
+  ]
+ },
+ "samsonite": {
+  "images": [],
+  "errors": []
+ },
+ "target": {
+  "images": [],
+  "errors": [
+   "https://www.target.com/c/throw-blankets-home/-/N-4y60x: 404 Client Error: Not Found for url: https://www.target.com/c/throw-blankets-home/-/N-4y60x"
+  ]
+ },
+ "old-navy": {
+  "images": [
+   "https://content.gapinc.com/d/gb5k1k4nv8x1c8ul5f532w0k7rc1o5d3.jpg?TP=NAV",
+   "https://content.gapinc.com/d/b82a03d7r0lx6p185t3ijb348611vh57.jpg?TP=NAV",
+   "https://content.gapinc.com/d/50xe3pt57qbp18g8bl81rx4w53l8lh58.jpg?TP=NAV",
+   "https://content.gapinc.com/d/t825pup50087ra1sabu26bw3d1awlwq8.jpg?TP=NAV",
+   "https://content.gapinc.com/d/gvide10h0m3bdv03f53t220n6n2ou5ho.jpg?TP=NAV",
+   "https://content.gapinc.com/d/78dj4m4pk483y4a3ph27lm27l2wc6x11.jpg?TP=NAV",
+   "https://content.gapinc.com/d/lbppial6rh30v5dm7d01y8dtf1y3v72x.jpg?TP=NAV",
+   "https://content.gapinc.com/d/tv5q3e16v72yf5dls867b4a5d0vma036.jpg?TP=NAV"
+  ],
+  "errors": []
+ },
+ "carters": {
+  "images": [],
+  "errors": [
+   "https://www.carters.com/c/baby/pajamas: 403 Client Error: Forbidden for url: https://www.carters.com/c/baby/pajamas"
+  ]
+ },
+ "hanna-andersson": {
+  "images": [],
+  "errors": [
+   "https://www.hannaandersson.com/products.json: Expecting value: line 1 column 1 (char 0)"
+  ]
+ },
+ "gap-kids": {
+  "images": [],
+  "errors": [
+   "https://www.gap.com/browse/kids/sweatshirts?cid=6189: 404 Client Error: Not Found for url: https://www.gap.com/browse/kids/sweatshirts?cid=6189"
+  ]
+ },
+ "whbm": {
+  "images": [],
+  "errors": [
+   "https://www.whitehouseblackmarket.com/store/category/jackets-blazers/cat210019: 403 Client Error: Forbidden for url: https://www.whitehouseblackmarket.com/store/category/jackets-blazers/cat210019"
+  ]
+ }
+}
