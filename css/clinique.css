@@ -11,7 +11,7 @@
 .lf-sale-chip:hover { background:#182D4E; }
 
 .lf-trust { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:.82rem; color:#5A5550; margin:-26px 0 18px; padding:0; list-style:none; }
-.lf-trust li { margin:0 !important; padding:0 0 0 18px !important; position:relative; }
+.lf-trust li { margin:0 !important; padding:0 0 0 18px !important; position:relative; font-size:.82rem !important; line-height:1.5 !important; }
 .lf-trust li::before { content:'\2713'; position:absolute; left:0; color:#B8975A; }
 .post-body .lf-disclosure-short { font-size:.8rem; line-height:1.6; color:#8C8580; margin:0 0 32px; font-style:italic; }
 

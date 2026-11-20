@@ -101,7 +101,7 @@ async function addToSubstack(contact) {
   // client-only flow. Best-effort: this never blocks file delivery.
   return upsertSubscriber(
     { email: contact.email, firstName: contact.firstName, lastName: '' },
-    { source: 'Free Resources', lead_stage: 'substack_reader' }
+    { lead_stage: 'substack_reader' }
   );
 }
 
@@ -147,12 +147,13 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'That email address does not look right.' });
   }
 
-  const jobs = [addToFlodesk(contact)];
-  if (data.alsoSubstack === true || data.alsoSubstack === 'true') {
-    jobs.push(addToSubstack(contact));
-  }
-  const results = await Promise.allSettled(jobs);
+  // Main upsert first, then the optional Substack-reader tag, so the page's
+  // own source is not overwritten by a parallel write.
+  const results = await Promise.allSettled([addToFlodesk(contact)]);
   const audience = results[0].status === 'fulfilled' ? results[0].value : { ok: false, error: String(results[0].reason) };
+  if (audience.ok && (data.alsoSubstack === true || data.alsoSubstack === 'true')) {
+    await addToSubstack(contact).catch(function () {});
+  }
 
   if (!audience.ok) {
     console.error('WORKSHEET_NOT_DELIVERED Flodesk call failed:', JSON.stringify({ worksheet, audience }));

@@ -37,19 +37,21 @@ function segmentIds() {
 // `extraSegments` (optional) adds segment ids on top of FLODESK_SEGMENT_ID,
 // e.g. a per-path segment from the /room quiz so a matching welcome
 // workflow can fire. Empty or missing ids are dropped.
-// Look up an existing subscriber's custom fields. Best effort: any failure
-// returns an empty object, so a slow or failed lookup never blocks a signup.
+// Look up an existing subscriber's custom fields. Returns {} for a new
+// subscriber, or null if the lookup failed, in which case the first-touch
+// fields are skipped rather than risk overwriting them. Never blocks a signup.
 async function existingFields(key, email) {
   try {
     const res = await fetch(FLODESK_BASE + '/subscribers/' + encodeURIComponent(email), {
       headers: { Authorization: authHeader(key) },
       signal: AbortSignal.timeout(2500)
     });
-    if (!res.ok) return {};
+    if (res.status === 404) return {};
+    if (!res.ok) return null;
     const body = await res.json();
     return (body && body.custom_fields) || {};
   } catch (e) {
-    return {};
+    return null;
   }
 }
 
@@ -63,7 +65,7 @@ async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyF
   const firstKeys = Object.keys(firstOnlyFields || {}).filter(function (k) { return firstOnlyFields[k]; });
   if (firstKeys.length) {
     const have = await existingFields(key, contact.email);
-    firstKeys.forEach(function (k) { if (!have[k]) customFields[k] = firstOnlyFields[k]; });
+    if (have) firstKeys.forEach(function (k) { if (!have[k]) customFields[k] = firstOnlyFields[k]; });
   }
 
   const payload = {
