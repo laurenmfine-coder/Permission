@@ -364,7 +364,7 @@
     .external-grid { grid-template-columns:1fr; }
     .nl-strip { grid-template-columns:1fr; gap:32px; padding:60px 24px; }
     footer { padding:60px 24px 40px; }
-    .footer-top { grid-template-columns:1fr; gap:40px; }
+    .footer-top { grid-template-columns:minmax(0,1fr); gap:40px; } .footer-top > * { min-width:0; overflow-wrap:anywhere; }
     .footer-bottom { flex-direction:column; gap:12px; }
     body { cursor:auto; }
     .cursor,.cursor-ring { display:none; }

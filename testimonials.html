@@ -172,7 +172,7 @@
     .submit-review { padding:60px 24px; }
     .book-cta { padding:80px 24px; }
     footer { padding:60px 24px 40px; }
-    .footer-top { grid-template-columns:1fr; gap:40px; }
+    .footer-top { grid-template-columns:minmax(0,1fr); gap:40px; } .footer-top > * { min-width:0; overflow-wrap:anywhere; }
     .footer-bottom { flex-direction:column; gap:12px; }
   }
 

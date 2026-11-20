@@ -597,7 +597,7 @@
     .tedx { grid-template-columns:1fr; gap:40px; padding:80px 24px; }
     .newsletter { grid-template-columns:1fr; gap:40px; padding:80px 24px; }
     footer { padding:60px 24px 40px; }
-    .footer-top { grid-template-columns:1fr; gap:40px; }
+    .footer-top { grid-template-columns:minmax(0,1fr); gap:40px; } .footer-top > * { min-width:0; overflow-wrap:anywhere; }
     .footer-bottom { flex-direction:column; gap:12px; }
     body { cursor:auto; }
     .cursor,.cursor-ring { display:none; }
@@ -1174,6 +1174,7 @@
 <section class="about" id="about">
   <div class="about-content">
     <div class="about-content-inner">
+      <img src="/lauren-about.jpg" alt="Lauren Fine, MD, smiling outdoors" width="220" height="220" loading="lazy" class="reveal" style="width:180px;height:180px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 28px;">
       <p class="section-eyebrow reveal">About Lauren</p>
       <h2 class="section-title reveal d1">A physician, <em>first.</em></h2>
       <p class="about-body reveal d2">Physician. Medical educator. Founder. TEDx speaker. I've lived every pivot I guide others through, and I haven't given up any of the parts that mattered.</p>
