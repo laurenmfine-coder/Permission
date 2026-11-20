@@ -1,225 +1,281 @@
 {
- "ulta": {
-  "images": [],
-  "errors": [
-   "https://www.ulta.com/p/water-cream-oil-free-pore-minimizing-moisturizer-pimprod2015620: 404 Client Error: Not Found for url: https://www.ulta.com/p/water-cream-oil-free-pore-minimizing-moisturizer-pimprod2015"
-  ]
- },
- "bluemercury": {
+ "solawave": {
   "images": [
-   "http://bluemercury.com/cdn/shop/files/global_images-702685964881-1_grande.png?v=1765475164",
-   "https://bluemercury.com/cdn/shop/files/global_images-702685964881-1_600x600_crop_center.png?v=1765475164",
-   "https://bluemercury.com/cdn/shop/files/global_images-702685964881-1_400x.png?v=1765475164",
-   "https://bluemercury.com/cdn/shop/files/global_images-860425001361-1_400x.jpg?v=1773426585",
-   "https://bluemercury.com/cdn/shop/files/global_images-862833000325-1_400x.jpg?v=1758064323",
-   "https://bluemercury.com/cdn/shop/files/global_images-682223081617-1_400x.jpg?v=1769637663",
-   "https://bluemercury.com/cdn/shop/files/global_images_skin_1_400x.jpg?v=1762807852",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-Pink-811485034226-1_400x.jpg?v=1754432319",
-   "https://bluemercury.com/cdn/shop/files/global_images-850039663000-1_400x.jpg?v=1759765144",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-850019720228-1_400x.jpg?v=1790374927",
-   "https://bluemercury.com/cdn/shop/files/global_images-850035134887-1_400x.jpg?v=1773129966",
-   "https://bluemercury.com/cdn/shop/files/global_images-5060552905357-1_b9a4b4a8-87af-4731-aec5-625055c6f2f3_400x.jpg?v=1767888214",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-1Treatment-5060280377976-1_400x.jpg?v=1758728224",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-635494263008-1_400x.jpg?v=1781791334",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-817237012924-1_197e8eb1-5e27-48d2-9f3b-5a9eacd7ec92_400x.jpg?v=1786658045",
-   "https://bluemercury.com/cdn/shop/files/global_images-850027882024-1_99f05011-f4ab-433c-9313-6eaf883d1fcb_400x.jpg?v=1774980064",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-17floz-860009442115-1_400x.png?v=1784750290",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-DefaultTitle-850019720327-1_400x.jpg?v=1791984310",
-   "https://bluemercury.com/cdn/shop/files/variant_images-size-1floz-869542000103-1_400x.jpg?v=1784217185",
-   "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_400x.jpg?v=1759527034"
-  ],
-  "errors": [
-   "https://bluemercury.com/collections/holiday-gifts: 404 Client Error: Not Found for url: https://bluemercury.com/collections/holiday-gifts"
-  ]
- },
- "neiman-marcus": {
-  "images": [],
-  "errors": [
-   "https://www.neimanmarcus.com/c/handbags-cat46860739: 403 Client Error: Forbidden for url: https://www.neimanmarcus.com/c/handbags-cat46860739"
-  ]
- },
- "saks": {
-  "images": [],
-  "errors": [
-   "https://www.saksfifthavenue.com/c/jewelry-accessories/jewelry: 403 Client Error: HTTP Forbidden for url: https://www.saksfifthavenue.com/c/jewelry-accessories/jewelry"
-  ]
- },
- "nordstrom": {
-  "images": [],
-  "errors": []
- },
- "kate-spade": {
-  "images": [],
-  "errors": [
-   "https://www.katespade.com/shop/handbags/view-all: 403 Client Error: Forbidden for url: https://www.katespade.com/shop/handbags/view-all"
-  ]
- },
- "tumi": {
-  "images": [],
-  "errors": []
- },
- "serena-lily": {
-  "images": [],
-  "errors": [
-   "https://www.serenaandlily.com/bedding/quilts-coverlets: 403 Client Error: Forbidden for url: https://www.serenaandlily.com/bedding/quilts-coverlets",
-   "https://www.serenaandlily.com/: 403 Client Error: Forbidden for url: https://www.serenaandlily.com/"
-  ]
- },
- "loft": {
-  "images": [],
-  "errors": []
- },
- "ann-taylor": {
-  "images": [],
-  "errors": []
- },
- "jcrew": {
-  "images": [],
-  "errors": [
-   "https://www.jcrew.com/plp/womens/categories/clothing/sweaters: 403 Client Error: Forbidden for url: https://www.jcrew.com/plp/womens/categories/clothing/sweaters"
-  ]
- },
- "banana-republic": {
-  "images": [
-   "https://content.gapinc.com/b/0063/859/784/cn63859784.png?width=585",
-   "https://content.gapinc.com/b/0063/859/825/cn63859825.png?width=585",
-   "https://content.gapinc.com/b/0063/859/872/cn63859872.png?width=585",
-   "https://content.gapinc.com/b/0063/867/619/cn63867619.png?width=585",
-   "https://content.gapinc.com/b/0064/126/596/cn64126596.png?width=585",
-   "https://content.gapinc.com/b/0063/484/664/cn63484664.png?width=585",
-   "https://content.gapinc.com/b/0063/534/251/cn63534251.png?width=585",
-   "https://content.gapinc.com/b/0063/929/785/cn63929785.png?width=585",
-   "https://content.gapinc.com/b/0063/893/808/cn63893808.png?width=585",
-   "https://content.gapinc.com/b/0063/893/887/cn63893887.png?width=585",
-   "https://content.gapinc.com/b/0063/893/877/cn63893877.png?width=585",
-   "https://content.gapinc.com/b/0064/105/689/cn64105689.png?width=585",
-   "https://content.gapinc.com/b/0063/787/364/cn63787364.png?width=585",
-   "https://content.gapinc.com/b/0063/787/378/cn63787378.png?width=585",
-   "https://content.gapinc.com/b/0063/787/391/cn63787391.png?width=585",
-   "https://content.gapinc.com/b/0064/318/188/cn64318188.png?width=585",
-   "https://content.gapinc.com/b/0064/193/093/cn64193093.png?width=585",
-   "https://content.gapinc.com/b/0064/193/265/cn64193265.png?width=585",
-   "https://content.gapinc.com/b/0064/193/202/cn64193202.png?width=585",
-   "https://content.gapinc.com/b/0064/237/636/cn64237636.png?width=585"
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave-periwinkle.webp?v=1775803727#bye-acne-3-minute-acne-spot-treatment-red-light-therapy-blue-light-therapy-pimples-breakouts",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_eye_mask_1200x1200_2x_fa65db01-6355-4aa4-a516-e574820d1d98.webp?v=1775804201#red-light-therapy-eye-mask",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/HeadBand_C2_120923_3d5a5777-a176-45dc-adb7-a27e93e32839.webp?v=1762269667#spa-headband",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/Solawave_MainImage_Neck_Chest_1200x1200_1.webp?v=1787590255#neck-chest-pro-light-therapy-mask",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_mini_1200x1200_2x_65482b9f-9584-40aa-9775-3ebc2dbac989.webp?v=1775803961#radiant-renewal-2-in-1-skincare-mini",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/background_color_Solawave_DTC_PDPs_2025_New_Face_Mask_Main_Image_1x1_7179ae69-68ae-40cc-886c-6b1bceda8fbc.webp?v=1781731417#wrinkle-retreat-pro-red-light-therapy-led-face-mask-infrared-fda-cleared",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_solabiome_1200x1200_2x_baac396b-ec9b-46d9-b928-ee1681e98000.webp?v=1775803978#solabiome-collection",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/2024-12-14_WIPES_STANDARTBG_001-1.webp?v=1762271151#device-cleaning-wipes",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_lightboost_face_neck_cream_1200x1200_2x_6e5b1742-019f-4e23-9642-9951b47d61ed.webp?v=1775803914#lightboost-face-and-neck-cream",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/Membership_Image.webp?v=1762271632#inveterate-subscription",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/Updated-_RadiantRenewalSkincareWandKitLightBoostSerum-RoseGold_1200x_c979c64a-44e4-4f0c-9110-00c7cd0d18f5_1__webp.webp?v=1756505948#radiant-renewal-skincare-wand-lightboost-set",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_lightboost_wand_activating_serum_1200x1200_2x_3ff5924c-e49f-486c-8223-87bebe811187.webp?v=1775803854#lightboost-red-light-therapy-hyaluronic-serum",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_lightboost_eye_cream_1200x1200_6db3acf1-8366-41bd-9fbb-6250f411be59.webp?v=1775803885#lightboost-collagen-caffeine-eye-cream",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave_bfcm_main_image_lightboost_face_neck_serum_1200x1200_2x_5ca4e047-cfeb-4275-a001-d07c1af9c9fe.webp?v=1775803936#lightboost-niacinamide-face-and-neck-serum",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave-skincare-wand-rose-gold-replacement-case.webp?v=1762268957#radiant-renewal-carrying-case",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave-skincare-wand-replacement-charging-cable.webp?v=1762268957#radiant-renewal-magnetic-cord-white-solawave-skincare-wand-charging-cable",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/MainProductImage-SheetMask-640x640-1.webp?v=1762200995#hydrating-sheet-mask-solawave",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/MainProductImage-JellyMist-640x640-1.webp?v=1762202209#refreshing-jelly-mist-with-solabiome",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/MainProductImage-Serum-640x640-1_1200x_cde156c3-8fe6-4a22-9c71-432cb3a5aafd.webp?v=1762202207#plumping-peptide-serum-with-solabiome",
+   "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/MainProductImage-GelCleanser-640x640-1_1200x_a3835521-0cee-4896-ac3b-72b611eee6fe.webp?v=1762202206#hydrating-gel-cleanser-with-solabiome"
   ],
   "errors": []
  },
- "talbots": {
-  "images": [],
-  "errors": []
- },
- "athleta": {
-  "images": [],
-  "errors": []
- },
- "baublebar": {
+ "mutha": {
   "images": [
-   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?crop=center&height=750&v=1793372620&width=750",
-   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=360",
-   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=540",
-   "https://www.baublebar.com/cdn/shop/files/Nav_Custom_Event_Totes.jpg?v=1793372620&width=720",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156725_SS_01_SQ.jpg?v=1795106667",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156724_SS_01_SQ.jpg?v=1795106688",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176740_G_01_SQ_2.jpg?v=1794939630",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176739_G_01_SQ_2.jpg?v=1794939638",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176738_G_01_SQ_1.jpg?v=1794939644",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176737_G_01_SQ.jpg?v=1794939653",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176736_G_01_SQ_1.jpg?v=1794939660",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176735_G_01_SQ_1.jpg?v=1794939671",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176734_G_01_SQ_2.jpg?v=1794940056",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176732_G_01_SQ_1.jpg?v=1794939692",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176731_G_01_SQ_1.jpg?v=1794939698",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176730_G_01_SQ_1.jpg?v=1794939706",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176729_G_01_SQ_1.jpg?v=1794939800",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176728_G_01_SQ_1.jpg?v=1794939806",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/176727_G_01_SQ_1.jpg?v=1794939818",
-   "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/SWATCH_iPhone_18_Pro_Max.jpg?v=1794863023"
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/detox-like-a-mutha-set-box-door-hanger.avif?v=1790649875#detox-like-a-mutha",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/move-like-a-mutha-set-box-luggage.avif?v=1790651965#move-like-a-mutha",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/empty-the-bottle-body-bar-oil-and-bar-desktop-4x5.avif?v=1787375075#body-oil-discovery-size-body-bar",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/plump-duo-serum-bottle-and-eye-mask-box-flat-lay.avif?v=1787368247#hyaluronic-eye-masks",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/pucker-duo-lip-plump-tube-and-lip-butter-jar-flat-lay.avif?v=1787355893#pucker-duo",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/body-bar-duo-both-bars-flat-lay-hero.avif?v=1787354067#body-bar-duo",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/mutha-candle-render-front.avif?v=1775174200#gift-mutha\u00ae-after-hours-candle",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/products/Blank3000x3000_6.jpg?v=1762439549#the-layering-set",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/body-oil-bottle-cap-off-pump.avif?v=1780443054#body-oil-discovery-size",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/OrderInsertpostcard-14DayEyeReset-FRONT.avif?v=1779828182#order-insert-postcard-14-day-eye-reset",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/MUTHA_PuckerUpLipPlump_Trio_Box_Tubes_RGB.avif?v=1783719352#pucker-up-lip-plump-trio",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/PuckerUpLipPlump-Primarypackshotcapless-newcallout.avif?v=1778625773#pucker-up-lip-plump",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/made-for-your-mutha-primary-render.avif?v=1776816425#made-for-your-mutha",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/Body_Butter_Scent_Duo_side-by-side_bundle_savings_callout.avif?v=1775952788#body-butter-scent-duo",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/smooth-as-a-mutha-duo-hero-image.avif?v=1776291319#smooth-as-a-mutha-duo",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/DetoxGreensBundleheroshotonriser-withNEWsticker_35d296ee-91d2-4032-89b6-9cf2e6a6b1cc.jpg?v=1768335892#detox-greens-bundle",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/EyeMaintenanceEyeMaskPrismsComponents.avif?v=1773183071#eye-mask-prisms",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/UpAllNightEyeCream3mlMiniTravel-PackShot_7c9dfedc-5de4-40c6-82d5-537ac07eaaf0.avif?v=1779920286#the-14-day-eye-reset",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/body-butter-detox-greens-primary-render.avif?v=1785193719#body-butter-detox-greens",
+   "https://cdn.shopify.com/s/files/1/0108/3185/5697/files/body-bar-detox-greens-primary-render.avif?v=1785132422#the-nudist-exfoliating-body-bar-detox-greens"
   ],
   "errors": []
  },
- "company-store": {
-  "images": [],
-  "errors": [
-   "https://www.thecompanystore.com/bedding/comforters/: 404 Client Error: Not Found for url: https://www.thecompanystore.com/bedding/comforters/"
-  ]
- },
- "buffy": {
+ "geometry": {
   "images": [
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/185_Sharkskin_Fullbed.jpg?v=1787256943",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/01_White_Fullbed_af58f39c-0341-4e1c-84cc-5091bd9648b5.png?v=1784575808",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/157_Bone_Fabric_Buffy_r1_Buffy34_1.jpg?v=1763758408",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/157_Bone_Fabric_Buffy_r1_Buffy34_1.jpg?v=1763758408",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-2_3.webp?v=1787084783",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-2_3.webp?v=1787084783",
-   "https://cdn.shopify.com/s/files/1/2462/9621/products/PDP_Pillow_0160_Shopify.jpg?v=1614016422",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Screenshot_2026-07-24_at_9.57.47_AM_8a4d5fc9-2707-4acd-a47e-308340d836aa.png?v=1784901516",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-11_1White.png?v=1784299393",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Pink_Clay-Closeup_8.png?v=1784232295",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Insitu-11_1White.png?v=1784299393",
-   "https://cdn.shopify.com/s/files/1/2462/9621/products/BUF004_EUCALYPTUS_SHEETS_GREY_WINDOWPANE_BED_FRONT_A__1.webp?v=1763073348",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/CLOUDCC_WINTERWEIGHT_Fullbed_Retouched.png?v=1762990040",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/edit-b-3.png?v=1728571932",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Buffy_r1_04L_3196.jpg?v=1721215544",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Gemini_Generated_Image_xwr5hrxwr5hrxwr5.jpg?v=1790094693",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/Wiggle_pillow_pistachio_shell.jpg?v=1793043938",
-   "https://cdn.shopify.com/s/files/1/2462/9621/files/web-b5-Buffy_r1_04L_2960.jpg?v=1728642451",
-   "https://cdn.shopify.com/s/files/1/2462/9621/products/Stacks_Hemp_Combo_Messy_0082_RT_V2_1.webp?v=1702995532",
-   "https://cdn.shopify.com/s/files/1/2462/9621/products/10_PDP_Hemp_MiniFlangeWhiteDuvet_0013_RT.webp?v=1681766757"
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TC-MF-M-plaid-about-you.webp?v=1794608218#plaid-about-you-1",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TC-MF-M-figgy-pudding.webp?v=1794608229#figgy-pudding-1",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TC-MF-M-cozy-club.webp?v=1794608241#cozy-club-1",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TC-MF-M-christmas-classic.webp?v=1794608252#christmas-classic",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-merry-manor.webp?v=1794608267#merry-manor",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-jolly-fella.webp?v=1794608503#jolly-fella",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-cozy-club.webp?v=1794608508#cozy-club",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-DBL-MF-plaid-about-you_front.webp?v=1794608514#plaid-about-you",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-DBL-MF-peppermint-to-be_front.webp?v=1794608521#peppermint-to-be",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-DBL-MF-figgy-pudding-front.webp?v=1794608530#figgy-pudding",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-mrs.-clause_e97c3d8e-1c4d-4164-babc-2abfaaedc308.jpg?v=1756496267#mrs-clause",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-that_s-a-wrap.jpg?v=1756496167#thats-a-wrap",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-put-a-bow-on-it.jpg?v=1756496164#put-a-bow-on-it",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-mr.-clause.jpg?v=1756496148#mr-clause",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-fir-real.jpg?v=1756496145#fir-real",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-balsam.jpg?v=1756496139#balsam",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/BB-MF-L-tumbling-tower_ButterBlanket0241_result_4.webp?v=1792434505#tumbling-tower-1",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/DC-MF-book-lover_DishCloths0075_result_16.webp?v=1792434505#book-lover",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-tumbling-tower_TeaTowels0006_result_18.webp?v=1792434505#tumbling-tower",
+   "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-library-aisles_TeaTowels0005_result_3.webp?v=1792434505#library-aisles"
   ],
   "errors": []
  },
- "helix": {
-  "images": [],
-  "errors": [
-   "https://helixsleep.com/products.json: 404 Client Error: Not Found for url: https://helixsleep.com/products.json",
-   "https://helixsleep.com/collections/pillows: 403 Client Error: Forbidden for url: https://helixsleep.com/collections/pillows"
-  ]
- },
- "samsonite": {
-  "images": [],
-  "errors": []
- },
- "target": {
-  "images": [],
-  "errors": [
-   "https://www.target.com/c/throw-blankets-home/-/N-4y60x: 404 Client Error: Not Found for url: https://www.target.com/c/throw-blankets-home/-/N-4y60x"
-  ]
- },
- "old-navy": {
+ "sterling-forever": {
   "images": [
-   "https://content.gapinc.com/d/gb5k1k4nv8x1c8ul5f532w0k7rc1o5d3.jpg?TP=NAV",
-   "https://content.gapinc.com/d/b82a03d7r0lx6p185t3ijb348611vh57.jpg?TP=NAV",
-   "https://content.gapinc.com/d/50xe3pt57qbp18g8bl81rx4w53l8lh58.jpg?TP=NAV",
-   "https://content.gapinc.com/d/t825pup50087ra1sabu26bw3d1awlwq8.jpg?TP=NAV",
-   "https://content.gapinc.com/d/gvide10h0m3bdv03f53t220n6n2ou5ho.jpg?TP=NAV",
-   "https://content.gapinc.com/d/78dj4m4pk483y4a3ph27lm27l2wc6x11.jpg?TP=NAV",
-   "https://content.gapinc.com/d/lbppial6rh30v5dm7d01y8dtf1y3v72x.jpg?TP=NAV",
-   "https://content.gapinc.com/d/tv5q3e16v72yf5dls867b4a5d0vma036.jpg?TP=NAV"
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/N1CS3132CH-GOLD_K1.png?v=1788981403#sterling-silver-clover-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/eme1.png?v=1793046613#cecil-emerald-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/lightpink1.png?v=1793047282#cecil-pink-sapphire-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/2_c3d9d1c3-f595-40e7-a2d3-abe940ce2d64.png?v=1793048098#cecil-light-yellow-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/1_6c76a3cf-90b6-4615-a09a-564cca600d6e.png?v=1793048448#cecil-garnet-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/saph1.png?v=1793047521#cecil-sapphire-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/cecil_choco_gold.png?v=1793053053#cecil-chocolate-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/B1NB1480CL_GOLD-01.png?v=1768860617#amari-oval-link-chain-bracelet",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/R1CS2403S-GOLD_01.png?v=1788982137#sterling-silver-pave-crescent-stacking-ring",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/R1NS2401S-GOLD_01.png?v=1788983263#sterling-silver-polished-crescent-stacking-ring",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/cecil_champ_gold.png?v=1793053053#cecil-champagne-cz-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/N1OPB3186CH_GOLD-K1.png?v=1792190159#helene-bezel-turquoise-opal-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/N1OPB3184CH_GOLD-K1.png?v=1792006166#helene-bezel-carribean-blue-opal-tennis-necklace",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/B1OPB1797CL_GOLD-K1.png?v=1792192010#helene-bezel-turquoise-opal-tennis-bracelet",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/B1OPB1795CL_GOLD-K1.png?v=1792010854#helene-bezel-carribean-blue-opal-tennis-bracelet",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/E1CS5232S-1.png?v=1791556673#sterling-silver-helene-light-yellow-bezel-stud-earrings",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/E1CS5238S-1.png?v=1791556673#sterling-silver-helene-sapphire-bezel-stud-earrings",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/E1CS5230S-1.png?v=1791556673#sterling-silver-helene-chocolate-bezel-stud-earrings",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/E1CS5236S-1.png?v=1791556673#sterling-silver-helene-emerald-bezel-stud-earrings",
+   "https://cdn.shopify.com/s/files/1/0206/4926/files/E1OPS5242S-1.png?v=1791556673#sterling-silver-helene-opal-bezel-stud-earrings"
   ],
   "errors": []
  },
- "carters": {
+ "sleep-glow": {
   "images": [],
   "errors": [
-   "https://www.carters.com/c/baby/pajamas: 403 Client Error: Forbidden for url: https://www.carters.com/c/baby/pajamas"
+   "https://sleepandglow.com/products.json: Expecting value: line 1 column 1 (char 0)"
   ]
  },
- "hanna-andersson": {
+ "vetted": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/hi_res-0014.png?v=1774722530#prevent-and-protect-protocol",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-c2-VETTED_Dermlab_r3_4B_3620_e2d6d84d-9745-4b2e-a561-44ab84806d92.png?v=1774659830#restore-rebuild-protocol",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Untitled_design-6.png?v=1774728089#post-procedure-recovery-bundle",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-c5-VETTED_Dermlab_r3_4B_3512.png?v=1774660274#the-gentle-results-protocol",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Untitled_design-4_0c1d7662-5bdd-4b80-bcfa-f657ae255de0.png?v=1774728179#barrier-restore-routine",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-c0-VETTEDDermlab_r3_4B_3526.png?v=1774652499#core-protocol",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-b9-VETTED_Dermlab_r3_4B_3509.png?v=1769190281#clinically-smart-anti-aging-routine",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Siliconemaskshrunk_b5d11b52-1eab-45ca-bfb4-2f024059734d.png?v=1769192815#soak-and-soothe-reusable-silicone-mask",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Spritz.png?v=1777476011#soak-and-sooth-spritz-bottle",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-b0-VETTEDDermlab_r3_04B_3559_3aca7582-05c2-4e6c-ad96-39520883d6e5.png?v=1770143754#soak-and-soothe-system",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-b9-VETTED_Dermlab_r3_4B_3509.png?v=1769190281#everything-you-need-and-nothing-you-dont-1",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/products/ecocart.png?v=1686265086#ecocart",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/VETTED_Dermlab_r3_4B_3494.png?v=1768261092#m-rich-moisturizer-copy",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/R_Retinoid_Serum_2_70f71f2d-5f4b-43c5-944f-8498eb083f8e.png?v=1777475498#r-retinoid-copy",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/M2_Rich_Collection_1_478b5ef0-1fdc-4a32-be7c-f08f9acc9551.png?v=1777476196#m2-rich-bundle",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Collection.png?v=1712858157#the-boost-and-protect-collection",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/Vc_Serum_2.png?v=1777475737#vitamin-c-serum",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/vetted-bag_c94c2e73-f4d8-4686-a238-c01985d80077.png?v=1701447300#the-vetted-dermlab-bag",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/C_Cleanser.webp?v=1774623540#cleanser",
+   "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/m2_resized-v2.webp?v=1775245348#rich-moisturizer"
+  ],
+  "errors": []
+ },
+ "cosabella": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NSNPK3221_BKSEW_LB_CA_L.jpg?v=1795120419#never-say-never-skimpie-g-string-3-pack-black-sette-white-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NSNPK3343_MAPKW_LB_CA_L.jpg?v=1795118889#never-say-never-comfie-thong-3-pack-mandorla-pink-lilly-white-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/GstringPDP-2000x2500.jpg?v=1794597519#mystery-3-pack-never-say-never-g-string-sette",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/ThongPDP-2000x2500.jpg?v=1794597501#mystery-3-pack-never-say-never-cuitie-thong",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NEVER03ZL_TROPI_LB_CA_L_6a36f6a5-532b-417b-be86-120cfd9dec2a.jpg?v=1770669716#never-say-never-cutie-low-rise-thong-tropica-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NEVER1386_CARNV_LB_CA_L_3db3ef35-5c87-4a44-9fd3-ae531d0f5724.jpg?v=1753305589#never-say-never-plungie-longline-bralette-carnevale-en-1",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NEVER2211_IBISC_LB_CA_L_b5b20f93-c735-4049-83c6-df47671d7d1f.jpg?v=1756356474#never-say-never-balconette-bodysuit-ibisco-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NEVER2211_PASIF_LB_CA_L_6f4923aa-1377-4455-b571-e8ad2ee33123.jpg?v=1756356493#never-say-never-balconette-bodysuit-passiflora-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/DOLPK3321_BKBLW_LB_CA_L_6cc1055b-76d9-42b9-8b6a-b72616ae9916.jpg?v=1794429821#dolce-thong-3-pack-set-blk-blsh-wht-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NEVER03ZL_NEVEF_LB_CA_L.jpg?v=1784064391#never-say-never-cutie-low-rise-thong-neve-fresca-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NSNPK5343_NSBPW_LB_CA_L.jpg?v=1793825041#never-say-never-comfie-thong-5-pack-navy-blue-sette-black-pink-lilly-white-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NSNPK0321_MAPKW_LB_CA_L.jpg?v=1793824638#never-say-never-cutie-lr-thong-3-pack-mandorla-pink-lilly-white-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/SOIRI0221_NEONV_LB_CA_L.jpg?v=1790363111#soire-iconic-g-string-neon-viola-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/SOIIP0561_AUTUM_LB_CA_L.jpg?v=1790362970#soire-iconic-printed-bikini-autum-painting-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/SOIIP0322_AUTUM_LB_CA_L.jpg?v=1790362926#soire-iconic-printed-thong-autum-painting-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/SOIIP0221_AUTUM_LB_CA_L.jpg?v=1790362881#soire-iconic-printed-g-string-autum-painting-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/PIMAL9564_NB-MI_LB_CA_L.jpg?v=1790362533#bella-lusso-long-sleeve-top-boxer-set-navy-blue-moon-ivory-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/PIMAL9564_HE-BK_LB_CA_L.jpg?v=1790362484#bella-lusso-long-sleeve-top-boxer-set-heather-gray-black-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/PIMAL9564_BK-MI_LB_CA_L.jpg?v=1790362436#bella-lusso-long-sleeve-top-boxer-set-black-moon-ivory-en",
+   "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/CARSW9641_BLACK_LB_CA_L.jpg?v=1790362214#carmela-cami-pant-set-black-en"
+  ],
+  "errors": []
+ },
+ "organic-basics": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_tee_shorts-set_steamy_studio-1.jpg?v=1793623396#core-sleep-tee-and-shorts-set-steamy",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_tee_shorts-set_powder-blue_studio-1.jpg?v=1793623373#core-sleep-tee-and-shorts-set-powder-blue",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_tee_shorts-set_black_studio-1.jpg?v=1793623348#core-sleep-tee-and-shorts-set-black",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_pj-set_steamy_studio-1.jpg?v=1793621999#core-sleep-pj-set-steamy",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_pj-set_powder-blue_studio-1.jpg?v=1793621990#core-sleep-pj-set-powder-blue",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_pj-set_black_studio-1.jpg?v=1793621965#core-sleep-pj-set-black",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-tee-lavender-studio-1.jpg?v=1761304413#womens-organic-cotton-flex-tee-lavender",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-tank_top-lavender-studio-1.jpg?v=1729080924#womens-organic-cotton-flex-tank-top-lavender",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-tank_top-grey_melange-studio-1.jpg?v=1780497351#womens-organic-cotton-flex-tank-top-grey-melange",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-cheeky_brief-grey_melange-studio-3.jpg?v=1784289443#womens-organic-cotton-flex-cheeky-brief-grey-melange",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-hipster-grey_melange-studio-1.jpg?v=1784289398#womens-organic-cotton-flex-hipster-grey-melange",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-tee-grey_melange-studio-1_5c11751f-ff71-4785-a574-025749643e26.jpg?v=1784289283#womens-organic-cotton-flex-thong-grey-melange",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-ob-women-organic_cotton-flex-shorty-grey_melange-studio-1.jpg?v=1784289246#womens-organic-cotton-flex-shorty-grey-melange",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton-flex-ling_sleeve_tee-lavender-studio-1.jpg?v=1793874141#womens-flex-long-sleeve-tee-lavender",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/app-load-gift-card.jpg?v=1793883346#load-your-gift-card",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/giftcard_big-bow_burgundy.jpg?v=1791376793#virtual-gift-card",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton-flex-ling_sleeve_tee-seaweed-studio-1.jpg?v=1791793876#womens-flex-long-sleeve-tee-seaweed",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dgob-women-soft_touch_veil-triangle_bralette-silver_mist_green-studio-1.jpg?v=1724855557#soft-touch-veil-triangle-bralette-silver-mist",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg_organic_basics-women-organic_cotton-core-push_up_bra-deep_navy-studio-1_e9808da7-bebb-4a2d-8d61-e92c47025130.jpg?v=1730129072#core-push-up-bra-eu-deep-navy",
+   "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg_organic_basics-women-organic_cotton-core-push_up_bra-soft_vanilla-studio-1_02284129-ded1-40ed-959a-5a89992960d6.jpg?v=1729778622#core-push-up-bra-eu-soft-vanilla"
+  ],
+  "errors": []
+ },
+ "alhena": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/0869f5af-aa86-4d53-9138-bd252d59d68a.jpg?v=1793836555#the-coin-collector",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/3F5CF067-D655-4F06-AEBA-220457C25720.png?v=1793737218#the-lioness-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/EA494B0A-F584-4E26-87C9-3C6DA04D2873.png?v=1793240970#lenna-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/96B8ABA6-F47B-4457-87DE-EC2C5625757E.png?v=1793161149#victory-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/IMG-8063.png?v=1793162303#athena-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/Tezza-2264.jpg?v=1791691131#alexander-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/5CE29751-361A-4B73-8C3D-DD4F1875D4FC.jpg?v=1793034612#alo-cuff",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/B82DD049-3726-409C-9869-A6215ECC9235.jpg?v=1793033572#vienna-cuff",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/Tezza-79432.jpg?v=1793744597#nova-choker",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/E86B0442-BFDE-4998-B2B6-C3DC105F85642.png?v=1790006084#agnes-lariat",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/19648CA5-D52B-48DC-BA20-12C9BB3B68FB.jpg?v=1786474511#salma-onyx-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/IMG-4868.jpg?v=1785598940#mila-earrings",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/IMG_2826.jpg?v=1780882879#zoe-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/IMG-5204.jpg?v=1786488659#zaya-natural-shell-agate-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/E6FC4D55-D331-4F46-80A0-06DDE0C38194.jpg?v=1790014289#salma-natural-agate-necklace",
+   "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/Tezza-5614.jpg?v=1791688492#noa-natural-onyx-shell-necklace"
+  ],
+  "errors": []
+ },
+ "la-ligne": {
   "images": [],
   "errors": [
-   "https://www.hannaandersson.com/products.json: Expecting value: line 1 column 1 (char 0)"
+   "https://lalignenyc.com/products.json: 404 Client Error: Not Found for url: https://lalignenyc.com/products.json"
   ]
  },
- "gap-kids": {
-  "images": [],
-  "errors": [
-   "https://www.gap.com/browse/kids/sweatshirts?cid=6189: 404 Client Error: Not Found for url: https://www.gap.com/browse/kids/sweatshirts?cid=6189"
-  ]
+ "railey": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO01948_d46627d8-3281-4aa1-8bd0-9c24a3cf763c.jpg?v=1794526623#new-trucker-hat",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO02405.jpg?v=1794529505#new-beanie-1",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO02003_748f5f22-516b-4b68-bf8d-541103be1e4a.jpg?v=1794529172#new-hoodie-2",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO02282_a28a1a64-2e41-4678-86a5-11f0d2cd0b9c.jpg?v=1794528405#new-hoodie-1",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO01546.png?v=1794544464#new-tank-1",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO02125.jpg?v=1794526265#sweatpants",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO02432.jpg?v=1794529965#new-beanie-2",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/organic-cotton-tote-bag.jpg?v=1786126818#raileyreal-brand-blocks-organic-cotton-tote",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/organic-cotton-travel-pouch.jpg?v=1786126744#real-organic-canvas-travel-pouch",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/Trucker-hat.jpg?v=1786126933#670-thz-founder-s-trucker-hat",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/RaileyWhiteTeeMens.jpg?v=1776362807#railey-white-tee-men-s",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/RaileyWhiteTeeWomens.jpg?v=1787584211#railey-white-tee-women-s",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/ERO01689.jpg?v=1794527890#raileyreal-signature-ribbed-tank",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/natural-fibers-hoodie.jpg?v=1786127856#no-dye-raileyreal-athletic-hoodie",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/organic-cotton-670-thz-hoodie.jpg?v=1786128010#670-thz-raileyreal-premium-hoodie",
+   "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/780-railey-real-hoodie.jpg?v=1786128733#780-thz-raileyreal-premium-hoodie"
+  ],
+  "errors": []
  },
- "whbm": {
-  "images": [],
-  "errors": [
-   "https://www.whitehouseblackmarket.com/store/category/jackets-blazers/cat210019: 403 Client Error: Forbidden for url: https://www.whitehouseblackmarket.com/store/category/jackets-blazers/cat210019"
-  ]
+ "camp-snap": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/micro1.jpg?v=1794857351#cs-8-micro",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Micro_14.jpg?v=1794872574#cs-8-micro-slab",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/micro_1.jpg?v=1794869408#5-cs-8-micro",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/micro_1.jpg?v=1794869408#4-cs-8-micro",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/micro_1.jpg?v=1794869408#3-cs-8-micro",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CS2Blue_mini.jpg?v=1793893510#cs-8-mini",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Blue_2.png?v=1789756757#adventure-wrist-strap",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Stealth-Black_2.png?v=1789756462#premium-wrist-strap",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CS2110d_black.jpg?v=1793624702#110d",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CamBag_Bundle_GreenPuffBag_GreenCS_1x1_bfafd4ca-8635-4cef-a07b-7d1944bddcd7.png?v=1780093595#sleeping-bag-and-camera",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Ultimate_Bundle_PUFFPurple_WhiteCS_1x1_7248e8a4-e188-41c4-9420-7180d364b0dc.jpg?v=1780093444#ultimate-sleeping-bag-bundle",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Adventure_Bundle_BluePUFFBag_BlackCS_1x1_3f3a86ef-5b16-4302-aa25-42eae68edd91.png?v=1779629588#adventure-bundle-sleeping-bag",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/waterproofblack.png?v=1780093621#camp-snap-2-underwater-bundle",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CamBag_Bundle_BlackBag_BlackCS_1x1_ca0c8b58-261a-4547-83c9-8d9147ba755e.png?v=1780093556#camp-snap-2-bag-bundle-temp",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Ultimate_Bundle_BAGBlack_WhiteCS_1x1_227dd779-aa50-467b-a909-39776653f205.jpg?v=1780093444#ultimate-bundle-2",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Adventure_Bundle_BlackBag_BlackCS_1x1_7d446345-dd69-48d8-97fb-bb348bba5585.png?v=1779629589#adventure-bundle-cs2",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/PDPdArtboard_6_873f6c51-3d64-4f98-874d-1567c59bfda5.jpg?v=1769429126#cs8-accessory-kit",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CS8-Lanyard-PDP1.jpg?v=1765801852#cs-8-lanyard",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/PDPdArtboard_5.jpg?v=1769429126#cs-8-carrying-case",
+   "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/Blackblue.jpg?v=1778201313#summer-camp-bags"
+  ],
+  "errors": []
+ },
+ "beekman": {
+  "images": [
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BSCRUB-GME.jpg?v=1738086466#glacial-mint-eucalyptus-milk-scrub-oat-goat-milk-exfoliating-body-polish",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BSCRUB-CO.jpg?v=1738086466#coconut-milk-scrub-oat-goat-milk-exfoliating-body-polish",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BB24oz-PURE.jpg?v=1742995293#pure-mega-sized-whipped-body-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BB24oz-HG.jpg?v=1698935083#honeyed-grapefruit-mega-sized-whipped-body-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18FW100-ALM.jpg?v=1762977362#almond-honey-cookie-supersized-face-wipes-100-ct",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HW24-CO_dd5334a0-a44b-4c21-9d01-17c415918a88.jpg?v=1751471642#supersized-coconut-cream-hand-body-wash",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HW24-ALM.jpg?v=1743781389#supersized-almond-honey-cookie-hand-body-wash",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HW24-GME.jpg?v=1743781303#supersized-glacial-mint-eucalyptus-hand-body-wash",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18FW100-GME.jpg?v=1726188320#supersized-glacial-mint-eucalyptus-face-wipes-100-ct",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18FW100-CO_5da8e029-ee20-4a2e-b775-6f64a57e655c.jpg?v=1751471490#supersized-coconut-cream-face-wipes-100-ct",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BB24oz-GME.jpg?v=1718027734#glacial-mint-eucalyptus-mega-sized-whipped-body-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18FW100-LILAC.jpg?v=1712177528#supersized-lilac-dream-face-wipes-100-ct",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BB24oz-SL.jpg?v=1709144086#sunshine-lemon-mega-sized-whipped-body-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/2023_Beekman1802_Ecom_PUREGOATMILKBODYSERUM_01.jpg?v=1737665717#goat-milk-body-serum",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BB8-DMH.jpg?v=1784167347#daisy-manuka-honey-whipped-body-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/Face_Silos_2023_1087_1.jpg?v=1746027550#striped-dopp-bag",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18FW30-OB-4P-K.jpg?v=1726073309#honey-orange-blossom-face-wipes-set-of-4-pack",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HC-SL2.jpg?v=1768447676#sunshine-lemon-2oz-hand-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HC-LAV2_2.jpg?v=1791224004#lavender-goat-milk-hand-cream",
+   "https://cdn.shopify.com/s/files/1/0223/7461/files/B18HC-HONGR2.jpg?v=1768452834#honeyed-grapefruit-hand-cream"
+  ],
+  "errors": []
  }
 }
