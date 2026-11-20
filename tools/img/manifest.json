@@ -95,7 +95,7 @@
   "src": "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_1200x.jpg?v=1759527034",
   "w": 1200,
   "h": 900,
-  "fill": 0.74,
+  "fill": 0.6,
   "force": true
  },
  {
@@ -111,8 +111,7 @@
   "w": 1200,
   "h": 900,
   "fill": 0.74,
-  "knock": "all",
-  "force": true
+  "knock": "all"
  },
  {
   "out": "img/deals/buffy.jpg",
@@ -142,8 +141,7 @@
   "w": 1200,
   "h": 900,
   "fill": 0.96,
-  "mode": "contain",
-  "force": true
+  "mode": "contain"
  },
  {
   "out": "img/deals/neiman-marcus.jpg",
@@ -151,8 +149,7 @@
   "w": 1200,
   "h": 900,
   "fill": 0.96,
-  "mode": "contain",
-  "force": true
+  "mode": "contain"
  },
  {
   "out": "img/deals/samsonite.jpg",
@@ -173,7 +170,7 @@
   "src": "wardrobe-blazer.jpg",
   "w": 1200,
   "h": 900,
-  "fill": 0.94,
+  "fill": 0.84,
   "force": true
  }
 ]
