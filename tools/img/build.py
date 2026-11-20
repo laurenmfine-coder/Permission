@@ -88,8 +88,20 @@ def studio(im, W, H, fill):
     canvas.alpha_composite(im, (x, y))
     return canvas.convert('RGB')
 
+def trim_margins(rgb):
+    """Crop away a plain near-white margin around a framed product shot."""
+    g = rgb.convert('L').point(lambda v: 0 if v >= 246 else 255)
+    box = g.getbbox()
+    if not box:
+        return rgb
+    w, h = rgb.size
+    if (box[2] - box[0]) * (box[3] - box[1]) < 0.35 * w * h:
+        return rgb      # the "margin" is real background around a small product
+    return rgb.crop(box)
+
 def photo(im, W, H):
-    return ImageOps.fit(im.convert('RGB'), (W, H), Image.LANCZOS, centering=(0.5, 0.45))
+    rgb = trim_margins(im.convert('RGB'))
+    return ImageOps.fit(rgb, (W, H), Image.LANCZOS, centering=(0.5, 0.45))
 
 def main():
     man = json.load(open(os.path.join(ROOT, 'tools/img/manifest.json')))
