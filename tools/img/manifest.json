@@ -92,10 +92,11 @@
  },
  {
   "out": "img/deals/bluemercury.jpg",
-  "src": "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_400x.jpg?v=1759527034",
+  "src": "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_1200x.jpg?v=1759527034",
   "w": 1200,
   "h": 900,
-  "fill": 0.74
+  "fill": 0.74,
+  "force": true
  },
  {
   "out": "img/deals/banana-republic.jpg",
@@ -109,7 +110,9 @@
   "src": "https://cdn.shopify.com/s/files/1/0267/5746/4148/files/156725_SS_01_SQ.jpg?v=1795106667",
   "w": 1200,
   "h": 900,
-  "fill": 0.74
+  "fill": 0.74,
+  "knock": "all",
+  "force": true
  },
  {
   "out": "img/deals/buffy.jpg",
@@ -138,14 +141,18 @@
   "src": "https://katespade.scene7.com/is/image/KateSpade/KQ735_600?wid=1200&hei=1200",
   "w": 1200,
   "h": 900,
-  "fill": 0.74
+  "fill": 0.96,
+  "mode": "contain",
+  "force": true
  },
  {
   "out": "img/deals/neiman-marcus.jpg",
   "src": "https://media.neimanmarcus.com/f_auto,q_auto:good,w_1200/01/nm_5702676_100147_m",
   "w": 1200,
   "h": 900,
-  "fill": 0.74
+  "fill": 0.96,
+  "mode": "contain",
+  "force": true
  },
  {
   "out": "img/deals/samsonite.jpg",
@@ -166,6 +173,7 @@
   "src": "wardrobe-blazer.jpg",
   "w": 1200,
   "h": 900,
-  "fill": 0.74
+  "fill": 0.94,
+  "force": true
  }
 ]

@@ -38,7 +38,7 @@ def border_stats(rgb):
     near = sum(1 for c in cols if max(abs(c[i] - med[i]) for i in range(3)) <= 14) / len(cols)
     return pts, med, near
 
-def knock_out_bg(im):
+def knock_out_bg(im, everywhere=False):
     """Remove a flat background of any colour by flooding inward from the border.
     Returns None when the border is not a flat colour (lifestyle photo)."""
     im = im.convert('RGBA')
@@ -59,14 +59,25 @@ def knock_out_bg(im):
     W, H = work.size
     for y in range(H):
         for x in range(W):
-            if wp[x, y] == SENT:
+            c = wp[x, y]
+            if c == SENT or (everywhere and max(abs(c[i] - med[i]) for i in range(3)) <= 12):
                 mp[x, y] = 0
     mask = mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.8))
     im.putalpha(mask)
     return im
 
-def studio(im, W, H, fill):
-    cut = knock_out_bg(im)
+def contain(im, W, H, fill):
+    """Whole image, uncropped, on a tile filled with the photo's own backdrop colour."""
+    rgb = trim_margins(im.convert('RGB'))
+    _, med, _ = border_stats(rgb)
+    s = min(W * 0.9 / rgb.width, H * fill / rgb.height)
+    rgb = rgb.resize((int(rgb.width * s), int(rgb.height * s)), Image.LANCZOS)
+    canvas = Image.new('RGB', (W, H), med)
+    canvas.paste(rgb, ((W - rgb.width) // 2, (H - rgb.height) // 2))
+    return canvas
+
+def studio(im, W, H, fill, everywhere=False):
+    cut = knock_out_bg(im, everywhere)
     if cut is None:                      # busy background: fill the tile instead
         return photo(im, W, H)
     im = cut
@@ -117,7 +128,13 @@ def main():
         try:
             im = fetch(e['src'])
             W, H = e.get('w', 900), e.get('h', 900)
-            res = studio(im, W, H, e.get('fill', 0.72)) if e.get('mode', 'studio') == 'studio' else photo(im, W, H)
+            mode = e.get('mode', 'studio')
+            if mode == 'studio':
+                res = studio(im, W, H, e.get('fill', 0.72), e.get('knock') == 'all')
+            elif mode == 'contain':
+                res = contain(im, W, H, e.get('fill', 0.9))
+            else:
+                res = photo(im, W, H)
             os.makedirs(os.path.dirname(out), exist_ok=True)
             res.save(out, 'JPEG', quality=e.get('q', 84), optimize=True, progressive=True)
             report[e['out']] = 'ok %dKB' % (os.path.getsize(out) // 1024)
