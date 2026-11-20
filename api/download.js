@@ -23,6 +23,7 @@
 const PDF_DATA = require('./_pdf-data.js');
 
 const { upsertSubscriber } = require('./_flodesk.js');
+const { audienceFor } = require('./_audience.js');
 
 // Single source of truth for display name -> file on disk. The client only
 // ever sends the display name; it never sees or constructs a file path.
@@ -41,10 +42,15 @@ const WORKSHEETS = {
   'The 24-Hour Rule': 'the-24-hour-rule.pdf',
   'The Second Ask': 'the-second-ask.pdf',
   'The Side-Build Map': 'the-side-build-map.pdf',
-  'Coach, Therapist, or Both?': 'coach-therapist-or-both.pdf'
+  'Coach, Therapist, or Both?': 'coach-therapist-or-both.pdf',
+  'The Handoff List': 'the-handoff-list.pdf',
+  'The Family Care Split': 'the-family-care-split.pdf',
+  'The Service Filter': 'the-service-filter.pdf',
+  'Find Your Hour': 'find-your-hour.pdf',
+  'After-Hours Reply Scripts': 'after-hours-reply-scripts.pdf'
 };
 
-const MAX = { firstName: 100, email: 200, worksheet: 200, source: 300, notes: 500, room: 40, situation: 120, focus: 300 };
+const MAX = { firstName: 100, email: 200, worksheet: 200, source: 300, notes: 500, room: 40, situation: 120, focus: 300, audience: 40 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function clean(value, limit) {
@@ -65,17 +71,28 @@ async function addToFlodesk(contact) {
   if (fromQuiz && ROOM_SEGMENT_ENV[contact.room]) {
     extra.push(process.env[ROOM_SEGMENT_ENV[contact.room]] || '');
   }
+  const route = audienceFor(contact);
+  extra.push(route.segmentId);
+  // Keep the page's own source (e.g. kit-how-to-set-boundaries, hub_lawyers)
+  // instead of flattening every download to 'Free Resources'.
+  const source = fromQuiz ? 'Room Quiz' : (contact.source || 'Free Resources');
   return upsertSubscriber(
     { email: contact.email, firstName: contact.firstName, lastName: '' },
     {
-      source: fromQuiz ? 'Room Quiz' : 'Free Resources',
+      source: source,
       lead_stage: fromQuiz ? 'room_quiz_' + contact.room : 'worksheet_download',
       worksheet: contact.worksheet,
       situation: contact.situation,
       focus: contact.focus,
-      notes: contact.notes
+      notes: contact.notes,
+      audience: route.audience
     },
-    extra
+    extra,
+    {
+      first_source: source,
+      first_audience: route.audience,
+      first_worksheet: contact.worksheet
+    }
   );
 }
 
@@ -119,7 +136,8 @@ module.exports = async function handler(req, res) {
     notes: clean(data.notes, MAX.notes),
     room: clean(data.room, MAX.room),
     situation: clean(data.situation, MAX.situation),
-    focus: clean(data.focus, MAX.focus)
+    focus: clean(data.focus, MAX.focus),
+    audience: clean(data.audience, MAX.audience)
   };
 
   if (!contact.email) {

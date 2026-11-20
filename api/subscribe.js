@@ -13,6 +13,7 @@
 // so the client change is a one-line URL swap.
 
 const { upsertSubscriber } = require('./_flodesk.js');
+const { audienceFor } = require('./_audience.js');
 
 const MAX = { firstName: 100, lastName: 100, email: 200, source: 300, notes: 2000, situation: 120, focus: 4000 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -61,12 +62,18 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'That email address does not look right.' });
   }
 
+  const route = audienceFor(data);
+  const source = clean(data.source, MAX.source);
   const result = await upsertSubscriber(contact, {
-    source: clean(data.source, MAX.source),
+    source: source,
     lead_stage: clean(data.leadStage, MAX.source),
     notes: clean(data.notes, MAX.notes),
     situation: clean(data.situation, MAX.situation),
-    focus: clean(data.focus, MAX.focus)
+    focus: clean(data.focus, MAX.focus),
+    audience: route.audience
+  }, [route.segmentId], {
+    first_source: source,
+    first_audience: route.audience
   });
 
   if (!result.ok) {
@@ -78,6 +85,6 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  console.log('Newsletter signup:', JSON.stringify({ email: contact.email, source: clean(data.source, MAX.source) }));
+  console.log('Newsletter signup:', JSON.stringify({ email: contact.email, source: source, audience: route.audience }));
   return res.status(200).json({ ok: true });
 };

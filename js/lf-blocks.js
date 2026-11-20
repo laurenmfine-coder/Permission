@@ -28,6 +28,7 @@
     var sheet = box.getAttribute('data-sheet');
     var file = box.getAttribute('data-file');
     var source = box.getAttribute('data-source') || 'site-kit';
+    var audience = box.getAttribute('data-audience') || '';
     function fail(msg) {
       status.textContent = msg;
       status.classList.add('show');
@@ -47,18 +48,18 @@
       if (file) {
         req = fetch('/api/download', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: name.trim(), email: email, worksheet: sheet, source: source, company: hp, notes: notes() })
+          body: JSON.stringify({ firstName: name.trim(), email: email, worksheet: sheet, source: source, audience: audience, company: hp, notes: notes() })
         }).then(function (r) { if (!r.ok) throw new Error('bad'); return r.blob(); })
           .then(function (b) { saveBlob(b, file); });
       } else {
         req = fetch('/api/subscribe', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: name.trim(), email: email, source: source, company: hp, notes: notes() })
+          body: JSON.stringify({ firstName: name.trim(), email: email, source: source, audience: audience, company: hp, notes: notes() })
         }).then(function (r) { if (!r.ok) throw new Error('bad'); });
       }
       req.then(function () {
         if (typeof gtag === 'function') {
-          gtag('event', file ? 'generate_lead' : 'mailing_list_signup', { source: source, worksheet: sheet || '', page: window.location.pathname });
+          gtag('event', file ? 'generate_lead' : 'mailing_list_signup', { source: source, audience: audience, worksheet: sheet || '', page: window.location.pathname });
         }
         form.style.display = 'none';
         var note = box.querySelector('.lf-kit-note');

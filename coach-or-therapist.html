@@ -410,6 +410,7 @@
   }
 </style>
 <style>.service-cta-col{min-width:120px;text-align:right;}</style>
+<link rel="stylesheet" href="/css/lf-blocks.css">
 </head>
 <body>
 
@@ -615,6 +616,41 @@
   </div>
 </div>
 
+<section style="padding:72px 32px;background:var(--cream);display:flex;justify-content:center;">
+<div class="lf-kit" data-source="kit-coach-or-therapist" data-audience="decisions" data-sheet="Coach, Therapist, or Both?" data-file="coach-therapist-or-both.pdf">
+  <p class="lf-kit-eyebrow">Free &middot; Coach, Therapist, or Both?</p>
+  <p class="lf-kit-title">A two-minute check to see what kind of help fits.</p>
+  <p class="lf-kit-text">Answer a few questions and see whether a coach, a therapist or both makes sense right now. The PDF downloads right away.</p>
+  <form novalidate>
+    <label class="lf-kit-hp" aria-hidden="true">Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+    <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <button type="submit">Send me the check</button>
+  </form>
+  <p class="lf-kit-note">You also get The Sunday Letter, one short letter on Sunday mornings. Unsubscribe anytime.</p>
+  <p class="lf-kit-status" role="alert"></p>
+  <p class="lf-kit-done"><strong>It is downloading now.</strong> The Sunday Letter lands Sunday morning. Want to talk it through with someone? <a href="/free-session?utm_source=site&amp;utm_content=kit_coach-or-therapist">Your first session is free &rarr;</a> Or see <a href="/coaching">how coaching works</a>.</p>
+</div>
+</section>
+
+<!-- CLIENT REVIEWS -->
+<section class="lf-proof" aria-label="Client reviews">
+  <p class="lf-proof-eyebrow">What clients say</p>
+  <div class="lf-proof-grid">
+    <figure>
+      <div class="lf-proof-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>&ldquo;I always felt like I was engaging in coaching that was specific to me, rather than following an algorithm or process that could be applied to anyone.&rdquo;</blockquote>
+      <figcaption>Jon &middot; A year of coaching in his current role</figcaption>
+    </figure>
+    <figure>
+      <div class="lf-proof-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>&ldquo;She meets you where you are, leads with heart, and helps you find your way forward.&rdquo;</blockquote>
+      <figcaption>Margaret &middot; Career transition</figcaption>
+    </figure>
+  </div>
+  <a class="lf-proof-link" href="/testimonials">Read the full reviews &rarr;</a>
+</section>
+
 <!-- CONTACT / BOOK -->
 <div style="background:var(--terracotta);padding:100px 64px;text-align:center;" id="contact">
   <p style="font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:24px;">Ready to start</p>
@@ -678,6 +714,19 @@
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/writing-services">Writing Services</a></li>
       </ul>
+      <p class="footer-col-label" style="margin-top:28px;">Who I help</p>
+      <ul class="footer-links">
+        <li><a href="/boundaries">Boundaries</a></li>
+        <li><a href="/people-pleasing">People pleasing</a></li>
+        <li><a href="/new-leaders">New leaders</a></li>
+        <li><a href="/working-moms">Working moms</a></li>
+        <li><a href="/caregivers">Caring for family</a></li>
+        <li><a href="/lawyers">Lawyers</a></li>
+        <li><a href="/academics">Academics</a></li>
+        <li><a href="/side-build">Side projects</a></li>
+        <li><a href="/physician-moms">Physician moms</a></li>
+        <li><a href="/habits">Healthy habits</a></li>
+      </ul>
       <p class="footer-col-label" style="margin-top:28px;">From the allergist</p>
       <ul class="footer-links">
         <li><a href="/post-why-i-trust-clinique">Is Clinique hypoallergenic?</a></li>
@@ -739,5 +788,6 @@
   });
 })();
 </script>
+<script src="/js/lf-blocks.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+/* Clinique pages: shopping-first layout shared by
+   post-why-i-trust-clinique, best-clinique-products-for-sensitive-skin
+   and clinique-black-friday. */
+
+.lf-byline { display:flex; align-items:center; gap:14px; margin:22px 0 0; }
+.lf-byline img { width:56px; height:56px; border-radius:50%; object-fit:cover; object-position:center 18%; flex:0 0 auto; }
+.lf-byline-name { font-family:'Playfair Display',serif; font-size:1.02rem; color:#1A1A1A; margin:0; line-height:1.3; }
+.lf-byline-role { font-size:.82rem; color:#8C8580; margin:2px 0 0; line-height:1.4; }
+
+.lf-sale-chip { display:inline-flex; align-items:center; gap:8px; background:#23406E; color:#fff !important; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; padding:7px 12px; margin:0 0 14px; text-decoration:none !important; border:none !important; }
+.lf-sale-chip:hover { background:#182D4E; }
+
+.lf-trust { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:.82rem; color:#5A5550; margin:-26px 0 18px; padding:0; list-style:none; }
+.lf-trust li { margin:0 !important; padding:0 0 0 18px !important; position:relative; }
+.lf-trust li::before { content:'\2713'; position:absolute; left:0; color:#B8975A; }
+.post-body .lf-disclosure-short { font-size:.8rem; line-height:1.6; color:#8C8580; margin:0 0 32px; font-style:italic; }
+
+.shop-inline .shop-best { font-size:.82rem; color:#5A5550; margin:0 0 12px; }
+.shop-inline .shop-best b { font-weight:500; color:#1A1A1A; }
+.shop-inline .shop-cta { display:inline-block; background:#1A1A1A; color:#fff !important; border:none !important; padding:11px 18px; font-size:.66rem; letter-spacing:.16em; }
+.shop-inline:hover .shop-cta { background:#23406E; }
+
+.lf-why { display:grid; grid-template-columns:150px 1fr; gap:26px; align-items:center; background:#FBF8F3; border:1px solid rgba(184,151,90,.45); padding:24px 26px; margin:40px 0; }
+.lf-why img { width:150px; height:188px; object-fit:cover; display:block; }
+.post-body .lf-why-kicker { font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color:#B8975A; margin:0 0 8px; }
+.post-body .lf-why-title { font-family:'Playfair Display',serif; font-size:1.3rem; margin:0 0 10px; line-height:1.25; }
+.post-body .lf-why p { font-size:1rem; line-height:1.7; }
+
+.lf-chose { border-left:3px solid #B8975A; padding:4px 0 4px 18px; margin:32px 0; }
+.post-body .lf-chose-title { font-family:'Playfair Display',serif; font-size:1.2rem; margin:0 0 8px; }
+.lf-chose ul { margin:0; }
+
+@media (max-width:600px) {
+  .lf-why { grid-template-columns:96px 1fr; gap:16px; padding:18px; }
+  .lf-why img { width:96px; height:120px; }
+  .lf-trust { margin-top:-18px; }
+  .shop-inline .shop-cta { padding:12px 16px; min-height:44px; }
+  a.pick-photo .pick-photo-cta { display:inline-block; background:#1A1A1A; color:#fff; border:none; padding:10px 12px; min-height:40px; }
+}
+
+/* Tighter header so the picks sit closer to the top */
+.post-header { padding-bottom:28px !important; }
+.post-body { padding-top:24px !important; }
+@media (max-width:600px) {
+  .post-header { padding-bottom:18px !important; }
+  .post-body { padding-top:16px !important; }
+  .lf-byline-role { font-size:.78rem; }
+}
+.lf-chose li { font-size:.98rem !important; line-height:1.6 !important; margin-bottom:4px !important; }
