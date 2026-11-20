@@ -12,7 +12,7 @@
  "img/deals/truffle.jpg": "exists",
  "img/deals/pilates-university.jpg": "exists",
  "img/deals/literie.jpg": "exists",
- "img/deals/bluemercury.jpg": "ok 44KB",
+ "img/deals/bluemercury.jpg": "exists",
  "img/deals/banana-republic.jpg": "exists",
  "img/deals/baublebar.jpg": "exists",
  "img/deals/buffy.jpg": "exists",
@@ -22,5 +22,18 @@
  "img/deals/neiman-marcus.jpg": "exists",
  "img/deals/samsonite.jpg": "exists",
  "img/deals/helix.jpg": "exists",
- "img/deals/whbm.jpg": "ok 35KB"
+ "img/deals/whbm.jpg": "exists",
+ "img/deals/alhena.jpg": "ok 22KB",
+ "img/deals/beekman.jpg": "ok 56KB",
+ "img/deals/camp-snap.jpg": "ok 34KB",
+ "img/deals/cosabella.jpg": "ok 50KB",
+ "img/deals/geometry.jpg": "ok 85KB",
+ "img/deals/mutha.jpg": "ok 31KB",
+ "img/deals/organic-basics.jpg": "ok 21KB",
+ "img/deals/railey.jpg": "ok 166KB",
+ "img/deals/solawave.jpg": "ok 18KB",
+ "img/deals/sterling-forever.jpg": "ok 39KB",
+ "img/deals/vetted.jpg": "ok 17KB",
+ "img/deals/la-ligne.jpg": "ok 74KB",
+ "img/deals/sleep-glow.jpg": "ok 45KB"
 }
