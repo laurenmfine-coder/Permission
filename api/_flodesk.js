@@ -69,7 +69,10 @@ async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyF
   const firstKeys = Object.keys(firstOnlyFields || {}).filter(function (k) { return firstOnlyFields[k]; });
   if (firstKeys.length) {
     const have = await existingFields(key, contact.email);
-    if (have) firstKeys.forEach(function (k) { if (!have[k]) customFields[k] = firstOnlyFields[k]; });
+    if (have) firstKeys.forEach(function (k) {
+      const camel = k.replace(/_([a-z])/g, function (m, c) { return c.toUpperCase(); });
+      if (!have[k] && !have[camel]) customFields[k] = firstOnlyFields[k];
+    });
   }
 
   const payload = {
