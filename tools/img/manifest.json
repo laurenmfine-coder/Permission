@@ -95,8 +95,7 @@
   "src": "https://bluemercury.com/cdn/shop/files/global_images-3606000434967-1_1200x.jpg?v=1759527034",
   "w": 1200,
   "h": 900,
-  "fill": 0.6,
-  "force": true
+  "fill": 0.6
  },
  {
   "out": "img/deals/banana-republic.jpg",
@@ -170,7 +169,117 @@
   "src": "wardrobe-blazer.jpg",
   "w": 1200,
   "h": 900,
-  "fill": 0.84,
+  "fill": 0.84
+ },
+ {
+  "out": "img/deals/alhena.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0994/6706/7704/files/96B8ABA6-F47B-4457-87DE-EC2C5625757E.png?v=1793161149",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/beekman.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BSCRUB-GME.jpg?v=1738086466",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/camp-snap.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0744/7383/2752/files/CamBag_Bundle_BlackBag_BlackCS_1x1_ca0c8b58-261a-4547-83c9-8d9147ba755e.png?v=1780093556",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo",
+  "fill": 0.62,
   "force": true
+ },
+ {
+  "out": "img/deals/cosabella.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0248/1455/1074/files/NSNPK0321_MAPKW_LB_CA_L.jpg?v=1793824638",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/geometry.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/2923/5220/files/TT-MF-cozy-club.webp?v=1794608508",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo",
+  "fill": 0.92
+ },
+ {
+  "out": "img/deals/mutha.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0108/3185/5697/products/Blank3000x3000_6.jpg?v=1762439549",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/organic-basics.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0636/2284/0540/files/dg-organic-basics_women_organic-cotton_core-sleep_pj-set_steamy_studio-1.jpg?v=1793621999",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo",
+  "fill": 0.92,
+  "force": true
+ },
+ {
+  "out": "img/deals/railey.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0995/7297/3890/files/organic-cotton-tote-bag.jpg?v=1786126818",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo",
+  "fill": 0.92
+ },
+ {
+  "out": "img/deals/solawave.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0418/6482/2952/files/solawave-periwinkle.webp?v=1775803727",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/sterling-forever.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0206/4926/files/2_c3d9d1c3-f595-40e7-a2d3-abe940ce2d64.png?v=1793048098",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/vetted.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0619/6599/2126/files/web-c0-VETTEDDermlab_r3_4B_3526.png?v=1774652499",
+  "w": 800,
+  "h": 1000,
+  "mode": "studio",
+  "fill": 0.62
+ },
+ {
+  "out": "img/deals/la-ligne.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-108476672-1795215861236-BR.jpg",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo"
+ },
+ {
+  "out": "img/deals/sleep-glow.jpg",
+  "src": "https://static.shopmy.us/pins/zoom-108475893-1795215736837-og-image.jpg",
+  "w": 800,
+  "h": 1000,
+  "mode": "photo"
+ },
+ {
+  "out": "img/deals/beekman-sale.jpg",
+  "src": "https://cdn.shopify.com/s/files/1/0223/7461/files/B18BSCRUB-GME.jpg?v=1738086466",
+  "w": 1200,
+  "h": 900,
+  "fill": 0.74
  }
 ]

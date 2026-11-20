@@ -20,9 +20,9 @@ def candidates(url):
     t = r.text
     found = []
     if url.endswith('products.json'):
-        for prod in r.json().get('products', [])[:20]:
+        for prod in r.json().get('products', [])[:30]:
             if prod.get('images'):
-                found.append(prod['images'][0]['src'])
+                found.append(prod['images'][0]['src'] + '#' + prod.get('handle', ''))
         return found
     for m in re.finditer(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]*>', t, re.I):
         c = re.search(r'content=["\']([^"\']+)', m.group(0))
@@ -48,7 +48,7 @@ def sheet(key, urls):
     keep = []
     for u in urls:
         try:
-            r = requests.get(u, headers={**UA, 'Accept': 'image/*'}, timeout=20)
+            r = requests.get(u.split('#')[0], headers={**UA, 'Accept': 'image/*'}, timeout=20)
             im = Image.open(io.BytesIO(r.content)).convert('RGB')
             if min(im.size) < 300: continue
             im.thumbnail((220, 220))
