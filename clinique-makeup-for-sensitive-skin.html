@@ -360,6 +360,31 @@
 </style>
 <link rel="stylesheet" href="/css/shop.css">
 <link rel="stylesheet" href="/css/lf-blocks.css">
+<link rel="stylesheet" href="/css/clinique.css">
+<style>
+.picks-box{background:#F7F5F2;border-top:3px solid #B8975A;padding:26px 28px 22px;margin:0 0 44px;}
+.post-body .picks-kicker{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#B8975A;margin:0 0 6px;}
+.post-body .picks-title{font-family:"Playfair Display",serif;font-size:1.45rem;margin:0 0 16px;line-height:1.2;}
+.post-body .picks-note{font-size:1rem;line-height:1.6;margin:0 0 16px;}
+.picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px;}
+.post-body a.pick-photo{display:block;border:none;color:inherit;text-decoration:none;}
+.pick-photo img{width:100%;height:auto;aspect-ratio:645/799;object-fit:cover;display:block;margin-bottom:10px;transition:transform .6s ease;}
+a.pick-photo:hover img{transform:scale(1.02);}
+.pick-photo-name{display:block;font-family:"Playfair Display",serif;font-size:1.05rem;line-height:1.25;margin-bottom:4px;}
+.pick-photo-cta{display:inline-block;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:#23406E;border-bottom:1px solid #B8975A;padding-bottom:3px;}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 40px;}
+.post-body a.cat-card{display:block;border:none;color:inherit;text-decoration:none;background:#F7F5F2;}
+.cat-card .cat-img{aspect-ratio:1/1;overflow:hidden;background:#fff;}
+.cat-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.cat-card img.contain{object-fit:contain;padding:10%;}
+a.cat-card:hover img{transform:scale(1.04);}
+.cat-card .cat-label{display:block;font-family:"Playfair Display",serif;font-size:1.05rem;padding:12px 14px 2px;}
+.cat-card .cat-go{display:block;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#23406E;padding:0 14px 14px;}
+.post-body .photo-wide{margin:40px 0;}
+.post-body .photo-wide img{width:100%;height:auto;display:block;}
+.post-body .photo-wide figcaption{font-size:.85rem;color:#6E6863;margin-top:10px;}
+@media (max-width:700px){.cat-grid{grid-template-columns:1fr 1fr;}}
+</style>
 </head>
 <body>
 
@@ -423,7 +448,19 @@
 
 <!-- POST BODY -->
 <article class="post-body">
+  <div class="lf-byline"><img src="lauren-allergist.jpg" alt="Lauren Fine, MD, allergist and immunologist" width="56" height="56"><div><p class="lf-byline-name">By Lauren Fine, MD, FAAAAI</p><p class="lf-byline-role">Allergist and immunologist. Still sees patients every week. Updated November 21, 2026.</p></div></div>
+
   <p class="dm-disclosure">Some links on this page are affiliate links. If you buy through one, I may earn a small commission at no extra cost to you. Nothing here is sponsored and no brand paid to be included.</p>
+
+  <aside class="picks-box" aria-label="My everyday Clinique pair">
+    <p class="picks-kicker">Short on time?</p>
+    <p class="picks-title">My everyday Clinique pair</p>
+    <p class="picks-note">Mineral sunscreen, plus a little mascara to open up the eyes. A one-minute routine.</p>
+    <div class="picks-grid">
+      <a class="pick-photo" href="https://go.shopmy.us/p-106604202" target="_blank" rel="noopener sponsored"><img src="clinique-mascara-photo.jpg" alt="Clinique High Impact Mascara on a sunlit vanity" width="645" height="799"><span class="pick-photo-name">High Impact Mascara</span><span class="pick-photo-cta">Shop it</span></a>
+      <a class="pick-photo" href="https://go.shopmy.us/p-106604268" target="_blank" rel="noopener sponsored"><img src="clinique-spf-photo.jpg" alt="Clinique SPF 50 Mineral Sunscreen Fluid for Face on a sunlit vanity" width="645" height="799"><span class="pick-photo-name">SPF 50 Mineral Sunscreen Fluid</span><span class="pick-photo-cta">Shop it</span></a>
+    </div>
+  </aside>
 
   <p>If you like fragrance-free makeup, Clinique is one of the few big department store brands where you do not have to check every product. Its makeup and skin care are fragrance free. The exception is its perfumes, like Clinique Happy.</p>
   <p>Here is what Clinique's labels mean, and the makeup I would start with.</p>
@@ -438,9 +475,11 @@
 
   <h2>My Clinique makeup picks</h2>
   <a class="shop-inline" href="https://go.shopmy.us/p-107166012" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag">Foundation</span><img src="https://www.clinique.com/cdn/shop/files/cl_sku_6MNY01_3000x3000_0.png?width=800" alt="Clinique Even Better Makeup Broad Spectrum SPF 15 Foundation" class="contain" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique</p><p class="shop-name">Even Better Makeup Broad Spectrum SPF 15 Foundation</p><p class="shop-desc">Fragrance free and allergy tested, with SPF 15 built in.</p><p class="shop-best"><b>Best for:</b> fragrance-free everyday coverage</p><span class="shop-cta">Shop Even Better</span></div></a>
-  <a class="shop-inline" href="https://go.shopmy.us/p-106604202" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag shop-tag--gold">Everyday pick</span><img src="clinique-mascara-photo.jpg" alt="Clinique High Impact Mascara" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique</p><p class="shop-name">High Impact Mascara</p><p class="shop-desc">Big lashes from a fragrance-free, allergy-tested formula.</p><p class="shop-best"><b>Best for:</b> a quick, fragrance-free everyday look</p><span class="shop-cta">Shop the mascara</span></div></a>
+  <a class="shop-inline" href="https://go.shopmy.us/p-106604202" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag shop-tag--gold">Everyday pick</span><img src="https://www.clinique.com/cdn/shop/files/cl_sku_68A001_3000x3000_0.png?width=800" alt="Clinique High Impact Mascara" class="contain" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique</p><p class="shop-name">High Impact Mascara</p><p class="shop-desc">Big lashes from a fragrance-free, allergy-tested formula.</p><p class="shop-best"><b>Best for:</b> a quick, fragrance-free everyday look</p><span class="shop-cta">Shop the mascara</span></div></a>
   <a class="shop-inline" href="https://go.shopmy.us/p-106604108" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag">Take it off</span><img src="https://www.clinique.com/cdn/shop/files/cl_sku_6CY401_3000x3000_0.png?width=800" alt="Clinique Take the Day Off Cleansing Balm" class="contain" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique</p><p class="shop-name">Take the Day Off Cleansing Balm</p><p class="shop-desc">Melts makeup and mascara without scrubbing.</p><p class="shop-best"><b>Best for:</b> taking makeup off at night</p><span class="shop-cta">Shop the balm</span></div></a>
-  <a class="shop-inline" href="https://go.shopmy.us/p-106918063" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag">Gift set</span><img src="clinique-mascara-photo.jpg" alt="Clinique Mascara and Moisturizer Duo" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique &middot; Holiday 2026</p><p class="shop-name">Mascara + Moisturizer Duo</p><p class="shop-desc">High Impact Mascara with Moisture Surge. An easy gift.</p><p class="shop-best"><b>Best for:</b> trying both, or gifting</p><span class="shop-cta">Shop the duo</span></div></a>
+  <a class="shop-inline" href="https://go.shopmy.us/p-106918063" target="_blank" rel="noopener sponsored" data-placement="card"><div class="shop-tile"><span class="shop-tag">Gift set</span><img src="https://cdn.shopify.com/s/files/1/0738/1562/1771/files/cl_sku_VGKTY6_NA_3000x3000_1.jpg" alt="Clinique Mascara and Moisturizer Duo" class="contain" loading="lazy"></div><div class="shop-inline-body"><p class="shop-brand">Clinique &middot; Holiday 2026</p><p class="shop-name">Mascara + Moisturizer Duo</p><p class="shop-desc">High Impact Mascara with Moisture Surge. An easy gift.</p><p class="shop-best"><b>Best for:</b> trying both, or gifting</p><span class="shop-cta">Shop the duo</span></div></a>
+
+  <figure class="photo-wide"><a href="https://go.shopmy.us/p-106604013" target="_blank" rel="noopener sponsored" style="border:none"><img src="hydrator-100h.jpg" alt="Clinique Moisture Surge 100H Auto-Replenishing Hydrator" loading="lazy"></a><figcaption>Under makeup: <a href="https://go.shopmy.us/p-106604013" target="_blank" rel="noopener sponsored">Moisture Surge 100H</a>, fragrance free and allergy tested.</figcaption></figure>
 
   <h2>Is Clinique foundation good for sensitive skin?</h2>
   <p>Even Better Makeup is fragrance free and allergy tested, like all Clinique makeup, and it has SPF 15. If you want skin care to go under it, see <a href="/best-clinique-products-for-sensitive-skin">the best Clinique products for sensitive skin</a>.</p>
@@ -449,6 +488,7 @@
   <p>High Impact Mascara is fragrance free and allergy tested. It is my everyday pick. For more options, read <a href="/mascara-for-sensitive-eyes">mascara for sensitive eyes</a>.</p>
 
   <h2>Shopping now?</h2>
+  <figure class="photo-wide"><a href="/clinique-black-friday" style="border:none"><img src="/img/deals/clinique.jpg" alt="Clinique Black Friday sale" width="1200" height="900" loading="lazy"></a></figure>
   <p>Clinique is running its Black Friday sale. See <a href="/clinique-black-friday">what I would buy at Clinique on Black Friday</a>, or browse all my current codes on <a href="/deals">the deals page</a>.</p>
 
   <h2>Make room</h2>

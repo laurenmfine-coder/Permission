@@ -360,6 +360,31 @@
 </style>
 <link rel="stylesheet" href="/css/shop.css">
 <link rel="stylesheet" href="/css/lf-blocks.css">
+<link rel="stylesheet" href="/css/clinique.css">
+<style>
+.picks-box{background:#F7F5F2;border-top:3px solid #B8975A;padding:26px 28px 22px;margin:0 0 44px;}
+.post-body .picks-kicker{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#B8975A;margin:0 0 6px;}
+.post-body .picks-title{font-family:"Playfair Display",serif;font-size:1.45rem;margin:0 0 16px;line-height:1.2;}
+.post-body .picks-note{font-size:1rem;line-height:1.6;margin:0 0 16px;}
+.picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px;}
+.post-body a.pick-photo{display:block;border:none;color:inherit;text-decoration:none;}
+.pick-photo img{width:100%;height:auto;aspect-ratio:645/799;object-fit:cover;display:block;margin-bottom:10px;transition:transform .6s ease;}
+a.pick-photo:hover img{transform:scale(1.02);}
+.pick-photo-name{display:block;font-family:"Playfair Display",serif;font-size:1.05rem;line-height:1.25;margin-bottom:4px;}
+.pick-photo-cta{display:inline-block;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:#23406E;border-bottom:1px solid #B8975A;padding-bottom:3px;}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 40px;}
+.post-body a.cat-card{display:block;border:none;color:inherit;text-decoration:none;background:#F7F5F2;}
+.cat-card .cat-img{aspect-ratio:1/1;overflow:hidden;background:#fff;}
+.cat-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.cat-card img.contain{object-fit:contain;padding:10%;}
+a.cat-card:hover img{transform:scale(1.04);}
+.cat-card .cat-label{display:block;font-family:"Playfair Display",serif;font-size:1.05rem;padding:12px 14px 2px;}
+.cat-card .cat-go{display:block;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#23406E;padding:0 14px 14px;}
+.post-body .photo-wide{margin:40px 0;}
+.post-body .photo-wide img{width:100%;height:auto;display:block;}
+.post-body .photo-wide figcaption{font-size:.85rem;color:#6E6863;margin-top:10px;}
+@media (max-width:700px){.cat-grid{grid-template-columns:1fr 1fr;}}
+</style>
 </head>
 <body>
 
@@ -423,6 +448,8 @@
 
 <!-- POST BODY -->
 <article class="post-body">
+  <div class="lf-byline"><img src="lauren-allergist.jpg" alt="Lauren Fine, MD, allergist and immunologist" width="56" height="56"><div><p class="lf-byline-name">By Lauren Fine, MD, FAAAAI</p><p class="lf-byline-role">Allergist and immunologist. Still sees patients every week. Updated November 21, 2026.</p></div></div>
+
   <p class="dm-disclosure">Some links on this page are affiliate links. If you buy through one, I may earn a small commission at no extra cost to you. Nothing here is sponsored and no brand paid to be included.</p>
 
   <p>Hypoallergenic is on skin care, dog breeders' websites, earrings, pillows and laundry detergent. It sounds like a medical term. It is not.</p>
@@ -432,6 +459,11 @@
   <p>The word means "less likely to cause an allergic reaction." Hypo means under or less. That is the whole definition.</p>
   <p>In the United States, <a href="https://www.fda.gov/cosmetics/cosmetics-labeling-claims/hypoallergenic-cosmetics" target="_blank" rel="noopener">there are no federal standards or definitions</a> for hypoallergenic. The FDA says the term means whatever a particular company wants it to mean. No company has to test for it or prove it.</p>
   <p>So when you see hypoallergenic, read it as a hope, not a measurement.</p>
+
+  <figure class="pin-embed">
+    <img src="/pin-hypo-myth.png" alt="Myth: hypoallergenic means allergy free. Fact: the word has no legal definition. Look for fragrance free instead." width="1000" height="1500" loading="lazy">
+    <figcaption><a class="pin-save" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Flaurenfine.com%2Fwhat-does-hypoallergenic-mean&amp;media=https%3A%2F%2Flaurenfine.com%2Fpin-hypo-myth.png&amp;description=Myth%3A+hypoallergenic+means+allergy+free.+Fact%3A+the+word+has+no+legal+definition.+Look+for+fragrance+free+instead." target="_blank" rel="noopener">Save this to Pinterest</a></figcaption>
+  </figure>
 
   <h2>Does hypoallergenic mean allergy free?</h2>
   <p>No. Less likely is not the same as never. Allergies are personal. A product that suits almost everyone can still bother one person.</p>
@@ -450,7 +482,20 @@
   </table>
   <p>Of these, fragrance free is the one you can check yourself. That makes it the most useful.</p>
 
+  <figure class="pin-embed">
+    <img src="/pin-hypo-label-decoder.png" alt="The label decoder: hypoallergenic, unscented, fragrance free, allergy tested and dermatologist tested, explained by an allergist." width="1000" height="1500" loading="lazy">
+    <figcaption><a class="pin-save" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Flaurenfine.com%2Fwhat-does-hypoallergenic-mean&amp;media=https%3A%2F%2Flaurenfine.com%2Fpin-hypo-label-decoder.png&amp;description=The+label+decoder%3A+hypoallergenic%2C+unscented%2C+fragrance+free%2C+allergy+tested+and+dermatologist+tested%2C+explained+by+an+allergist." target="_blank" rel="noopener">Save this to Pinterest</a></figcaption>
+  </figure>
+
   <h2>What hypoallergenic means on different products</h2>
+  <div class="cat-grid">
+    <a class="cat-card" href="/hypoallergenic-skin-care"><div class="cat-img"><img src="clinique-spf-photo.jpg" alt="Fragrance-free sunscreen on a sunlit vanity" loading="lazy"></div><span class="cat-label">Skin care</span><span class="cat-go">Read it</span></a>
+    <a class="cat-card" href="/clinique-makeup-for-sensitive-skin"><div class="cat-img"><img src="clinique-mascara-photo.jpg" alt="Fragrance-free mascara on a sunlit vanity" loading="lazy"></div><span class="cat-label">Makeup</span><span class="cat-go">Read it</span></a>
+    <a class="cat-card" href="/hypoallergenic-dogs"><div class="cat-img"><img src="https://static.shopmy.us/uploads/pretty-prod-1784774471464" alt="Dog bed with a washable cover" loading="lazy"></div><span class="cat-label">Dogs</span><span class="cat-go">Read it</span></a>
+    <a class="cat-card" href="/hypoallergenic-earrings-nickel-allergy"><div class="cat-img"><img src="https://static.shopmy.us/pins/zoom-107708757-1795099011805-aurate-earrings-gold-huggie-custom-540.png" alt="Solid gold huggie earrings" loading="lazy"></div><span class="cat-label">Earrings</span><span class="cat-go">Read it</span></a>
+    <a class="cat-card" href="/allergy-proof-bedroom"><div class="cat-img"><img src="brooklinen-comforter.jpg" alt="Down alternative comforter" loading="lazy"></div><span class="cat-label">Bedding</span><span class="cat-go">Read it</span></a>
+    <a class="cat-card" href="/fragrance-free-laundry-detergent"><div class="cat-img"><img src="/img/deals/grove.jpg" alt="Grove fragrance-free home and laundry products" loading="lazy"></div><span class="cat-label">Laundry</span><span class="cat-go">Read it</span></a>
+  </div>
 
   <h3>Skin care and makeup</h3>
   <p>On a cosmetic, hypoallergenic is a marketing claim. The ingredient list tells you more than the front of the bottle. Start with <a href="/hypoallergenic-skin-care">what allergy tested and fragrance free really mean</a>, then see <a href="/best-skin-care-for-sensitive-skin">the best skin care for sensitive skin</a>.</p>
@@ -469,6 +514,11 @@
 
   <h3>Perfume</h3>
   <p>Hypoallergenic perfume is a hard promise to keep, since fragrance is the point of the product. Read <a href="/hypoallergenic-perfume">is there hypoallergenic perfume?</a></p>
+
+  <figure class="pin-embed">
+    <img src="/pin-hypo-fragrance-free.png" alt="An allergist's shopping rule: skip the word hypoallergenic and look for fragrance free." width="1000" height="1500" loading="lazy">
+    <figcaption><a class="pin-save" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Flaurenfine.com%2Fwhat-does-hypoallergenic-mean&amp;media=https%3A%2F%2Flaurenfine.com%2Fpin-hypo-fragrance-free.png&amp;description=An+allergist%27s+shopping+rule%3A+skip+the+word+hypoallergenic+and+look+for+fragrance+free." target="_blank" rel="noopener">Save this to Pinterest</a></figcaption>
+  </figure>
 
   <h2>How to shop when a label says hypoallergenic</h2>
   <ol>
