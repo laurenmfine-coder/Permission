@@ -119,4 +119,21 @@ async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyF
   return { ok: res.ok, status: res.status, body: body.slice(0, 500) };
 }
 
-module.exports = { upsertSubscriber: upsertSubscriber, FLODESK_BASE: FLODESK_BASE };
+// Remove a subscriber from segments without unsubscribing them from anything
+// else. Used by /api/finds-optout so someone can stop Friday Finds and keep
+// The Sunday Letter.
+async function removeFromSegments(email, segmentIdsToRemove) {
+  const key = process.env.FLODESK_API_KEY;
+  if (!key) return { ok: false, skipped: 'FLODESK_API_KEY not set' };
+  const ids = (segmentIdsToRemove || []).map(function (s) { return String(s || '').trim(); }).filter(Boolean);
+  if (!ids.length) return { ok: false, skipped: 'no segment ids' };
+  const res = await fetch(FLODESK_BASE + '/subscribers/' + encodeURIComponent(email) + '/segments', {
+    method: 'DELETE',
+    headers: { Authorization: authHeader(key), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ segment_ids: ids })
+  });
+  const body = await res.text();
+  return { ok: res.ok || res.status === 404, status: res.status, body: body.slice(0, 500) };
+}
+
+module.exports = { upsertSubscriber: upsertSubscriber, removeFromSegments: removeFromSegments, FLODESK_BASE: FLODESK_BASE };
