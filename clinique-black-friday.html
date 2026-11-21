@@ -318,6 +318,17 @@
   .post-cta-right .talk-alt a { color:inherit; border-bottom:1px solid #B8975A; text-decoration:none; }
   @media (max-width:640px){ .post-body .talk-box .talk-opts { grid-template-columns:1fr; } .post-body .talk-box { padding:22px 20px; } }
 
+  .post-body .bf-banner { display:grid; grid-template-columns:1.1fr 1fr; background:var(--warm-dark); color:#fff; margin:32px 0 0; text-decoration:none; overflow:hidden; }
+  .post-body .bf-banner-copy { padding:34px 32px; display:flex; flex-direction:column; justify-content:center; }
+  .post-body .bf-banner-kicker { font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin:0 0 14px; }
+  .post-body .bf-banner-big { font-family:'Playfair Display',serif; font-size:clamp(2.6rem,6vw,3.8rem); font-weight:400; line-height:1; margin:0 0 10px; color:#fff; }
+  .post-body .bf-banner-big em { color:var(--gold); font-style:italic; }
+  .post-body .bf-banner-sub { font-size:1rem; line-height:1.55; margin:0 0 20px; color:rgba(255,255,255,0.88); }
+  .post-body .bf-banner-cta { align-self:flex-start; border:1px solid var(--gold); color:#fff; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:12px 18px; }
+  .post-body .bf-banner:hover .bf-banner-cta { background:var(--gold); }
+  .post-body .bf-banner-photo { min-height:300px; background:url('/clinique-mascara-photo.jpg') center 60%/cover no-repeat; }
+  .post-body .bf-banner + .bf-now { margin-top:0; border-top:none; }
+  @media (max-width:640px) { .post-body .bf-banner { grid-template-columns:1fr; } .post-body .bf-banner-photo { min-height:240px; order:-1; } .post-body .bf-banner-copy { padding:26px 22px; } }
   .post-body .bf-now { border:1px solid rgba(184,151,90,0.6); background:#FBF8F3; padding:26px 28px; margin:32px 0 40px; }
   .post-body .bf-now-label { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin:0 0 12px; }
   .post-body .bf-now ul { margin:0 0 14px 18px; }
@@ -444,6 +455,15 @@
   <p class="lf-disclosure-short">Affiliate links: if you buy through one, I may earn a small commission at no extra cost to you. No brand paid to be included.</p>
 
   <p>Black Friday is Friday, November 27, 2026, and Cyber Monday is November 30. <a href="https://go.shopmy.us/p-107160853" target="_blank" rel="noopener sponsored">Clinique</a> is one of the brands I get asked about most, so here is how to get the best price and what is actually worth buying.</p>
+  <a class="bf-banner" href="https://go.shopmy.us/p-107160853" target="_blank" rel="noopener sponsored" data-placement="bf-banner">
+    <div class="bf-banner-copy">
+      <p class="bf-banner-kicker">Black Friday · Live now</p>
+      <p class="bf-banner-big">30% <em>off</em></p>
+      <p class="bf-banner-sub">Sitewide on clinique.com through December 4, plus a free 4-piece gift with a $75 order.</p>
+      <span class="bf-banner-cta">Shop the sale</span>
+    </div>
+    <div class="bf-banner-photo" role="img" aria-label="Clinique High Impact Mascara, styled product photo"></div>
+  </a>
   <aside class="bf-now">
     <p class="bf-now-label">On clinique.com right now · checked November 21, 2026</p>
     <ul>
