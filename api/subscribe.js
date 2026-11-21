@@ -74,6 +74,10 @@ module.exports = async function handler(req, res) {
   }, [route.segmentId], {
     first_source: source,
     first_audience: route.audience
+  }, {
+    // Deals signups go only to the deals segment once FLODESK_SEGMENT_DEALS is
+    // set. Until then they fall back to the default list so none are lost.
+    skipDefaultSegment: route.audience === 'shopping' && !!route.segmentId
   });
 
   if (!result.ok) {

@@ -501,9 +501,9 @@
 <section class="dz-signup" id="get-codes" aria-label="Get new codes by email">
   <div class="dz-signup-inner">
     <div>
-      <p class="dz-kicker">Never miss a code</p>
-      <h2>Get new codes <em>before they are gone</em></h2>
-      <p>The best codes go fast. I send the new ones in The Sunday Letter, along with one idea to make your week a little lighter.</p>
+      <p class="dz-kicker">Friday Finds &middot; Free weekly email</p>
+      <h2>The week's best deals, <em>every Friday</em></h2>
+      <p>The best codes go fast. Every Friday I send the sales and codes worth your time, checked by hand, with the picks I actually buy. One email, before the weekend.</p>
     </div>
     <form class="dz-form" data-source="deals-page-codes" novalidate>
       <label class="dz-sr" for="get-codes-name">First name</label>
@@ -511,7 +511,7 @@
       <label class="dz-sr" for="get-codes-email">Email</label>
       <input id="get-codes-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
       <input type="text" name="company" tabindex="-1" autocomplete="off" class="dz-hp" aria-hidden="true">
-      <button type="submit">Send me the codes</button>
+      <button type="submit">Send me Friday Finds</button>
       <p class="dz-form-note">One email a week. Unsubscribe anytime.</p>
       <p class="dz-form-msg" role="status" aria-live="polite"></p>
     </form>
@@ -619,9 +619,9 @@
 <section class="dz-signup" id="get-codes-2" aria-label="Get new codes by email">
   <div class="dz-signup-inner">
     <div>
-      <p class="dz-kicker">Never miss a code</p>
+      <p class="dz-kicker">Friday Finds &middot; Free weekly email</p>
       <h2>Want this list <em>in your inbox?</em></h2>
-      <p>One short email on Sundays. New codes, the sales worth your time, and nothing you have to read twice.</p>
+      <p>One short email every Friday. New codes, the sales worth your time, and nothing you have to read twice.</p>
     </div>
     <form class="dz-form" data-source="deals-page-footer" novalidate>
       <label class="dz-sr" for="get-codes-2-name">First name</label>
@@ -629,7 +629,7 @@
       <label class="dz-sr" for="get-codes-2-email">Email</label>
       <input id="get-codes-2-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
       <input type="text" name="company" tabindex="-1" autocomplete="off" class="dz-hp" aria-hidden="true">
-      <button type="submit">Sign me up</button>
+      <button type="submit">Send me Friday Finds</button>
       <p class="dz-form-note">One email a week. Unsubscribe anytime.</p>
       <p class="dz-form-msg" role="status" aria-live="polite"></p>
     </form>
@@ -639,7 +639,7 @@
 <p class="shop-disclosure">This page contains affiliate links. If you buy through it, I may earn a small commission at no extra cost to you.</p>
 </main>
 <div class="dz-bar" hidden>
-  <span>New codes every Sunday</span>
+  <span>The week&rsquo;s best deals, every Friday</span>
   <a href="#get-codes" class="dz-bar-btn">Email me</a>
   <button type="button" class="dz-bar-x" aria-label="Close">&times;</button>
 </div>
@@ -739,11 +739,11 @@
       var email=f.email.value.trim();
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ msg.textContent='Please check your email address.'; return; }
       btn.disabled=true; msg.textContent='';
-      var body='firstName='+encodeURIComponent(f.firstName.value.trim())+'&email='+encodeURIComponent(email)+'&source='+encodeURIComponent(f.getAttribute('data-source'))+'&leadStage=deals&company='+encodeURIComponent(f.company.value)+'&notes='+encodeURIComponent('page: /deals; ref: '+document.referrer+'; '+location.search);
+      var body='firstName='+encodeURIComponent(f.firstName.value.trim())+'&email='+encodeURIComponent(email)+'&source='+encodeURIComponent(f.getAttribute('data-source'))+'&leadStage=deals&audience=shopping&company='+encodeURIComponent(f.company.value)+'&notes='+encodeURIComponent('page: /deals; ref: '+document.referrer+'; '+location.search);
       fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
         .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
         .then(function(res){
-          if(res.ok){ f.classList.add('done'); msg.textContent='You are in. Look for The Sunday Letter this weekend.'; if(window.gtag) gtag('event','generate_lead',{source:f.getAttribute('data-source'),page:'/deals'}); var bar=document.querySelector('.dz-bar'); if(bar) bar.hidden=true; try{localStorage.setItem('dz_joined','1');}catch(err){} }
+          if(res.ok){ f.classList.add('done'); msg.textContent='You are in. Your first Friday Finds lands this Friday.'; if(window.gtag) gtag('event','generate_lead',{source:f.getAttribute('data-source'),page:'/deals'}); var bar=document.querySelector('.dz-bar'); if(bar) bar.hidden=true; try{localStorage.setItem('dz_joined','1');}catch(err){} }
           else { btn.disabled=false; msg.textContent=(res.j&&res.j.error)||'That did not go through. Please try again.'; }
         }).catch(function(){ btn.disabled=false; msg.textContent='That did not go through. Please try again.'; });
     });
@@ -830,5 +830,6 @@
   if(window.gtag) gtag('event','deals_deeplink',{card:id});
 })();
 </script>
+<script src="/js/capture-widgets.js" defer></script>
 </body>
 </html>

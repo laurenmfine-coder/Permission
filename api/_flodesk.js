@@ -62,7 +62,9 @@ async function existingFields(key, email) {
 // `firstOnlyFields` (optional) are written only when the subscriber does not
 // already have a value for them, e.g. first_source, so the page a person
 // first came in through is kept even after later signups overwrite source.
-async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyFields) {
+// `opts.skipDefaultSegment` leaves FLODESK_SEGMENT_ID out, so a list that is
+// not The Sunday Letter (the weekly deals email) stays separate.
+async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyFields, opts) {
   const key = process.env.FLODESK_API_KEY;
   if (!key) return { ok: false, skipped: 'FLODESK_API_KEY not set' };
   customFields = Object.assign({}, customFields || {});
@@ -97,7 +99,7 @@ async function upsertSubscriber(contact, customFields, extraSegments, firstOnlyF
   });
   if (Object.keys(fields).length) payload.custom_fields = fields;
 
-  const segments = segmentIds();
+  const segments = (opts && opts.skipDefaultSegment) ? [] : segmentIds();
   (extraSegments || []).forEach(function (id) {
     const v = String(id || '').trim();
     if (v && segments.indexOf(v) === -1) segments.push(v);

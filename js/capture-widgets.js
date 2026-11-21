@@ -51,8 +51,9 @@
       '; utm_campaign=' + (params.get('utm_campaign') || '') +
       '; referrer=' + (document.referrer || '');
   }
-  function submitLead(email, name, source, extra, onDone) {
+  function submitLead(email, name, source, extra, onDone, audience) {
     var formBody = 'firstName=' + encodeURIComponent(name || '') +
+      (audience ? '&audience=' + encodeURIComponent(audience) : '') +
       '&email=' + encodeURIComponent(email) +
       '&source=' + encodeURIComponent(source) +
       '&userGroup=' + encodeURIComponent('CoachingLead') +
@@ -107,6 +108,11 @@
   // moment they are most engaged, plus a quiet link to the free session.
   function inlineOffer() {
     var p = window.location.pathname;
+    if (isShoppingPage()) {
+      return { tool: '', url: '', deals: true,
+        title: 'The week\'s best deals, every Friday.',
+        text: 'Friday Finds: the sales and codes worth your time, checked by hand, with the picks I actually buy. One email before the weekend. Free.' };
+    }
     if (/boundar|say-no|people-pleasing|guilt/.test(p)) {
       return { tool: 'Is This One Worth It?', url: '/worth-it',
         title: 'Not sure this one is worth the fight?',
@@ -125,6 +131,7 @@
   function initInlineSignup() {
     var art = document.querySelector('article.post-body');
     if (!art || document.querySelector('.pf-inline')) return;
+    if (isShoppingPage() && document.querySelector('.lf-kit[data-audience="shopping"], .dz-form')) return; // page already has a deals signup
     if (/worth-it|invisible-list|free-session|booking-confirmed|join-emails|template/.test(window.location.pathname)) return;
     var ps = Array.prototype.filter.call(art.children, function (el) { return el.tagName === 'P'; });
     if (ps.length < 6) return;
@@ -135,15 +142,15 @@
     box.className = 'pf-inline';
     box.setAttribute('aria-label', 'Free worksheet and newsletter signup');
     box.innerHTML =
-      '<p class="pf-inline-eyebrow">Free' + (o.tool ? ' worksheet &middot; ' + o.tool : ' &middot; The Sunday Letter') + '</p>' +
+      '<p class="pf-inline-eyebrow">Free' + (o.tool ? ' worksheet &middot; ' + o.tool : (o.deals ? ' &middot; Friday Finds' : ' &middot; The Sunday Letter')) + '</p>' +
       '<p class="pf-inline-title">' + o.title + '</p>' +
       '<p class="pf-inline-text">' + o.text + '</p>' +
       '<form novalidate>' +
         '<input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">' +
         '<input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>' +
-        '<button type="submit">' + (o.tool ? 'Send it to me' : 'Get the letter') + '</button>' +
+        '<button type="submit">' + (o.tool ? 'Send it to me' : (o.deals ? 'Send me Friday Finds' : 'Get the letter')) + '</button>' +
       '</form>' +
-      '<p class="pf-inline-note">Unsubscribe anytime. Rather talk it through? <a href="/free-session?utm_source=site&amp;utm_content=inline_article">Your first coaching session is free</a>.</p>';
+      '<p class="pf-inline-note">' + (o.deals ? 'Unsubscribe anytime. <a href="/deals">See today\'s deals</a>.' : 'Unsubscribe anytime. Rather talk it through? <a href="/free-session?utm_source=site&amp;utm_content=inline_article">Your first coaching session is free</a>.') + '</p>';
     anchor.parentNode.insertBefore(box, anchor.nextSibling);
     var form = box.querySelector('form');
     form.addEventListener('submit', function (e) {
@@ -151,14 +158,19 @@
       var email = form.email.value.trim(), name = form.name.value.trim();
       if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
       form.querySelector('button').disabled = true;
-      submitLead(email, name, 'inline_article', 'inline_' + window.location.pathname, function () {
+      submitLead(email, name, o.deals ? 'inline_deals' : 'inline_article', 'inline_' + window.location.pathname, function () {
         mark(EXIT_KEY);
-        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'inline_article', page: window.location.pathname }); } catch (err) {}
-        var msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> The next letter lands Sunday morning.';
-        if (o.url) msg += ' <a href="' + o.url + '" style="color:#23406E;">Open ' + o.tool + ' now &rarr;</a>';
-        msg += '<br>Want to talk it through? <a href="https://calendly.com/reasondxcoaching/free-session" style="color:#23406E;">Book your free session &rarr;</a>';
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: o.deals ? 'inline_deals' : 'inline_article', page: window.location.pathname }); } catch (err) {}
+        var msg;
+        if (o.deals) {
+          msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> Your first Friday Finds lands this Friday. <a href="/deals" style="color:#23406E;">See today\'s deals &rarr;</a>';
+        } else {
+          msg = '<p class="pf-inline-msg"><strong>You are on the list.</strong> The next letter lands Sunday morning.';
+          if (o.url) msg += ' <a href="' + o.url + '" style="color:#23406E;">Open ' + o.tool + ' now &rarr;</a>';
+          msg += '<br>Want to talk it through? <a href="https://calendly.com/reasondxcoaching/free-session" style="color:#23406E;">Book your free session &rarr;</a>';
+        }
         form.outerHTML = msg + '</p>';
-      });
+      }, o.deals ? 'shopping' : '');
     });
     if (typeof gtag === 'function') {
       try {
@@ -181,13 +193,22 @@
   // Exit popup is a single Facebook group invite everywhere it fires. It
   // stays off the pages where interrupting a conversion in progress would
   // hurt (free-session, booking-confirmed, quiz).
+  function isShoppingPage() {
+    var p = window.location.pathname.replace(/\.html$/, '');
+    return /\/(deals|clinique|grove|recommendations|is-grove-worth-it|quiet-morning-coffee-setup)$/.test(p) ||
+      /(discount-code|promo-code|^\/gifts-|^\/best-(?!books)|^\/clinique-|^\/post-why-i-trust-clinique|hypoallergenic|fragrance-free|mascara-|non-toxic|cleaning-products|dish-soap|laundry|dryer-sheets|sensitive-skin|skin-care|perfume)/.test(p);
+  }
+
   function exitVariant() {
     var p = window.location.pathname;
     if (/\/(free-session|booking-confirmed|quiz)(\.html)?$/.test(p)) return null; // never interrupt a conversion
+    // Shopping pages offer Friday Finds, the weekly deals email, instead.
+    if (isShoppingPage()) return 'deals';
     return 'sunday_letter';
   }
 
-  function buildExitModal() {
+  function buildExitModal(variant) {
+    if (variant === 'deals') return buildDealsExitModal();
     var overlay = document.createElement('div');
     overlay.className = 'pf-overlay';
     overlay.id = 'pf-exit-overlay';
@@ -216,6 +237,38 @@
         try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'exit_popup', page: window.location.pathname }); } catch (err) {}
         form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> The next letter lands Sunday morning.</p><a class="pf-modal-submit" href="https://calendly.com/reasondxcoaching/free-session" style="display:block;text-align:center;text-decoration:none;">Book your free session</a>';
       });
+    });
+  }
+
+  function buildDealsExitModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'pf-overlay';
+    overlay.id = 'pf-exit-overlay';
+    overlay.innerHTML =
+      '<div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-exit-title">' +
+        '<button class="pf-modal-close" aria-label="Close" onclick="window.__pfCloseExit()">&times;</button>' +
+        '<p class="pf-modal-eyebrow">Before you go &middot; Friday Finds</p>' +
+        '<h3 class="pf-modal-title" id="pf-exit-title">The week\'s best deals, every Friday.</h3>' +
+        '<p class="pf-modal-body">Sales and codes worth your time, checked by hand, with the picks I actually buy. One email before the weekend. Free.</p>' +
+        '<form id="pf-exit-form" novalidate>' +
+          '<input class="pf-modal-input" type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>' +
+          '<input type="hidden" name="name" value="">' +
+          '<button class="pf-modal-submit" type="submit" style="width:100%;">Send me Friday Finds</button>' +
+        '</form>' +
+        '<p class="pf-modal-note">Unsubscribe anytime.</p>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    var form = overlay.querySelector('#pf-exit-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!emailValid(email)) { form.email.focus(); form.email.style.borderColor = '#B5654A'; return; }
+      form.querySelector('button').disabled = true;
+      submitLead(email, '', 'exit_popup_deals', 'deals', function () {
+        mark(EXIT_KEY);
+        try { if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'exit_popup_deals', page: window.location.pathname }); } catch (err) {}
+        form.outerHTML = '<p class="pf-modal-body"><strong>You are on the list.</strong> Your first Friday Finds lands this Friday.</p><a class="pf-modal-submit" href="/deals" style="display:block;text-align:center;text-decoration:none;">See today\'s deals</a>';
+      }, 'shopping');
     });
   }
 
@@ -270,7 +323,7 @@
     if (daysAgo(EXIT_KEY) < EXIT_DAYS) return;
     var variant = exitVariant();
     if (!variant) return;
-    buildExitModal();
+    buildExitModal(variant);
     var triggered = false;
 
     function fire() {
@@ -281,7 +334,7 @@
       // Without a "shown" count there is no denominator, so there was
       // previously no way to tell whether this converts at 1% or 20%.
       if (typeof gtag === 'function') {
-        gtag('event', 'exit_popup_shown', { variant: 'sunday_letter', page: window.location.pathname });
+        gtag('event', 'exit_popup_shown', { variant: variant, page: window.location.pathname });
       }
     }
 
