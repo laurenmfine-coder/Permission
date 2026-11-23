@@ -13,6 +13,8 @@
 
   var P = {
     'black-friday-2026': ['Black Friday 2026: every sale, checked by hand', 1],
+    'clinique-black-friday': ['Clinique Black Friday: 30% off plus a free gift', 1],
+    'clinique-gift-with-purchase': ['Clinique gift with purchase: how to get the free gift', 0],
     'gifts-for-someone-who-has-everything': ['Gifts for someone who has everything', 0],
     'home-coffee-bar-ideas': ['Coffee bar ideas for small spaces and every budget', 0],
     'best-organic-sheets-and-bedding': ['The best organic sheets and bedding', 0],
@@ -33,9 +35,9 @@
   };
 
   var CLUSTERS = [
-    [/black-friday|discount-code|promo-code|gift|holiday/, ['black-friday-2026', 'gifts-for-someone-who-has-everything', 'home-coffee-bar-ideas', 'best-organic-sheets-and-bedding']],
+    [/black-friday|discount-code|promo-code|gift|holiday/, ['black-friday-2026', 'clinique-black-friday', 'gifts-for-someone-who-has-everything', 'home-coffee-bar-ideas', 'best-organic-sheets-and-bedding']],
     [/bed|sleep|dust|allergy-home|guest-room|laundry|dryer|coffee|clean|dish-soap|pajama|grove/, ['best-organic-sheets-and-bedding', 'home-coffee-bar-ideas', 'boll-and-branch-black-friday', 'brooklinen-black-friday', 'ember-black-friday', 'allergy-proof-bedroom']],
-    [/skin|clinique|origins|naturium|mascara|perfume|earring|hypoallergenic|beauty|solawave|vetted|mutha/, ['solawave-black-friday', 'vetted-dermlab-black-friday', 'first-aid-beauty-black-friday', 'meaningful-beauty-black-friday', 'best-skin-care-for-sensitive-skin', 'gifts-for-someone-who-has-everything']]
+    [/skin|clinique|origins|naturium|mascara|perfume|earring|hypoallergenic|beauty|solawave|vetted|mutha/, ['clinique-black-friday', 'clinique-gift-with-purchase', 'solawave-black-friday', 'vetted-dermlab-black-friday', 'first-aid-beauty-black-friday', 'meaningful-beauty-black-friday', 'best-skin-care-for-sensitive-skin', 'gifts-for-someone-who-has-everything']]
   ];
   var DEFAULT = ['work-life-balance-goals', 'new-years-resolutions-boundaries', 'stop-doing-list', 'how-to-keep-new-years-resolutions', 'gifts-for-someone-who-has-everything'];
   var FALLBACK = ['gifts-for-someone-who-has-everything', 'home-coffee-bar-ideas', 'best-organic-sheets-and-bedding', 'work-life-balance-goals', 'stop-doing-list'];
