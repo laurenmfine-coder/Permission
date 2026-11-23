@@ -18,6 +18,9 @@
     { file: 'post-what-i-lost.html', title: 'What I Lost (And What I Found Instead)', tags: ['career', 'identity', 'decision'] },
     { file: 'post-what-if-your-ikigai-was-allowed-to-move.html', title: 'What If Your Ikigai Was Allowed to Move?', tags: ['ikigai', 'purpose'] },
     { file: 'post-why-lifelong-learning-is-permission.html', title: 'Why Lifelong Learning Is Permission to Keep Changing', tags: ['ikigai', 'purpose', 'mindset'] },
+    { file: 'work-life-balance-goals.html', title: 'Work-Life Balance Goals for 2027', tags: ['mindset', 'decision', 'presence'] },
+    { file: 'new-years-resolutions-boundaries.html', title: 'New Year\u2019s Resolutions That Are Really Boundaries', tags: ['mindset', 'identity', 'guilt'] },
+    { file: 'stop-doing-list.html', title: 'The Stop-Doing List: An Anti-Resolution', tags: ['presence', 'discomfort', 'decision'] },
     { file: 'post-you-have-permission-to-change.html', title: 'You Have Permission to Change', tags: ['identity', 'career', 'purpose'] }
   ];
 
