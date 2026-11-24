@@ -11,8 +11,8 @@
    The welcome message, its delay and the away-hours form are set in the
    tawk.to dashboard (Administration > Triggers / Chat Widget), not here. */
 (function () {
-  var PROPERTY_ID = 'PASTE_PROPERTY_ID';
-  var WIDGET_ID = 'PASTE_WIDGET_ID';
+  var PROPERTY_ID = '6b04ebec52d49d3cf685711b';
+  var WIDGET_ID = '1k85jj4nc';
   if (PROPERTY_ID.indexOf('PASTE_') === 0) return;
 
   var path = location.pathname;
