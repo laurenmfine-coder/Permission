@@ -150,3 +150,12 @@
     });
   };
 })();
+
+/* Live chat bubble. Kept in its own file; loaded from here because this
+   script is already on every page. */
+(function () {
+  var s = document.createElement('script');
+  s.src = '/js/chat-widget.js';
+  s.async = true;
+  document.head.appendChild(s);
+})();
