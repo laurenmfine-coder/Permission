@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="144pt" height="144pt" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-24T12:59:43.653344</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 144 
+L 144 144 
+L 144 0 
+L 0 0 
+L 0 144 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.8 141.12 
+L 115.2 141.12 
+Q 141.12 141.12 141.12 115.2 
+L 141.12 28.8 
+Q 141.12 2.88 115.2 2.88 
+L 28.8 2.88 
+Q 2.88 2.88 2.88 28.8 
+L 2.88 115.2 
+Q 2.88 141.12 28.8 141.12 
+z
+" clip-path="url(#p14cd3eda30)" style="fill: #23406e"/>
+   </g>
+   <g id="text_1">
+    <!-- L -->
+    <g style="fill: #ffffff" transform="translate(19.69 105.186) scale(0.92 -0.92)">
+     <defs>
+      <path id="PlayfairDisplay-BoldItalic-1f" d="M 3597 1344 
+Q 3558 1242 3520 1107 
+Q 3482 973 3443 819 
+Q 3411 698 3360 470 
+Q 3309 243 3270 0 
+Q 2944 13 2541 16 
+Q 2138 19 1818 19 
+Q 1658 19 1411 19 
+Q 1165 19 870 16 
+Q 576 13 281 9 
+Q -13 6 -275 0 
+L -243 128 
+Q -26 141 96 179 
+Q 218 218 285 333 
+Q 352 448 416 678 
+L 1261 3853 
+Q 1325 4090 1312 4202 
+Q 1299 4314 1200 4355 
+Q 1101 4397 883 4403 
+L 915 4531 
+Q 1082 4525 1366 4518 
+Q 1651 4512 1971 4512 
+Q 2253 4512 2515 4518 
+Q 2778 4525 2970 4531 
+L 2938 4403 
+Q 2720 4397 2598 4355 
+Q 2477 4314 2406 4202 
+Q 2336 4090 2272 3853 
+L 1427 678 
+Q 1370 448 1376 333 
+Q 1382 218 1481 182 
+Q 1581 147 1798 147 
+L 2054 147 
+Q 2342 147 2595 262 
+Q 2848 378 3065 640 
+Q 3283 902 3456 1344 
+L 3597 1344 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#PlayfairDisplay-BoldItalic-1f"/>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- F -->
+    <g style="fill: #b8975a" transform="translate(66.553438 117.426) scale(0.92 -0.92)">
+     <defs>
+      <path id="PlayfairDisplay-BoldItalic-14" d="M 1472 2189 
+L 1504 2317 
+L 2835 2317 
+L 2810 2189 
+L 1472 2189 
+z
+M 3763 3187 
+Q 3821 3642 3763 3901 
+Q 3706 4160 3526 4272 
+Q 3347 4384 3034 4384 
+L 2886 4384 
+Q 2688 4384 2579 4349 
+Q 2470 4314 2403 4202 
+Q 2336 4090 2278 3853 
+L 1434 678 
+Q 1370 448 1389 333 
+Q 1408 218 1539 179 
+Q 1670 141 1933 128 
+L 1907 0 
+Q 1709 13 1398 16 
+Q 1088 19 768 19 
+Q 448 19 173 16 
+Q -102 13 -275 0 
+L -243 128 
+Q -26 141 96 179 
+Q 218 218 285 333 
+Q 352 448 416 678 
+L 1261 3853 
+Q 1325 4090 1312 4202 
+Q 1299 4314 1200 4355 
+Q 1101 4397 883 4403 
+L 915 4531 
+Q 1178 4525 1472 4521 
+Q 1766 4518 2054 4515 
+Q 2342 4512 2588 4512 
+Q 2835 4512 2995 4512 
+Q 3283 4512 3644 4515 
+Q 4006 4518 4294 4531 
+Q 4211 4301 4153 4115 
+Q 4096 3930 4045 3750 
+Q 4000 3584 3965 3443 
+Q 3930 3302 3910 3187 
+L 3763 3187 
+z
+M 2163 2317 
+Q 2336 2317 2470 2381 
+Q 2605 2445 2710 2557 
+Q 2816 2669 2896 2806 
+Q 2976 2944 3040 3085 
+L 3181 3085 
+Q 3085 2790 3040 2614 
+Q 2995 2438 2944 2253 
+Q 2906 2067 2858 1856 
+Q 2810 1645 2746 1306 
+L 2605 1306 
+Q 2611 1504 2595 1664 
+Q 2579 1824 2524 1942 
+Q 2470 2061 2368 2125 
+Q 2266 2189 2093 2189 
+L 2163 2317 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#PlayfairDisplay-BoldItalic-14"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p14cd3eda30">
+   <rect x="0" y="0" width="144" height="144"/>
+  </clipPath>
+ </defs>
+</svg>
