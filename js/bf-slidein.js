@@ -15,7 +15,7 @@
   }
   function close(card) {
     try { localStorage.setItem(KEY, '1'); } catch (e) {}
-    card.style.transform = 'translateY(140%)';
+    card.style.transform = 'translateX(120%)';
     setTimeout(function () { card.remove(); }, 400);
   }
   function show() {
@@ -24,9 +24,9 @@
     card.id = 'lf-bf-slidein';
     card.setAttribute('role', 'complementary');
     card.setAttribute('aria-label', 'Black Friday picks');
-    card.style.cssText = 'position:fixed;left:20px;bottom:90px;z-index:9990;width:300px;max-width:calc(100vw - 40px);' +
+    card.style.cssText = 'position:fixed;right:20px;top:110px;z-index:9990;width:300px;max-width:calc(100vw - 40px);' +
       'background:#FBF9F6;border:1px solid #B8975A;box-shadow:0 12px 32px rgba(24,45,78,0.18);padding:20px 22px 18px;' +
-      'font-family:inherit;transform:translateY(140%);transition:transform .4s ease;';
+      'font-family:inherit;transform:translateX(120%);transition:transform .4s ease;';
     card.innerHTML =
       '<button type="button" aria-label="Close" style="position:absolute;top:6px;right:8px;background:none;border:0;font-size:22px;line-height:1;color:#8A7A5C;cursor:pointer;">&times;</button>' +
       '<p style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#8A7A5C;margin:0 0 6px;">Black Friday picks</p>' +
@@ -35,7 +35,7 @@
       '<a href="/black-friday-mattress-deals?utm_source=site&amp;utm_content=bf_slidein" data-k="mattress" style="display:block;text-align:center;background:#1A1A1A;color:#fff;padding:11px 14px;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;margin:0 0 10px;">See the mattress deals</a>' +
       '<a href="/black-friday-2026?utm_source=site&amp;utm_content=bf_slidein" data-k="all" style="display:block;text-align:center;font-size:0.82rem;color:#23406E;text-decoration:underline;">Every sale I am tracking</a>';
     document.body.appendChild(card);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { card.style.transform = 'translateY(0)'; }); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { card.style.transform = 'translateX(0)'; }); });
     track('bf_slidein_shown');
     card.querySelector('button').addEventListener('click', function () { track('bf_slidein_close'); close(card); });
     card.querySelectorAll('a').forEach(function (a) {
@@ -46,7 +46,7 @@
     });
     var mq = window.matchMedia('(max-width: 640px)');
     function fit() {
-      if (mq.matches) { card.style.left = '12px'; card.style.right = '12px'; card.style.width = 'auto'; card.style.bottom = '84px'; }
+      if (mq.matches) { card.style.left = '12px'; card.style.right = '12px'; card.style.width = 'auto'; card.style.top = '96px'; }
     }
     fit();
   }
