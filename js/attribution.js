@@ -159,3 +159,11 @@
   s.async = true;
   document.head.appendChild(s);
 })();
+
+// Temporary Black Friday slide-in (self-expires after Dec 2, 2026).
+(function () {
+  var s = document.createElement('script');
+  s.src = '/js/bf-slidein.js';
+  s.async = true;
+  document.head.appendChild(s);
+})();
