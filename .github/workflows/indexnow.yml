@@ -1,0 +1,29 @@
+name: IndexNow
+on:
+  push:
+    branches: [main]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+      - name: Wait for the Vercel deploy
+        run: sleep 90
+      - name: Tell Bing which pages changed
+        run: |
+          KEY=3270b31fa0b53f186c5fba544953c7d1
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- '*.html' 2>/dev/null || git diff --name-only HEAD~1 HEAD -- '*.html')
+          URLS=""
+          for f in $CHANGED; do
+            [ -f "$f" ] || continue
+            grep -qiE 'name="robots"[^>]*noindex' "$f" && continue
+            slug="${f%.html}"
+            [ "$slug" = "index" ] && u="https://laurenfine.com/" || u="https://laurenfine.com/$slug"
+            URLS="$URLS\"$u\","
+          done
+          if [ -z "$URLS" ]; then echo "No page changes"; exit 0; fi
+          BODY="{\"host\":\"laurenfine.com\",\"key\":\"$KEY\",\"keyLocation\":\"https://laurenfine.com/$KEY.txt\",\"urlList\":[${URLS%,}]}"
+          echo "$BODY"
+          curl -s -o /dev/null -w "IndexNow response: %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" -d "$BODY"
