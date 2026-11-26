@@ -602,7 +602,7 @@
   </url>
   <url>
     <loc>https://laurenfine.com/deals</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1248,9 +1248,15 @@
   </url>
   <url>
     <loc>https://laurenfine.com/black-friday-2026</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://laurenfine.com/merit-black-friday</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://laurenfine.com/gifts-for-someone-who-has-everything</loc>
