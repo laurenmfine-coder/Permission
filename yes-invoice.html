@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/js/attribution.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Yes Invoice: A Free One-Week Log of Every Yes | Lauren Fine, MD</title>
+<meta name="description" content="A free worksheet for physicians and anyone who says yes by reflex. Log every yes for one week, see what it cost you, and choose what to take back.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://laurenfine.com/yes-invoice">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laurenfine.com/yes-invoice">
+<meta property="og:title" content="The Yes Invoice: every yes is a no to something else">
+<meta property="og:description" content="A free worksheet for physicians and anyone who says yes by reflex. Log every yes for one week, see what it cost you, and choose what to take back.">
+<meta property="og:image" content="https://laurenfine.com/headshot.jpg">
+<meta property="og:site_name" content="Lauren Fine, MD">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFFFFF; --cream-dark:#EDE9E4; --black:#1A1A1A;
+    --warm-dark:#182D4E; --terracotta:#23406E; --terracotta-dark:#182D4E;
+    --gold:#B8975A; --gray:#8C8580; --white:#FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    background:var(--cream-dark); color:var(--black); font-family:'DM Sans',sans-serif; font-weight:300;
+    min-height:100vh; min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:32px 16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { width:100%; max-width:520px; }
+  .wordmark {
+    display:block; text-align:center; font-family:'Playfair Display',serif; font-size:0.92rem; font-weight:500;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--black); text-decoration:none; margin-bottom:24px;
+  }
+  .card { background:var(--white); border-top:3px solid var(--terracotta); box-shadow:0 8px 40px rgba(24,45,78,0.08); padding:36px 24px 32px; }
+  @media (min-width:540px) { .card { padding:52px 46px 46px; } }
+  .eyebrow { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:16px; }
+  h1 {
+    font-family:'Playfair Display',serif; font-size:clamp(1.55rem,6.4vw,2.15rem); font-weight:400; line-height:1.24;
+    color:var(--black); text-align:center; margin-bottom:20px;
+  }
+  h1 em { font-style:italic; color:var(--terracotta); }
+  .lede { font-size:0.92rem; line-height:1.85; color:var(--black); font-weight:300; margin-bottom:16px; }
+  .lede.muted { color:var(--gray); }
+
+  .rule { height:1px; background:var(--cream-dark); margin:30px 0; }
+
+  .kicker { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  ul.plain { list-style:none; margin-bottom:8px; }
+  ul.plain li { font-size:0.9rem; line-height:1.75; color:var(--black); padding-left:18px; position:relative; margin-bottom:9px; }
+  ul.plain li:before { content:""; position:absolute; left:0; top:0.62em; width:6px; height:1px; background:var(--gold); }
+
+  .cta {
+    display:block; width:100%; text-align:center; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--white); background:var(--black); border:none;
+    padding:19px 24px; cursor:pointer; text-decoration:none; transition:background 0.3s; margin-top:8px;
+  }
+  .cta:hover { background:var(--terracotta); }
+  .cta-note { font-size:0.72rem; line-height:1.7; color:var(--gray); margin-top:14px; text-align:center; }
+
+  .bio { display:flex; gap:16px; align-items:flex-start; margin-top:4px; }
+  .bio img { width:64px; height:64px; object-fit:cover; border-radius:50%; flex-shrink:0; }
+  .bio p { font-size:0.83rem; line-height:1.8; color:var(--gray); }
+  .bio strong { color:var(--black); font-weight:500; }
+
+  .field { margin-bottom:16px; position:relative; }
+  .field label { display:block; font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--warm-dark); font-weight:500; margin-bottom:8px; }
+  .field input {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--black);
+    background:var(--cream-dark); border:1px solid var(--cream-dark); padding:14px 15px;
+    transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+  .field input:focus { outline:none; border-color:var(--terracotta); background:var(--white); box-shadow:0 0 0 3px rgba(35,64,110,0.08); }
+  .field input::placeholder { color:#B0A9A2; }
+  .field-error { display:none; font-size:0.76rem; color:#9B3B2F; margin-top:7px; }
+  .field.invalid input { border-color:#9B3B2F; }
+  .field.invalid .field-error { display:block; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .btn-secondary {
+    width:100%; font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--terracotta); background:var(--white); border:1px solid var(--terracotta);
+    padding:16px 24px; cursor:pointer; transition:background 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { background:var(--terracotta); color:var(--white); }
+  .btn-secondary:disabled { opacity:0.55; cursor:default; }
+  .form-status { display:none; margin-top:14px; padding:13px 15px; font-size:0.83rem; line-height:1.6; background:#FAF3F1; border-left:2px solid #9B3B2F; color:#7A2E24; }
+  .form-status.show { display:block; }
+  .email-done { display:none; font-size:0.88rem; line-height:1.8; color:var(--terracotta); padding:13px 0; }
+  .email-done.show { display:block; }
+  .foot { text-align:center; margin-top:24px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .foot a { font-size:0.76rem; color:var(--gray); text-decoration:none; border-bottom:1px solid rgba(140,133,128,0.35); padding-bottom:2px; }
+  .foot a:hover { color:var(--terracotta); }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QBSJ9PRRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2QBSJ9PRRQ');
+</script>
+<style id="site-a11y-fixes">
+  /* Site-wide accessibility and mobile fixes (panel audit, Sept 29 2026) */
+  :root { --gray:#6E6863; }
+  html { scroll-padding-top:96px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline:2px solid #23406E; outline-offset:3px; }
+  .nav-cta:focus-visible, .btn-primary:focus-visible, .mobile-book-bar a:focus-visible { outline-color:#23406E; box-shadow:0 0 0 2px #fff; }
+  @media (max-width:600px) {
+    html { scroll-padding-top:150px; }
+    nav { padding:12px 16px !important; row-gap:6px !important; }
+    nav .nav-social { display:none !important; }
+    .nav-cta { min-height:44px; display:inline-flex; align-items:center; padding:10px 12px !important; letter-spacing:0.08em !important; font-size:0.68rem !important; }
+    .nav-links { width:100%; justify-content:space-between; gap:0 10px !important; }
+    .nav-links a, .nav-drop-toggle { display:inline-block; padding:10px 2px; letter-spacing:0.1em !important; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+    .cursor, .cursor-ring { display:none !important; }
+    body { cursor:auto !important; }
+    html { scroll-behavior:auto !important; }
+  }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/lf-blocks.css">
+<style>
+  .card .lf-kit { max-width:none; margin:24px 0 8px; }
+  ol.steps { margin:0 0 8px 20px; }
+  ol.steps li { font-size:0.9rem; line-height:1.75; color:var(--black); margin-bottom:8px; padding-left:4px; }
+  .step2 { font-weight:500; color:var(--terracotta); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="wordmark">Lauren Fine</a>
+
+  <div class="card">
+    <p class="eyebrow">Free worksheet &middot; Make Room For It</p>
+    <h1>Every yes is a no to something else. <em>This is the bill.</em></h1>
+
+    <p class="lede">You cannot protect time you cannot see. Most of us only notice the cost of a yes two weeks later, at 10pm, doing the thing we never wanted to do.</p>
+    <p class="lede muted">For the next seven days, write down every yes as it happens. Who asked, how long it took, what it cost you, and whether you would say yes again. At the end of the week, add it up.</p>
+
+    <div class="lf-kit" data-source="yes-invoice-page" data-audience="physicians" data-sheet="The Yes Invoice" data-file="the-yes-invoice.pdf">
+      <p class="lf-kit-eyebrow">Free &middot; The Yes Invoice</p>
+      <p class="lf-kit-title">Get the worksheet.</p>
+      <p class="lf-kit-text">Two printable pages. The PDF downloads right away.</p>
+      <form novalidate>
+        <label class="lf-kit-hp" aria-hidden="true">Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name">
+        <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+        <button type="submit">Send me the Yes Invoice</button>
+      </form>
+      <p class="lf-kit-note">You also get The Sunday Letter, one short letter on Sunday mornings. Unsubscribe anytime.</p>
+      <p class="lf-kit-status" role="alert"></p>
+      <p class="lf-kit-done"><strong>It is downloading now.</strong> Keep it for one week. Then bring it to a <a href="/free-session?utm_source=site&amp;utm_content=yes_invoice_done">free session</a> and we will read it together.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="kicker">Where this fits</p>
+    <p class="lede">The Yes Invoice is step 2 of the Boundary Workup, a clinical method for the automatic yes.</p>
+    <ol class="steps">
+      <li>Chief complaint: name what you want room for.</li>
+      <li class="step2">History: log every yes for one week. (This worksheet.)</li>
+      <li>Presenting complaint: find where the automatic yes happens.</li>
+      <li>Differential: separate what happened from the fear about saying no.</li>
+      <li>Verify: test the fear against evidence.</li>
+      <li>Cost and prescribe: price the yes and choose the words.</li>
+      <li>Two-week trial: try it, then measure what you got back.</li>
+    </ol>
+    <p class="lede muted" style="margin-top:12px;">Your own data does what no article can. It shows you the pattern.</p>
+
+    <div class="rule"></div>
+
+    <div class="bio">
+      <img src="/headshot.jpg" alt="Lauren Fine, MD">
+      <p><strong>Lauren Fine, MD</strong> is a physician, medical educator and coach. She uses clinical reasoning to help physicians, educators and other high achievers stop the automatic yes and make room for what matters.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="kicker">Have your week of data?</p>
+    <p class="lede muted" style="margin-bottom:20px;">Bring it to a free 55-minute session. We will find the pattern, test the fear behind it, and choose the first boundary together. No sales pitch.</p>
+    <a class="cta" href="/free-session?utm_source=site&amp;utm_content=yes_invoice_page">Book your free session</a>
+  </div>
+
+  <div class="foot"><a href="/#method">The full method</a><a href="/physician-coaching">Coaching for physicians</a><a href="/">More from Lauren Fine, MD</a></div>
+</div>
+<script src="/js/lf-blocks.js" defer></script>
+</body>
+</html>

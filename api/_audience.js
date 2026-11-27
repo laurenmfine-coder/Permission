@@ -22,6 +22,7 @@ const AUDIENCE_SEGMENT_ENV = {
   'working-moms': 'FLODESK_SEGMENT_DEFAULT_ONE',
   'caregivers': 'FLODESK_SEGMENT_DEFAULT_ONE',
   'physician-moms': 'FLODESK_SEGMENT_PHYSICIAN_MOMS',
+  'physicians': 'FLODESK_SEGMENT_PHYSICIANS',
   'habits': 'FLODESK_SEGMENT_HABITS',
   'side-build': 'FLODESK_SEGMENT_SIDE_BUILD',
   'reinvention': 'FLODESK_SEGMENT_REINVENTION',
