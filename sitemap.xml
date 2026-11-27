@@ -1370,4 +1370,8 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://laurenfine.com/yes-invoice</loc>
+    <lastmod>2026-11-27</lastmod>
+  </url>
 </urlset>
